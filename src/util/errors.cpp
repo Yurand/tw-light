@@ -253,11 +253,6 @@ UserStackTraceHelper::~UserStackTraceHelper()
 
 std::string UserStackTraceHelper::GetStackNodeString(SOURCE_LINE* stNode)
 {
-	std::string strFile;
-	char *_file = (char*)strstr(stNode->file, "source");
-	if (_file)
-		strFile = _file;
-
 	char line[20] = {0};
 	sprintf(line, "%d", stNode->line);
 
@@ -265,7 +260,7 @@ std::string UserStackTraceHelper::GetStackNodeString(SOURCE_LINE* stNode)
 	if (stNode->name!=NULL)
 		strName = std::string(" ") + stNode->name;
 
-	return std::string("from: ") + strFile + ", line " + line + " funct: " + stNode->funct + strName + "\n";
+	return std::string("from: ") + stNode->file + ", line " + line + " funct: " + stNode->funct + strName + "\n";
 }
 
 
