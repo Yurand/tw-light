@@ -407,15 +407,15 @@ bool Presence::isSynched() const
 
 SpaceLocation *Presence::get_focus()
 {
-	STACKTRACE
-		return NULL;
+	STACKTRACE;
+	return NULL;
 }
 
 
 SpaceLocation *SpaceLocation::get_focus()
 {
-	STACKTRACE
-		return this;
+	STACKTRACE;
+	return this;
 }
 
 
@@ -431,8 +431,8 @@ collide_flag_sameteam(0),
 collide_flag_sameship(0)
 
 {
-	STACKTRACE
-		id |= SPACE_LOCATION;
+	STACKTRACE;
+	id |= SPACE_LOCATION;
 	attributes |= ATTRIB_SYNCHED;
 	attributes |= ATTRIB_LOCATION;
 	if (creator) {
@@ -453,15 +453,16 @@ collide_flag_sameship(0)
 
 SpaceLocation::~SpaceLocation()
 {
-	STACKTRACE
-		if (data) data->unlock();
+	STACKTRACE;
+	if (data)
+		data->unlock();
 
 }
 
 
 bool SpaceLocation::change_owner(SpaceLocation *new_owner)
 {
-	STACKTRACE
+	STACKTRACE;
 	if (new_owner) {
 		ally_flag = new_owner->ally_flag;
 		ship = new_owner->ship;
@@ -478,7 +479,7 @@ bool SpaceLocation::change_owner(SpaceLocation *new_owner)
 
 void SpaceLocation::death()
 {
-	STACKTRACE
+	STACKTRACE;
 }
 
 
@@ -502,15 +503,15 @@ int SpaceLocation::getID() const
 
 Vector2 SpaceLocation::normal_pos() const
 {
-	STACKTRACE
-		return(normalize(pos, map_size));
+	STACKTRACE;
+	return(normalize(pos, map_size));
 }
 
 
 Vector2 SpaceLocation::nearest_pos(SpaceLocation *l) const
 {
-	STACKTRACE
-		Vector2 p1, p2;
+	STACKTRACE;
+	Vector2 p1, p2;
 	p1 = normal_pos();
 	p2 = l->normal_pos();
 	return Vector2(
@@ -533,46 +534,49 @@ Vector2 SpaceLocation::rel_pos(SpaceLocation *l) const
 
 double SpaceLocation::distance(SpaceLocation *l)
 {
-	STACKTRACE
-		return(distance_from(normal_pos(), l->normal_pos()));
+	STACKTRACE;
+	return(distance_from(normal_pos(), l->normal_pos()));
 }
 
 
-int SpaceLocation::handle_damage (SpaceLocation *source, double normal, double direct)
+int SpaceLocation::handle_damage(SpaceLocation *source, double normal, double direct)
 {
-	STACKTRACE
-		return 0;
+	STACKTRACE;
+	return 0;
 }
 
 
-int SpaceLocation::handle_fuel_sap (SpaceLocation *source, double normal)
+int SpaceLocation::handle_fuel_sap(SpaceLocation *source, double normal)
 {
-	STACKTRACE
-		return 0;
+	STACKTRACE;
+	return 0;
 }
 
 
-double SpaceLocation::handle_speed_loss (SpaceLocation *source, double normal)
+double SpaceLocation::handle_speed_loss(SpaceLocation *source, double normal)
 {
-	STACKTRACE
-		return 0;
+	STACKTRACE;
+	return 0;
 }
 
 
 void SpaceLocation::change_vel(Vector2 dvel)
 {
+	STACKTRACE;
 	vel += dvel;
 }
 
 
 void SpaceLocation::set_vel(Vector2 newvel)
 {
+	STACKTRACE;
 	vel = newvel;
 }
 
 
 void SpaceLocation::scale_vel(double scale)
 {
+	STACKTRACE;
 	vel *= scale;
 }
 
@@ -581,6 +585,7 @@ void SpaceLocation::scale_vel(double scale)
  */
 void SpaceLocation::change_pos(Vector2 dpos)
 {
+	STACKTRACE;
 	pos = normalize(pos + dpos);
 }
 
@@ -589,14 +594,15 @@ void SpaceLocation::change_pos(Vector2 dpos)
  */
 void SpaceLocation::change_pos(double scale)
 {
+	STACKTRACE;
 	pos *= scale;
 }
 
 
 void SpaceLocation::ship_died()
 {
-	STACKTRACE
-		ship = NULL;
+	STACKTRACE;
+	ship = NULL;
 }
 
 
@@ -608,8 +614,8 @@ void SpaceLocation::target_died()
 
 double SpaceLocation::trajectory_angle(SpaceLocation *l)
 {
-	STACKTRACE
-		return ::trajectory_angle(pos, l->normal_pos());
+	STACKTRACE;
+	return ::trajectory_angle(pos, l->normal_pos());
 }
 
 
@@ -624,6 +630,7 @@ bool inline SpaceLocation::detectable()
 
 int SpaceLocation::canCollide(SpaceLocation *other)
 {
+	STACKTRACE;
 	if (!detectable()) return 0;
 	if (sameShip(other)) return ((1 << other->layer) & collide_flag_sameship);
 	else if (sameTeam(other)) return ((1 << other->layer) & collide_flag_sameteam);
@@ -633,12 +640,14 @@ int SpaceLocation::canCollide(SpaceLocation *other)
 
 TeamCode SpaceLocation::get_team() const
 {
+	STACKTRACE;
 	return (ally_flag & team_mask) >> team_shift;
 }
 
 
 void SpaceLocation::set_team(TeamCode k)
 {
+	STACKTRACE;
 	ally_flag &= ~team_mask;
 	ally_flag |= k << team_shift;
 }
@@ -646,38 +655,43 @@ void SpaceLocation::set_team(TeamCode k)
 
 bool SpaceLocation::sameTeam(const SpaceLocation *other) const
 {
+	STACKTRACE;
 	return !((ally_flag ^ other->ally_flag) & (team_mask));
 }
 
 
 double SpaceLocation::isProtected() const
 {
+	STACKTRACE;
 	return 0;
 }
 
 
 double SpaceLocation::isInvisible() const
 {
+	STACKTRACE;
 	return 0;
 }
 
 
 void Presence::set_depth(double d)
 {
+	STACKTRACE;
 	_depth = int(floor(ldexp(d, 8)));
 }
 
 
 double Presence::get_depth()
 {
+	STACKTRACE;
 	return ldexp((double)_depth, -8);
 }
 
 
 Planet *SpaceLocation::nearest_planet()
 {
-	STACKTRACE
-		Planet *p = NULL;
+	STACKTRACE;
+	Planet *p = NULL;
 	double r = 99999999;
 	Query q;
 	q.begin(this, bit(LAYER_CBODIES), 1600);
@@ -697,48 +711,48 @@ Planet *SpaceLocation::nearest_planet()
 
 void SpaceLocation::play_sound (SAMPLE *sample, int vol, int freq)
 {
-	STACKTRACE
-		physics->play_sound(sample, this, vol, freq);
+	STACKTRACE;
+	physics->play_sound(sample, this, vol, freq);
 	return;
 }
 
 
 void SpaceLocation::play_sound2 (SAMPLE *sample, int vol, int freq)
 {
-	STACKTRACE
-		physics->play_sound2(sample, this, vol, freq);
+	STACKTRACE;
+	physics->play_sound2(sample, this, vol, freq);
 	return;
 }
 
 
 int SpaceLocation::translate( Vector2 delta)
 {
-	STACKTRACE
-		pos = normalize ( pos + delta, map_size );
+	STACKTRACE;
+	pos = normalize ( pos + delta, map_size );
 	return true;
 }
 
 
 int SpaceLocation::accelerate(SpaceLocation *source, double angle, double velocity, double max_speed)
 {
-	STACKTRACE
-		_accelerate(angle, velocity, max_speed);
+	STACKTRACE;
+	_accelerate(angle, velocity, max_speed);
 	return true;
 }
 
 
 int SpaceLocation::accelerate(SpaceLocation *source, Vector2 delta_v, double max_speed)
 {
-	STACKTRACE
-		_accelerate(delta_v, max_speed);
+	STACKTRACE;
+	_accelerate(delta_v, max_speed);
 	return true;
 }
 
 
 void SpaceLocation::_accelerate(double angle, double velocity, double max_speed)
 {
-	STACKTRACE
-		double ovm, nvm;
+	STACKTRACE;
+	double ovm, nvm;
 	Vector2 nv;
 
 	ovm = magnitude_sqr(vel);
@@ -758,8 +772,8 @@ void SpaceLocation::_accelerate(double angle, double velocity, double max_speed)
 
 void SpaceLocation::_accelerate(Vector2 delta_v, double max_speed)
 {
-	STACKTRACE
-		double ovm, nvm;
+	STACKTRACE;
+	double ovm, nvm;
 	Vector2 nv;
 
 	ovm = magnitude_sqr(vel);
@@ -783,8 +797,8 @@ void SpaceLocation::_accelerate(Vector2 delta_v, double max_speed)
 
 int SpaceLocation::accelerate_gravwhip(SpaceLocation *source, double angle, double velocity, double max_speed)
 {
-	STACKTRACE
-		Planet *p = nearest_planet();
+	STACKTRACE;
+	Planet *p = nearest_planet();
 	if (!p) return SpaceLocation::accelerate(source, angle, velocity, max_speed);
 	double tmp;
 	tmp = distance(p) / p->gravity_range;
@@ -796,12 +810,13 @@ int SpaceLocation::accelerate_gravwhip(SpaceLocation *source, double angle, doub
 void SpaceLocation::animate(Frame* f)
 {
 	STACKTRACE;
+	return;
 }
 
 
 void SpaceLocation::calculate()
 {
-	STACKTRACE
+	STACKTRACE;
 	if (target && !target->exists()) {
 		target_died();
 	}
@@ -814,16 +829,16 @@ void SpaceLocation::calculate()
 
 void SpaceObject::set_sprite(SpaceSprite *new_sprite)
 {
-	STACKTRACE
-		sprite = new_sprite;
+	STACKTRACE;
+	sprite = new_sprite;
 	size = new_sprite->size();
 }
 
 
 void SpaceObject::calculate()
 {
-	STACKTRACE
-		SpaceLocation::calculate();
+	STACKTRACE;
+	SpaceLocation::calculate();
 	if ((attributes & ATTRIB_STANDARD_INDEX) && sprite) {
 		sprite_index = get_index(angle, PI/2, sprite->frames());
 	}
@@ -840,8 +855,8 @@ mass(0),
 sprite(osprite),
 sprite_index(0)
 {
-	STACKTRACE
-		attributes |= ATTRIB_OBJECT;
+	STACKTRACE;
+	attributes |= ATTRIB_OBJECT;
 	if (game && game->friendly_fire) collide_flag_sameteam = ALL_LAYERS;
 	collide_flag_sameship = 0;
 	collide_flag_anyone = ALL_LAYERS;
@@ -944,8 +959,9 @@ void SpaceObject::collide(SpaceObject *other)
 
 double SpaceObject::collide_ray(Vector2 lp1, Vector2 lp2, double llength)
 {
-	STACKTRACE
-		int collide_x = (int)(lp2.x);
+	STACKTRACE;
+
+	int collide_x = (int)(lp2.x);
 	int collide_y = (int)(lp2.y);
 	Vector2 d;
 
@@ -964,22 +980,24 @@ double SpaceObject::collide_ray(Vector2 lp1, Vector2 lp2, double llength)
 
 void SpaceObject::inflict_damage(SpaceObject *other)
 {
-	STACKTRACE
-		int i;
+	STACKTRACE;
+
+	int i;
 	if (damage_factor > 0) {
 		i = iround_down(damage_factor / 2);
 		if (i >= BOOM_SAMPLES) i = BOOM_SAMPLES - 1;
 		play_sound((SAMPLE *)(melee[MELEE_BOOM + i].dat));
 		damage(other, damage_factor);
+	} else {
+		damage(other, 0);
 	}
-	else damage(other, 0);
 	return;
 }
 
 
 void SpaceObject::death()
 {
-	STACKTRACE
+	STACKTRACE;
 	if (attributes & ATTRIB_NOTIFY_ON_DEATH) {
 		physics->object_died(this, NULL);
 		attributes &= ~ ATTRIB_NOTIFY_ON_DEATH;
@@ -994,8 +1012,8 @@ SpaceLocation(creator, lpos, langle),
 length(llength),
 color(lcolor)
 {
-	STACKTRACE
-		id = SPACE_LINE;
+	STACKTRACE;
+	id = SPACE_LINE;
 	attributes |= ATTRIB_LINE;	 // | ATTRIB_COLLIDE_STATIC;
 	layer = LAYER_LINES;
 	set_depth(DEPTH_LINES);
@@ -1031,13 +1049,16 @@ double SpaceLine::get_length() const
 
 void SpaceLine::inflict_damage(SpaceObject *other)
 {
-	STACKTRACE
-		int i;
-	i = iround_down(damage_factor / 2);
-	if (i >= BOOM_SAMPLES)
-		i = BOOM_SAMPLES - 1;
-	play_sound((SAMPLE *)(melee[MELEE_BOOM + i].dat));
-	damage(other, damage_factor);
+	STACKTRACE;
+
+	int i;
+	if (damage_factor >= 0) {
+		i = iround_down(damage_factor / 2);
+		if (i >= BOOM_SAMPLES)
+			i = BOOM_SAMPLES - 1;
+		play_sound((SAMPLE *)(melee[MELEE_BOOM + i].dat));
+		damage(other, damage_factor);
+	}
 	collide_flag_anyone = collide_flag_sameship = collide_flag_sameteam = 0;
 	physics->add(new Animation( this,
 		pos + edge(), meleedata.sparkSprite, 0,

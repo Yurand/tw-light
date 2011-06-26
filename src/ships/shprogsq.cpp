@@ -693,15 +693,15 @@ void PulseLaser::inflict_damage(SpaceObject *other)
 	STACKTRACE;
 	// copied from space_line:
 	int i;
-	i = iround_down(damage_factor / 2);
-	if (i >= BOOM_SAMPLES)
-		i = BOOM_SAMPLES - 1;
-	play_sound((SAMPLE *)(melee[MELEE_BOOM + i].dat));
-	damage(other, damage_factor);
-
+	if (damage_factor >= 0) {
+		i = iround_down(damage_factor / 2);
+		if (i >= BOOM_SAMPLES)
+			i = BOOM_SAMPLES - 1;
+		play_sound((SAMPLE *)(melee[MELEE_BOOM + i].dat));
+		damage(other, damage_factor);
+	}
 	state = 0;					 // this is different from space_line :)
 	return;
 }
-
 
 REGISTER_SHIP(RogueSquadron)
