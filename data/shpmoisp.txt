@@ -1,0 +1,18 @@
+
+Moian Speeder.
+
+Loosely based on idea of SpydirShellX (litorlesc ramscoop).
+
+A slow ship, but with high turning rate.
+
+Special:
+
+Fast homing missile; on impact it releases "speedblobs".
+This has no negative imapct on the affected ship, but when a ship hits a speedblob, it gains speed in the direction the original ship moved in at the time the blob was released. Thus you can gain speed in the wake of the ship.
+
+Weapon:
+
+A short range rapid-fire doom cannon, which can inflict heavy damage onto the enemy, if you can get close enough :)
+
+Note.
+This ship is similar in function to the VUX, except that it takes an offensive approach instead of a defensive on - and it's more difficult to handle (imo).

@@ -1,0 +1,42 @@
+The Dajelkia Emissary is an unusual warship, in that it
+creates its own lasting terrain for a tactical advantage.
+
+fire = fires a single pulse blaster. 1 energy, 1 damage,
+2 armour.  There are four pulse blasters on the ship.  
+All four blasters are cycled through, one at a time.
+
+special = this button has three separate functions,
+depending upon the situation.
+1) releases the Dajielka Sanctuary.  This appears
+to be a rip in space-time, in the form of a miniature
+'white hole'.  Over time, it grows in strength, as numerous
+spinning tendrils emerge.  The tendrils do damage to other
+ships and shots that may come near it.  The sanctuary itself
+is difficult, but not impossible to destroy.
+
+2) Redeploy Sanctuary.  If the special is held down for
+five seconds while the ship is outside the sanctuary, it will
+be redeployed in the current spot, and the old sanctuary 
+destroyed.
+
+3) Harvest.  If the ship is flying over one or more tendrils,
+pushing and holding the special will cause the tendrils to be
+harvested.  This destroys the tendril, and gives 1-9 energy,
+depending on the strength of the tendril.  If the battery
+is full, the ship can regenerate 1 crew for every 20 energy
+that would have been created.
+
+The Emissary has no dynamo.  However,
+the Emissary may use the tendrils of the Sanctuary to recharge
+itself and regenerate.  Each tendril that touches the emissary
+gives the Emissary a small amount of energy.  To obtain energy
+rapidly, it must use the special button to harvest the tendrils.
+In effect, the sanctuary is something of a 'fortress'.  The
+Emissaries own pulse blasters will interfere with the tendrils,
+so the Emissary must emerge from the Sanctuary to do battle.
+
+There may only be one Sanctuary in existence at a time.
+Creation of a new sanctuary destroys the old one.
+
+Upon the destruction of the ship, the Sanctuary is also
+destroyed.

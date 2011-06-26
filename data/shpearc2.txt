@@ -1,0 +1,23 @@
+EARTHLING CRUISER MK2  (code name "Crusader") v.1.4
+
+New technological advances and reverse engineering of some of the Precursors' technology
+made possible the construction of this ship. It is faster, with higher energy capacity and regeneration.
+Its weapon is a replica of the Fusion Blasters (a bit less powerfull than its Precursor analogue though)
+with ATS. Point Defense Laser now fires twice as fast.
+
+Unfortunately, with all that machinery there was just not enough space abroad, so crew capacity had
+to be decreased (not significantly, though). And, to improve maximum speed and acceleration, some of
+the maneuverability (for which Cruiser is known) had to be sacrificed in order to accommodate more thrusters.
+
+Note 1: Be very careful with the new PDL - it can deplete your battery in a glimpse.
+
+Note 2: Mk2's ATS is somewhat inferior to its Precursor's analogue, and cannot efficiently work at short range.
+So don't rely too much on homing in close-up combat; fire from medium and long range to utilize your ATS to
+its full capacity.
+
+----------------------------
+Programming, graphics and sound: Tau
+Concept 3D ship model: Slag786B
+
+
+<twships@tau137.com>

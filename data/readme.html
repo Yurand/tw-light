@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.4: http://docutils.sourceforge.net/" />
+<title>TW-Light Readme</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger
+:Contact: goodger@users.sourceforge.net
+:Date: $Date: 2005-12-18 01:56:14 +0100 (Sun, 18 Dec 2005) $
+:Revision: $Revision: 4224 $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin-left: 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left {
+  clear: left }
+
+img.align-right {
+  clear: right }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font-family: serif ;
+  font-size: 100% }
+
+pre.literal-block, pre.doctest-block {
+  margin-left: 2em ;
+  margin-right: 2em ;
+  background-color: #eeeeee }
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+tt.docutils {
+  background-color: #eeeeee }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document" id="tw-light-readme">
+<h1 class="title">TW-Light Readme</h1>
+<div class="contents topic">
+<p class="topic-title first"><a id="contents" name="contents">Contents</a></p>
+<ul class="simple">
+<li><a class="reference" href="#about" id="id2" name="id2">About</a></li>
+<li><a class="reference" href="#usage" id="id3" name="id3">Usage</a><ul>
+<li><a class="reference" href="#melee" id="id4" name="id4">Melee</a></li>
+<li><a class="reference" href="#extended-menu" id="id5" name="id5">Extended Menu</a><ul>
+<li><a class="reference" href="#play-game" id="id6" name="id6">Play Game</a></li>
+<li><a class="reference" href="#key-tester" id="id7" name="id7">Key Tester</a></li>
+<li><a class="reference" href="#ship-info" id="id8" name="id8">Ship Info</a></li>
+<li><a class="reference" href="#diagnostic" id="id9" name="id9">Diagnostic</a></li>
+<li><a class="reference" href="#main-menu" id="id10" name="id10">Main Menu</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#teams" id="id11" name="id11">Teams</a><ul>
+<li><a class="reference" href="#select-controller" id="id12" name="id12">Select Controller</a></li>
+<li><a class="reference" href="#change-team" id="id13" name="id13">Change Team #</a></li>
+<li><a class="reference" href="#change-config" id="id14" name="id14">Change Config #</a></li>
+<li><a class="reference" href="#edit-configuration" id="id15" name="id15">Edit Configuration</a></li>
+<li><a class="reference" href="#edit-fleet" id="id16" name="id16">Edit Fleet</a></li>
+<li><a class="reference" href="#id1" id="id17" name="id17">Main Menu</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#options" id="id18" name="id18">Options</a><ul>
+<li><a class="reference" href="#gamma-correction" id="id19" name="id19">Gamma correction</a></li>
+<li><a class="reference" href="#antialiasing" id="id20" name="id20">Antialiasing</a></li>
+<li><a class="reference" href="#color-depth" id="id21" name="id21">Color Depth</a></li>
+<li><a class="reference" href="#camera-mode" id="id22" name="id22">Camera Mode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference" href="#license" id="id23" name="id23">License</a></li>
+<li><a class="reference" href="#ideas-questions-patches-and-bug-reports" id="id24" name="id24">Ideas, questions, patches and bug reports</a></li>
+<li><a class="reference" href="#credits" id="id25" name="id25">Credits</a></li>
+<li><a class="reference" href="#authors" id="id26" name="id26">Authors</a></li>
+</ul>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id2" id="about" name="about">About</a></h1>
+<p>TW-Light is fork of TimeWarp. It includes only a combat portion
+of TimeWarp. Main goal of this fork is stable melee engine
+for implementing adventure game.</p>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id3" id="usage" name="usage">Usage</a></h1>
+<div class="section">
+<h2><a class="toc-backref" href="#id4" id="melee" name="melee">Melee</a></h2>
+<p>Starts a battle.  In battle the following keys do stuff:</p>
+<pre class="literal-block">
+* F1 brings up the help screen (this file, at the moment)
+* F2 brings up the options menu
+* F3 switches camera focus
+* F4 is fast-forward (speeds up in-game time greatly)
+* F5 displays fleet status
+* F7 changes game tic rate (physics quality)
+* F8 changes camera mode
+* F9 creates planets (silly &quot;feature&quot;)
+* F10 quits (so does ESCAPE)
+* F11 saves screenshots
+* F12 displays framerates / performance data
+* - zooms out on some viewing modes.
+* + (or =) zooms in on some viewing modes.
+* 0 and 9 also effect the camera in some viewing modes.
+* ctrl+T = toggle team indicators on/off
+* ctrl+H = toggle healthbar indicators on/off
+</pre>
+<p>If some controllers are set to keyboard, customizable buttons may cause ship actions.
+Be default these are:</p>
+<pre class="literal-block">
+Config 0:
+
+  left:   Keypad 4
+  thrust: Keypad 8
+  right:  Keypad 6
+  fire:   Enter
+  special:Space
+  next:   Closebrace (])
+  prev:   Openbrace ([)
+  near:   P
+
+Config 1:
+  left:   A
+  thrust: S
+  right:  D
+  fire:   B
+  special:V
+  next:   F
+  prev:   G
+  near:   H
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id5" id="extended-menu" name="extended-menu">Extended Menu</a></h2>
+<div class="section">
+<h3><a class="toc-backref" href="#id6" id="play-game" name="play-game">Play Game</a></h3>
+<p>Add game descriptions here</p>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id7" id="key-tester" name="key-tester">Key Tester</a></h3>
+<p>Use this utility to check keys combination for conflicts.</p>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id8" id="ship-info" name="ship-info">Ship Info</a></h3>
+<p>Here you can get detail information about every ship in the game.</p>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id9" id="diagnostic" name="diagnostic">Diagnostic</a></h3>
+<p>show comlile options and version information.</p>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id10" id="main-menu" name="main-menu">Main Menu</a></h3>
+<p>This returns to the main menu.</p>
+</div>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id11" id="teams" name="teams">Teams</a></h2>
+<div class="section">
+<h3><a class="toc-backref" href="#id12" id="select-controller" name="select-controller">Select Controller</a></h3>
+<p>Select the player (i.e. &quot;Player 1&quot; or &quot;Player 2&quot;) you wish to alter from
+the list on the left, and the controller (i.e. &quot;Keyboard&quot;, &quot;MoronBot&quot;) you
+want to control that player from the list on the left.  Then either click
+on the &quot;Select Controller&quot; button or double click on the controller name.</p>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id13" id="change-team" name="change-team">Change Team #</a></h3>
+<p>This switches the player allys. Note that team 0 mean no allys.</p>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id14" id="change-config" name="change-config">Change Config #</a></h3>
+<p>This switches the configuration used by the currently highlighted controller.</p>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id15" id="edit-configuration" name="edit-configuration">Edit Configuration</a></h3>
+<p>This is used to setup up keys when the currently highlighted player is
+using the keyboard. It may eventually allow the configuration of AIs and
+calibration of joysticks.</p>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id16" id="edit-fleet" name="edit-fleet">Edit Fleet</a></h3>
+<p>This button brings up the fleet selection menu for the currently
+highlighted player.</p>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id17" id="id1" name="id1">Main Menu</a></h3>
+<p>This returns to the main menu.</p>
+</div>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id18" id="options" name="options">Options</a></h2>
+<p>Most things on this menu are self-explanatory, but a few need special mention.</p>
+<div class="section">
+<h3><a class="toc-backref" href="#id19" id="gamma-correction" name="gamma-correction">Gamma correction</a></h3>
+<p>This makes things brighter during combat.  This should not be changed from
+the middle of combat, or colors could get weird.</p>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id20" id="antialiasing" name="antialiasing">Antialiasing</a></h3>
+<p>If this box is checked then TimeWarp will use higher quality graphics, but
+run slower.</p>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id21" id="color-depth" name="color-depth">Color Depth</a></h3>
+<p>You cannot change this from the middle of combat.</p>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id22" id="camera-mode" name="camera-mode">Camera Mode</a></h3>
+<p>This allows you to control what is shown on your screen in combat.</p>
+<p>&quot;Enemy_Discrete&quot; is just st like Star Control on the PC, where the camera
+moved to keep both you and your enemy onscreen, and zoomed in by factors of 2.</p>
+<p>&quot;Enemy&quot; is like Star Control on the Genesis or 3DO, where the camera zoomed in smoothly.</p>
+<p>&quot;Hero&quot; makes the camera stay focused on Player 1, and zoom in/out when + and -
+are pressed.</p>
+<p>&quot;Everything&quot; makes the camera stay on the planet and zoom way out so that everything is visible.
+This mode is slightly buggy (visual artifacts).</p>
+</div>
+</div>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id23" id="license" name="license">License</a></h1>
+<p>TW-Light is distributed under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2 of the
+License, or (at your option) any later version. A copy of this license
+can be found in the file COPYING included with the source code of this
+program.</p>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id24" id="ideas-questions-patches-and-bug-reports" name="ideas-questions-patches-and-bug-reports">Ideas, questions, patches and bug reports</a></h1>
+<p>If you add something, or fix a bug, please send a patch (in 'diff -u'
+format) to me Yura Siamashka &lt;<a class="reference" href="mailto:yurand2&#64;gmail.com">yurand2&#64;gmail.com</a>&gt;.</p>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id25" id="credits" name="credits">Credits</a></h1>
+<p>TW-Light is derivative work from TimeWarp <a class="reference" href="http://timewarp.sf.net/">http://timewarp.sf.net/</a></p>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id26" id="authors" name="authors">Authors</a></h1>
+<p>Yura Siamashka &lt;<a class="reference" href="mailto:yurand2&#64;gmail.com">yurand2&#64;gmail.com</a>&gt;.</p>
+<p>Many people contributed to the project during all these years, here is some of them if you think
+someone is missing notify me.</p>
+<blockquote>
+<ul class="simple">
+<li>Paul Forest (youBastrd)</li>
+<li>Asaf Hamtzany (UAF)</li>
+<li>Rick Bushie (Firehazurd)</li>
+<li>Tau</li>
+<li>GeomanNL</li>
+<li>Officer Flubbo</li>
+<li>Captain Maim</li>
+<li>Jumping Peppers</li>
+</ul>
+</blockquote>
+</div>
+</div>
+</body>
+</html>

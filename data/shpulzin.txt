@@ -1,0 +1,13 @@
+The Ulzrak Interceptor is a small ship
+with a bite.
+
+fire - launches an intertia dampening
+energy bolt.  This slows down any target
+that it hits, in addition to doing damage.
+cost is 1 power.
+
+special - engages Zoom drive.  Cost is
+4 power, and there is a startup delay.
+When in zoom mode, the ship travels at
+very high speeds, and will do 5 points
+of damage to anything it impacts.

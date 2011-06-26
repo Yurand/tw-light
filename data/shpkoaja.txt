@@ -1,0 +1,17 @@
+Koanua Javelin
+
+This ship is made by the rather eccentric Koanua.
+Their first warship was the Koanua Patrol Ship, but
+that warship did not seem to command much respect
+from opponents.
+
+fire = delayed thrust missile.  3 power to launch, 6
+damage when they hit.  They are difficult to use, but
+are devastating when they work
+
+special = ionic shotgun.  Cost is 4 power.  This sends
+16 random shots forward, for a short distance.  Although
+it is a very energy effective weapon, the recycling
+time is long.  It is meant to give the ship some
+up close attack and defense ability when the delayed
+thrust missiles are hard to use.

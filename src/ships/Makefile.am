@@ -1,0 +1,180 @@
+noinst_LIBRARIES=libships.a
+
+INCLUDES = -I$(top_srcdir) $(allegro_CFLAGS)
+
+SRCS= gen_ships.cpp \
+shpaktgu.cpp \
+shpalabc.cpp \
+shpalckr.cpp \
+shpalhdr.cpp \
+shpandgu.cpp \
+shparisk.cpp \
+shparitr.cpp \
+shparkpi.cpp \
+shpartem.cpp \
+shpastba.cpp \
+shpayrbs.cpp \
+shpbahbu.cpp \
+shpbatde.cpp \
+shpbipka.cpp \
+shpbogce.cpp \
+shpbubbo.cpp \
+shpbubex.cpp \
+shpchebr.cpp \
+shpchmav.cpp \
+shpchmba.cpp \
+shpchoex.cpp \
+shpclofl.cpp \
+shpconca.cpp \
+shpconho.cpp \
+shpcrapl.cpp \
+shpcresu.cpp \
+shpcrore.cpp \
+shpdajem.cpp \
+shpdeees.cpp \
+shpdjila.cpp \
+shpdragr.cpp \
+shpdruma.cpp \
+shpducla.cpp \
+shpdyzha.cpp \
+shpearc2.cpp \
+shpearc3.cpp \
+shpearcr.cpp \
+shpestgu.cpp \
+shpfiear.cpp \
+shpfopsl.cpp \
+shpforsh.cpp \
+shpfrebo.cpp \
+shpfresc.cpp \
+shpfweav.cpp \
+shpgahmo.cpp \
+shpgarty.cpp \
+shpgerhe.cpp \
+shpgeror.cpp \
+shpgerra.cpp \
+shpglacr.cpp \
+shpglads.cpp \
+shpgluse.cpp \
+shphotsp.cpp \
+shphubde.cpp \
+shphydcr.cpp \
+shpiceco.cpp \
+shpilwav.cpp \
+shpilwsp.cpp \
+shpilwsp.h \
+shpjnkla.cpp \
+shpjurcu.cpp \
+shpjygst.cpp \
+shpkabwe.cpp \
+shpkahbo.cpp \
+shpkatpo.cpp \
+shpklidr.cpp \
+shpkoaja.cpp \
+shpkoapa.cpp \
+shpkohma.cpp \
+shpkohma.h \
+shpkolfl.cpp \
+shpkorsi.cpp \
+shpktesa.cpp \
+shpkzedr.cpp \
+shpleimu.cpp \
+shplyrwa.cpp \
+shpmekpi.cpp \
+shpmeltr.cpp \
+shpmmrxf.cpp \
+shpmoisp.cpp \
+shpmontr.cpp \
+shpmycpo.cpp \
+shpnarlu.cpp \
+shpneccr.cpp \
+shpneodr.cpp \
+shpnisha.cpp \
+shpoliha.cpp \
+shporzne.cpp \
+shporzne.h \
+shpostdi.cpp \
+shpostor.cpp \
+shppanav.cpp \
+shpphepa.cpp \
+shppkufu.cpp \
+shpplala.cpp \
+shpplane.cpp \
+shpqlore.cpp \
+shpquasi.cpp \
+shpquawr.cpp \
+shpraame.cpp \
+shpradfi.cpp \
+shprekas.cpp \
+shprogsq.cpp \
+shpsacda.cpp \
+shpsamat.cpp \
+shpsclfr.cpp \
+shpsefn2.cpp \
+shpsefna.cpp \
+shpshosc.cpp \
+shpslypr.cpp \
+shpspael.cpp \
+shpstaba.cpp \
+shpstrgu.cpp \
+shpstrsc.cpp \
+shpsupbl.cpp \
+shpsupbl.h \
+shpsyrpe.cpp \
+shptauar.cpp \
+shptaubo.cpp \
+shptauda.cpp \
+shptauem.cpp \
+shptaufi.cpp \
+shptaugl.cpp \
+shptauhu.cpp \
+shptaule.cpp \
+shptaumc.cpp \
+shptaume.cpp \
+shptausl.cpp \
+shptaust.cpp \
+shptauto.cpp \
+shptautu.cpp \
+shptelno.cpp \
+shpterbi.cpp \
+shpthrto.cpp \
+shptougr.cpp \
+shptrige.cpp \
+shptulra.cpp \
+shpulzin.cpp \
+shpumgdr.cpp \
+shpuosli.cpp \
+shputwde.cpp \
+shputwju.cpp \
+shputwju.h \
+shpuxjba.cpp \
+shpvelcr.cpp \
+shpvenke.cpp \
+shpvezba.cpp \
+shpvioge.cpp \
+shpvirli.cpp \
+shpvuvji.cpp \
+shpvuxin.cpp \
+shpwassu.cpp \
+shpwistr.cpp \
+shpxaaar.cpp \
+shpxilcr.cpp \
+shpxxxas.cpp \
+shpxxxma.cpp \
+shpyehte.cpp \
+shpyevme.cpp \
+shpyurpa.cpp \
+shpyusra.cpp \
+shpzeksh.cpp \
+shpzfpst.cpp
+
+
+libships_a_SOURCES = $(SRCS)
+
+AM_CFLAGS = -I.. -DTWLIGHT_DATADIR=\""$(datadir)/tw-light"\" \
+	-DTWLIGHT_DOCDIR=\""$(docdir)"\" \
+	-DTWLIGHT_LIBDIR=\""$(libdir)"\" \
+	-DTWLIGHT_LOCALEDIR=\""$(localedir)"\" \
+	-DTWLIGHT_PREFIX=\""$(prefix)"\"
+
+AM_CXXFLAGS = $(AM_CFLAGS)
+

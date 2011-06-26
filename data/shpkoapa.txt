@@ -1,0 +1,22 @@
+This ship is made by the rather eccentric Koanua.
+They have a much more advanced technology than
+their warship would indicate.  Apparetly, they
+recognize the need to have warships, but they have
+only partially grasped the practical needs of
+building combat spacecraft.
+
+fire = delayed thrust missile.  2 power to launch, 4
+damage when they hit.  For unknown reasons, the
+ship is equipped with a missile release bay, but
+not a missile firing tube.  The unguided missile
+starts to thrust after it drops free of the ship.
+
+special = ionic turbochager.  Cost is all of the
+energy in the battery.  This turns on the ionic
+turbocharger in the engine.  The more energy in
+the battery when activated, the longer the
+turbocharge.  However, thrust is continuous, and
+may not be turned off early.  Turning also becomes
+worse.  This is meant to allow the ship to escape
+from danger.
+

@@ -1,0 +1,22 @@
+----------------
+Zekfahan Shocker
+----------------
+
+The primary is the same but the graphics made it necessary
+to put the guns closer. If you think this a major drawback,
+I might redesign it to feature the original barrel distances.
+
+The secondary now is a chain lightning weapon. It will bounce
+towards every non-planet object after a hit, including the
+shocker itself. It does a reducing amount of damage with
+each bouncing, and the shocker is immune to its shot.
+
+Thanks for Richardyzo for allowing me to rework his ship idea.
+(I've done it because the original one had some copyright
+issues with StarCraft.)
+
+I'd like to thank "the coder" also for doing me this job.
+
+Have fun with the new Shocker! Richardyzo, I hope you enjoy it!
+
+	Forevian

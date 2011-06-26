@@ -1,0 +1,23 @@
+Mono Tron
+
+Just for fun :-) Have you ever played with Trons?
+Monos are from a totally another dimension where everything
+is rectangular.
+
+Primary Weapon:
+  Shoots Mono Missiles that travel in four directions. They are homing if not
+  shot in the opposite direction.
+
+Special:
+  Draws a wall of laser behind the ship. A segment of the wall disappears if
+  either the ship dies or runs out of battery or the user releases the special
+  fire button or it is hit or the segment next to it (in the direction of the
+  ship) disappeared.
+
+Notes:
+  The ship goes in four directions (up, down, left and right). It has constant
+  speed and pressing the left or right buttons makes it turn 90 degrees. The
+  button has to be released before the ship can turn again (this makes it hard
+  to control for bots).
+
+ * created by: cyhawk@sch.bme.hu and forevian@freemail.hu

@@ -1,0 +1,20 @@
+Virtao Limb (Host)
+
+Long range tactical fighter
+Good speed
+Excellent Turning
+Poor acceleration
+Good recharge
+
+Primary Weapon:
+  Long range Missile
+  Drain 1
+  Damage 1
+
+Special: 
+  Short range teleporter
+  Teleport enemey ships and missiles
+  Drain 3
+
+This ship is for stand off, beat them down tactics, don't get to far ahead of your opponent or he can come around at you from the back.  I've found the missle, which will not be pointing at you after using it and homing missile that will have problem reaquiring a lock.
+

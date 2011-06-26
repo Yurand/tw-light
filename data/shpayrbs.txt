@@ -1,0 +1,43 @@
+Ayron Battleship.
+
+The ship layout file:
+
+Nx Ny
+= grid size
+
+ship parts, for each ix, iy:
+[sprite num] [crew] [batt storage] [dynamo] [turning] [thrusting]
+
+units are:
+crew: adds up to total ship crew. If a crew compartment has no crew, it dies.
+batt storage: adds up to total ship batt max (1 storage = 1 added to batt max).
+dynamo:  ship regen rate is multiplied by the # dynamos (ie, wait-time is divided)
+turning: ship turning power is multiplied by the # turnings.
+thrusting:  ship thrust is multiplied by the # thrusts.
+
+
+Weapons:
+
+automatic, small defence cannons on the sides.
+
+main weapon: 2 powerful, and very long, foward lasers.
+
+special: re-crew the segments; this is not a very fast process, and each time 1 crew is added to a random ship part that has non-max crew.
+
+Quirk: each little part of the ship contributes to overall performence in terms of crew, or battmax, or dynamo, or turning, or thrust, or some at the same time. When the crew of such a small ship-part is depleted, the ship loses its other contributions as well. For example, the back part is the only one providing thrust; if its crew is depleted, the ship loses all thrust.
+
+
+Record 1.
+; ship part properties
+; (name/ crew/ battmax/ dynamo/ turning/ thrust
+Note: it's expected that name = 10 characters (including spaces) !!
+
+Record 2.
+; ship grid ship parts number (0=nothing)
+
+Record 3.
+; weapons on each grid (1= weapon 1, 0=nothing)
+; (weapon type/ default orientation (degr)/ max movement relative to default (degr))
+; 0=upward, in direction of the ship, 90=to the right, -90=to the left, 180=down
+
+

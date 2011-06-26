@@ -1,0 +1,29 @@
+TAU MERCURY
+
+The ship is equipped with a spatial stabilizer, which dampens the velocity vector component perpendicular to the ship's main axis.  "Special" key (while held) disables this function.
+
+Use the stabilizer to:
+
+1.  Make turns without loosing forward momentum/speed (especially useful on high velocities).
+2.  Slow down (hold "special", turn 90 degrees, release "special").
+
+Please note that:
+
+1.  Stabilizer also works when flying backwards.
+2.  If your velocity vector is altered (by collision, gravity or something else), the stabilizer may slow you down (normal function).
+3.  The "gravity whip" capability is reduced (yet not completely disabled) for this ship to make it more "ballanced".
+
+
+INI settings for the stabilizer:
+
+BankTime [ms] - regulates banking speed (the smaller the value, the faster the banking, the faster the ship achieves maximum turning rate).
+RelaxTime [ms] - regulates how fast the ship will return to stable position (zero turning rate) after a turn button is released.
+ExpAbs, LinAbs - exponential and linear damping, respectively (define how stabilizer works). It's better not to change them.
+ThrustLimit - maximum "gravwhip" velocity gain. Value of 1.0 - no graviwhip;  2.0 - the TW default for most ships (although this ship will still accelerate slower gravity well).
+
+TurnLag - set it to 1 to experience smooth turning, controlled by banking (cool); set it to 0 for "standard" control scheme, ignoring banking (easier to fly).
+
+
+*Tau* <twships@tau137.com>
+
+10 Jan 2003

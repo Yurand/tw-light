@@ -1,0 +1,24 @@
+
+Phedar Patrol Ship.
+
+
+Background:
+
+The Phedar use this vessel to scout for new planets to mine. The Phedar often expose themselves to hostile situations on planets, in space asteroid fields, and in combat; for their safety they've developed very effective personal armor.
+
+If the structural integrity of the hull is breached whilst the crewmember’s shield is activated, instead of dying, they will be sucked into nearby space. The Patrol Ship is then able to rescue them, storing the crewmembers in structurally secure areas of the vessel.
+
+
+
+How to use this ship:
+
+This tiny vessel is extremely fast and nimble, but has medium crew and a very short attack laser. The special is designed to save Phedar from the hostile situations they're in.
+
+Main = short laser.
+
+Special = activate personal shield, ie., hits don't result in deaths due to ship's hull rupture, but in crew loss in space. This takes all battery, and lasts for 4 seconds. This is more or less the opposite to the Syreen special.
+
+Note that crew members float around for 20 seconds, then they die. Also note that while the main vessel has it's special activated, it attracts free-floating crewmembers faster through their shield interaction.
+
+
+Idea/coding: Varith (original), GeomanNL (completely revised).

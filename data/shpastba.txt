@@ -1,0 +1,15 @@
+Astromorph: Basilisk
+
+A snake-like ship/creature
+
+Primary: HELD: Activates a homing-helper laser.
+	 RELEASED: Fires a poison blast;
+		    Slight speed boost and aiming help if locked on.
+
+Secondary: Hurtifies the coils, a combination shield/contact weapon.
+	    Also, if holding left/right/forward, will flick the ship in that direction
+
+Quirk:	* Coils are the health unit, each coil can absorb 1 point of damage before it is destroyed
+	* When battery is full and no weapons fired, the ship will heal coils automatically at a slow rate
+
+

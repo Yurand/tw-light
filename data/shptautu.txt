@@ -1,0 +1,39 @@
+-----------
+*Tau* Turbo
+-----------
+
+User's Manual:
+~~~~~~~~~~~~~
+
+Here's a few tips that should help you get a grip on piloting this utterly unbalanced and completely "unSC-ish" ship.
+
+1. Engine.
+
+In addition to a standard inertia-less drive this ship is equipped with a turbo ram-scoop booster.
+The booster is most effective when traveling at high speed, facing in the direction of movement.
+An unfortunate side effect is that if you activate the engine while facing significantly off the
+direction of movement, you will slow down your ship. Getting up to speed again will take precious time,
+so the best tactics is to keep going non-stop (be careful and avoid collisions and sharp turns).
+
+2. Weapon.
+
+Nothing out-of-the-ordinary here - just a couple of heat-seeking missiles.
+
+3. Shield.
+
+This ship is equipped with Mark VIII damper shield, which can absorb practically *any* damage.
+The shield activates automatically, provided there is enough energy in the ship's battery reserve.
+While active, shield is constantly draining small amount of energy, so make sure you deactivate it
+when it is no longer needed (press "special" function key to deactivate the shield). Keep in mind,
+however, that activating the shield again might take more energy than keeping it up for a while.
+
+Note:
+
+Neither weapons nor turbo booster can operate while the shield is up
+(the basic inertia-less dirve can still be somewhat useful though).
+-----------------------------------------
+
+*Tau* <twships@tau137.com>
+
+
+

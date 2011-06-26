@@ -1,0 +1,24 @@
+Ship          - Re-Koj Assassin
+Class         - Fast Interceptor
+crew          - 8
+battery       - 4
+acceleration  - Very Good
+Turning       - Very Good
+Top Speed     - Very Good
+
+Weapons
+ Primary   - Concentratid Acid Shots.
+ Secondary - Repulsar stabilizers (WTF, don't know what to name this special... just find out).
+
+Extra - 
+ Laser Finder (vs cloak ships)
+
+Weaknesses
+ Low crew
+ Only one type of shot
+ 
+Strenghts
+ Can kill any ship with range lower than Assassin's range.
+ Very maneuverable
+ Taunt factor (both gfx and sound) :)
+

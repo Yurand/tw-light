@@ -1,0 +1,30 @@
+The Chorali Extractor
+CrewMax        = 10
+BattMax        = 20
+SpeedMax       = 40
+AccelRate      = 10
+TurnRate       = 2
+I've got the speed/turning set medium/high to compensate for my lack of skill.
+
+Appearance: Currently, it's a shiny gold colored ship.  It's physically large, but that's only because I wanted to have a spinning asteroid as part of the ship.  The front of the ship is flanged outward; this is where the ship's tractor beam comes from.
+
+Weapon: Multi-Use Tractor Beam.  
+Cost: 8 to activate or deactivate prematurely
+Range:6 (from center of ship)
+Time: The Beam lasts for 6000 frames (not sure what that is in seconds, 6?)
+Description:  The Chorali use their tractor beams for just about everything.  They didn't invent the beams, they found the technology on a dead world and replicated it, but they can at least come up with new uses.  First, the beams will draw any matter they come in contact with (currently just ships and asteroids, I tried to get the cargo chain from the confed cargotran to work, but I'm not sure what way would be proper).  The beams also turn any ships they draw, so that they will not continue to fire at the Extractor (watch out for B.U.T.T. missles). If the object is drawn completely to the Extractor, it will be held stationary (no thrust or turning, fire & special still work) until the beam's duration is done.  If the fire button is pressed while an asteroid is held, the asteroid is lobbed at high velocity towards the current target.  Weak long range tractor beams will occasionally correct the trajectory of the missile. 
+[AsteroidMissile]
+Range    = 60
+Velocity = 80
+Damage   = 2
+Armour   = 1
+TurnRate = 2
+The beams will also push away any objects that the onboard computer thinks are dangerous.  Currently, the only homing missiles it can keep at bay are Mycon plasmoids and Khor-Ah blades.
+
+
+Special:  Planet-Fall.
+Cost: 1
+Rate: 0
+The Chorali have discovered that their tractor beams can also be used on nearby planets with surpising success.  If the beams are not focused, they will draw the ship towards the planet.  Used in combination with the main weapon, the Extractor can force enemy ships to crash into the planet.
+
+Quirk: If the highly focused beams of the main weapon are used on the planet, chunks of matter are lifted from the planet, making asteroids (of a non-regenerating type, to keep the amount of permanent asteroids to a minimum).

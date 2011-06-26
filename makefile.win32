@@ -1,0 +1,224 @@
+################################################################################
+# Compiling TW-Light: make {debug=1}                                           #
+#                          {xmingw=1}                                          #
+#                          {win32=1}                                           #
+#                          {DATAPATH=PATH}                                     #
+#                          {EXECPATH=PATH}                                     #
+#                                                                              #
+# Define win32=1    when compiling with Mingw32 gcc compiler for windows       #
+# Define debug=1    when you want to build debug version of TimeWarp           #
+# Define xmingw=1   when compiling  win32 binary with Mingw gcc crosscompiler  #
+# Define DATAPATH   to specify where datafile stored (*nix version only)       #
+# Define EXECPATH   to specify where executable should be placed               #
+#                                                                              #
+# Running just make builds the release version of TimeWarp for *nix            #
+# (Linux, FreeBSD, ...)                                                        #
+#                                                                              #
+# The game depends on Allegro (4.0.x) library, so you need to install it       #
+# before running                                                               #
+#                                                                              #
+################################################################################
+
+#debug=1
+
+PRODUCTVERSION = 0.4
+
+SVNVERSION = ${shell svnversion .}
+
+CC = gcc
+CX = g++
+RC = windres
+LD = g++
+
+CFLAGS = -fsigned-char -Wall -Wno-deprecated-declarations
+OBJDIR = obj
+NAME = tw-light
+
+ifdef WINDIR
+    win32 = 1
+endif
+
+ifdef  xmingw
+    CX = i486-mingw32-g++
+    CC = i486-mingw32-gcc
+    RC = i486-mingw32-windres
+    LD = i486-mingw32-g++
+    win32 = 1
+endif
+
+ifndef DATAPATH
+ifdef win32
+DATAPATH=data
+else
+DATAPATH=/usr/local/share/games/tw-light
+endif
+endif
+
+ifndef EXECPATH
+ifndef win32
+EXECPATH=/usr/local/bin
+endif
+endif
+
+
+ifdef DATAPATH
+CFLAGS += -DTWLIGHT_DATADIR=\"$(DATAPATH)\" -DVERSION=\"$(PRODUCTVERSION)\"
+endif
+
+VPATH = tests src src/libraries/agup src/ais src/games \
+        src/melee \
+        src/other src/ships \
+        src/twgui src/util \
+        src/libraries/jpgalleg src/libraries/jgmod
+
+#FILELIST= ${shell find src -type f "(" -name "*.c" -o -name "*.cpp" ")"}
+FILELIST= ${shell cat src.lst}
+BASE_NAMES = $(basename $(notdir $(FILELIST)))
+POBJS = $(addsuffix .o,$(BASE_NAMES))
+PDEPS = $(addsuffix .d,$(BASE_NAMES))
+
+#Test
+
+EXPDIR=tw-light-$(PRODUCTVERSION)r$(SVNVERSION)
+
+#################################################################################################################
+ifndef win32
+ARCH = $(shell echo `arch`)
+ifeq ($(ARCH),ppc)
+ARCH    = powerpc
+endif
+else
+ARCH = i686
+endif
+
+
+#FILELIST = source /s.cpp
+
+ifdef debug
+	CFLAGS += -g -DDEBUGMODE
+	OBJDIR := ${addsuffix -debug,$(OBJDIR)}
+	NAME := ${addsuffix -debug,$(NAME)}
+else
+	CFLAGS += -O2 -march=$(ARCH) -s
+endif
+
+ifdef win32
+	OBJDIR := ${addsuffix -win32,$(OBJDIR)}
+	NAME := ${addsuffix .exe,$(NAME)}
+	CFLAGS += -DWIN32 -I ../tw-light-mingw-libs/include -L ../tw-light-mingw-libs/lib
+	LIBS += -lalleg
+else
+	TIMESTAMP = ${shell LC_TIME="POSIX" date +%c}
+	EXPDIR=tw-light-$(PRODUCTVERSION)r$(SVNVERSION)
+	CFLAGS += -DLINUX
+	INCLUDES = ${shell allegro-config --cflags}
+	CFLAGS += $(INCLUDES)
+	LIBS += ${shell allegro-config --libs} -pthread
+endif
+
+CFLAGS += -I./src
+
+#CFLAGS += ${addprefix -I./, $(VPATH)}
+
+#LIBS += -llualib -llua
+
+OBJS = $(addprefix $(OBJDIR)/,$(POBJS))
+DEPS = $(addprefix $(OBJDIR)/,$(PDEPS))
+
+TEST_OBJDIR = objt
+TEST_OBJS = $(addprefix $(TEST_OBJDIR)/,$(TEST_POBJS))
+TEST_DEPS = $(addprefix $(TEST_OBJDIR)/,$(TEST_PDEPS))
+
+
+ifdef win32
+ifndef debug
+SUBSYSTEM=-Wl,--subsystem=windows
+endif
+endif
+ifdef win32
+OBJS += $(OBJDIR)/winicon.o
+endif
+
+
+##############################################################################
+
+all: $(OBJDIR) $(OBJS) $(NAME)
+
+$(OBJDIR):
+	mkdir $(OBJDIR)
+
+
+$(NAME): $(OBJDIR) $(OBJS)
+	$(LD) $(CFLAGS) $(SUBSYSTEM) -o $@  $(LIBS) $(OBJDIR)/*.o $(LIBS)
+
+$(OBJDIR)/%.o: %.cpp
+	$(CX) -MMD $(CFLAGS) -c $< -o $@
+
+$(OBJDIR)/%.o: %.c
+	$(CC) -MMD $(CFLAGS) -c $< -o $@
+
+$(OBJDIR)/winicon.o: tw-light.rc tw-light.ico
+	$(RC) tw-light.rc -o $(OBJDIR)/winicon.o
+
+
+test: $(TEST_OBJDIR) $(TEST_OBJS) testrunner
+	./testrunner
+
+$(TEST_OBJDIR):
+	mkdir $(TEST_OBJDIR)
+
+testrunner: $(TEST_OBJDIR) $(TEST_OBJS)
+	$(LD) $(CFLAGS) -o $@ $(TEST_OBJDIR)/*.o $(LIBS) `cppunit-config --libs`
+
+$(TEST_OBJDIR)/%.o: %.cpp
+	$(CX) -MMD $(CFLAGS) -DUNITTEST -c $< -o $@
+
+$(TEST_OBJDIR)/%.o: %.c
+	$(CC) -MMD $(CFLAGS) -DUNITTEST -c $< -o $@
+
+clean:
+	$(RM) $(OBJDIR)/*.o
+	$(RM) $(OBJDIR)/*.d
+	$(RM) $(NAME)
+
+	
+add_stacktrace:
+	find src -name '*.cpp'|grep -v 'libraries'|grep -v 'errors.cpp'|grep -v 'utils.cpp'|grep -v 'frame.cpp'|xargs ./scripts/stacktrace.pl
+
+update_src_list:
+	find src -type f "(" -name "*.c" -o -name "*.cpp" ")" >src.lst
+
+dist:
+	svn export . $(EXPDIR)
+	$(RM) $(EXPDIR)/web/*
+	rmdir $(EXPDIR)/web
+	echo "TW-Light $(PRODUCTVERSION)r$(SVNVERSION) - $(TIMESTAMP)" >$(EXPDIR)/data/version.txt
+	echo "!define VER_VERSION $(PRODUCTVERSION)" >$(EXPDIR)/scripts/ver
+	echo "!define VER_SVNVERSION $(SVNVERSION)"  >$(EXPDIR)/scripts/svnver
+	tar -czf $(EXPDIR).tar.gz $(EXPDIR)
+	cp tw-light.exe $(EXPDIR)/tw-light.exe
+	makensis $(EXPDIR)/scripts/timewarp.nsi
+
+
+install:
+	./install-sh $(NAME) $(EXECPATH)/$(NAME)
+	./install-sh data $(DATAPATH)
+
+uninstall:
+	$(RM) $(EXECPATH)/$(NAME)
+	$(RM) $(DATAPATH)/ships/shp*.dat
+	$(RM) $(DATAPATH)/*.dat
+	$(RM) $(DATAPATH)/*.html
+	$(RM) $(DATAPATH)/*.txt
+	$(RM) $(DATAPATH)/palette
+	$(RM) $(DATAPATH)/ships/shp*.txt
+	rmdir $(DATAPATH)/ships
+	$(RM) $(DATAPATH)/default_ini/*.ini
+	$(RM) $(DATAPATH)/default_ini/ships/shp*.ini
+	rmdir $(DATAPATH)/default_ini/ships
+	rmdir $(DATAPATH)/default_ini
+	rmdir $(DATAPATH)
+
+
+-include $(DEPS)
+-include $(TEST_DEPS)

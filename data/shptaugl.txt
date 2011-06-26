@@ -1,0 +1,28 @@
+"TAU" GLADIUS
+
+This ship has long and somewhat sad history.  It was originally designed for the Team
+for one of the new races, and went through numerous revisions.  While the weaponry
+stayed more or less the same, all of the original "quirks" (and there were quite a few)
+were eventually removed.  The visual characteristics of the ship also changed for the better,
+although the latest version has no additional animations (such as the gun rotation), since
+they would be practically unnoticeable at the current ship size.
+
+A note on weapons: primary is just what it looks like; the secondary is a homing missile, but it
+will loose its target if it went outside the tracking angle.
+
+Credits: the old TW team (especially TGF) provided input and feedback on design;
+Fusion made the prototype 3D model, which was used (after some re-working) for
+the first version renderings; later on significant aesthetic improvements to the model
+were made by Forevian. The rest of the work (design, modeling and re-modeling work,
+textures, rendering, code, sfx, etc.) were done by yours truly.
+
+And since in the last year or so there was no apparent interest on the part of the Team
+in using this ship/design in the full game, I decided to publish a re-designed version for
+the open melee (after changing the name and victory ditty, of course).  At least this way there
+will be _some_ use for time and effort put into this ship.
+-----------------------------------------------------------
+
+
+*Tau* <twships@tau137.com>
+
+9 Feb 2003

@@ -1,0 +1,37 @@
+The Orz Nemesis is one of the original ships
+from Star Control 2.
+
+The main weapon consists of a gun turret with 
+mediumrange.
+
+Special allows you to rotate the turret, which is
+not that useful a feature, but looks nice.  You 
+do this by holding down special and pressing the 
+turn buttons.  
+
+The second special launches Orz space marines,
+which can use a planet's gravity field to achieve
+high velocities and board the enemy; once on board,
+they can kill a random amount of crew. They can
+stay in space indefinitely, but return when the
+target is destroyed.  To launch marines, press 
+both the special key and the fire key at the same 
+time.  
+
+The Orz are a fish-like creatures, who need the
+safe environment of a space suit to walk around
+in space.
+
+The Orz come from an alien dimension they call
+*below*. They've a suspicious connection to the
+disappearance of the Androsynths. Though the
+story implies that they could pose a big threat,
+they're friendly and of minor importance in the game.
+
+The Orz are an strange race, with childish sillyness 
+and simplicity, an undercurrent of a Lovecraftian 
+horror theme, and an overall very friendly attitude.  
+It's implied in SC2 that you should be afraid of them, 
+but for practical purposes allying with them is easy, 
+useful, and harmless.  The Arilou seem to particularly 
+dislike the Orz.  

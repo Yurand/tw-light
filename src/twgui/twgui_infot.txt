@@ -1,0 +1,26 @@
+
+Skins:
+
+the data file containing the bitmaps used for the melee interface is specified in client.ini, and defaults to:
+[Menu]
+skin = twgui.dat
+
+
+Types:
+
+switch,
+button,
+tablet.
+
+Auto-place:
+
+
+The menu background is used to find the following bitmaps:
+
+switch_on.bmp
+button_default.bmp
+tablet_backgr.bmp
+
+If an exact match is found, the functional button is drawn on top of the button image that is part of the (inactive) background.
+
+

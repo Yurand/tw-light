@@ -1,0 +1,62 @@
+Ship          - Bubalos Bomber
+Class         - Long range medium bomber
+crew          - 20
+battery       - 42
+acceleration  - Poor
+Turning       - Poor
+Top Speed     - Average
+
+Weapons
+ Primary   - Long range light missiles.
+ Secondary - Long range heavy missile. (EMP Slug)
+
+Extra - Absorbing Shield
+ Reduce damage by two and converts kinetic energy from
+ damage into a battery reserve.
+
+ EMP Slug deals two points of direct damage every successful contact and hurls
+ opponent 180 degrees from point of impact.
+
+ 33% chances of blowing up when killed, injuring anything near by (radius of 10).
+
+Weaknesses
+ High battery consumption for both primary and secondary weapons.
+ Flanking moves by agile fighters.
+ Missiles can collide in its own ship.
+ Low crew complement.
+ 
+Strenghts
+ Powerful against big but slow ships using EMP slug to gain valuable time to gain distance and/or
+ to simply wear-off opponent (assuming opponent isn't Doog).
+ Dual exit point missile launchers (can shoot both in front and rear).
+ Light missiles will readily attack any "specials" by opponent ship once reaching
+ a certain proximity (radius of 10).
+
+Version 2
+*********
+Renamed classes to prevent conflict with Bubalos Executioner's missile class
+
+Version 3
+*********
+Improved shield to deflect 50% damage.
+
+Version 4
+*********
+Changed primary weapon
+Special+thrust (use thrusters at opposite side)
+Special+Weapon (fire large missile)
+Used old dat file (64 sprite ship)
+
+Version 5.
+**********
+GeomanNL:
+The EMP is improved: accelerates enemy ships only to some max. velocity, so
+that they don't outrun your own missiles ! Reduced damage reduction (set
+by "EAS") to none and increased crew capacity instead. Removed "batt. inc. due
+to damage", since the ship has adequate dynamos of its own.
+Varith:
+Mirv fix
+Last explosion improvement
+---
+Strengths and weaknesses mentioned above still apply, even with better
+balanced and implemented main/special weapons.

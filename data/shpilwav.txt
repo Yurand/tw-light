@@ -1,0 +1,20 @@
+The Ilwrath Avenger is one of the original ships
+from Star Control 1.  They were on the Hierarchy side.
+
+The Avengers main weapon spouts short range hellfire
+in front of the ship.
+
+Its special weapon turns the ship invisible.  If it
+fires while invisible it becomes visible and instantly
+aims towards the enemy ship.  
+
+Discrepancy: cloaking in TimeWarp is much more powerfull
+than in SC1/2 because the camera position does not
+reveal their position.  
+
+Ilwrath look like spiders.  In SC1 they have 5 legs, in
+SC2 8 legs.  
+
+In Star Control 2, Ilwrath are depicted as the ultimate
+in villany and cruelty, but not very powerfull.  
+

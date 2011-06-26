@@ -1,0 +1,22 @@
+Narool Lurker
+
+  Hit n' Run Fighter
+  Slow Speed
+  Med Accelration
+  Execellent Regeneration
+  Med Turning
+
+Primary Weapon
+  Acid Cloud
+  Damage 2
+  Drain 7
+  Automatic aiming and poisons ship.  
+  The poision does an additional 3 damage over the next 10 seconds, and bypasses shields.  Howerver, multiple poisonings are not cumulative until the first poisoning has worn off.  
+
+Secondary Weapon
+  Cloak
+  Drain 2
+  The Narool Lurker can stay cloaked forever.  However, it regenerates fuel much slower while cloaked.  
+
+This ship is good to get a few pot shots at an oppenent and then fleeing the scene, can't take heavy damage and is slow so the hardest thing is getting away and letting the enemy be poisoned to death. 
+  

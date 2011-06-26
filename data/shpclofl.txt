@@ -1,0 +1,14 @@
+
+
+Clowan Flurry
+
+
+Background:
+
+How to use this ship:
+
+Main fires 5 projectiles in a circular pattern. These are slow and homing. Their speed and turn rate is improved while they are in gravity wells: the stronger the gravity force, the faster they move and turn. Outside a well, this effect quickly wears off.
+
+Special fires a "source" which moves further away until you release special. Then it collapses into a gravity well; the source of this gravity well is invisible and doesn't damage ships.
+
+Special+main fires alternate projectiles; not guided, but very slow and rather short-lived. These are most useful in a self-made grav well, where continued fire creates a particle swarm for protection.

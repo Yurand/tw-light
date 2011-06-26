@@ -1,0 +1,16 @@
+
+Rogue Squadron
+
+background:
+
+A rogue squadron of former UQ crew, now lawless scavengers of the universe, a curious mixture of different races in a simple general ship design which is harmless on its own, but can be dangerous in large numbers.
+
+How to use this ship:
+
+main = pulse laser
+
+special = choose formations.
+
+In the ini file, you can edit formations. A formation is a list of x y points relative to the leader ship which you have to give a position (0,0), entered on a single line. The must be exactly as many x y pairs as there are crew members. I use an odd number of crew (11) to make the ships start in a symmetrical pattern around the leader.
+
+In melee, the player controls position (0,0) of the grid, which is indicated by a small arrow. Ships are distributed relative to the player position and angle.

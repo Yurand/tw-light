@@ -1,0 +1,32 @@
+Ship          - Garash Tyrant
+Class         - Behemoth
+crew          - 42
+battery       - 42
+acceleration  - Poor
+Turning       - Very Good
+Top Speed     - Average
+
+Weapons
+ Primary   - Charging weapon (damage depending on charge)
+  Stage 1: acts as shield and good at ramming
+  Stage 2: can be released.
+  Stage 3: same as stage two but a little bit powerful.
+ Secondary - Repulsar wave  
+  Knockbacks opponent.
+  Knockouts control over ship at a very limited time.
+  Inflicts a modest damage.
+
+Weaknesses
+ Slow rate of fire
+ Cannot shoot at whim (there's a minimum charge required to shoot)
+ Cannot hold on to the shot indefinitely (auto released at some max time   limit)
+ Very big ship (easy to hit with high armored shots)
+ 
+ 
+Strenghts
+ Good at long range.
+ Good defense vs low armoured shots.
+ Good at pillboxing tactics.
+ Very good versus low range ships.
+ Very powerful shot (absorbs everything or any other form of shots!)
+

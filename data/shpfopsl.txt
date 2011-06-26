@@ -1,0 +1,12 @@
+
+Fop-Vop Sling.
+
+
+Main weapon:
+
+ballistic thingy, which does 1 damage.
+
+
+Special:
+
+creates a field, in which the weapons are trapped and oscillate. When special is released, or energy runs out, the trapped weapons are released at once. A maximum of 8 shots can be trapped/ released this way.

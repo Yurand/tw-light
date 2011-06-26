@@ -1,0 +1,15 @@
+GLATHRIEL DESTROYER (v.3.0)
+
+The Destroyer is a bulky ship that uses a combination of large, long-range non-homing missiles and a mini-missile system to vanquish its foes. It's not particularly fast, but it isn't the slowest ship out there either.  
+
+The Destroyer uses a new kind of missile that releases beams of x-rays when it gets within range. However, the new weapon system makes it so that there is no room for a homing system, so pilots must have good aim. The x-rays blast in a pattern of 5 beams, spread over a wide angle, meaning that while small ships may escape with only minor damage, large ships will take multiple beams, resulting in massive damage. The warhead will not detonate within the range of the mini-missiles from the Destroyer. 
+
+The mini-missiles, leftover from the last war, are small, blindingly fast, and horribly inaccurate. While the Destroyer can release many of them, there is much conjecture as to why one would want to.
+
+
+Ship originally created by Alstar, coded by LP and Orz.
+
+Improved graphics and code by *Tau*.
+---------------------------------------
+
+*Tau* <twships@tau137.com>

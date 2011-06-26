@@ -1,0 +1,12 @@
+Idea: Baltar.
+
+Ship: Kabo Weakener,
+
+The main is a short-range shooter.
+
+The special is formed by mines. When a ship hits them, the mines
+disintegrate and the powdery remains form a green haze around the ship.
+Each mine causes a permanent 1 additional damage to any damage taken.
+
+Race: unknown.
+

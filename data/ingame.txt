@@ -1,0 +1,109 @@
+Melee:  Starts a battle.  In battle the following keys do stuff:
+        F1 brings up the help screen (this file, at the moment)
+        F2 brings up the options menu
+        F3 switches camera focus
+        F4 is fast-forward (speeds up in-game time greatly)
+        F5 displays fleet status
+        F7 changes game tic rate (physics quality)
+        F8 changes camera mode
+        F9 creates planets (silly "feature")
+        F10 quits (so does ESCAPE)
+        F11 saves screenshots
+        F12 displays framerates / performance data
+        - zooms out on some viewing modes.
+        + (or =) zooms in on some viewing modes.
+        0 and 9 also effect the camera in some viewing modes.
+        ctrl+T = toggle team indicators on/off
+        ctrl+H = toggle healthbar indicators on/off
+        Also, if some controllers are set to keyboard, customizable
+        buttons may cause ship actions.  Be default these are:
+        Config 0:
+                left:   Keypad 4
+                thrust: Keypad 8
+                right:  Keypad 6
+                fire:   Enter
+                special:Space
+                next:   Closebrace (])
+                prev:   Openbrace ([)
+                near:   P
+        Config 1:
+                left:   A
+                thrust: S
+                right:  D
+                fire:   B
+                special:V
+                next:   F
+                prev:   G
+                near:   H
+Extended Menu:
+	Play Game:
+               Same as "Melee" now
+	Key Tester:
+               Use this utility to check keys combination for conflicts.
+	Ship Info:
+		Here you can get detail information about every 
+             ship in the game.
+	Diagnostic:
+                Show comlile options and version information. 
+	Main Menu:
+                This returns to the main menu.
+		
+Teams:
+        Select Controller:
+              Select the player (i.e. "Player 1" or "Player 2")
+              you wish to alter from the list on the left, and
+              the controller (i.e. "Keyboard", "MoronBot") you
+              want to control that player from the list on the
+              left.  Then either click on the "Select
+              Controller" button or double click on the
+              controller name.
+	Change Team #: 
+	      This switches the player allys. 
+	      Note that team 0 mean no allys.
+        Change Config #:
+               This switches the configuration used by the
+               currently highlighted controller.  
+        Edit Configuration:
+               This is used to setup up keys when the currently
+               highlighted player is using the keyboard.  It
+               may eventually allow the configuration of AIs
+               and calibration of joysticks.
+        Edit Fleet:
+               This button brings up the fleet selection menu for
+               the currently highlighted player.  
+        Main Menu:
+                 This returns to the main menu.
+Options:
+        Most things on this menu are self-explanatory, but a few
+          need special mention.
+
+        Gamma correction:
+                This makes things brighter during combat.  This
+                should not be changed from the middle of combat,
+                or colors could get weird.  
+        Antialiasing:
+                If this box is checked then TimeWarp will use
+                higher quality graphics, but run slower.  
+        Color Depth:
+                You cannot change this from the middle of combat.  
+        Camera Mode:
+                This allows you to control what is shown on your
+                screen in combat.  
+
+                "Enemy_Discrete"
+                  is just like Star Control on the PC, where
+                  the camera moved to keep both you and your
+                  enemy onscreen, and zoomed in by factors of
+                  2.
+                "Enemy"
+                  is like Star Control on the Genesis or 3DO,
+                  where the camera zoomed in smoothly.
+                "Hero"
+                  makes the camera stay focused on Player 1,
+                  and zoom in/out when + and - are pressed.
+                "Everything"
+                  makes the camera stay on the planet and zoom
+                  way out so that everything is visible.  This
+                  mode is slightly buggy (visual artifacts).
+		"Dynamic"
+		  is like Enemy but track nearest enemy  

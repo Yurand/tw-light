@@ -1,0 +1,11 @@
+T-DAGGER
+
+This is a small and fast ship armed with short-range powerful laser and
+plasma pulse generators.  No quirks, just a fishbait... with a bite.  Basically,
+the ship was designed to "fit" the existing 3D model, not the other way around.
+I would not call it a "100% success", but... it is better than letting a decent
+3D model go to waste, anyway.
+
+*Tau* <twships@tau137.com>
+
+4 Feb 2003

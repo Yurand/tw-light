@@ -1,0 +1,12 @@
+The lyrmristu war destroyer is a solid vessel, especially if it has time to
+raise several force spheres before entering close combat.
+
+fire = fires a spread of three energy bolts.  Cost is 3 battery.
+
+special = creates a force sphere around the ship, which can
+both inflict and absorb damage.  Each use of the special costs
+8 power, and gives the shield 2 additional points of
+damage/armour.  This force sphere does not have a time limit.
+The sphere may accumulate a maximum of 16 points of potential
+damage/protection.
+

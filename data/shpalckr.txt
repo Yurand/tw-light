@@ -1,0 +1,12 @@
+Alchero Kronos
+
+Perfect for a race from an other dimension, maybe quasi or orz space.
+
+Primary Weapon:
+  A laser projectile that grows in length while the primary weapon button is
+  pressed and shoots when it is released. The projectile looses speed over time.
+  
+Special:
+  Slows down time while having its own characteristics unaffected.
+
+ * created by: cyhawk@sch.bme.hu and forevian@freemail.hu

@@ -1,0 +1,3 @@
+The Korvian Sniper is a sniping vessel equipped with a powerful long-range torpedo.  The Sniper is always cloaked.  The secondary weapon does two things:  first, it brings the ship to an immediate halt; second, it activates an alarm that sounds a fraction of a second before the proper time to fire based on the target ship's current velocity.
+
+NOTES:  This ship is based on the code for the Ilwrath Avenger, and I still haven't figured out how to change the victory music.

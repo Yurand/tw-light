@@ -1,0 +1,33 @@
+This vessel is relatively slow and cumbersome.
+However, the main weapon is powerful and long
+ranged, and the side lasers have use as a point
+defense system.
+
+fire = Fires a long range torpedo (3 damage,
+3 armour). cost of 4 energy.  Each time the
+weapon is fired, there is a 'muzzle flash' of
+energy that can inflict up to 8 points of
+damage at extremely close range.
+
+Changed: the torpedo is replaced
+by a copy of the Klisru Dragon torpedo. This
+one is tweaked so that it increases damage
+with distance (1 d up close, 4 d far away).
+
+
+special = activates the two side lasers.
+They start pointing backwards, and rotate
+forward as the special button is held down.
+The lasers do not auto-target,
+so using them as a defense requires careful
+timing.
+
+Changed : it was too awkward to use that way.
+If you press special+fire, they move backwards,
+so that you can sort-of aim them
+
+
+The muzzle flash and special lasers give
+powerful ultra-short-range protection. The
+torpedo is good at long range. This ship is
+at its weakest at intermediate ranges.

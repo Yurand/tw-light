@@ -1,0 +1,37 @@
+Kterbi Saber
+
+  Short Range Fighter
+  Variable Speed
+  Good regeneration
+  Moderate speed
+  Good Turning
+
+Primary Weapon:
+  Duel Cannon Nuetron Ion Cannons
+  Drain 3(?)
+  Short Range Damage 1/shot
+  Long Range Damage 2/shot
+  
+Special:
+  Anti-Missle ion laucher
+  Drain 1
+  Damage 1
+  Shoots at closest non ship, non planet object
+
+Others:
+  Speed Boosters
+    Hold down the trust key until you hear the ready command.  Then tap special,
+      keep holding thrust to go to higher levels.
+        Normal speed  Normal recharge  x1 boosted
+        Turbo speed   No recharge      x2 boosted
+        Super speed   Drain            x3 boosted
+        Hyper speed   x2 Drain         x4 boosted
+
+  Fuel-Crew Conversion
+  Since the ship's race are a electric based lifeform there battery and crew are
+     tied together by:
+                   Full batt +1  -> Empty batt & +1 Crew
+                   Empty batt -1 -> Full batt & -1 Crew
+
+
+This ship is good for taking out marine,fighters,DOGI's and the like.  It also take out nukes and plasmoids.  It is best to not get to close to your oppenents because it will reduce effientency of front cannons.  Also ship cannot be hit with defence particle system but they will be hit with the stuff that miss it target, so some ship will get pounded with this, also won't work with lasers.  

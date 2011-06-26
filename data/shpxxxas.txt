@@ -1,0 +1,28 @@
+Ship          - Space Monster Assimilator
+Class         - Medium Class (crew-wise) 
+crew          - 34
+battery       - 34
+acceleration  - Poor
+Turning       - Very Good
+Top Speed     - Good
+
+Weapons:
+ Primary   - energy shots.
+ Secondary - Reset all attributes to normal: weapon damage, ship speed, etc.
+
+Extra 	   - "steals" opponent's weapon attribute when hit.
+	   - "steals" opponent's ship attribute after collision.
+	   - variable weapon outlet (The Spot)
+Note that this tweak occurs automatically.
+
+
+NOTE: "stealing" only works if its better than Assimilator's current attribute.
+
+Weaknesses
+Due to its unusual targetting... its hard to pilot effectively.
+Cannot assimilate attributes from "weaker" ships.
+ 
+Strenghts
+Very powerful against wide range of ships, because of "assimilation" capability.
+Can "carry over" stolen attributes in each battle.
+Can always get back to normal attribute configuration when limpets attaches to it.

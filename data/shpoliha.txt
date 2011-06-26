@@ -1,0 +1,12 @@
+Olidandee Habitat
+
+Main:
+some kinda rapid fire gun,
+
+Special:
+create a habitat (cost 1 crew and entire batt).
+Adds crew every 5 seconds, with a max of the mothership maxcrew.
+If the mothership hits the habitat, the crew are absorbed (but does damage to enemies)
+Has 20 batt, which it uses for a laser.
+If the mothership gets within .. range, it recharges instantly.
+

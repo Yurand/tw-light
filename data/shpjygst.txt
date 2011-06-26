@@ -1,0 +1,14 @@
+Jyglar Starfarer
+
+Primary Weapon:
+  Shoots a dense stream of starlike particles. They have random range and damage
+  and part of them goes wholly astray. Besides producing random melodies they
+  also pull anything that is hit to a point straight before the ship and at
+  range/3 distance. It is most effective against light ships.
+  
+Special:
+  Grows ice thorns on its surface. These thorns are easily destroyed but still
+  provide protection for the ship.
+  The ship has non-standard thrusters.
+
+ * created by: cyhawk@sch.bme.hu and forevian@freemail.hu

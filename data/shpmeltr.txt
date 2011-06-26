@@ -1,0 +1,21 @@
+
+The Melnorme Trader is one of the original ships
+from Star Control 2; neutrals.
+
+The main consists of a light sphere. This can be
+charged to do more damage upon release. When fully
+charged, the weapon sphere can absorb enemy fire
+and act as a small shield.
+
+Special fires some field with long range, which on
+impact puts the enemy into an uncontrollable spin,
+disabling the rotation controls.  This field 
+can pass right through most defenses.  
+
+The Melnorme are cyclopses.  
+
+The Melnorme are neutral traders, apparently without
+a homeworld. They provide a wealth of information
+and technology in exchange for data on lifeforms.
+Their origins are a mystery, they could be
+descendants of the Mael-Num, a Milieu race.

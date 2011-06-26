@@ -1,0 +1,9 @@
+Xaaxees Arrowhead
+
+
+main: release mines. The mines are released with a velocity close to that of the ship.
+
+special: actives a shield on the mines. This makes them invulnerable, but takes a lot of energy.
+
+Tactics: launch the mines, activate their shield, and hide behind them. Or, head for the enemy, release the mines so that they'll move at a decent speed towards the enemy, and run away.
+

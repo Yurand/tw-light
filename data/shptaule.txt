@@ -1,0 +1,30 @@
+---------------------
+*Tau* LEVIATHAN V.3.1
+---------------------
+
+Description:
+~~~~~~~~~~~~
+Version 2 seemed a bit overcomplicated, so back we go to
+the simplicity of v.1. The only differences include size (smaller),
+power (weaker), and textures (prettier?)
+
+Weapon:
+~~~~~~~
+"Corrosive gas" or whatever. On impact, produces "food"
+proportional to the enemy crew killed. By picking up "food"
+the ship is able to regenerate "health" and recharge battery
+("normal" recharge rate is slow, so make sure you spend battery
+wisely and pick up all the "food" you can)
+
+Special:
+~~~~~~~~
+Biomechanical missile. Long range, homing, minimal damage.
+However, the missile is able to override target's engine systems,
+for a short while disabling turning and slowing the ship down.
+
+
+-----------------
+*Tau* <twships@tau137.com>
+-----------------
+
+Last updated on Jan 25, 2003

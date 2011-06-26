@@ -1,0 +1,19 @@
+
+Cracks Planetoid
+
+The Cracks are a rocklike race. Their home system has no planets, only space debris, caused by a cataclismic war almost a billion year ago. They live on planetoids with which they can explore deep space.
+
+
+Main weapon: crushes asteroids and sends glowing remains into space.
+
+Special weapon: refits an asteroid with a (homing) engine and an integrity shield, letting it have 6 armour and on impact it'll do 2 damage.
+
+Due to its asymmetrical shape, the planetoid can turn easiest clockwise.
+
+
+Names are like:
+
+Crush
+Crumble
+Shatter
+Break

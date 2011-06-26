@@ -1,0 +1,18 @@
+The Dyzun Harbringer is a mid-sized ship
+that was designed to go hunt down larger
+vessels and kill them.
+
+pressing the fire button activates one
+of the pair of plasma cannons mounted on 
+each side of the ship.  Although they are
+quite short ranged, they can quickly rip
+an opponent to shreds.
+
+pressing the special button launches
+a pair of long range missiles.  Each
+missile has a massive warhead (4 pts
+of damage!) but the missiles are slow
+and do not track quickly.  They are used
+to kill slow moving, large ships and to
+restrict the maneuvering of fast
+opponents.

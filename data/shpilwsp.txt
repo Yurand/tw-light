@@ -1,0 +1,16 @@
+Ilwrath Spider
+
+During the war against the Traddash the Ilwrath could salvage some Traddash
+technology and came out with this new prototype. (non-official concept)
+
+Primary Weapon:
+  Improved dual version of the original flamethrowers partially based on the Torch's
+  after burners.
+  
+Special:
+  Strange smoke that stops everything for a small amount of time. Even projectiles.
+  The smoke completly adsorbs laser.
+
+ * created by: DOS and cyhawk@sch.bme.hu and forevian@freemail.hu
+ * thank for the folks at Shipboard for suggesting some elements -- I don't
+   remember their name and right now I'm lazy to check the topic

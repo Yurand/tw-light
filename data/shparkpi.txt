@@ -1,0 +1,17 @@
+The Arkanoid Pincer is a close range ship, with potentially
+devastating claws that can snap down and crunch the enemy ship.
+
+fire = snaps the pincers forward.  This costs no energy.
+Damage is 2 points if only one pincer hits.  Damage is 10
+points (2 claw + 2 claw + 6 crush) if both pincer hit on
+the same attack.
+
+special = pressing and holding the special causes the ship
+to enter scuttle mode.  Pressing special will bring the ship
+to a dead stop.  The right and left thrust buttons now move
+the ship left and right, as a crab scuttling sideways.
+
+Using scuttle mode costs energy.
+
+releasing the special button returns the ship to normal
+maneuvering.

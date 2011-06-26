@@ -1,0 +1,32 @@
+Arilou Trapper (v0.2)
+
+Coded by: MAZ (maz@creativelygenius.com)
+Graphics by: MAZ (maz@creativelygenius.com)
+Music by: Dragst
+
+  The Arilou Trapper was originaly designed by Arilou scientists to trap *Nnngn*.  Because they weren't real enough to touch in our dimension the Trapper is designed to enter they're reality ( a place between here and quasi space), at which point it can (almost) be touched.  This means when in that dimension the ship will only take half normal damage.  You can not see the Arilou Trapper when it is in subquasi (cloaked) and it also has a top speed 2.5 times faster due to interdimensional effects.
+  The main weapon is Quasi-Degenerated-blackhole that does two damaga and uses 3 battery.  If activated within subquasi, the weapon creates a energy-blackhole, this is attracted to the external active powersource of the ship you are tracking, or more specificaly the energy it has.  This causes it to home in on the ship and attach to it, draining it's battery and disabling it.  Once the batteries are drained the energy-blackhole has nothing to feed on and colapses in on itself.
+  The ship also has a unique propulsion system, where the turning thrusters are actually pointed forward.  This means when you turn, you also thrust back to the side opposite the way you are turning.  If both left and right turn are active, the ship will thrust backwards (slowing it down and then reversing it).  With practice I have found this to actually be very usefull and gives the ability to orbit a ship while pointing directly at it.
+  Only one crew but 9 regenerative shield points (regenerate when energy is full)
+
+
+Main Weapon: shot, range=20, damage=2, energycost=3
+
+Special:     subquasi (cloak with increased shields and faster speed)
+
+Main Weapon fired while cloaked:
+  Homing energyhole, disables ship and drains energy.
+
+Hold left and right:
+  Thrust backwards
+
+
+
+
+// Stuff I am still doing:
+//     some animation code, would like to redo the energy draining weapon
+//         graphics to surround the entire ship being drained
+
+If anyone would like to suggest changes to this ship please e-mail MAZ at
+maz@creativelygenius.com
+All I ask is that I be allowed to make major changes myself.

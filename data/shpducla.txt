@@ -1,0 +1,9 @@
+Ducly Lanternjaws
+
+The Duclies would've been flying a "standard" ship, if it were not for an unfortunate encounter with a powerful space monster relatively early in their history. They had only just begun colonizing their solar system, with lots of internal struggles going on between Ducly nations. Those wars soon stopped after the arrival of a pregnant space monster in their system, warping in from hyperspace and laying about in the remote asteroid belt. When the Ducly attacked, the monster fought back with a rage of fury. The proud Ducly were no match, the monster ate their ships for breakfast. Only by uniting and striking together in force, they were able to destroy the monster and its layer before more of those creatures could be born. They lost 90 percent of their fleet in the battle, and it was just one monster. They analyzed data from the battles with the monster, and performed autopsy on the remains, which were often badly damaged. Thus they aquired hyperspace tech, they could re-create the giant laser arcs it used to scare its prey and forcing it into its mouth, and the powerful multi-purpose waste-energy exhaust. Unfortunately, the monster's power source was badly damaged, and they couldn't figure out how the monster performed his ultra-rapid thrusting and turning that surprised so many a pilot. The replacement power source they built allows for a much weaker arc and exhaust, and their accel and turning is hardly an improvement compared to their old fleet designs. With the information they built a new fleet of ships, in shape of the monster to strike fear in the hearts of their enemies. Even though _much_ weaker than the monster ever was, the ship is quite a match in a fight.
+
+main = backward laser shots.
+
+special = two giant laser arcs.
+
+quirks = the mouth is deadly, and the backward firing lasers give some accel.

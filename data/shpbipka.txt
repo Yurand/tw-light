@@ -1,0 +1,17 @@
+Bipole Katamaran
+
+For a stone-like race. Maybe Taalo...
+
+Primary Weapon:
+  Both sideships have a simple projectile cannon.
+  
+Special:
+  Increases the distance between the sideships (if both exist) or accelerates
+  backwards (if only one of them exists).
+
+Notes:
+  This ship is made up of two 'sideships' each of which can survive the
+  destruction of the other. Their crew and battery is kept track of independently
+  but is shown on the panel summed.
+
+ * created by: cyhawk@sch.bme.hu and forevian@freemail.hu

@@ -1,0 +1,23 @@
+Ship          - Quar-Kath Wraith
+Class         - Light Assault Ship
+Life          - 12
+Energy        - 20
+acceleration  - Very Good
+turning       - Very Good
+Top Speed     - Very Good
+
+Weapons
+ Primary   - Lightning Strike
+ Secondary - Illusion/Decoy
+
+Weaknesses
+ Low crew count
+ Slow batt regeneration
+ Cannot uncloak readily, cloaking is controlled by battery reserves
+ 
+Strenghts
+ Powerful melee attack.
+ Only 20% to hit while cloaked.
+ Very menueverable.
+ Excels at mind games.
+ 

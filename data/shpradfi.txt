@@ -1,0 +1,23 @@
+Radeans Firestorm.
+
+large crew
+medium batt
+slow turning
+medium acceleration
+medium max velocity.
+very slow batt recharge
+
+main weapon: a missile
+
+uses 5 batt
+4 damage
+6 armour.
+medium range.
+
+The central spark indicates when it's ready to fire
+
+special ability:
+defensive mode
+uses 2 batt
+unable to fire while in this mode
+damage generates batt (in addition to costing crew)

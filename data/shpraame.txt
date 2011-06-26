@@ -1,0 +1,50 @@
+Ship: ????? Menacer
+Class: Scary IDF Being (the ship itself is a being?)
+Crew: 14 (gray, not green) (why i'm asking if the ship itself is a being 
+	(which is the only way this is allowed))
+Batt: 4 (slow-medium regen rate)
+Top Speed: 64 (pkunk)
+Acceleration: 16 (pkunk)
+Turning: 1 (pkunk)
+BattRegen: poor.
+
+Primary Weapon:
+	Vivisector-like grab (with a single fatox-like field) user controlled release.
+        Damage_standard: algorythm description: crew_percent = (other->crew*100)/42 - crew;
+						other->damage += crew_percent/10;
+						crew += crew_percent/10;
+		Layman's: Target's crew as a percentage (42 max) minus your own crew(flat) divide by 10,
+			then add that damage back to your own crew.
+
+		Example1: Ur-Quan with 42 crew, menacer with 8 crew.
+			crew_percent = 92
+			other->damage += 9
+			crew += 9
+		Example2: Shofixti with 6 crew, menacer with 10 crew.
+			crew_percent = 4
+			other->damage += 0
+			crew += 0
+		Example3: Yehat with 20 crew, menacer with 10 crew.
+			crew_percent = 37
+			other->damage += 4
+			crew += 4
+
+		so in other words, my algorythm works as per design specifications.
+
+        Extra: inserts psy-poison (narool-like), decay reset constantly until ship detaches
+        Damage_extra: 3 damage upon release (by hitting fire again)
+        Drain: 0
+
+special:
+	Phase lock: locks current phase-shift.
+	Drain: 1 batt/0.6 seconds
+
+Extra: Phase shift (goes in and out of phase constantly) damage incurred is reduced by the percentage
+	of phase.
+
+Cosine wave could be used - but a standard saw wave would be equally practical in my opinion (a simple
+integer variable oscilating between 0 and 100 to represent a percentage of phase (0 is all out and 100
+being all in)
+
+which brings me to my next question: how is phasing dealt with - IE: at what point does it no longer 
+become tangable (10% in phase?, 20% in phase?) - have information now: 5% or 10%

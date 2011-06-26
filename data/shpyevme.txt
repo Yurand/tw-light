@@ -1,0 +1,22 @@
+Ship          - Yev Mech
+Class         - Melee range giant in space suit.
+crew          - 10 (health)
+battery       - 10
+acceleration  - Average
+Turning       - Good
+Top Speed     - Average
+
+Weapons
+ Primary   - Light Saber
+ Secondary - Indestructable energy shield.
+
+Extra
+ Double tap when primary weapon is on to side-step.
+
+Weaknesses
+ Must be near opponent to deal damage.
+ Easily killed by ships that use cloak.
+ "Umgah Feed"
+ 
+Strenghts
+ Powerful against slow rate of fire ships and/or non-homing weapons.

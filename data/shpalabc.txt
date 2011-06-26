@@ -1,0 +1,50 @@
+Alary Battlecruiser (v.2.3)
+===========================
+
+Weapon:
+-------
+Heavy "fire and forget" MIRV torpedo. The torpedo is extremely slow though
+(even warheads have lower-than-average velocity).
+
+Note: Torpedo itself will not do damage on collisions (only launched warheads will). 
+
+Turrets:
+--------
+Press "special" to turn them on or off (look in the upper-right corner
+of the "captain screen" to see current state). When on, turrets will
+automatically shoot on possible targets in range. Priority list is
+(descending): your target, any enemy ship, non-damaging things,
+heavy shots.
+
+Note: Turrets can be damaged (disabled).
+
+Engines:
+--------
+
+Note: Engines can be damaged, crippling an already slow ship.
+
+Shield:
+-------
+Automatic absorbance shield can block most of the incoming damage.
+Does not work when/if overloaded by continuous heavy fire.
+The shield status indicator is located in the upper-left corner
+of the "captain screen"
+
+Note: Shield does cover turrets and engines.
+
+
+Quirk #1:
+---------
+Damage (even direct) cut in half (to make this ship really tough
+without going over 42 crew (for aesthetic reasons)).
+
+Quirk #2:
+---------
+"Slow death" (beware of turret fire).
+
+
+-----------------------------------
+*Tau* <twships@tau137.com>
+
+
+Last updated on 31 Jan 2003.

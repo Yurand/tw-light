@@ -1,0 +1,12 @@
+Kahr Boomerang
+
+This ship has characteristics close to the Yehat Terminator.
+
+Weapon (3)
+Press Special to select (can be done at any time)
+
+Small boomerang : 1 damage that bounces of ships, short range. No limit.
+Medium boomerang : 3 damage, long range (otherwise same as small). limit 4.
+Large boomerang : 5 damage, controlable range, when you release fire will return.  If turning ship when released it will turn in rotation direction of ship.  Also industuctable like Kohr-ah FIRED system. Limit 1
+
+Enjoy

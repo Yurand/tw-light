@@ -1,0 +1,15 @@
+Estion Gunner
+
+Primary Weapon:
+  Huge blue projectiles that bounce off of any target. If a Platform is
+  nearby the shots bounce towards it.
+  
+Special:
+  Launches Platforms that stop after a small amount of time. Platforms shoot
+  the Gunner's own projectiles towards the targetted vessel. The projectiles
+  regain range this way. If this range is not enough to reach the target the
+  projectiles are shot towards the next Platform nearby the target (if there
+  is any). Only a limited number of Platforms can be active.
+
+ * original created by: orz
+ * revised: cyhawk@sch.bme.hu and forevian@freemail.hu

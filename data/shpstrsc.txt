@@ -1,0 +1,49 @@
+Ship          - Strivanar Scrutinizer
+Class         - Heavy destroyer?
+crew          - 22
+battery       - 6
+acceleration  - Excellent
+Turning       - Good
+Top Speed     - Excellent
+
+Weapons
+ Primary   - Long range light missiles.
+ Secondary - Marker beacons
+
+Extra - Marker beacons
+ A spread of them is fired in front of the ship.  If one encounters a ship, it 'Tags'
+ it to allow the missiles to home in, even on cloaked ships.  If not, they expire in
+ space.  A 'tagged' ship has a red flashing marker on it, really fun with clokers,
+ but the beacon runs out of juice in about 8 seconds.
+
+Weaknesses
+ Puny battery and below-average recharge.  Small crew complement for it's size.
+ Center of gravity is near front of ship, so turning swings the tail back and forth,
+ making it difficult to swerve out of the way of weapons.  The main weapon is mounted
+ on an outrigger, so doesn't fire directly from the axis.  The ship also swivels on
+ it's forward axis when turning, so the outrigger's distance from the axis changes.
+ You MUST dart in and plant a beacon on something before you can fire missiles,
+ they won't fire at all without one.  Is worthless against anything with
+ point-defense, and pretty bad against long-range homing weapons or very graceful
+ ships; a Hornet can beat it.
+ 
+Strengths
+ Once you get a marker on a cloaker, they're pretty well helpless.  Just make
+ sure you keep planting markers on them, or else you might lose them again.
+ The only exception is the Exterminator; that ship is WAY too powerful, like
+ a Druuge with good batteries that can cloak.  It is also good against a few
+ large, slow ships.
+
+Race:
+ They call themselves the Strivanar, little else is known.  Their eyesight  seems to
+ be adapted to low light levels.  It is uncertain whether the many eyes observed all
+ belong to the captain.
+
+Update July 15th, 2001:
+-----------------------
+-Allow multiple targets.
+	Configured in strsc.ini, default is 3.  No more than 16 are allowed.
+-Allow non-ship targets, aka planets, asteroids, mines.  To disable this, change
+	mode=1 to mode=0 in strsc.ini
+-Made marker timing much more accurate
+-fixed annoying bug with Kohr-Ah blades by adding tiny offset to position

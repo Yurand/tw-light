@@ -1,0 +1,15 @@
+Gerbillian Orion:
+Adapted from an idea by Baltar.
+
+A very primitive nuclear-driven rocket.
+
+Primary: Fires side-launched rockets.
+
+Special: Releases a thrust-bomb. The large shield on the back protects you from it, but only up to a certain angle (~50 to either side). Just pressing it releases it at a pre-determined distance, but it can be held for longer.
+
+Quirk: Rotational momentum, thrusters on either side turn the ship.
+
+TO DO: 
+* Fix the particle effects so they're parted by your shield.
+* Add Damage SFX when you take damage from the thrust-bomb
+* Fix the side-jets (new art), and on each side

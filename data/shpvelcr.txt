@@ -1,0 +1,15 @@
+The velron cruiser is a fast ship with a deadly main weapon.
+There was a trade-off to achieve this, however.  The power
+for the main weapon is drawn from the fusion engine that propels
+the ship.  When the battery is depleted, the engine turns off
+until enough battery energy is stored to re-ignite the engine.
+The maneuvering thrusters are also reduced during the battery recharge,
+but to a lesser extent.
+
+fire = massive short range bolt (10 damage, 20 range, 10 energy to launch),
+using this causes an engine flame-out until the battery refills.
+
+special = seven lasers project outward from the ship at various angles.  The
+energy cost is a mere 1 as the lasers have an independent power source.  This
+system was installed to give the cruiser some defensive capability when the
+fusion engine was drained.

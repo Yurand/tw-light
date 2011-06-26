@@ -1,0 +1,68 @@
+TAU ARCHON
+
+This ship is based on the Denron Archon  - the ship designed by Scott Hunter a.k.a. Warlock)
+in both appearance and some of the weaponry characteristics (W).
+
+The Archons primary weapon is the formation and subsequent projection of the Crystal Storm
+from the ship front.  Each individual crystal consists of a matter with rather arcane physical
+characteristics in fact, this matter is hyper-cold, and capable of absorbing tremendous
+amounts of energy on contact (thus, a more appropriate name for the weapon would be the
+Ice Storm).  If such a crystal hits a space vessel, it will freeze the crew (1) and drain some
+of the vessels energy reserves (2).  Since absorption capacity of each crystal is limited,
+the target ship will suffer less damage to the hull and crew if it has sufficient energy reserve.
+Contact of a crystal with a high-energy source (such as a weapon or an energy projectile) is likely
+to result in the annihilation of both objects (3).  Surprisingly, this weapon has only minimal effect
+on large non-energetic object (such as asteroids) (4).
+
+The secondary function of the Crystal Storm is to provide protection for the Archon.  If activated,
+this function will project the ice crystals on random concentric or spiral paths around the ship,
+forming a large protective cloud, difficult to penetrate with most types of weaponry and deadly for
+any ship foolish enough to approach.  Both weapon and special functions use the same emitter (5),
+and require a short charging time (6).
+
+
+Technical notes:
+
+(1) The crew will die if frozen.  When the last crewmember is frozen, the whole ship will freeze.
+The Crystal Strom will not freeze ships (and simply destroy them instead) if you set DoFreeze = 1
+in the ships INI file.
+
+(2) Set both FuelSap parameter to zero in the INI file in order to disable the battery draining effect.
+
+(3) In addition to normal damage, any object that comes in contact with an Ice Crystal will suffer
+damage equal to its damage_factor (shot damage for projectiles, for example).  To disable this feature,
+set DoReactiveDamage = 0 in the INI file (not, however, that this will make the Archons defense much
+more vulnerable to projectile weapons).
+
+(4) DO NOT set the DamageMin to zero, otherwise ships with high battery regeneration (as well as
+asteroids and similar objects) will become completely immune to Archons weaponry.
+
+(5) All parameters but speed and range are the same for the primary and secondary functions
+of the Crystal Storm (see INI file).  Please note that the actual battery drain per crystal is equal to
+(weapon_drain / special_drain).
+
+(6) While the charging (ChargeTime in the INI file) time is relatively short, it is the most critical part
+in the Archons tactics, since it gives the enemy the opportunity to score some hits or evade
+the line of fire while Archon is charging its weapon or deffense.  Please note that the bright glow
+is the indication that the weapon is charging/charged.
+
+(W) How this ship is different from the Denrod Archon
+
+In the Warlocks original design, Crystal storm would do no immediate damage to the target,
+but instead deposit individual crystals until a critical mass is reach (at which point the object
+would become frozen/dead).  This is rather complicated in both implementation and game balance
+(for example, ships with high firepower (or kamikaze pilots) would simple approach and destroy Archon
+with impunity before its crystals would take their toll), so I decided to make the weapon a little more
+simple and dynamic, while retaining most of the cool effects.
+
+Also, in the original design, the crystal would track the target somewhat.
+ 
+And finally, the Denrod Archon design had a special that would replicate the special function
+of the opposing ship.  This approach is quite questionable in both implementation and the in-game logic
+behind it, so I decided to develop a special I though would better suit this ship.
+----------------------------------------------------------------------
+
+
+*Tau* <twships@tau137.com>
+
+13 February 2003

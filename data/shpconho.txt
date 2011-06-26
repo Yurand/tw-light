@@ -1,0 +1,56 @@
+Ship          - Confederation Hornet
+Class         - Medium Range Light Fighter
+crew          - 1
+battery       - 10
+accelleration - Good
+Turning       - Very Good
+Top Speed     - Very Good
+
+Weapons
+ Primary   - Dual Ball Laser Cannons
+ Secondary - Torpedoes (Direct Damage Missles, Slightly Homing)
+
+Extra - Recharging Shield
+ Can absorb 8 points of damage, readout in crew-bar
+
+Limitations
+ - killed instantly by any direct damage
+   - current known direct damages include :
+     - running into a planet
+     - Orz Marines
+     - Narool Acid
+     - *NEW* Torpedoes
+
+Strong-Points
+ - Extremely Manouverable, an excellent pilot can challenge any ship in space
+ - Strong destructive capability for a light fighter (lasers do 1 damage each, Torpedoes do 4)
+ - Recharging Shield + High Manouverability = longer life, there is no suffering from length in battle
+ - Perfect for circling enemies.
+
+/**************************************************************************************/
+03/02/2001
+  - corrected minor bug (i was 1 pixle off when blitting shield pictures)
+  - changed colors around ship in panel to all blue shades
+
+/**********/
+
+03/01/2001
+Torpedoes Implimented
+  - still 4 damage, but now split across normal and direct, (3 and 1 respectively)
+
+Shield Indicator Overlay Implimented
+  - Displays a color around the ship in the panel indicating how your shield is faring.
+
+mshppan.cpp updated to solve a problem with graphic artifacts being left when a hornet's dying, fixed now - if there are any side affects let me know.
+
+/**********/
+
+02/27/2001
+  - Shield indicator bar all blue now.
+  - added homing to missles.
+  - Minor initialization changes to strenthen ship. (not truly necessary in my opinion)
+
+/**********/
+
+02/26/2001
+First release, most features implimented

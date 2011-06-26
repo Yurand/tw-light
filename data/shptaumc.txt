@@ -1,0 +1,11 @@
+Primary weapon: torpedo. heacy, slow, splash damage, some direct damage.
+To fire, aim at the opponent, wit for the torpedo to lock, then fire.
+
+Sepecial: turret. Fires auto-aiming missiles. Missile aim at whatever is in front of them
+(and don't care what you current target is). Special+right/left turns turret. Special+fire fires missiles.
+
+Extra: energy shiled. No explanation required.
+
+*TAU*
+
+P.S. Suggestion for the name of this ship would be greatly appreciated.

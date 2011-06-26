@@ -1,0 +1,16 @@
+TAU HUNTER
+----------
+
+Press and hold "special" - portal will open. To enter the portal, you need to head straight (more or less) into it.
+Continue to hold special to travel in the "subspace". Release special when you want to exit into "normal" space.
+
+Acknowledgements:
+
+Pooman and Corona - for inspiration found in their work;
+Forevian and UAF - for comments;
+Starfox - for the victory ditty.
+?????? - for the portal sound
+
+*Tau* <twships@tau137.com>
+
+Updated Jan 20, 2003

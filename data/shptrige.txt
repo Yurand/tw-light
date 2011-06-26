@@ -1,0 +1,31 @@
+Ship          - Trigemin Gemini
+Class         - Long-range sniper
+crew          - 16
+battery       - 24
+acceleration  - Good
+Turning       - Bad
+Top Speed     - Slower than Shofixti
+
+Weapons
+ Primary   - Long range sniping flechettes
+ Secondary - Fast, accurate turret
+
+Notes
+ The turret is tricky to use, but fun once you're used to it.  It is 
+ controlled in the standard Orz-like fashion, with some differences.
+    First, it starts rotating slowly but rapidly accelerates to allow 
+ for both accuracy and rapid movement.  Second, it can rotate  while firing,
+ slowly and hyperaccurately.  Third, it is canted far off to one side.
+ Lastly, it can't rotate a full 360 degrees, only an odd 240 degree arc.
+
+
+Weaknesses
+ Slow speed, bad turning, and a 'blind spot' where the turret can't aim.
+ 
+Strengths
+ Large firing arc, high accuracy, and long range.
+
+Race:
+ The Tridemin are radially symmetric rather than bilaterally symmetric; more
+ like a starfish than a man.  This may explain their 360-degree perception
+ and their odd ship design.

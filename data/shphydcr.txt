@@ -1,0 +1,22 @@
+Hydrovar:
+
+fire = intense forward firing beam weapon that
+does minimal damage at the max range, and a
+BUNCH of points of damage at  point blank range
+if the beam stays on the target for the whole
+firing period. Firing cost is 12.
+
+special = Launch a single fighter forward.
+Launch cost is 8 battery and 1 crew.  A maximum
+of eight fighters may be in flight at once.
+
+These are escort/superiority fighters.  They will
+remain near the mother ship, and will attack any
+targets that come near the ship, including mines,
+enemy fighters, and incoming weapons fire.  If
+they accidentally crash into the opposing ship, 
+they will inflict 3 points of damage.  Also, they
+remain on the board a while after the mother ship
+is killed.  They are normally smart and agile
+enough to bounce away from most asteroids, planets,
+and ships.

@@ -1,0 +1,28 @@
+The Nechanzi cruiser is armed with twin
+forward firing energy bolts and a multiple
+release front missile launcher.
+
+
+fire = two energy bolts.  Each fires
+straight forward, doing 2 damage, 2 armor.
+ 4 energy to fire both.
+
+special = launches a phalanx of unguided
+missiles.  The missiles will drift in
+formation until the special button is
+released.  At this time, the engines will
+ignite.  Before the engines ignite, all
+missiles are inert.
+
+The front two missiles are equipped with
+modified EMP devices.  Upon scoring a hit,
+the target ship has its fire control
+disabled, and may not use the fire or
+special key for several seconds.  It may
+still maneuver during this time.  the front
+two missiles inflict no damage other than this.
+
+The next five missiles have heavy warheads.
+Each does 3 points of damage on a hit, with
+1 point of armour.
+

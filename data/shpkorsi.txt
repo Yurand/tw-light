@@ -1,0 +1,3 @@
+The Korvian Sidekick is designed to be an assistant for other vessels.  The primary fire is a long-range machine gun that sits atop a rotating turret.  The Sidekick's movement is controlled by the secondary weapon, which activates a short-range gravity field that causes the Sidekick to follow a nearby object, such as an asteroid or a ship.  The Sidekick is very useful in team games, as it can latch on to a fast ship for assistance during attack.
+
+NOTES:  The velocity of the object that the Sidekick attaches to must be close to that of the Sidekick.  This ship is based on the code for the Orz Nemesis, and I still haven't figured out how to change the victory music.

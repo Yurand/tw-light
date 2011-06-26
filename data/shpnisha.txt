@@ -1,0 +1,8 @@
+The Nissk Harasser is a fast, highly maneuverable ship.
+
+fire = fires forward projectile.
+
+special = toggles between normal space motion and
+inertialess drive.  Normal space motion has the
+best turning.  The inertialess drive allows for
+the fastest movement.

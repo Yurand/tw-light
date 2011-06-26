@@ -1,0 +1,36 @@
+------------------
+*Tau* BOMBER V.4.0
+------------------
+
+1. Weapon:
+~~~~~~~~~~
+
+This vessel carries heavy bombs (d-uh) designed for planetary assaults,
+but can also be used to inflict massive damage on quasi-stationary targets
+such as orbital installations or heavy battleships. For the latter purpose,
+each bomb has a proximity sensor, and will detonate when close an enemy target.
+
+To prevent premature bomb detonations that may damage the ship itself,
+the deployed bombs are inactive. Only a confirmation signal (sent when
+the Bomber's pilot releases the bomb deploy button) will activate the warhead.
+
+Extreme caution is recommended when attempting bombardment in zero-G environment.
+
+
+2. Special:
+~~~~~~~~~~~
+
+The ship is equipped with a dual decoy launcher system. Decoys will mislead
+or even temporarily jam practically any targeting system locked onto the Bomber.
+This system is a very effective defense against homing weapons, but can also
+be used to confuse enemy ships to let the Bomber pilot enough time to get away.
+Unfortunately, decoys are relatively short-lived.
+
+
+Acknowledgements: SquireSoft (for inspiration drawn from StarHavoc)
+~~~~~~~~~~~~~~~~
+
+
+*Tau* <twships@tau137.com>
+
+Last update: 24 Jan 2003

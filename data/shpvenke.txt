@@ -1,0 +1,25 @@
+The Ven-Kek frigate is a large, fast, maneuverable
+ship.  The propulsion system is a unique vectored
+ion engine, that allows for rapid forward motion
+and rapid turning.  The downside is that when
+the ship tries to turn and accelerate at the same time,
+the engine has reduced effect at doing both at once.
+
+The direct exhaust of the propulsion system is capable of
+damaing other vessels, although this is a difficult
+maneuver to pull off.  The exhaust also ejects numerous
+still burning sparks of fuel, which are also damaging
+to other units. 
+
+
+Fire - this fires the forward proton bolt cannons.
+Most of the ship's mass is used for propulsion, so the
+weapon is shorter range and less powerful than others
+of its size.  Energy cost is 1, damage is 1.
+
+Special - this activates the afterburner on the ship
+for one second, for a cost of 6 energy.  Acceleration
+and max speed are increased, and the exhaust
+grows in size and becomes easier to use as a weapon.
+however, when the afterburner is active, the ship may
+not stop thrusting forward.

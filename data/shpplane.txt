@@ -1,0 +1,16 @@
+Gaia
+
+Could be a Boss. Very funny and scary.
+Noone should take this "ship" serious...
+
+Primary weapon:
+  Inflicts damage (crew/3 like any other planet) on contact.
+
+Special:
+  Disguise itself as a real planet: stops motion and can not
+  be targetted.
+
+Notes:
+  It has a constant gravity field and 200 crew.
+
+ * created by: cyhawk@sch.bme.hu and forevian@freemail.hu

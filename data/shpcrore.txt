@@ -1,0 +1,7 @@
+1. Weapon - press and hold. The longer you hold, the further the shot will go before exploding (same damage).
+There's a maximum range (and maximums "charge" time, after whihc the shot is fire d automatically).
+The areas effect DOES affect the ship itself (though as if it was at double the distance), so be careful.
+
+2. Special - repulsion filed. No comment.
+
+*TAU*

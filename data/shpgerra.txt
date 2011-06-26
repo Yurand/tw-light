@@ -1,0 +1,10 @@
+Gerbillian Racer [MINI-GAME]
+Idea by Baltar
+A mini-game ship.
+
+Primary: Shift UP in "gear"
+
+Secondary: Shift DOWN in "gear"
+
+Currently, the cool custom gauges I had aren't working, 
+and, according to Baltar, the physics aren't "what he wanted"

@@ -1,0 +1,9 @@
+
+Iceci Confusion
+
+This ship is poor in regular combat, but can gain an advantage by firing its special.
+
+Weapon: Short range, low damage, pellet gun, with slight homing capability.
+
+Special: a pair of shots from the sides; when they hit the enemy, it mixes up all controls of the opponent for a few seconds.
+

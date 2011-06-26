@@ -1,0 +1,6 @@
+Quai-Unionist Silentrunner
+
+Fire: delayed shot: it appears (is fired) only after a short time, on the "shot" position. But, it *does* already exist there, it's only invisible and motionless. It's a regular missile.
+
+Special: release engine, engine moves continuously, ship body is slightly accelerated by this event. Leaves a dark, only slightly visible, shape. Thrust now only moves the released engine; turning only moves the ship. Special again, refits the engine instantly (costs half batt). Dynamo is unaffected.
+

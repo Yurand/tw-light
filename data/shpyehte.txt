@@ -1,0 +1,21 @@
+
+The Yehat Terminator is one of the original ships
+from Star Control 1.  They were on the Alliance side.
+
+Main is a dual, fast firing gun of intermediate range.
+
+Special spawns a shield, needed because their home
+system was located in a nebula and the shield was
+used to reduce friction.
+
+The Yehat are pterodactyl-like creatures.
+
+In Star Control 2, the Yehat are proud warriors, but who
+are under the ruling of a Queen whom they always respected,
+but who chose the side of the dishonorable Ur-Quan. On top
+of this, they suffer from great guilt about the great
+sacrifice of the Shofixti, a race which they uplifted and
+admired. They loathe the Pkunk, who are a peace-loving
+offshoot of the Yehat race. In short, the Yehat are a very
+unhappy race.
+

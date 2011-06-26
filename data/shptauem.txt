@@ -1,0 +1,21 @@
+TAU EMP
+
+EMP will jam other ships' controls for a short period of time,
+but only the controls/functions currently active. The duration
+of the effect decreases with distance from the source.
+
+The tactics is to get close to the enemy and try to disable their
+controls, which should allow you to use your guns with less fear
+of retaliation.
+
+The best counter tactics is to trick the EMP ship to use its special,
+but manage to release all the control keys just before that it does
+(you will need keen senses and good reaction to pull it through).
+Since EMP use completely drains the battery, your opponent
+will not be able to significantly damage or disable you until it
+replenishes its battery.
+
+
+*Tau* <twships@tau137.com>
+
+19 Jan 2003

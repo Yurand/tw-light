@@ -1,0 +1,28 @@
+The Arilou Skiff is one of the original ships from
+Star Control 1.  They were on the Alliance side.  
+
+The Arilou Skiffs main weapon is a short range
+auto-aiming laser.  
+
+It's special weapon is a short range hyperspace shunt
+(random teleport).
+
+Arilou ships are extremely maneuverable, and contain
+advanced inertialess drives that stop the ship instantly
+when it stops thrusting.  
+
+Discrepancy: In SC1 & SC2, Arilou Skiffs always auto-aimed
+straight towards their enemy if they had one, otherwise
+straight.  In TimeWarp, where there can be multiple
+enemies, it auto-aims at the closest enemy if one is close,
+or fires straight forward otherwise.  
+
+Arilou look like little classic aliens: little green men.  
+
+In Star Control 2, the Arilou were mysterious and aloof
+creatures that has been stalking humanity for centuries, 
+and maybe have been involved in the origin of the human
+race.  They expressed special dislike for the Orz.  They
+and the Orz were the two races in SC2 that came from other
+dimensions.  
+

@@ -1,0 +1,17 @@
+This is the Sclore Frigate (to be renamed later.)
+In designing it, I used something of a scorpion theme.
+
+
+Fire - each point of energy fires two high speed, poorly
+aimed, very short range shots.  This can knock out 
+incoming weapons or gut a dreadnought at close range.
+
+
+Special - Charges up a rear energy field.  This costs 8
+energy.  This can act as a shield against incoming
+weapon fire from the rear, and can strike the enemy
+to cause damage.  The rear energy field can be charged
+up to nine times.
+
+Fire + Special:  launches the energy at the enemy.  This
+is a very fast moving shot.

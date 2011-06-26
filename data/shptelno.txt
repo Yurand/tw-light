@@ -1,0 +1,8 @@
+Telluri Nova
+
+Idea: Butch.
+
+Main weapon: plasma shots; this drains some batt, and one level of the plasma shield. Plasma shots are intangible. They are launched in the direction of the enemy ship.
+
+Special: plasma shield, having 5 energy levels and able to absorb 5 damage. Plasma shield is required for main to function. If the plasma shield comes into contact with an enemy ship, it deals some damage.
+

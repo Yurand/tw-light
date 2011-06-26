@@ -1,0 +1,29 @@
+Vezlagari Battle Barge.
+
+This ship is a converted freighter.  The vezlagari
+are very defense-minded, and they augmented their
+freighters with a massive armour plate/energy 
+defense grid welded to the front of the freighter.
+However, in this design, there were no openings for
+weapon ports.  Therefore, the two missile tubes point
+backwards, and the missiles turn around quickly
+and race towards the enemy.
+
+The armour can take a vicious pounding, but it
+does not make the ship invulnerable to damage.
+A determined frontal assault will, over time,
+break down the armour/shielding.
+
+fire - launch two unguided corkscrew missiles.
+The vezlagari have not worked all of the kinks
+out of the guidance system, so the missiles
+tend to wander.  Damage is 2, energy is 2.
+
+special - send energy to the armor plate/defense
+grid.  This costs 12 (all) energy, and undoes the
+effect of 3 points of damage.
+
+Other - the front armour has a rebound effect.  If a 
+solid object strikes the front armour, the ship
+and the other object will recoil away from each other.
+This is automatic.

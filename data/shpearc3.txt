@@ -1,0 +1,24 @@
+EARTHLING CRUISER MK3
+
+This ship represents yet another attempt to make a worthy "new generation" Earthling ship.
+Started a along time ago, it would never be competed if it was not for Starwreck, which
+inspired that last effort needed to bring this ship to life.  And, sure enough, this attempt
+brings the Earthling Cruiser a step or two closer to its 'Treck predecessors (which is not
+necessarily a bad thing).
+
+Primary weapon on this ship is the proton torpedo launcher, capable of firing highly destructive
+projectiles at long range.  Advanced targeting system automatically tracks all major targets in range
+and calculates optimum firing angle.  However, the launcher itself is limited to a relatively small
+firing arc, and can take some time to aim in on target.  The limited accuracy is an inherited problem
+of all existing proton torpedo launchers.
+
+Secondary weapon system is the short-range point defense laser (PDL).  The beam can be fired
+in short bursts, with some time required to cool down the emitter.   Each burst is automatically
+aimed at the nearest non-friendly object.  If the object is destroyed or is out of range, PDL can
+quickly acquire a new target.  This weapon is especially effective against projectile weapons.
+----------------------------
+
+
+*Tau* <twships@tau137.com>
+
+30 Jan 2003

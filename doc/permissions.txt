@@ -1,0 +1,95 @@
+From: "Fred Ford" <fred@NOSPAMtoysforbob.com>
+To: <PaulForest@NOSPAMrogers.com>
+Cc: "Paul Reiche" <paul@NOSPAMtoysforbob.com>
+Subject: Permission
+Date: Thu, 17 Jun 2004 10:00:36 -0700
+X-Mailer: Microsoft Outlook IMO, Build 9.0.2416 (9.0.2911.0)
+
+
+Hello Paul,
+
+Thanks for the props.  After discussion with Paul we have 
+decided that so long as you do not use the 
+name Star Control (we don't own this), do not use material 
+from Star Control III, abide by and display 
+prominently your adherance to the Ur-Quan Masters GPL, 
+include that you have additional special 
+permission from myself and Paul, and accommodate the extra 
+pepperoni Paul requires on his pizza you 
+may use content from Star Control I and II.
+
+End transmission,
+Fred
+
+P.S.  Good luck.
+
+Date: Wed, 16 Jun 2004 11:36:56 -0400
+To: IANA@TOYSFORBOB.COM
+From: Paul Forest <PaulForest@NOSPAMrogers.com>
+Subject: Star Control: Timewarp
+Cc: Paul Forest <PaulForest@NOSPAMrogers.com>
+Bcc: 
+X-Attachments: 
+In-Reply-To: 
+References: 
+Message-Id: <6.1.1.1.0.20040616100827.022c0ec0@pop.bloor.is.net.cable.rogers.com>
+X-TransWinRQD: <2505.0002>
+X-Eudora-Signature: <Standard>
+
+Hello, Toys For Bob!
+
+
+Hi, my name's Paul Forest, I'm a huge fan of Star Control and TFB. My computer has never been happier 
+to send an email to the blessed creators of SC. I'm working with a bunch of guys on a fan-based project, 
+called Star Control: Timewarp. This project has been worked on for about 6 years now, and I'm curious 
+to know about licensing issues. Rumour has it that TFB has given permission to use art, characters, 
+ships, species, plots, concepts, etc from the Star Control universe in Timewarp. But it's been so long 
+since anyone asked about it, and so many people have come and gone on the project, that none of us has 
+a record of how things stand. We *really* don't want to step on anyone's toes here, especially not 
+people whose work we respect and value so highly.
+
+The question has come up because we're considering entering the project into an independent game 
+developers' contest, and they want all the legal stuff handled before sending in any entries. 
+The Timewarp project is open source, and they've never had an open-source entry before. Most entries are 
+made by independent companies that have an unpublished game, and little funding. 
+
+Now our intentions are to remain non-commercial, but in this contest, there are prizes of cash and 
+hardware ($20,000US spread over 12 categories). This is a tricky issue, but if handled carefully, I 
+think it can be done so that no one gets too mad or starts suing people. Many open-source projects, 
+especially on Sourceforge.net, have opted-in to accept donations. The sole purpose of these donations 
+is to compensate developers for expenses, things like servers costs and getting obscure hardware to 
+test on. Any prize money that Timewarp might get could be donated in a similar way. There's a number 
+of options for carefully handling this kind of thing, and we can go through them if you like, but the 
+bottom line is that we really don't want to step on anyone's toes here.
+
+Ok... so the tough questions:
+
+Does Timewarp have permission to use content from Star Control 1 and Star Control 2?
+Are there any scenarios in which that will not be the case?
+
+Can we enter Timewarp into this contest?
+
+Can you tell Mr. Rieche and Mr. Ford that we worship the ground they walk on / float above? 
+Pretty please?
+
+Notes:
+
+* Timewarp's license is currently Public Domain. We'll change it to GPL to protect everyone involved.
+Public Domain apparently means, legally, that there is no copyright holder.
+* At some point, we'll have to remove the terms Star Control from the title, or get permission to use 
+such a thing.  We'll have to remove the SC3 ships, or get permission to use them.
+* URLs: Timewarp homepage: http://timewarp.sourceforge.net/
+Timewarp forums: http://timewarp.sourceforge.net/forum/
+The Independent Games Festival (the contest): http://www.igf.com/
+The contest's rules: http://www.igf.com/rules.htm
+Debate on whether or not Timewarp, or any open-source project, can be entered into the IGF: http://www.igda.org/Forums/showthread.php?s=903a6d1d2fcf93b32984ad8d94b6e381&amp;threadid=10437
+
+Thanks very much for reading this, good luck and take care!
+
+Paul
+
+Thanks,
+Paul Forest
+
+
+

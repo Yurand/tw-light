@@ -1,0 +1,17 @@
+The Klisru Dragon is a slow and
+relatively sluggish ship.  However, 
+the main gun is capable of doing large
+amounts of damage to the enemy vessels.
+
+fire - fires the expanding ionic wave
+torpedo.  Cost is 4 power.  The weapon
+is long ranged, and does 5 damage at
+close range.  The weapon slows down as 
+it travels, losing damage, but acting
+as a navigation hazard.
+
+special - launches a proximity guided
+missile.  These will prefer to lock onto
+an enemy ship if in range, but will also
+intercept incoming weapons fire.
+

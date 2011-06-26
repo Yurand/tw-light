@@ -1,0 +1,7 @@
+This ship is some sort of battle platform. As such, it carries a lot of crew, but is very slow and has little manoeuverability.
+
+It's weapon is mounted on a turret, which can rotate pretty quickly. The shells it fires do a good 3 damage.
+
+Special+left/right rotates the turret.
+
+Special+fire consists of a set of short-range lasers, which slowly rotate around the ship. When enough are created, they can form a not-so-powerful barrier around the whole ship. 

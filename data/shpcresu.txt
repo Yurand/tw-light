@@ -1,0 +1,9 @@
+Crew Support Object.
+(it could be used as an extra bot in a fight)
+
+Main weapon: It regularly releases crew; flies to the planet.
+
+Special: It can flash with its flashy lights.
+
+It cannot die. It's really intended as a background thing ... and it cannot kill anything so it's ok I guess ...
+

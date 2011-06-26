@@ -1,0 +1,17 @@
+Teron Builder.
+
+Commands:
+note that you're helpless if you got no drones left...
+
+drone selection:
+fire + thrust = toggle select all drones (short range)
+fire + right = select next drone (inf range?)
+fire + left = select prev drone (inf range?)
+
+drone orders:
+special + left = scroll to prev command
+special + right = scroll to next command
+
+activation
+special + fire = activate command for the selected drone(s)
+

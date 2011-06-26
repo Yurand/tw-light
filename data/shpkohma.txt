@@ -1,0 +1,31 @@
+
+The Kohr-Ah Marauder is one of the original
+ships from Star Control 2. They are hostiles.
+
+The main consists of blades which can travel
+a long way until fire is released. Ideal for
+placing one in the line of travel of the enemy.
+The blades come with a short-range homing
+capability.
+
+The special is named FRIED (fiery ring of 
+inevitable and eternal destruction).  It spawns 
+a ring of fiery spheres.  If your velocity 
+relative to a target is very high you can 
+sometimes hit the target with many (3 to 5) 
+FRIED shots from a single ring, inflicting 
+substancial damage.  If a FRIED shot and an 
+enemy projectile collide, the FRIED will always 
+win.  This property makes them good for defense.  
+Using FRIED consumes half of the maximum battery.  
+
+They resemble black caterpillars.  
+
+The Kohr-Ah are the black offshoot of the 
+Ur-Quan race. They were bread by the Dnyarri 
+as warriors. The Kohr-Ah philosophy is to 
+"cleanse" the universe of anything that shows 
+signs of intelligence, on the theory that the 
+only viable defense is a preemptive strike.  
+
+

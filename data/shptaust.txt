@@ -1,0 +1,32 @@
+-------
+T-Storm
+-------
+
+Description:
+~~~~~~~~~~~~
+
+This small, fast and highly maneuverable vessel is armed with two missile launchers,
+each capable of firing up to three missiles before reloading. Missiles can be launched
+in one of the two modes: fast and slow. In "fast" mode, missiles can be launched quicker
+(higher rate of fire), have higher speed, higher acceleration, but much lower turning rate.
+Not to mention that they burn fuel much faster, thus significantly decreasing effective range.
+Generally, "slow" mode is very good for harassing enemy at long range, and "fast mode" -
+for throwing 'em back out of the "comfort zone".
+
+Quirk: the missiles do not detonate on contact. Instead, they pierce the target's armour
+and "latch" onto the hull, applying all the thrust of their engine to accelerate and rotate
+(depends on the moment of force) the enemy. The small warhead will detonate only when
+all fuel has burned out.
+
+
+Acknowledgements:
+~~~~~~~~~~~~~~~~~
+
+The Shipboard.
+
+
+-----------------
+*Tau* <twships@tau137.com>
+-----------------
+
+Updated 19 Jan 2003

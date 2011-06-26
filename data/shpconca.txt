@@ -1,0 +1,28 @@
+Ship		- Confed Cargotran
+Class		- Commercial cargo tug
+Crew		- 6
+Battery		- 4
+Acceleration	- Awe-inspiring
+Turning		- Average
+Top speed	- Slower than an Earthling Cruiser
+Creator		- Corona688, tsm@accesscomm.ca
+
+Weapons:
+ Primary 	- Weak short-range laser
+ Secondary	- Decelerate, straightens out the chain
+ Teritary	- fire + special, ditch the cargo
+
+Weaknesses:	This is NOT a military vessel, and is not meant to
+ enter combat.  It's single weapon is only really meant to crack
+ asteroids.  Even worse, the structural integrity field used to
+ chain the cargo containers behind it means that any damage on them is 
+ transferred to the tug.  If forced to enter combat, the captain's
+ only recourse is to ditch the cargo entirely and take refuge in the
+ slowly growing cloud of containers.
+
+Strengths:	No military strengths.
+
+Quirks:		Although the tug itself has terrific acceleration, this
+ is more than offset by the kilotons of cargo it tows.  If caught in a
+ gravity well, the cargo can easily haul the whole mess into the planet
+ unless the captain jettisons it immediately.

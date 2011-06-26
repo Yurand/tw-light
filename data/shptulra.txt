@@ -1,0 +1,25 @@
+Tulkon Ram
+
+Tulkons live on cold planets. They aren't evil just they religion
+treat every "warmer" creatures the creations of Satan... or whatever
+they name it. Their only natural friends are the Jyglar.
+
+Primary Weapon:
+  Pulls the spring of the ramming device in. When the primary weapon button is
+  released or when something bumps into the device it is released ramming
+  anything it hits. Ramming does damage and accelerates a lot. Tulkon bombs
+  are accelerated straight in the direction the ship is facing.
+
+Special:
+  Ejects a tulkon bomb. These bombs are sensitive (with range set in tulra.ini
+  as Special/SensorRange) to particles eminating from standard fusion thrusters
+  (often called hotspots). If they sense heat within range they explode and
+  damage objects within damage range (Special/DamageRange). The damage does not
+  depend on distance from explosion center.
+
+Notes:
+  The ship is mechanically operated so the battery recharge slows down if the
+  ship loses crew.
+  The ship has non-standard thrusters.
+
+ * created by: cyhawk@sch.bme.hu and forevian@freemail.hu

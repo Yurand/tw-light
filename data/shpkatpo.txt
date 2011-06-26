@@ -1,0 +1,17 @@
+Kat Poly
+
+Primary Weapon:
+  Fires projectiles from the opening on its back. They fly forwards.
+  
+Special:
+  Morphs into the ship currently targetted (if in natural form) or morphs back to
+  natural form (if in alien form).
+
+Notes:
+  Only morphing to alien form costs battery. When morphed all statistics of the
+  actual form apply but the special ability can not be used (because that key is
+  bound to returning to natural form).
+
+  This ship is just an experiment, not intended to be included in the full game.
+
+ * created by: cyhawk@sch.bme.hu

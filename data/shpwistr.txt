@@ -1,0 +1,13 @@
+Wissum Tripod
+
+The Wissums have 3 eyes, and 3 brain "halves". Their anomalous perception of the world probably explains their ship design, which has no turning jets, but 3 powerful engines which provide thrust in 3 directions. Each engine is controlled by one of the 3 available control keys, which allows for some twisted movement ;) This 3-way system can get them anywhere, but can give some problems in combat.
+
+The main: the solid design of the ship allowed for big rapid-fire guns, which is very effective against any enemy - if you can get them into focus ;) Weapons opposite to active thrusters are used.
+
+The special: Fires the guns opposite to inactive thrusters
+
+Special condition for special: all 3 thrusters turned on and pressing special activates a burning fuel dump ;)
+
+design: GeomanNL and Baltar
+graphics: GeomanNL
+

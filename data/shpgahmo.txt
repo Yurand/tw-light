@@ -1,0 +1,49 @@
+Gahmur Monitor
+
+This is a behemoth-class ship which uses
+homing plasma projectile as the primary armament.
+
+fire:  Holding down the fire button charges up
+the plasma launcher.  Plasma projectiles may be
+damaged in a way similar to mycon torpedoes, but
+are more resistant to damage.  The plasma projectiles
+lose power as they travel further from the point of
+launch.  While charging, the dynamo does not recharge
+the battery.
+
+release fire:  releasing the fire button launches
+a charged plasma projectile.  Anywhere from
+one to forty points of power may be in the
+projectile.  The charging curve is non-linear:
+1 power : damage 3, range 15, speed 15.
+20 power: damage 9, range 50, speed 35.
+40 power: damage 16, range 85, speed 55.
+
+The plasma projectile automatically is facing the target.
+These cannot injure the firing ship.
+
+fire + special:  Only has an effect if the fire
+button has been held down and the plasma launcher
+has been charged up.  This uses the current
+energy in the launcher to fire a beam of coherent
+plasma straight ahead from both launchers.
+The damage and effect is non-linear:
+
+1 power: 2 beams, damage 1 each, range 5
+20 power: 2 beams, damage 4 each, range 25
+40 power: 2 beams, damage 8 each, range 45
+
+special:  Pushing and releasing the special
+(without the fire button) toggles the tractor
+beam on and off.  Activating the tractor
+beam stops the dynamo, costs 4 power, and
+continues to cost 4 power per second.
+The beam slowly extends in front of the ship.
+When the tractor beam hits an object with
+mass, it holds the two units together, although
+not perfectly.
+
+Holding a target in a tractor beam only costs
+1 power per second.  Also, 1 point of direct
+damage is done every second to a target caught
+in the tractor beam.

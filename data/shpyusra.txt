@@ -1,0 +1,14 @@
+Yush Ranger
+
+Primary Weapon:
+  Shoots rainbow spears. The spears can be controlled while the primary weapon
+  button is pressed by pressing the left or right buttons. The spears are not
+  destroyed on contact but are stuck into the victim. If such a spear recieves
+  damage the damage is instead given to the ship.
+  
+Special:
+  Like colliding with a wall that is originated like the ship. Any lateral speed
+  of the ship is flipped and multiplied by a factor depending on the current
+  lateral speed.
+
+ * created by: cyhawk@sch.bme.hu and forevian@freemail.hu
