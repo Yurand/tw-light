@@ -2,6 +2,11 @@
 #ifdef WIN32
 #include <winalleg.h>
 #endif
+
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
+
 #include "base.h"
 #include "sounds.h"
 #include "errors.h"				 //only used for log_debug() function
@@ -109,18 +114,24 @@ void SoundSystem::init()
 
 int SoundSystem::play (SAMPLE *spl, int vol, int pan, int freq, bool loop)
 {
+	STACKTRACE;
 	if ((state & (ENABLED | SOUND_ON)) == (ENABLED | SOUND_ON)) {
-		//if (freq > 4535) freq = 4535;
-		//I THINK that the 4536 bug is specific to my sound hardware, so that's commented out
+#ifdef TW_DEBUG_SOUND
+		log_debug("SoundSystem::play %p, %d, %d, %d %s\n%s\n", spl, vol, pan, freq, ((loop)?"true":"false"), _stacktrace_.get_stack_trace_string().c_str());
+#endif
 		return ::play_sample (spl, (vol * sound_volume) >> 8, pan, freq, loop);
 	}
-	else return -1;
+	return -1;
 }
 
 
 void SoundSystem::stop (SAMPLE *spl)
 {
+	STACKTRACE;
 	if (state & ENABLED) {
+#ifdef TW_DEBUG_SOUND
+		log_debug("SoundSystem::stop %p\n", spl);
+#endif
 		::stop_sample (spl);
 		return;
 	}
@@ -129,6 +140,7 @@ void SoundSystem::stop (SAMPLE *spl)
 
 void SoundSystem::play_music (Music *music, int loop)
 {
+	STACKTRACE;
 	if ((state & (MUSIC_ON)) == MUSIC_ON) {
 		if (current_music) {
 			stop(current_music);
@@ -142,6 +154,7 @@ void SoundSystem::play_music (Music *music, int loop)
 
 void SoundSystem::stop_music ()
 {
+	STACKTRACE;
 	if ((state & (MUSIC_ON)) == MUSIC_ON) {
 		if (current_music)
 			stop(current_music);
