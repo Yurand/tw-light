@@ -24,31 +24,47 @@
 #include <string.h>
 #include <string>
 
+#ifdef WIN32
+#include <io.h>
+#include <shlobj.h>
+#include <direct.h>
+#else
+#include <unistd.h>
+#endif
+
 #include <sys/stat.h>
 
 #include "util/errors.h"
 #include "util/helper.h"
 
+static void static_get_home_directory(char* buff, int len)
+{
+	char homedir[2048];
+#ifdef WIN32
+	const char *twname = "tw-light";
+	SHGetFolderPath( 0, CSIDL_APPDATA|CSIDL_FLAG_CREATE, NULL, 0, homedir );
+#else
+	const char *twname = ".tw-light";
+	strcpy(homedir, getenv("HOME"));
+#endif
+	tw_append_filename(buff, homedir, twname, len);
+}
+
+
 std::string home_ini_full_path(std::string path)
 {
-	char * home = getenv("HOME");
 	char dest[2040] = {0};
 
-	if (tw_exists(path.c_str())) {
+	if (!tw_is_relative_filename(path.c_str())) {
 		return path;
 	}
-	if (home == NULL) {
-		if (strstr(path.c_str(), TWLIGHT_DATADIR))
-			return path;
-		std::string pth = tw_append_filename(dest, TWLIGHT_DATADIR, "default_ini", 2039);
-		tw_append_filename(dest, pth.c_str(), path.c_str(), 2039);
-		return std::string(dest);
-	}
-	else {
-		if (strstr(path.c_str(), home))
-			return path;
-		return std::string(home) + std::string("/.tw-light/") + path;
-	}
+	char homedir[2048];
+	static_get_home_directory(homedir, sizeof(homedir));
+
+	if (path.length() == 0)
+		return homedir;
+	std::string pth = homedir;
+	return tw_append_filename(homedir, pth.c_str(), tw_get_filename(path.c_str()), sizeof(homedir));
 }
 
 
@@ -67,6 +83,13 @@ std::string data_full_path(std::string path)
 		base_dir = TWLIGHT_DATADIR;
 	}
 
+	if (tw_is_relative_filename(base_dir.c_str())) {
+		char buffer[50000];
+		char *cwd = getcwd(buffer, sizeof(buffer));
+		tw_append_filename(buffer, buffer, base_dir.c_str(), sizeof(buffer));
+		base_dir = tw_canonicalize_filename(buffer, buffer, sizeof(buffer));
+	}
+
 	if (path.length()) {
 		ret = tw_append_filename(data, base_dir.c_str(), path.c_str(), 2039);
 	}
@@ -77,7 +100,7 @@ std::string data_full_path(std::string path)
 }
 
 
-static bool CopyFile(const char * source, const char * target)
+static bool static_copy_file(const char * source, const char * target)
 {
 	STACKTRACE;
 	FILE * fsrc = fopen(source, "rb");
@@ -113,36 +136,33 @@ int create_user_ini()
 {
 	STACKTRACE;
 
-	int i;
-	char *tmp;
-
 	std::string curFile = home_ini_full_path("");
 	if (!tw_exists(curFile.c_str()))
 		mkdir(curFile.c_str(), 0777);
 
 	curFile = home_ini_full_path("client.ini");
 	if (!tw_exists(curFile.c_str()))
-		CopyFile(data_full_path("client.ini").c_str(),
+		static_copy_file(data_full_path("client.ini").c_str(),
 			curFile.c_str());
 
 	curFile = home_ini_full_path("fleets.ini");
 	if (!tw_exists(curFile.c_str()))
-		CopyFile(data_full_path("fleets.ini").c_str(),
+		static_copy_file(data_full_path("fleets.ini").c_str(),
 			curFile.c_str());
 
 	curFile = home_ini_full_path("scp.ini");
 	if (!tw_exists(curFile.c_str()))
-		CopyFile(data_full_path("scp.ini").c_str(),
+		static_copy_file(data_full_path("scp.ini").c_str(),
 			curFile.c_str());
 
 	curFile = home_ini_full_path("server.ini");
 	if (!tw_exists(curFile.c_str()))
-		CopyFile(data_full_path("server.ini").c_str(),
+		static_copy_file(data_full_path("server.ini").c_str(),
 			curFile.c_str());
 
 	curFile = home_ini_full_path("vobject.ini");
 	if (!tw_exists(curFile.c_str()))
-		CopyFile(data_full_path("vobject.ini").c_str(),
+		static_copy_file(data_full_path("vobject.ini").c_str(),
 			curFile.c_str());
 	return 0;
 }

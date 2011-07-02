@@ -171,7 +171,7 @@ void NetLog::_unlog(int channel, void *data, int size)
 }
 
 
-void NetLog::log_file(const char *fname)
+void NetLog::log_file(const std::string& fname)
 {
 	STACKTRACE;
 }

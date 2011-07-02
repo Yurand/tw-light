@@ -345,7 +345,7 @@ int Game::is_local (int channel)
 }
 
 
-void Game::log_file (const char *fname)
+void Game::log_file (const std::string& fname)
 {
 	log->log_file(fname);
 }
@@ -975,7 +975,10 @@ void Game::init(Log *_log)
 		window->preinit();
 	}
 
-	tw_set_config_file("client.ini");
+	std::string client_ini = home_ini_full_path("client.ini");
+	std::string server_ini = home_ini_full_path("server.ini");
+	
+	tw_set_config_file(client_ini.c_str());
 	change_view(get_config_string("View", "View", "Hero"));
 
 	window->add_callback(this);
@@ -1040,11 +1043,11 @@ void Game::init(Log *_log)
 
 	text_mode(-1);
 
-	tw_set_config_file("client.ini");
+	tw_set_config_file(client_ini.c_str());
 	msecs_per_fps = get_config_int("View", "FPS_Time", 200);
 	msecs_per_render = (int)(1000. / get_config_float("View", "MinimumFrameRate", 10) + 0.5);
 
-	log_file("server.ini");
+	log_file(server_ini);
 	camera_hides_cloakers = get_config_int("View", "CameraHidesCloakers", 1);
 	time_ratio = (int)(1000. / get_config_float ("Game", "SC2FrameRate", 20));
 	distance_ratio = (3840. / get_config_float ("Game", "SC2TotalDistance", 8000));

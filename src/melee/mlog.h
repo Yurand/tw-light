@@ -57,8 +57,8 @@ class Log						 //Logging system, usefull for networking & demo recording/playba
 		void set_all_directions (char direction);
 
 		virtual ~Log();
-		virtual void log_file(const char *fname);
-		//	virtual void *log_file_data (const char *fname, int *size);
+		virtual void log_file(const std::string& fname);
+
 		virtual int ready(int channel);
 		//file_ready returns -1 if a file is not ready, otherwise it is the length of the file.  if location is not NULL, it sets *location to pointing at the file data.
 		virtual int file_ready(const char *fname, void **location = NULL);

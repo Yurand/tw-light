@@ -81,7 +81,7 @@ int NormalGame::add_player (Control *c, int team_index, const char *name, const 
 	else {
 		log_fleet(c->channel, player_fleet[i]);
 	}
-	tw_set_config_file("tmp.ini");
+	tw_set_config_file(home_ini_full_path("tmp.ini"));
 	set_config_string(sect, "Name", name);
 	set_config_string(sect, "Type", c->getTypeName());
 	set_config_int(sect, "Team", team_index);
@@ -135,7 +135,7 @@ void NormalGame::init_players()
 		case Log::log_net1client:
 		case Log::log_net1server:
 		{
-			log_file("server.ini");
+			log_file(home_ini_full_path("server.ini"));
 			//int use_teams_menu = get_config_int("Network", "NetworkMeleeUseTeams", 0);
 			//if (use_teams_menu) {
 			if (1) {
@@ -244,17 +244,17 @@ void NormalGame::init(Log *_log)
 
 	view->window->locate(0,0,0,0,0,0.9,0,1);
 
-	tw_delete_file("tmp.ini");
-	tw_delete_file("fleets.tmp");
-	tw_set_config_file ("tmp.ini");
+	tw_delete_file(home_ini_full_path("tmp.ini"));
+	tw_delete_file(home_ini_full_path("fleets.tmp"));
+	tw_set_config_file(home_ini_full_path("tmp.ini"));
 	set_config_string (NULL, "Ignorethis", "");
 	if (!log->playback) init_players();
-	log_file("tmp.ini");
+	log_file(home_ini_full_path("tmp.ini"));
 	if (log->playback) {
 		for (int i = 0; true; i += 1) {
 			char buffy[64];
 			sprintf(buffy, "Player%d", i + 1);
-			log_file("tmp.ini");
+			log_file(home_ini_full_path("tmp.ini"));
 			const char *type = get_config_string(buffy, "Type", NULL);
 			if (!type) break;
 			const char *name = get_config_string(buffy, "Name", buffy);

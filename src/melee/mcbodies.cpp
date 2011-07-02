@@ -105,7 +105,7 @@ SpaceObject(NULL, loc, 0.0, sprite)
 	id         |= ID_PLANET;
 	mass        = 9999999.0;
 	//use remote .ini file
-	game->log_file ("server.ini");
+	game->log_file (home_ini_full_path("server.ini"));
 	sprite_index = index;
 	gravity_mindist = scale_range(get_config_float("Planet", "GravityMinDist", 0));
 	gravity_range   = scale_range(get_config_float("Planet", "GravityRange", 0));
@@ -373,7 +373,7 @@ Stars::Stars()
 			SpaceSprite::MIPMAPED
 			);
 	}
-	game->log_file("server.ini");
+	game->log_file(home_ini_full_path("server.ini"));
 	width = get_config_int("Stars", "Width", 4000);
 	height = get_config_int("Stars", "Height", 4000);
 	num_stars = get_config_int("Stars", "Number", 150);

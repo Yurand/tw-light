@@ -28,7 +28,7 @@ GNU General Public License for more details.
 #include "melee/mfleet.h"
 #include "util/aastr.h"
 
-void tw_set_config_file(const char *filename)
+void tw_set_config_file(const std::string& filename)
 {
 	STACKTRACE;
 	std::string file = home_ini_full_path(filename);
@@ -39,10 +39,11 @@ void tw_set_config_file(const char *filename)
 }
 
 
-int tw_delete_file(const char * filename)
+int tw_delete_file(const std::string& filename)
 {
 	STACKTRACE;
-	return delete_file(home_ini_full_path(filename).c_str());
+	std::string file = home_ini_full_path(filename);
+	return delete_file(file.c_str());
 }
 
 

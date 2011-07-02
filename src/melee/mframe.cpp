@@ -1518,7 +1518,7 @@ void Physics::play_sound2(SAMPLE *sample, SpaceLocation *source, int vol, int fr
 }
 
 
-void Physics::log_file(const char *fname)
+void Physics::log_file(const std::string& fname)
 {
 	tw_set_config_file(fname);
 };

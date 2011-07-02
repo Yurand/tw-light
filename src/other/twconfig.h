@@ -16,8 +16,10 @@ GNU General Public License for more details.
 
 #ifndef TWCONFIG_H
 
-void tw_set_config_file(const char * filename);
-int tw_delete_file(const char * filename);
+#include <string>
+
+void tw_set_config_file(const std::string& filename);
+int tw_delete_file(const std::string& filename);
 
 const char *twconfig_get_string (const char *item);
 //string destroyed by next call to twconfig_get_*

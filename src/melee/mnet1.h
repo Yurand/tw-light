@@ -107,7 +107,7 @@ class NetLog : public Log		 //Logging system, usefull for networking & demo reco
 		virtual void _log(int channel, const void *data, int size);
 								 //used for playing back data.  this version may recieve it over the network
 		virtual void _unlog(int channel, void *data, int size);
-		void log_file(const char *fname) ;
+		void log_file(const std::string& fname) ;
 		virtual int ready(int channel);
 
 		virtual void flush() ;

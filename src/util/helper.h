@@ -31,6 +31,8 @@ extern "C"
 	const char *tw_get_filename(const char *file);
 	char *tw_replace_extension(char *dest, const char *filename, const char *ext, int size);
 	char *tw_append_filename(char *dest, const char *path, const char *filename, int size);
+	int tw_is_relative_filename(const char *filename);
+	char *tw_canonicalize_filename(char *dest, const char *filename, int size);
 
 	const char *tw_get_config_string(const char *section, const char *name, const char *def);
 	int tw_get_config_int(const char *section, const char *name, int def);

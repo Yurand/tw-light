@@ -789,7 +789,7 @@ void showTitle(VideoWindow *window)
 const char *select_game_menu ()
 {
 	select_game_dialog[2].dp3 = game_names;
-	tw_set_config_file("client.ini");
+	tw_set_config_file(home_ini_full_path("client.ini"));
 	select_game_dialog[2].d1 = get_config_int("Menu", "SelectGame", 0);
 	int i = tw_popup_dialog(NULL, select_game_dialog, 2);
 	if (i == -1) return NULL;

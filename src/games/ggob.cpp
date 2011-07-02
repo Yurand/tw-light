@@ -150,7 +150,7 @@ void GobGame::init(Log *_log)
 	int i;
 	Game::init(_log);
 
-	log_file("server.ini");
+	log_file(home_ini_full_path("server.ini"));
 	max_enemies = get_config_int("Gob", "MaxEnemies", 32);
 	gobenemy = (GobEnemy**) malloc(sizeof(GobEnemy*) * max_enemies);
 

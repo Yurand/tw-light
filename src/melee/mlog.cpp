@@ -240,7 +240,7 @@ int Log::file_ready(const char *fname, void **location)
 }
 
 
-void Log::log_file(const char *fname)
+void Log::log_file(const std::string& fname)
 {
 	STACKTRACE;
 	void *loc;
@@ -255,7 +255,7 @@ void Log::log_file(const char *fname)
 	}
 	if (!(log_dir[channel_file_data] & direction_write)) {
 		tw_error("Log::log_file - file logs read only, \"%s\" not found",
-			fname);
+			fname.c_str());
 	}
 	if (log_num <= channel_file_data) {
 		expand_logs(channel_file_data + 1);
@@ -279,7 +279,7 @@ void Log::log_file(const char *fname)
 	j = intel_ordering(j);
 	memcpy(&buffy[strlen(buffy)+1], &j, sizeof(int));
 	_log (channel_file_names, buffy, strlen(buffy)+5);
-	len = file_ready(fname, &loc);
+	len = file_ready(fname.c_str(), &loc);
 	set_config_data((char*)loc, len);
 	return;
 }

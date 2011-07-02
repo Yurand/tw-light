@@ -85,6 +85,16 @@ char *tw_append_filename(char *dest, const char *path, const char *filename, int
 	return append_filename(dest, path, filename, size);
 }
 
+int tw_is_relative_filename(const char *filename)
+{
+	return is_relative_filename(filename);
+}
+
+char *tw_canonicalize_filename(char *dest, const char *filename, int size)
+{
+	return canonicalize_filename(dest, filename, size);
+}
+
 
 /*///////////////////////////////////////////////////////////////////////////////////////
 // INI like parser functions
