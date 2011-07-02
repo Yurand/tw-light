@@ -523,6 +523,10 @@ int GarashShot::handle_damage(SpaceLocation *source, double normal, double direc
 int GarashShot::canCollide(SpaceLocation *other)
 {
 	STACKTRACE;
+	// Don't hurt self
+	if (other == ship) {
+		return FALSE;
+	}
 	return(TRUE);
 }
 
