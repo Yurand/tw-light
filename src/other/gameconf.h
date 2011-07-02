@@ -27,5 +27,4 @@
 int create_user_ini();
 std::string home_ini_full_path(std::string path);
 std::string data_full_path(std::string path);
-bool CopyFile(const char * source, const char * target);
 #endif

@@ -20,12 +20,13 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <string>
 
 #include <sys/stat.h>
 
-#include "melee.h"
+#include "util/errors.h"
 #include "util/helper.h"
 
 std::string home_ini_full_path(std::string path)
@@ -76,7 +77,7 @@ std::string data_full_path(std::string path)
 }
 
 
-bool CopyFile(const char * source, const char * target)
+static bool CopyFile(const char * source, const char * target)
 {
 	STACKTRACE;
 	FILE * fsrc = fopen(source, "rb");
