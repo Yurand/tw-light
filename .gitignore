@@ -23,3 +23,8 @@ install-sh
 ltmain.sh
 missing
 depcomp
+*.dll
+mingw32-libs
+tw-light.exe
+tw-light-debug.exe
+.geanyprj
