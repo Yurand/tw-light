@@ -1,22 +1,23 @@
 ;NSIS Setup Script
 
-!include ver
-
+!define VER_VERSION "0.4"
 !define PRODUCT_NAME "TW-Light"
+!define PRODUCT_WEB_SITE "http://tw-light.berlios.de"
 
 ;--------------------------------
 ;Configuration
 
-OutFile ..\..\tw-light-setup-${VER_VERSION}.exe
-SetCompressor lzma
-SetCompressorDictSize 16
+OutFile ..\tw-light-setup-${VER_VERSION}.exe
+SetCompressor /SOLID lzma
 InstallDir $PROGRAMFILES\TW-Light
 InstallDirRegKey HKLM SOFTWARE\TW-Light ""
+
+RequestExecutionLevel admin
 
 ;--------------------------------
 
 ;Include Modern UI
-!include "MUI.nsh"
+!include "MUI2.nsh"
 
 ;--------------------------------
 ;Configuration
@@ -29,17 +30,15 @@ Caption "${PRODUCT_NAME} ${VER_VERSION} Setup"
 !define MUI_ABORTWARNING
 !define MUI_HEADERIMAGE
 !define MUI_ICON "..\tw-light.ico"
-!define MUI_UNICON "..\tw-light.ico"
+!define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\modern-uninstall-full.ico"
 
 !define MUI_COMPONENTSPAGE_SMALLDESC
 
 ;Pages
-!define MUI_WELCOMEPAGE_TEXT "This wizard will guide you through the installation of ${PRODUCT_NAME}.\r\n\r\n\r\n$_CLICK"
+!define MUI_WELCOMEPAGE_TEXT "This wizard will guide you through the installation of ${PRODUCT_NAME}.$\r$\n$\r$\n$_CLICK"
 
 !insertmacro MUI_PAGE_WELCOME
 !insertmacro MUI_PAGE_LICENSE "..\copying"
-!insertmacro MUI_PAGE_COMPONENTS
-Page custom CreateShortCutF
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
 
@@ -47,8 +46,6 @@ Page custom CreateShortCutF
 !define MUI_FINISHPAGE_LINK_LOCATION "http://tw-light.berlios.de/"
 
 !define MUI_FINISHPAGE_RUN "$INSTDIR\tw-light.exe"
-!define MUI_FINISHPAGE_SHOWREADME $INSTDIR\data\readme.html
-
 !define MUI_FINISHPAGE_NOREBOOTSUPPORT
 
 !insertmacro MUI_PAGE_FINISH
@@ -57,20 +54,8 @@ Page custom CreateShortCutF
 !insertmacro MUI_UNPAGE_INSTFILES
 ;--------------------------------
 
-
-;Reserve Files
-  
-  ;These files should be inserted before other files in the data block
-  ;Keep these lines before any File command
-  ;Only for BZIP2 (solid) compression
-  
-  ReserveFile "timewarp.ini"
-  !insertmacro MUI_RESERVEFILE_INSTALLOPTIONS
-
 ;--------------------------------
 ;Variables
-
-  Var INI_VALUE
 
 ;--------------------------------
 ;Languages
@@ -79,8 +64,6 @@ Page custom CreateShortCutF
 
 ;--------------------------------
 ;Installer Sections
-
-!define SF_SELECTED 1
 
 ; The stuff to install
 Section "TimeWarp Core (required)"
@@ -95,10 +78,12 @@ Section "TimeWarp Core (required)"
   File "..\tw-light.exe"
   File "..\INSTALL"
 
-  SetOutPath $INSTDIR\gamedata
-  File /r "..\gamedata\*.*"
-  SetOutPath $INSTDIR\util
-  File /r "..\util\*.*"
+  SetOutPath $INSTDIR\data
+  File /r "..\data\*.txt"
+  File /r "..\data\*.ini"
+  File /r "..\data\*.dat"
+  File /r "..\data\*.html"
+  File /r "..\data\palette"
 
   ; Write the installation path into the registry
   WriteRegStr HKLM SOFTWARE\TW-Light "Install_Dir" "$INSTDIR"
@@ -110,36 +95,16 @@ Section "TimeWarp Core (required)"
 
   WriteUninstaller "uninstall.exe"
 
-!insertmacro MUI_INSTALLOPTIONS_READ $INI_VALUE "timewarp.ini" "Field 3" "State" 
-StrCmp $INI_VALUE "1" "" +2
-CreateShortCut "$DESKTOP\TW-Light.lnk" "$INSTDIR\tw-light.exe"
+  CreateShortCut "$DESKTOP\TW-Light.lnk" "$INSTDIR\tw-light.exe"
   
-!insertmacro MUI_INSTALLOPTIONS_READ $INI_VALUE "timewarp.ini" "Field 2" "State"
- StrCmp $INI_VALUE "1" "" +5
   CreateDirectory "$SMPROGRAMS\TW-Light"
-  CreateShortCut "$SMPROGRAMS\TW-Light\readme.lnk" "$INSTDIR\readme.html" "Readme.html"
+  WriteIniStr "$INSTDIR\Website.url" "InternetShortcut" "URL" "${PRODUCT_WEB_SITE}"
+  CreateShortCut "$SMPROGRAMS\TW-Light\Website.lnk" "$INSTDIR\Website.url"
   CreateShortCut "$SMPROGRAMS\TW-Light\tw-light.lnk" "$INSTDIR\tw-light.exe" "${PRODUCT_NAME}"
+  CreateShortCut "$SMPROGRAMS\TW-Light\uninstall.lnk" "$INSTDIR\uninstall.exe" "Uninstall"
 
 SectionEnd
 
-Section "Source"
-  SetOutPath $INSTDIR
-  File "..\makefile"
-  File "..\tw-light.rc"
-  File "..\tw-light.ico"
-  File "..\sources.lst"
-  File "..\install-sh"
-
-  SetOutPath $INSTDIR\source
-  File /r "..\source\*.*"
-
-  SetOutPath $INSTDIR\tests
-  File /r "..\tests\*.*"
-  
-  SetOutPath $INSTDIR\mingw-libs
-  File /r "..\mingw-libs\*.*"
-
-SectionEnd
 ;--------------------------------
 
 ; Uninstaller
@@ -160,17 +125,4 @@ Section "Uninstall"
   Delete "$DESKTOP\TW-Light.lnk"
 
 SectionEnd
-
-;--------------------------------
-;Installer Functions
-
-Function .onInit
-  ;Extract InstallOptions INI files
-  !insertmacro MUI_INSTALLOPTIONS_EXTRACT "timewarp.ini"
-FunctionEnd
-
-Function CreateShortCutF
-  !insertmacro MUI_HEADER_TEXT "${PRODUCT_NAME} Option" ""
-  !insertmacro MUI_INSTALLOPTIONS_DISPLAY "timewarp.ini"
-FunctionEnd
 
