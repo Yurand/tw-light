@@ -28,3 +28,4 @@ mingw32-libs
 tw-light.exe
 tw-light-debug.exe
 .geanyprj
+obj-win32
