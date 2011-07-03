@@ -1495,12 +1495,6 @@ int get_diagnostics_string ( char *dest )
 	tmp += sprintf(tmp, "???\n");
 	#   endif
 	tmp += sprintf(tmp, "Blah = %s\n", tw_version());
-	if (sound.is_music_supported()) {
-		tmp += sprintf(tmp, "JGMOD (music) Enabled\n");
-	}
-	else {
-		tmp += sprintf(tmp, "JGMOD (music) Disabled\n");
-	}
 	#   if defined DO_STACKTRACE
 	tmp += sprintf(tmp, "DO_STACKTRACE Enabled\n");
 	#   else
