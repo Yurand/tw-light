@@ -615,9 +615,19 @@ int tw_main(int argc, char *argv[])
 
 		const AGUP_THEME *theme = agup_theme_by_name(get_config_string("Video", "GuiTheme", "Photon"));
 
-		screen_bpp       = get_config_int("Video", "BitsPerPixel", 16);
-		screen_width     = get_config_int("Video", "ScreenWidth", 640);
-		screen_height    = get_config_int("Video", "ScreenHeight", 480);
+		if (get_config_int("Video", "NativeResolution", 1)) {
+			if (tw_get_desktop_resolution(&screen_width, &screen_height)) {
+				tw_error("Unable to get desktop resolution");
+			}
+		} else {
+			screen_width     = get_config_int("Video", "ScreenWidth", 640);
+			screen_height    = get_config_int("Video", "ScreenHeight", 480);
+		}
+		if (get_config_int("Video", "NativeBpp", 1)) {
+			screen_bpp = tw_desktop_color_depth();
+		} else {
+			screen_bpp       = get_config_int("Video", "BitsPerPixel", 16);
+		}
 		fullscreen       = get_config_int("Video", "FullScreen", false);
 
 		SpaceSprite::mip_bias = get_config_int ("View", "Mip_bias", 0);

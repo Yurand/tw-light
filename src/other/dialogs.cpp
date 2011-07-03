@@ -178,7 +178,7 @@ DIALOG confirmVideoDialog[] =
 	{ NULL,               0,    0,    0,   0,    255,  0,    0,     0,       3,    0,    NULL, NULL, NULL }
 };
 
-DIALOG video_dialog[] =
+DIALOG video_dialog[13] =
 {
 	// (dialog proc)     (x)   (y)   (w)   (h)   (fg) (bg) (key) (flags)  (d1)  (d2)  (dp)
 	{							 //DIALOG_VIDEO_BOX
@@ -187,16 +187,6 @@ DIALOG video_dialog[] =
 
 	{							 //DIALOG_VIDEO_FULLSCREEN
 		d_agup_check_proc,      190,  120, 160,  30,   255,  0,    0,     0,       0,    0,    (void *)"Full-screen ", NULL, NULL
-	},
-
-	{							 //DIALOG_VIDEO_CUSTOM_TEXT
-		d_agup_text_proc,       190,  180, 160,  30,   255,  0,    0,     0,       0,    0,    (void *)"Custom", NULL, NULL
-	},
-	{							 //DIALOG_VIDEO_CUSTOM_BOX
-		d_agup_box_proc,        188,  208, 164,  34,   255,  0,    0,     0,       0,    0,    NULL, NULL, NULL
-	},
-	{							 //DIALOG_VIDEO_CUSTOM_EDIT
-		d_agup_edit_proc,       190,  210, 150,  30,   255,  0,    0,     0,       75,   0,    (void *) dialog_string[3], NULL, NULL
 	},
 
 	{							 //DIALOG_VIDEO_RESTEXT
@@ -218,7 +208,7 @@ DIALOG video_dialog[] =
 	{							 //DIALOG_VIDEO_GET_DEFAULT
 		my_d_button_proc,  143,  30,  260,  35,   255,  0,    0,D_EXIT,  0,    0,    (void *)"Restore Default", NULL, NULL
 	},
-	{							 //DIALOG_VIDEO_SET_DEFAULT
+	{							 //DIALOG_VIDEO_OK
 		my_d_button_proc,   32,  70,  100,   35,   255,  0,   0,D_EXIT,  0,    0,    (void *)"Ok", NULL, NULL
 	},
 

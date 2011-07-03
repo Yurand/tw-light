@@ -38,6 +38,9 @@ extern "C"
 	int tw_get_config_int(const char *section, const char *name, int def);
 	float tw_get_config_float(const char *section, const char *name, float def);
 
+	int tw_get_desktop_resolution(int *width, int *height);
+	int tw_desktop_color_depth();
+
 	#ifdef __cplusplus
 }
 #endif

@@ -110,8 +110,17 @@ int tw_get_config_int(const char *section, const char *name, int def)
 	return get_config_int(section, name, def);
 }
 
-
 float tw_get_config_float(const char *section, const char *name, float def)
 {
 	return get_config_float(section, name, def);
+}
+
+int tw_get_desktop_resolution(int *width, int *height)
+{
+	return get_desktop_resolution(width, height);
+}
+
+int tw_desktop_color_depth()
+{
+	return desktop_color_depth();
 }

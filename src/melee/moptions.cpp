@@ -31,6 +31,7 @@ REGISTER_FILE
 #include "gui.h"
 
 #include "util/aastr.h"
+#include "util/helper.h"
 #include "other/twconfig.h"
 #include "other/dialogs.h"
 
@@ -136,11 +137,11 @@ bool confirmVideoChanges()
 
 char *resolution[] =
 {
-	"640x480", "800x600", "1024x768", "1280x1024", "Custom", NULL
+	"640x480", "800x600", "1024x768", "1280x1024", "Native", NULL
 };
 char *color_depth[] =
 {
-	"8", "15", "16", "24", "32", NULL
+	"8", "15", "16", "24", "32", "Native", NULL
 };
 
 int handleGammaSliderChange(void *dp3, int d2)
@@ -150,84 +151,160 @@ int handleGammaSliderChange(void *dp3, int d2)
 	return d2;
 }
 
+static int static_get_native_resolution_index()
+{
+	int i;
+	for (i = 0; i< sizeof(resolution)/sizeof(resolution[0]); i++) {
+		if (strcmp(resolution[i], "Native") == 0) {
+			break;
+		}
+	}
+	if (i == sizeof(resolution)/sizeof(resolution[0])) {
+		tw_error("Unable to find 'Native' in resolutions strings");
+	}
+	return i;
+}
+
+static int static_get_native_bpp_index()
+{
+	int i;
+	for (i = 0; i< sizeof(color_depth)/sizeof(color_depth[0]); i++) {
+		if (strcmp(color_depth[i], "Native") == 0) {
+			break;
+		}
+	}
+	if (i == sizeof(color_depth)/sizeof(color_depth[0])) {
+		tw_error("Unable to find 'Native' in resolutions strings");
+	}
+	return i;
+}
+
+static void static_video_dialog_to_params(DIALOG* dlg, int* width, int* height, int* bpp, int* fullscreen, int* native_res, int* native_bpp)
+{
+	int i;
+
+	i = dlg[DIALOG_VIDEO_RESLIST].d1;
+	if (i == static_get_native_resolution_index()) {
+		if (tw_get_desktop_resolution(width, height)) {
+			tw_error("Unable to get desktop resolution!!!");
+		}
+		*native_res = 1;
+	} else {
+		*width = strtol(resolution[i], NULL, 10);
+		*height = strtol(strchr(resolution[i], 'x') + 1, NULL, 10);
+		*native_res = 0;
+	}
+
+	i = dlg[DIALOG_VIDEO_BPPLIST].d1;
+	if (i == static_get_native_bpp_index()) {
+		*bpp = tw_desktop_color_depth();
+		*native_bpp = 1;
+	} else {
+		*bpp = atoi(color_depth[i]);
+		*native_bpp = 0;
+	}
+	*fullscreen = dlg[DIALOG_VIDEO_FULLSCREEN].flags & D_SELECTED;
+}
 
 void video_menu (Game *game)
 {
 	int choice = -1;
 	bool done = false;
+	int i, width, height, bpp, fs, native_res, native_bpp;
+
+	DIALOG old_settings[sizeof(video_dialog)/sizeof(video_dialog[0])];
+
+	tw_set_config_file(home_ini_full_path("client.ini"));
+	if (get_config_int("Video", "NativeResolution", 1)) {
+		i = static_get_native_resolution_index();
+	} else {
+		sprintf(dialog_string[3], "%dx%d", videosystem.width, videosystem.height);
+		for (i = 0; i< sizeof(resolution)/sizeof(resolution[0]); i++) {
+			if (strcmp(resolution[i], dialog_string[3]) == 0) {
+				break;
+			}
+		}
+		if (i == sizeof(resolution)/sizeof(resolution[0])) {
+			i = static_get_native_resolution_index();
+		}
+	}
+	video_dialog[DIALOG_VIDEO_RESLIST].d1 = i;
+
+	if (get_config_int("Video", "NativeBpp", 1)) {
+		i = static_get_native_bpp_index();
+	} else {
+		for (i = 0; i< sizeof(color_depth)/sizeof(color_depth[0]); i++) {
+			if (atoi(color_depth[i]) == videosystem.bpp) {
+				break;
+			}
+			if (i == sizeof(color_depth)/sizeof(color_depth[0])) {
+				i = static_get_native_bpp_index();
+			}
+		}
+	}
+
+	video_dialog[DIALOG_VIDEO_BPPLIST].d1 = i;
+
+	//set button for fullscreen
+	video_dialog[DIALOG_VIDEO_FULLSCREEN].flags = videosystem.fullscreen ? D_SELECTED : 0;
+
+	int startfs = video_dialog[DIALOG_VIDEO_FULLSCREEN].flags;
+
+	//set gamma correction
+	video_dialog[DIALOG_VIDEO_GAMMA_SLIDER].d2 = get_gamma();
+	memcpy(old_settings, video_dialog, sizeof(video_dialog));
 
 	while ( (choice != DIALOG_VIDEO_EXIT) && (!done) ) {
-		sprintf(dialog_string[3], "%dx%d", videosystem.width, videosystem.height);
-
-		//set index for resolution
-		int x=-1, y=-1, x2, y2, i, bpp, bpp2, fs;
-		x2 = videosystem.width;
-		y2 = videosystem.height;
-		for (i = 0; resolution[i+1]; i += 1) {
-			x = strtol(resolution[i], NULL, 10);
-			y = strtol(strchr(resolution[i], 'x') + 1, NULL, 10);
-			if ((x == x2) && (y == y2)) break;
-		}
-		if (!resolution[0]) { tw_error("Resolution error"); }
-
-		video_dialog[DIALOG_VIDEO_RESLIST].d1 = i;
-		//set index for bpp
-		bpp = videosystem.bpp;
-		for (i = 0; true; i += 1) {
-			if (!color_depth[i]) { tw_error("video_menu - current bpp invalid?"); }
-			if (strtol(color_depth[i], NULL, 10) == bpp) break;
-		}
-		video_dialog[DIALOG_VIDEO_BPPLIST].d1 = i;
-
-		//set button for fullscreen
-		video_dialog[DIALOG_VIDEO_FULLSCREEN].flags = videosystem.fullscreen ? D_SELECTED : 0;
-
-		int startfs = video_dialog[DIALOG_VIDEO_FULLSCREEN].flags;
-
-		//set gamma correction
-		video_dialog[DIALOG_VIDEO_GAMMA_SLIDER].d2 = get_gamma();
-
 		//do the dialog
 		choice = tw_popup_dialog(NULL, video_dialog, 0);
-		if (choice == -1) choice = DIALOG_VIDEO_EXIT;
+		if (choice == -1)
+			choice = DIALOG_VIDEO_EXIT;
 
-		//set resolution
-		i = video_dialog[DIALOG_VIDEO_RESLIST].d1;
-		char *tmp = resolution[i];
-		if (!resolution[i+1]) tmp = dialog_string[3];
-		x2 = strtol(tmp, NULL, 10);
-		y2 = strtol(strchr(tmp, 'x') + 1, NULL, 10);
-
-		//set bpp from menu
-		i = video_dialog[DIALOG_VIDEO_BPPLIST].d1;
-		bpp2 = strtol(color_depth[i], NULL, 10);
-
-		//set fullscreen from menu
-		fs = video_dialog[DIALOG_VIDEO_FULLSCREEN].flags & D_SELECTED;
+		static_video_dialog_to_params(video_dialog, &width, &height, &bpp, &fs, &native_res, &native_bpp);
 
 		switch (choice) {
 			case DIALOG_VIDEO_GET_DEFAULT:
-				tw_set_config_file("client.ini");
-				bpp2   = get_config_int("Video", "BitsPerPixel", 16);
-				x2     = get_config_int("Video", "ScreenWidth", 640);
-				y2     = get_config_int("Video", "ScreenHeight", 480);
-				fs     = get_config_int("Video", "FullScreen", false);
-				set_gamma(get_config_int("Video", "Gamma", 128));
+				set_config_int("Video", "BitsPerPixel", 16);
+				set_config_int("Video", "ScreenWidth", 640);
+				set_config_int("Video", "ScreenHeight", 480);
+				set_config_int("Video", "FullScreen", 1);
+				set_config_int("Video", "Gamma", 128);
+				set_config_int("Video", "NativeResolution", 1);
+				set_config_int("Video", "NativeBpp", 1);
 
-				videosystem.set_resolution(x2, y2, bpp2, fs);
-				break;
-
-			case DIALOG_VIDEO_SET_DEFAULT:
-				if ((bpp2 != bpp) && game) {
-					tw_alert ("Color depths cannot be changed in\nthe middle of a game\nin this version", "Okay");
+				if (tw_get_desktop_resolution(&width, &height)) {
+					tw_error("Unable to get desktop resolution!!!");
 				}
-				else {
-					done = true;
-				}
+				videosystem.set_resolution(width, height, tw_desktop_color_depth(), 1);
+				return;
 				break;
+			case DIALOG_VIDEO_OK:
+				set_gamma(video_dialog[DIALOG_VIDEO_GAMMA_SLIDER].d2);
+				if (videosystem.set_resolution(width, height, bpp, fs)) {
+					if (confirmVideoChanges()) {
+						set_config_int("Video", "BitsPerPixel", bpp);
+						set_config_int("Video", "ScreenWidth", width);
+						set_config_int("Video", "ScreenHeight", height);
+						set_config_int("Video", "FullScreen", fs);
+						set_config_int("Video", "Gamma", get_gamma());
 
-			case DIALOG_VIDEO_BPPLIST:
-			case DIALOG_VIDEO_RESLIST:
+						if (video_dialog[DIALOG_VIDEO_RESLIST].d1 == static_get_native_resolution_index()) {
+							set_config_int("Video", "NativeResolution", 1);
+						} else {
+							set_config_int("Video", "NativeResolution", 0);
+						}
+						if (video_dialog[DIALOG_VIDEO_BPPLIST].d1 == static_get_native_bpp_index()) {
+							set_config_int("Video", "NativeBpp", 1);
+						} else {
+							set_config_int("Video", "NativeBpp", 0);
+						}
+						return;
+					} else {
+						static_video_dialog_to_params(old_settings, &width, &height, &bpp, &fs, &native_res, &native_bpp);
+						videosystem.set_resolution(width, height, bpp, fs);
+						memcpy(video_dialog, old_settings, sizeof(video_dialog));
+					}
+				}
 				break;
 
 			case DIALOG_VIDEO_GAMMA_SLIDER:
@@ -239,43 +316,6 @@ void video_menu (Game *game)
 				return;
 				break;
 		}
-
-		if ( (x2 != x) ||
-			(y2 != y) ||
-			(bpp != bpp2) ||
-		(startfs != fs) ) {
-			set_gamma(video_dialog[DIALOG_VIDEO_GAMMA_SLIDER].d2);
-
-			//try to set video mode.  If it does not work, back out, and do not confirm
-			//the changes.
-			if ( ! videosystem.set_resolution(x2, y2, bpp2, fs)) {
-				done = false;
-			}
-			else {
-				//if the video mode was actually set, confirm the changes
-				if (confirmVideoChanges()) {
-					tw_set_config_file("client.ini");
-					set_config_int("Video", "BitsPerPixel", bpp2);
-					set_config_int("Video", "ScreenWidth", x2);
-					set_config_int("Video", "ScreenHeight", y2);
-					set_config_int("Video", "FullScreen", fs);
-					set_config_int("Video", "Gamma", get_gamma());
-					return;
-				}
-				else {
-					tw_set_config_file("client.ini");
-					bpp2   = get_config_int("Video", "BitsPerPixel", 16);
-					x2     = get_config_int("Video", "ScreenWidth", 640);
-					y2     = get_config_int("Video", "ScreenHeight", 480);
-					fs     = get_config_int("Video", "FullScreen", false);
-					set_gamma(get_config_int("Video", "Gamma", 128));
-
-					i = videosystem.set_resolution(x2, y2, bpp2, fs);
-					done = false;
-				}
-			}
-		}
-
 	}
 	return;
 }
