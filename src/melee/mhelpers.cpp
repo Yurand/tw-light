@@ -356,7 +356,7 @@ int VideoSystem::set_resolution (int width, int height, int bpp, int fullscreen)
 	if (set_gfx_mode((fullscreen ? GFX_TIMEWARP_FULLSCREEN : GFX_TIMEWARP_WINDOW), width, height, 0, 0)) {
 		// sometimes I get "Can not grab keyboard error" when I run from GNOME menu.
 		// Try again.
-		sleep(1);
+		rest(1000);
 		if (set_gfx_mode((fullscreen ? GFX_TIMEWARP_FULLSCREEN : GFX_TIMEWARP_WINDOW), width, height, 0, 0)) {
 			const char *part1 = "Error switching to graphics mode";
 			char part2[256];
