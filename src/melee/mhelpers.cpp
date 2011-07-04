@@ -353,25 +353,30 @@ int VideoSystem::set_resolution (int width, int height, int bpp, int fullscreen)
 	window._event(&ve);
 	surface = NULL;
 	set_color_depth(bpp);
-	if ( set_gfx_mode((fullscreen ? GFX_TIMEWARP_FULLSCREEN : GFX_TIMEWARP_WINDOW), width, height, 0, 0)) {
-		const char *part1 = "Error switching to graphics mode";
-		char part2[256];
-		sprintf (part2, "(%dx%d @ %d bit)", width, height, bpp);
-		const char *part3 = allegro_error;
-		if (this->bpp == -1) {
-			char buffy[1024];
-			sprintf(buffy, "%s\n%s\n%s", part1, part2, part3);
-			tw_error_exit(buffy);
+	if (set_gfx_mode((fullscreen ? GFX_TIMEWARP_FULLSCREEN : GFX_TIMEWARP_WINDOW), width, height, 0, 0)) {
+		// sometimes I get "Can not grab keyboard error" when I run from GNOME menu.
+		// Try again.
+		sleep(1);
+		if (set_gfx_mode((fullscreen ? GFX_TIMEWARP_FULLSCREEN : GFX_TIMEWARP_WINDOW), width, height, 0, 0)) {
+			const char *part1 = "Error switching to graphics mode";
+			char part2[256];
+			sprintf (part2, "(%dx%d @ %d bit)", width, height, bpp);
+			const char *part3 = allegro_error;
+			if (this->bpp == -1) {
+				char buffy[1024];
+				sprintf(buffy, "%s\n%s\n%s", part1, part2, part3);
+				tw_error_exit(buffy);
+			}
+			set_color_depth(this->bpp);
+			set_gfx_mode((this->fullscreen ? GFX_TIMEWARP_FULLSCREEN : GFX_TIMEWARP_WINDOW), this->width, this->height, 0, 0);
+			alert (part1, part2, part3, "Continue", NULL, ' ', '\n');
+			surface = screen;
+			ve.subtype = VideoEvent::VALID;
+			window._event(&ve);
+			surface = NULL;
+			redraw();
+			return false;
 		}
-		set_color_depth(this->bpp);
-		set_gfx_mode((this->fullscreen ? GFX_TIMEWARP_FULLSCREEN : GFX_TIMEWARP_WINDOW), this->width, this->height, 0, 0);
-		alert (part1, part2, part3, "Continue", NULL, ' ', '\n');
-		surface = screen;
-		ve.subtype = VideoEvent::VALID;
-		window._event(&ve);
-		surface = NULL;
-		redraw();
-		return false;
 	}
 	surface = screen;
 	if (set_display_switch_mode(SWITCH_BACKAMNESIA) == -1)
