@@ -472,9 +472,13 @@ data/version.txt \
 data/vobject.ini
 
 gamedatadir=$(datadir)/tw-light
-
 gamedata_DATA = $(GAMEDATA)
 
+desktopdir = $(datadir)/applications
+desktop_DATA = tw-light.desktop
+
+appicondir = $(datadir)/icons
+appicon_DATA = tw-light.png
 
 EXTRA_DIST = \
 	THANKS \
@@ -482,10 +486,12 @@ EXTRA_DIST = \
 	makefile.win32 \
 	tw-light.ico \
 	tw-light.rc \
+	tw-light.desktop \
+	tw-light.png \
 	doc/Doxyfile \
 	doc/permissions.txt \
 	scripts/stacktrace.pl \
-	scripts/timewarp.ini \
+	scripts/gen_register_ships.py \
 	scripts/timewarp.nsi \
 	$(GAMEDATA)
 

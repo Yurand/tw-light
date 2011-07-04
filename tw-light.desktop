@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=TW-Light
+Exec=tw-light
+Icon=tw-light
+Terminal=false
+Type=Application
+Categories=Game
+Comment=2d Space Game
