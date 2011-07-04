@@ -365,7 +365,8 @@ int VideoSystem::set_resolution (int width, int height, int bpp, int fullscreen)
 			if (this->bpp == -1) {
 				char buffy[1024];
 				sprintf(buffy, "%s\n%s\n%s", part1, part2, part3);
-				tw_error_exit(buffy);
+				log_debug(buffy);
+				return false;
 			}
 			set_color_depth(this->bpp);
 			set_gfx_mode((this->fullscreen ? GFX_TIMEWARP_FULLSCREEN : GFX_TIMEWARP_WINDOW), this->width, this->height, 0, 0);

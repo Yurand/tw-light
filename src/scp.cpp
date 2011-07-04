@@ -707,7 +707,16 @@ int tw_main(int argc, char *argv[])
 		srand(time(NULL));
 		set_color_conversion(COLORCONV_KEEP_TRANS);
 
-		videosystem.set_resolution(screen_width, screen_height, screen_bpp, fullscreen);
+		if (!videosystem.set_resolution(screen_width, screen_height, screen_bpp, fullscreen)) {
+			// try safest defaults
+			screen_width = 640;
+			screen_height = 480;
+			screen_bpp = tw_desktop_color_depth();
+			fullscreen = 0;
+			if (!videosystem.set_resolution(screen_width, screen_height, screen_bpp, fullscreen)) {
+				tw_error_exit("Unable to init screen!!!");
+			}
+		}
 		if (!theme)
 			theme = agup_theme_by_name("Photon");
 		agup_init(theme);
