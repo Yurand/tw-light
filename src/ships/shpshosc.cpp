@@ -17,26 +17,7 @@ GNU General Public License for more details.
 #include "ship.h"
 REGISTER_FILE
 
-class ShofixtiScout : public Ship
-{
-	public:
-		double       weaponRange;
-		double       weaponVelocity;
-		int          weaponDamage;
-		int          weaponArmour;
-
-		double       specialRange;
-		double       specialScale;
-		int          specialFrames;
-		int          specialDamage;
-		int          flipSwitch;
-		int          glory;
-
-		ShofixtiScout(Vector2 opos, double angle, ShipData *data, unsigned int code);
-
-		virtual int activate_weapon();
-		virtual void calculate_fire_special();
-};
+#include "shpshosc.h"
 
 ShofixtiScout::ShofixtiScout(Vector2 opos, double angle, ShipData *data, unsigned int code)
 :

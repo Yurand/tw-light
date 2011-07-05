@@ -18,59 +18,7 @@ GNU General Public License for more details.
 REGISTER_FILE
 #include "melee/mview.h"
 
-class KzerZaDreadnought : public Ship
-{
-	public:
-		double weaponRange;
-		double weaponVelocity;
-		int    weaponDamage;
-		int    weaponArmour;
-
-		int    specialFrames;
-		int    specialLaserDamage;
-		int    specialLaserColor;
-		double specialLaserRange;
-		int    specialLaserFrames;
-		int    specialLaserDrain;
-		double specialVelocity;
-		double specialRange;
-		int    specialArmour;
-
-	public:
-		KzerZaDreadnought(Vector2 opos, double angle, ShipData *data, unsigned int code);
-
-		int activate_weapon();
-		int activate_special();
-};
-
-class KzerZaMissile : public Missile
-{
-	public:
-		KzerZaMissile(Vector2 opos, double oangle, double ov, int odamage,
-			double orange, int oarmour, Ship *oship, SpaceSprite *osprite);
-};
-
-class KzerZaFighter : public Missile
-{
-	int    air_frames;
-	int    max_air_frames;
-	int    laser_damage;
-	int    laser_color;
-	double laser_range;
-	int    laser_frames;
-	int    batt;
-	int    recharge_frames;
-
-	public:
-		KzerZaFighter(Vector2 opos, double oangle, double ov,
-			double orange, int oarmour, int oair_frames,
-			int olaser_damage, int olaser_color, double olaser_range,
-			int olaser_frames, int odrain, Ship *oship, SpaceSprite *osprite);
-
-		virtual void calculate();
-		virtual void inflict_damage(SpaceObject *other);
-		virtual int handle_damage(SpaceLocation *source, double normal, double direct);
-};
+#include "shpkzedr.h"
 
 KzerZaDreadnought::KzerZaDreadnought(Vector2 opos, double angle, ShipData *data, unsigned int code)
 :

@@ -17,64 +17,9 @@ GNU General Public License for more details.
 #include "ship.h"
 REGISTER_FILE
 
+#include "shpchebr.h"
+
 #define MAX_DOGIS 4
-
-class ChenjesuDOGI ;
-class ChenjesuBroodhome : public Ship
-{
-	protected:
-		double      weaponVelocity, shardRange;
-		double      shardDamage, shardArmour;
-		double      shardRelativity;
-		double      weaponDamage, weaponArmour;
-		int         shardRotation;
-		int         weaponFired;
-		Shot        *weaponObject;
-
-		double      specialVelocity;
-		double      specialFuelSap;
-		double      specialArmour;
-		double      specialAccelRate;
-		double      specialMass;
-		double      specialAvoidanceAngle;
-		double      specialAvoidanceFactor;
-		int         specialNumDOGIs;
-
-	public:
-		ChenjesuBroodhome(Vector2 opos, double angle, ShipData *data, unsigned int code);
-		virtual int activate_weapon();
-		virtual int activate_special();
-		virtual void calculate();
-};
-
-class ChenjesuShot : public Missile
-{
-	public:
-		ChenjesuShot(Vector2 opos, double oangle, double ov, int odamage,
-			int oarmour, SpaceLocation *creator, SpaceSprite *osprite);
-		virtual void inflict_damage(SpaceObject *other);
-		virtual void animateExplosion();
-};
-
-class ChenjesuDOGI : public AnimatedShot
-{
-	int     sap_factor;
-	double  accel_rate;
-	int     *num_dogis;
-
-	public:
-		ChenjesuDOGI(Vector2 opos, double oangle, double ov, int fuel_sap,
-			int oarmour, double oaccel, double omass, Ship *oship,
-			SpaceSprite *osprite, int *onum_dogis);
-		double  avoidanceAngle;
-		double  avoidanceFactor;
-		virtual void calculate();
-		virtual void inflict_damage(SpaceObject *other);
-		virtual void death();
-		virtual void ship_died();
-		virtual void animateExplosion();
-		virtual void soundExplosion();
-};
 
 ChenjesuBroodhome::ChenjesuBroodhome(Vector2 opos, double angle, ShipData *data, unsigned int code) :
 Ship(opos, angle, data, code)
@@ -92,6 +37,7 @@ Ship(opos, angle, data, code)
 	weaponObject        = NULL;
 
 	specialVelocity     = scale_velocity(tw_get_config_float("Special", "Velocity", 0));
+	specialDamage       = tw_get_config_int("Special", "Damage", 0);
 	specialFuelSap      = tw_get_config_int("Special", "FuelSap", 0);
 	specialArmour       = tw_get_config_int("Special", "Armour", 0);
 	specialAccelRate    = scale_acceleration(tw_get_config_float("Special", "AccelRate", 0), 1);
@@ -199,7 +145,7 @@ void ChenjesuShot::animateExplosion()
 ChenjesuDOGI::ChenjesuDOGI(Vector2 opos, double ov, double oangle,
 int fuel_sap, int oarmour, double accel, double omass, Ship *oship,
 SpaceSprite *osprite, int *onum_dogis) :
-AnimatedShot(oship, opos, ov, oangle, 0, -1.0, oarmour, oship, osprite, 64, 50),
+AnimatedShot(oship, opos, ov, oangle, ((ChenjesuBroodhome*)oship)->specialDamage, -1.0, oarmour, oship, osprite, 64, 50),
 sap_factor(fuel_sap), accel_rate(accel), num_dogis(onum_dogis)
 {
 	STACKTRACE;

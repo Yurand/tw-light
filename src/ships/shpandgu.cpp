@@ -18,53 +18,7 @@ GNU General Public License for more details.
 #include "ship.h"
 REGISTER_FILE
 
-class AndrosynthGuardian : public Ship
-{
-	public:
-		double       weaponRange;
-		double       weaponVelocity;
-		int          weaponDamage;
-		int          weaponArmour;
-
-		int bounce_status;
-
-		SpaceSprite *specialSprite;
-		SpaceSprite *shipSprite;
-		double       specialVelocity;
-		double       specialTurnRate;
-		int          specialDamage;
-		int          specialBounceDistance;
-		int          specialBounceTime;
-		int          specialActive;
-		double       shipTurnRate;
-		int          shipRechargeAmount;
-		double specialMass;
-		double normalMass;
-
-	public:
-		AndrosynthGuardian(Vector2 opos, double angle, ShipData *data, unsigned int code);
-
-		virtual void calculate();
-		virtual void calculate_thrust();
-		virtual void calculate_hotspots();
-
-		virtual void inflict_damage(SpaceObject *other);
-
-		virtual int activate_weapon();
-		virtual int activate_special();
-};
-
-class AndrosynthBubble : public AnimatedShot
-{
-	int courseFrames;
-
-	public:
-		AndrosynthBubble(Vector2 opos, double oangle, double ov,
-			int odamage, double orange, int oarmour, Ship *oship, SpaceSprite *osprite,
-			int ofcount, int ofsize);
-
-		void calculate();
-};
+#include "shpandgu.h"
 
 AndrosynthGuardian::AndrosynthGuardian(Vector2 opos, double angle, ShipData *data, unsigned int code) :
 Ship(opos, angle, data, code)

@@ -17,26 +17,7 @@ GNU General Public License for more details.
 #include "ship.h"
 REGISTER_FILE
 
-class SpathiEluder : public Ship
-{
-	public:
-		double       weaponRange;
-		double       weaponVelocity;
-		int          weaponDamage;
-		int          weaponArmour;
-
-		double       specialRange;
-		double       specialVelocity;
-		int          specialDamage;
-		int          specialArmour;
-		double       specialTurnRate;
-
-	public:
-		SpathiEluder(Vector2 opos, double angle, ShipData *data, unsigned int code);
-
-		virtual int activate_weapon();
-		virtual int activate_special();
-};
+#include "shpspael.h"
 
 SpathiEluder::SpathiEluder(Vector2 opos, double angle, ShipData *data, unsigned int code)
 :

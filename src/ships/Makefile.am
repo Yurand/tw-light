@@ -8,7 +8,9 @@ shpalabc.cpp \
 shpalckr.cpp \
 shpalhdr.cpp \
 shpandgu.cpp \
+shpandgu.h \
 shparisk.cpp \
+shparisk.h \
 shparitr.cpp \
 shparkpi.cpp \
 shpartem.cpp \
@@ -21,7 +23,9 @@ shpbogce.cpp \
 shpbubbo.cpp \
 shpbubex.cpp \
 shpchebr.cpp \
+shpchebr.h \
 shpchmav.cpp \
+shpchmav.h \
 shpchmba.cpp \
 shpchoex.cpp \
 shpclofl.cpp \
@@ -35,11 +39,13 @@ shpdeees.cpp \
 shpdjila.cpp \
 shpdragr.cpp \
 shpdruma.cpp \
+shpdruma.h \
 shpducla.cpp \
 shpdyzha.cpp \
 shpearc2.cpp \
 shpearc3.cpp \
 shpearcr.cpp \
+shpearcr.h \
 shpestgu.cpp \
 shpfiear.cpp \
 shpfopsl.cpp \
@@ -77,6 +83,7 @@ shpkolfl.cpp \
 shpkorsi.cpp \
 shpktesa.cpp \
 shpkzedr.cpp \
+shpkzedr.h \
 shpleimu.cpp \
 shplyrwa.cpp \
 shpmekpi.cpp \
@@ -85,6 +92,7 @@ shpmmrxf.cpp \
 shpmoisp.cpp \
 shpmontr.cpp \
 shpmycpo.cpp \
+shpmycpo.h \
 shpnarlu.cpp \
 shpneccr.cpp \
 shpneodr.cpp \
@@ -112,14 +120,17 @@ shpsclfr.cpp \
 shpsefn2.cpp \
 shpsefna.cpp \
 shpshosc.cpp \
+shpshosc.h \
 shpslypr.cpp \
 shpspael.cpp \
+shpspael.h \
 shpstaba.cpp \
 shpstrgu.cpp \
 shpstrsc.cpp \
 shpsupbl.cpp \
 shpsupbl.h \
 shpsyrpe.cpp \
+shpsyrpe.h \
 shptauar.cpp \
 shptaubo.cpp \
 shptauda.cpp \
@@ -165,7 +176,8 @@ shpyevme.cpp \
 shpyurpa.cpp \
 shpyusra.cpp \
 shpzeksh.cpp \
-shpzfpst.cpp
+shpzfpst.cpp \
+shpzfpst.h
 
 
 libships_a_SOURCES = $(SRCS)

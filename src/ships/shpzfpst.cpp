@@ -18,54 +18,7 @@ GNU General Public License for more details.
 REGISTER_FILE
 
 #include <math.h>
-
-class ZoqFotPikStinger : public Ship
-{
-	public:
-		double       weaponRange;
-		double       weaponVelocity;
-		int          weaponDamage;
-		int          weaponArmour;
-
-		int          specialDamage;
-
-		ZoqFotPikStinger(Vector2 opos, double shipAngle,
-			ShipData *shipData, unsigned int code);
-
-		virtual int activate_weapon();
-		virtual int activate_special();
-};
-
-class ZoqFotPikShot : public Shot
-{
-	int frame_count;
-
-	public:
-		ZoqFotPikShot(Vector2 opos, double oangle, double ov, int odamage,
-			double orange, int oarmour, Ship *oship, SpaceSprite *osprite,
-			int num_frames);
-
-		virtual void calculate();
-};
-
-class ZoqFotPikTongue : public SpaceObject
-{
-	double dist;
-	Ship  *ship;
-	int    lick_factor;
-
-	int frame;
-	int frame_size;
-	int frame_count;
-	int frame_step;
-
-	public:
-		ZoqFotPikTongue(double odist, int odamage, Ship *oship,
-			SpaceSprite *osprite, int ofcount, int ofsize);
-
-		virtual void calculate();
-		virtual void inflict_damage(SpaceObject *other);
-};
+#include "shpzfpst.h"
 
 ZoqFotPikStinger::ZoqFotPikStinger(Vector2 opos, double shipAngle,
 ShipData *shipData, unsigned int code)

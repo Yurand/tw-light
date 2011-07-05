@@ -19,76 +19,7 @@ REGISTER_FILE
 
 #include "util/aastr.h"
 
-class ChmmrAvatar : public Ship
-{
-	public:
-		double weaponRange;
-		int    weaponDamage;
-
-		double       specialForce;
-		double       specialRange;
-
-		double extraRange;
-		int    extraDamage;
-		int    extraFrames;
-		int    extraRechargeRate;
-		int    extraColor;
-		int    extraArmour;
-
-		bool   uninterrupted_fire;
-
-	public:
-		ChmmrAvatar(Vector2 opos, double shipAngle,
-			ShipData *shipData, unsigned int code);
-
-		virtual int activate_weapon();
-		virtual int activate_special();
-		virtual void calculate();
-		virtual void materialize();
-};
-
-class ChmmrLaser : public Laser
-{
-	public:
-		ChmmrLaser(double langle, double lrange, int ldamage, int lfcount,
-			SpaceLocation *opos, Vector2 rel_pos);
-};
-
-class ChmmrBeam : public SpaceObject
-{
-	int frame;
-	int frame_count;
-	Ship *ship;
-	SpaceObject *target;
-
-	public:
-		ChmmrBeam(Ship *oship, int oframes);
-
-		virtual void calculate();
-		virtual void animate(Frame *space);
-};
-
-class ChmmrZapSat : public SpaceObject
-{
-	int frame;
-
-	double lRange;
-	int    lDamage;
-	int    lFrames;
-	int    lRechargeRate;
-	int    lRecharge;
-	int    lColor;
-	int    armour;
-
-	public:
-		ChmmrZapSat(double oangle, double orange, int odamage, int oframes,
-			int orechargerate, int ocolor, int oarmour, Ship *oship,
-			SpaceSprite *osprite);
-
-		virtual void calculate();
-		virtual int handle_damage(SpaceLocation *source, double normal, double direct);
-		virtual int canCollide(SpaceLocation *other);
-};
+#include "shpchmav.h"
 
 ChmmrAvatar::ChmmrAvatar(Vector2 opos, double shipAngle,
 ShipData *shipData, unsigned int code)

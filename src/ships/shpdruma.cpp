@@ -17,35 +17,7 @@ GNU General Public License for more details.
 #include "ship.h"
 REGISTER_FILE
 
-class DruugeMauler : public Ship
-{
-	public:
-		double       weaponRange;
-		double       weaponVelocity;
-		int          weaponDamage;
-		int          weaponArmour;
-		double       weaponDriftVelocity;
-
-	public:
-		DruugeMauler(Vector2 opos, double shipAngle,
-			ShipData *shipData, unsigned int code);
-
-	protected:
-		virtual int activate_weapon();
-		virtual void calculate_fire_special();
-};
-
-class DruugeMissile : public Missile
-{
-	public:
-
-		DruugeMissile(Vector2 opos, double oangle, double ov, int odamage,
-			double weaponDriftVelocity, double orange, int oarmour, Ship *oship,
-			SpaceSprite *osprite);
-
-		virtual void inflict_damage (SpaceObject *other);
-		double kick;
-};
+#include "shpdruma.h"
 
 DruugeMauler::DruugeMauler(Vector2 opos, double shipAngle,
 ShipData *shipData, unsigned int code)

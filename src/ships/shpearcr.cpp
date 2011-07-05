@@ -17,35 +17,7 @@ GNU General Public License for more details.
 #include "ship.h"
 REGISTER_FILE
 
-class EarthlingCruiser : public Ship
-{
-	public:
-		double       weaponRange;
-		double       weaponVelocity;
-		int          weaponDamage;
-		int          weaponArmour;
-		double       weaponTurnRate;
-
-		int    specialColor;
-		double specialRange;
-		int    specialFrames;
-		int    specialDamage;
-
-	public:
-		EarthlingCruiser(Vector2 opos, double angle, ShipData *data, unsigned int code);
-
-	protected:
-		virtual int activate_weapon();
-		virtual int activate_special();
-};
-
-class EarthlingMissile : public HomingMissile
-{
-	public:
-		EarthlingMissile(Vector2 opos, double oangle, double ov,
-			int odamage, double orange, int oarmour, double otrate, Ship *oship,
-			SpaceSprite *osprite);
-};
+#include "shpearcr.h"
 
 EarthlingCruiser::EarthlingCruiser(Vector2 opos, double angle, ShipData *data, unsigned int code)
 :

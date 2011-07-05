@@ -17,39 +17,7 @@ GNU General Public License for more details.
 #include "ship.h"
 REGISTER_FILE
 
-class MyconPodship : public Ship
-{
-	public:
-		double       weaponRange;
-		double       weaponVelocity;
-		int          weaponDamage;
-		double       weaponHome;
-		int          specialRepair;
-
-	public:
-		MyconPodship(Vector2 opos, double angle, ShipData *data, unsigned int code);
-
-		virtual int activate_weapon();
-		virtual int activate_special();
-};
-
-class MyconPlasma : public HomingMissile
-{
-	//double v;
-
-	static SpaceSprite *spriteWeaponExplosion;
-	int frame_count;
-	int max_damage;
-
-	public:
-		MyconPlasma(Vector2 opos, double oangle, double ov, int odamage,
-			double orange, double otrate, Ship *oship, SpaceSprite *osprite, int ofcount);
-
-		virtual void calculate();
-
-		virtual void inflict_damage(SpaceObject *other);
-		virtual int handle_damage(SpaceLocation *source, double normal, double direct);
-};
+#include "shpmycpo.h"
 
 MyconPodship::MyconPodship(Vector2 opos, double angle, ShipData *data, unsigned int code)
 :
@@ -61,6 +29,7 @@ Ship(opos, angle, data, code)
 	weaponDamage   = tw_get_config_int("Weapon", "Damage", 0);
 	weaponHome     = scale_turning(tw_get_config_float("Weapon", "Homing", 0));
 	specialRepair  = tw_get_config_int("Special", "Repair", 0);
+	plasma_shield  = 0;
 }
 
 
@@ -114,6 +83,9 @@ void MyconPlasma::calculate()
 void MyconPlasma::inflict_damage(SpaceObject *other)
 {
 	STACKTRACE;
+	if (other == ship && dynamic_cast<MyconPodship*>(other)) {
+		damage_factor *= 1.0 - ((MyconPodship*)ship)->plasma_shield;
+	}
 	SpaceObject::inflict_damage(other);
 	//if (!other->isShot()) {
 	if (other->isblockingweapons) {

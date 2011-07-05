@@ -229,6 +229,7 @@ class SpaceLocation : public Presence
 		virtual void ship_died();
 		virtual void target_died();
 		virtual bool change_owner(SpaceLocation *new_owner);
+		virtual bool change_owner ( TeamCode team );
 
 		double damage_factor;	 // the damage this item inflicts
 

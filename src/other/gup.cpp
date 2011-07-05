@@ -1,7 +1,6 @@
 #include <string.h>
 #include <allegro.h>
 #include "melee.h"
-
 #include "melee/mframe.h"
 #include "melee/mship.h"
 #include "melee/mcbodies.h"
@@ -14,6 +13,14 @@
 #include "ships/shporzne.h"
 #include "ships/shpkohma.h"
 #include "ships/shputwju.h"
+#include "ships/shparisk.h"
+#include "ships/shpandgu.h"
+#include "ships/shpchebr.h"
+#include "ships/shpearcr.h"
+#include "ships/shpkzedr.h"
+#include "ships/shpsyrpe.h"
+#include "ships/shpmycpo.h"
+#include "ships/shpspael.h"
 
 /* this file contains the ship upgrades used by Gob */
 
@@ -27,17 +34,15 @@ num is not yet incremented when execute() is running
 */
 void Upgrade::clear(Ship *oship, Ship *nship, GobPlayer *gs)
 {
-	STACKTRACE;
 	if (oship) gs->total -= num;
 	num = 0;
 	return;
 }
 
 
+								 //called AFTER execute
 void Upgrade::charge(GobPlayer *gs)
 {
-	STACKTRACE;
-	//called AFTER execute
 	gs->total += 1;
 	num += 1;
 	gs->value_starbucks += this->starbucks;
@@ -46,6 +51,8 @@ void Upgrade::charge(GobPlayer *gs)
 }
 
 
+#define BASE_BZ (gs->total / 4)
+#define BASE_BZ_(a) ((gs->total+(a)) / 4)
 #define UPGRADE(a) virtual Upgrade *duplicate() {return new a();}
 class UpCrewpod : public Upgrade
 {
@@ -53,8 +60,8 @@ class UpCrewpod : public Upgrade
 	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
 		name = "Add Crewpod";
 		if (ship->crew_max >= 42) return false;
-		starbucks = 2;
-		buckazoids = gs->total / 3;
+		starbucks = 1+num;
+		buckazoids = 1 + BASE_BZ;
 		return true;
 	}
 	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
@@ -72,7 +79,7 @@ class UpBattery : public Upgrade
 		name = "Add Battery";
 		if (ship->batt_max >= 42) return false;
 		starbucks = 1;
-		buckazoids = gs->total / 3;
+		buckazoids = BASE_BZ;
 		return true;
 	}
 	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
@@ -89,12 +96,12 @@ class UpThrusters : public Upgrade
 	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
 		name = "Upgrade Thrusters";
 		starbucks = 3 + num * 3;
-		buckazoids = gs->total / 3;
+		buckazoids = BASE_BZ;
 		return true;
 	}
 	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
-		ship->speed_max *=  1 + .3  / (.25*num + 1);
-		ship->accel_rate *= 1 + .18 / (.12*num + 1);
+		ship->speed_max *=  1 + .3  / (.30*num + 1);
+		ship->accel_rate *= 1 + .18 / (.08*num + 1);
 	}
 } thrusters;
 
@@ -104,12 +111,12 @@ class UpControlJets : public Upgrade
 	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
 		name = "Upgrade Control Jets";
 		starbucks = 2 + num * 2;
-		buckazoids = gs->total / 3;
+		buckazoids = BASE_BZ;
 		return true;
 	}
 	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
-		ship->turn_rate  *=  1 + .3  / (num + 1);
-		ship->accel_rate *=  1 + .1  / (.0*num + 1);
+		ship->turn_rate  *=  1 + .3  / (.08*num + 1);
+		ship->accel_rate *=  1 + .1  / (.1*num + 1);
 	}
 } controljets;
 
@@ -118,18 +125,69 @@ class UpDynamo : public Upgrade
 	UPGRADE(UpDynamo)
 	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
 		name = "Upgrade Dynamo";
-		starbucks = 16 / (1 + ship->recharge_amount-num) + num;
+		if (ship->recharge_amount < 0) return false;
+		starbucks = 16 / (1 + ship->recharge_amount-num);
 		if (ship->recharge_amount == 0) starbucks *= 6;
 		if (ship->weapon_rate < 100) starbucks /= 2;
-		if (ship->special_drain > 16) starbucks *= 2;
 		if (!strcmp("supbl", ship->type->id)) starbucks /= 2;
-		buckazoids = gs->total / 3;
+		starbucks += num;
+		if (ship->special_drain > 16) starbucks *= 2;
+		buckazoids = BASE_BZ;
 		return true;
 	}
 	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
 		ship->recharge_amount += 1;
 	}
 } dynamo;
+
+class UpSensor : public Upgrade
+{
+	UPGRADE(UpSensor)
+	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
+		name = "Upgrade Sensor System";
+		starbucks = 1 + num + (num * num * num + num * num * 10 + num * 10) / 100;
+		buckazoids = num / 3 + BASE_BZ;
+		return true;
+	}
+	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
+	}
+} sensor;
+
+class UpRepairSystem : public Upgrade
+{
+	UPGRADE(UpRepairSystem)
+		RepairSystem *rs;
+	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
+		name = "Field Repair System";
+		if (num) name = "Upgrade Field Repair System";
+		starbucks = 4 * (num+1);
+		buckazoids = 2 + BASE_BZ;
+		if (!strcmp("orzne", ship->type->id) ||
+			!strcmp("urqdr", ship->type->id)
+		) {
+			starbucks += 2 * (num + 1);
+			buckazoids += 2 * (num + 1);
+		}
+		return true;
+	}
+	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
+		double eff = 1 - 3 / (4.+num*num+num);
+		//		double eff = 1 - pow(0.5, (num+2) / 3.0);
+		double rate = (num + 1.0) * 0.025 * pow(1.15, num) / eff;
+		if (!rs) {
+			rs = new RepairSystem ( ship );
+			game->add(rs);
+		}
+		rs->rate = rate;
+		rs->efficiency = eff;
+		rs->reset();
+	}
+	void clear(Ship *oship, Ship *nship, GobPlayer *gs) {
+		Upgrade::clear(oship, nship, gs);
+		if (oship && rs) rs->die();
+		rs = NULL;
+	}
+} repairsystem;
 
 /*
 Supox Upgrades
@@ -141,13 +199,13 @@ class UpSupoxRange : public Upgrade
 	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
 		name = "Upgrade Glob Hurler (Supox)";
 		if (strcmp("supbl", ship->type->id)) return false;
-		starbucks = 2 + num;
-		buckazoids = gs->total / 3;
+		starbucks = 2 + num * 2;
+		buckazoids = BASE_BZ;
 		return true;
 	}
 	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
-		((SupoxBlade*)ship)->weaponRange *= 1 + .25 / (1 + num*.1);
-		((SupoxBlade*)ship)->weaponVelocity *= 1.15;
+		((SupoxBlade*)ship)->weaponRange *= 1 + .20 / (1 + num*.20);
+		((SupoxBlade*)ship)->weaponVelocity *= 1 + .05 / (1 + num*.25);
 	}
 } supoxrange;
 
@@ -158,16 +216,15 @@ class UpSupoxDamage : public Upgrade
 		name = "Upgrade Glob Former (Supox)";
 		if (strcmp("supbl", ship->type->id)) return false;
 		if (gs->ship->recharge_amount < (1<<num)) return false;
-		if (num > 7) return false;
+		if (num >= 6) return false;
 		starbucks = 5;
-		buckazoids = gs->total / 3;
+		buckazoids = BASE_BZ;
 		return true;
 	}
 	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
 		((SupoxBlade*)ship)->weaponDamage += 1;
 		((SupoxBlade*)ship)->weaponArmour += 1;
 		((SupoxBlade*)ship)->weapon_drain += num + 1;
-		if (num > 1) ((SupoxBlade*)ship)->recharge_amount += 1;
 	}
 } supoxdamage;
 
@@ -178,11 +235,11 @@ class UpSupoxBLADE : public Upgrade
 		name = "Add B.L.A.D.E. (Supox)";
 		if (strcmp("supbl", ship->type->id)) return false;
 		starbucks = 2 + num;
-		buckazoids = gs->total / 3;
+		buckazoids = BASE_BZ;
 		return true;
 	}
 	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
-		((SupoxBlade*)ship)->damage_factor += 3;
+		((SupoxBlade*)ship)->damage_factor += 3 + num;
 	}
 } supoxblade;
 
@@ -196,14 +253,15 @@ class UpOrzMissile : public Upgrade
 	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
 		name = "Upgrade Missiles (ORZ)";
 		if (strcmp("orzne", ship->type->id)) return false;
-		starbucks = 6;
-		buckazoids = gs->total / 2 + 2;
+		if (num > 30) return false;
+		starbucks = 6 + num;
+		buckazoids = BASE_BZ + 2;
 		return true;
 	}
 	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
 		((OrzNemesis*)ship)->weaponDamage += 1;
 		((OrzNemesis*)ship)->weaponArmour += 1;
-		((OrzNemesis*)ship)->weaponRange *= 1.15;
+		((OrzNemesis*)ship)->weaponRange *= 1 + .15 / (1+num*.05);
 		((OrzNemesis*)ship)->weapon_drain += 1;
 	}
 } orzmissile;
@@ -214,14 +272,14 @@ class UpOrzMarineSpeed : public Upgrade
 	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
 		name = "Upgrade Marine Suits (ORZ)";
 		if (strcmp("orzne", ship->type->id)) return false;
-		starbucks = 3 + num * 2;
-		buckazoids = gs->total / 3;
+		starbucks = 3 + num * 3;
+		buckazoids = BASE_BZ;
 		return true;
 	}
 	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
-		((OrzNemesis*)ship)->specialArmour += 1;
+		((OrzNemesis*)ship)->specialArmour += 1 + num/2;
 		((OrzNemesis*)ship)->specialSpeedMax *= 1 + .2 / (.2*num+1);
-		((OrzNemesis*)ship)->specialAccelRate *= 1.15;
+		((OrzNemesis*)ship)->specialAccelRate *= 1 + .15 / (.2 * num + 1);
 	}
 } orzmarinespeed;
 
@@ -233,11 +291,11 @@ class UpOrzAbsorbtion : public Upgrade
 		if (strcmp("orzne", ship->type->id)) return false;
 		if (num) return false;
 		starbucks = 15;
-		buckazoids = gs->total / 3;
+		buckazoids = BASE_BZ + BASE_BZ_(1) + BASE_BZ_(2);
 		return true;
 	}
 	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
-		((OrzNemesis*)ship)->absorption = 256 / 3;
+		((OrzNemesis*)ship)->absorption = iround_down(256 / 3.6);
 	}
 	void charge(GobPlayer *gs) {
 		Upgrade::charge(gs);
@@ -255,14 +313,14 @@ class UpKohrAhBladeDamage : public Upgrade
 	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
 		name = "Increase Shuriken Sharpness (Kohr-Ah)";
 		if (strcmp("kohma", ship->type->id)) return false;
-		starbucks = 2 + num;
-		buckazoids = gs->total / 3;
+		starbucks = 7 + num * 2;
+		buckazoids = BASE_BZ;
 		return true;
 	}
 	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
-		((KohrAhMarauder*)ship)->weaponDamage += 1;
-		((KohrAhMarauder*)ship)->weaponArmour += 1;
-		((KohrAhMarauder*)ship)->weapon_drain += 1;
+		((KohrAhMarauder*)ship)->weaponDamage += 2;
+		((KohrAhMarauder*)ship)->weaponArmour += 2;
+		((KohrAhMarauder*)ship)->weapon_drain += 2;
 	}
 } kohrahbladedamage;
 
@@ -273,11 +331,11 @@ class UpKohrAhBladeSpeed : public Upgrade
 		if (strcmp("kohma", ship->type->id)) return false;
 		name = "Increase Shuriken Velocity (Kohr-Ah)";
 		starbucks = 2 + num * 2;
-		buckazoids = gs->total / 3;
+		buckazoids = BASE_BZ;
 		return true;
 	}
 	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
-		((KohrAhMarauder*)ship)->weaponVelocity *= 1.2;
+		((KohrAhMarauder*)ship)->weaponVelocity *= 1 + .2 / (1 + num * .2);
 	}
 } kohrahbladespeed;
 
@@ -285,17 +343,17 @@ class UpKohrAhFireRange : public Upgrade
 {
 	UPGRADE(UpKohrAhFireRange)
 	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
-		name = "double F.R.I.E.D. range (Kohr-Ah)";
+		name = "increase F.R.I.E.D. range (Kohr-Ah)";
 		if (strcmp("kohma", ship->type->id)) return false;
-		if (num) return false;
-		starbucks = 30;
-		buckazoids = gs->total / 3;
+		if (num >= 5) return false;
+		starbucks = 5 * (num + 2);
+		buckazoids = 2 + BASE_BZ;
 		return true;
 	}
 	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
-		((KohrAhMarauder*)ship)->specialRange *= 2;
-		((KohrAhMarauder*)ship)->specialVelocity *= 1.4;
-		((KohrAhMarauder*)ship)->special_drain += 12;
+		((KohrAhMarauder*)ship)->specialRange *= 1 + .2 / (1 + .1 * num);
+		((KohrAhMarauder*)ship)->specialVelocity *= 1 + .05 / (1 + .1 * num);
+		((KohrAhMarauder*)ship)->special_drain += 2;
 	}
 } kohrahfirerange;
 
@@ -303,16 +361,16 @@ class UpKohrAhFireDamage : public Upgrade
 {
 	UPGRADE(UpKohrAhFireDamage)
 	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
-		name = "double F.R.I.E.D. damage (Kohr-Ah)";
+		name = "increase F.R.I.E.D. damage (Kohr-Ah)";
 		if (strcmp("kohma", ship->type->id)) return false;
-		if (num) return false;
-		starbucks = 13;
-		buckazoids = gs->total / 3;
+		if (num >= 5) return false;
+		starbucks = 4 + num * 2;
+		buckazoids = 1 + BASE_BZ;
 		return true;
 	}
 	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
-		((KohrAhMarauder*)ship)->specialDamage *= 2;
-		((KohrAhMarauder*)ship)->special_drain += 6;
+		((KohrAhMarauder*)ship)->specialDamage += 1;
+		((KohrAhMarauder*)ship)->special_drain += 2;
 	}
 } kohrahfiredamage;
 
@@ -326,12 +384,12 @@ class UpUtwigJuggerRange : public Upgrade
 	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
 		name = "Upgrade Bolt Regulator (Utwig)";
 		if (strcmp("utwju", ship->type->id)) return false;
-		starbucks = 3;
-		buckazoids = gs->total / 3;
+		starbucks = 3 + num;
+		buckazoids = BASE_BZ;
 		return true;
 	}
 	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
-		((UtwigJugger*)ship)->weaponRange += 100;
+		((UtwigJugger*)ship)->weaponRange += 80;
 	}
 } utwigrange;
 class UpUtwigJuggerDamage : public Upgrade
@@ -340,12 +398,14 @@ class UpUtwigJuggerDamage : public Upgrade
 	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
 		name = "Upgrade Bolt Charger (Utwig)";
 		if (strcmp("utwju", ship->type->id)) return false;
-		starbucks = (num + 3) * 5;
-		buckazoids = gs->total / 3;
+		starbucks = (num + 3) * 4;
+		buckazoids = BASE_BZ;
+		if (ship->weapon_rate > 1000) return false;
 		return true;
 	}
 	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
 		((UtwigJugger*)ship)->weaponDamage += 1;
+		((UtwigJugger*)ship)->weaponArmour += 1;
 		ship->weapon_rate += 250;
 	}
 } utwigdamage;
@@ -357,7 +417,7 @@ class UpUtwigJuggerROF : public Upgrade
 		if (strcmp("utwju", ship->type->id)) return false;
 		if (ship->weapon_rate < 425) return false;
 		starbucks = num / 2 + 2;
-		buckazoids = gs->total / 3;
+		buckazoids = BASE_BZ;
 		return true;
 	}
 	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
@@ -370,7 +430,8 @@ class UpUtwigJuggerMaskOfHonestDemeanor : public Upgrade
 	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
 		name = "Mask of Honest Demeanor (max 1 mask)";
 		if (strcmp("utwju", ship->type->id)) return false;
-		if ((num + gs->upgrade_list[UpgradeIndex::utwigmask2]->num) == 1) return false;
+		if (strcmp(station->build_type, "utwju")) return false;
+		if ((num + gs->upgrade_list[UpgradeIndex::utwigmask2]->num) >= 1) return false;
 		starbucks = 99;
 		buckazoids = 0;
 		return true;
@@ -386,7 +447,7 @@ class UpUtwigJuggerMaskOfElephantineFortitude : public Upgrade
 	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
 		name = "Mask of Elephantine Fortitude (max 1 mask)";
 		if (strcmp("utwju", ship->type->id)) return false;
-		if ((num + gs->upgrade_list[UpgradeIndex::utwigmask1]->num) == 1) return false;
+		if ((num + gs->upgrade_list[UpgradeIndex::utwigmask1]->num) >= 1) return false;
 		starbucks = 99;
 		buckazoids = 0;
 		return true;
@@ -397,6 +458,231 @@ class UpUtwigJuggerMaskOfElephantineFortitude : public Upgrade
 } utwigmask2;
 
 /*
+Miscilaneous Ship-Specific Upgrades
+*/
+
+class UpAndrosynthBubbleRate : public Upgrade
+{
+	UPGRADE(UpAndrosynthBubbleRate)
+	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
+		name = "Upgrade Bubble Former (Androsynth)";
+		if (strcmp("andgu", ship->type->id)) return false;
+		if (num >= 3) return false;
+		if (gs->ship->recharge_amount < (1<<(num+1))) return false;
+
+		starbucks = 2 * pow(5.0,num);
+		buckazoids = BASE_BZ + 1 * pow(5.0,num);
+		return true;
+	}
+	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
+		((AndrosynthGuardian*)ship)->weapon_rate /= 2;
+	}
+} androsynthbubblerate;
+class UpAndrosynthComet : public Upgrade
+{
+	UPGRADE(UpAndrosynthComet)
+	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
+		name = "Upgrade Comet Form (Androsynth)";
+		if (strcmp("andgu", ship->type->id)) return false;
+		starbucks = 3 + num;
+		buckazoids = BASE_BZ + 1;
+		return true;
+	}
+	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
+		((AndrosynthGuardian*)ship)->specialDamage += 3;
+		((AndrosynthGuardian*)ship)->specialVelocity *= 1 + .05 / (1+num*.04);
+	}
+} androsynthcomet;
+class UpArilouLaserDamage : public Upgrade
+{
+	UPGRADE(UpArilouLaserDamage)
+	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
+		name = "Upgrade Laser Wattage (Arilou)";
+		if (strcmp("arisk", ship->type->id)) return false;
+		starbucks = 5 + num * 5;
+		buckazoids = BASE_BZ + 1;
+		return true;
+	}
+	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
+		((ArilouSkiff*)ship)->weaponDamage += num;
+		((ArilouSkiff*)ship)->weapon_drain += num;
+	}
+} ariloulaserdamage;
+class UpArilouLaserRange : public Upgrade
+{
+	UPGRADE(UpArilouLaserRange)
+	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
+		name = "Upgrade Laser Range (Arilou)";
+		if (strcmp("arisk", ship->type->id)) return false;
+		starbucks = 5 + num * 5;
+		buckazoids = BASE_BZ + 1;
+		return true;
+	}
+	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
+		((ArilouSkiff*)ship)->weaponRange *= 1 + .20 / (1 + .10 * num);
+	}
+} ariloulaserrange;
+class UpChenjesuMainWeapon : public Upgrade
+{
+	UPGRADE(UpChenjesuMainWeapon)
+	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
+		name = "Upgrade Photon Shards (Chenjesu)";
+		if (strcmp("chebr", ship->type->id)) return false;
+		starbucks = 4 + num * 2;
+		buckazoids = BASE_BZ + 1;
+		return true;
+	}
+	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
+		((ChenjesuBroodhome*)ship)->weaponDamage += 3;
+		((ChenjesuBroodhome*)ship)->weaponArmour += 3;
+		((ChenjesuBroodhome*)ship)->shardDamage += 1;
+		((ChenjesuBroodhome*)ship)->shardArmour += 1;
+		((ChenjesuBroodhome*)ship)->shardRange *= 1 + 0.2 / (1 + num * 0.25);
+		((ChenjesuBroodhome*)ship)->weaponVelocity *= 1 + 0.2 / (1 + num * 0.25);
+	}
+} chenjesumainweapon;
+class UpChenjesuSpecial : public Upgrade
+{
+	UPGRADE(UpChenjesuSpecial)
+	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
+		name = "Upgrade DOGI Systems (Chenjesu)";
+		if (strcmp("chebr", ship->type->id)) return false;
+		starbucks = 3 + num * 3;
+		buckazoids = BASE_BZ + 1;
+		return true;
+	}
+	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
+		((ChenjesuBroodhome*)ship)->specialArmour += 4 + num * 2;
+		((ChenjesuBroodhome*)ship)->specialDamage += 1;
+		((ChenjesuBroodhome*)ship)->specialFuelSap += 2 + num;
+	}
+} chenjesuspecial;
+class UpEarthlingWarhead : public Upgrade
+{
+	UPGRADE(UpEarthlingWarhead)
+	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
+		name = "Upgrade Warheads (Earthling)";
+		if (strcmp("earcr", ship->type->id)) return false;
+		starbucks = 4 + num * 2;
+		buckazoids = BASE_BZ + 1;
+		return true;
+	}
+	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
+		((EarthlingCruiser*)ship)->weaponDamage *= 2;
+	}
+} earthlingwarhead;
+class UpEarthlingMissile : public Upgrade
+{
+	UPGRADE(UpEarthlingMissile)
+	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
+		name = "Upgrade Missiles (Earthling)";
+		if (strcmp("earcr", ship->type->id)) return false;
+		starbucks = 4 + num * 2;
+		buckazoids = BASE_BZ + 1;
+		return true;
+	}
+	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
+		((EarthlingCruiser*)ship)->weaponArmour += 1;
+		((EarthlingCruiser*)ship)->weaponRange *= 1 + .25 / (1 + .15*num);
+		((EarthlingCruiser*)ship)->weaponVelocity *= 1 + .15 / (1 + .15*num);
+	}
+} earthlingmissile;
+class UpEarthlingHoming : public Upgrade
+{
+	UPGRADE(UpEarthlingHoming)
+	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
+		name = "Upgrade Missile Homing (Earthling)";
+		if (strcmp("earcr", ship->type->id)) return false;
+		starbucks = 4 + num * 2;
+		buckazoids = BASE_BZ + 1;
+		return true;
+	}
+	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
+		((EarthlingCruiser*)ship)->weaponTurnRate *= 1 + .35 / (1 + .15*num);
+		((EarthlingCruiser*)ship)->weaponVelocity *= 1 + .15 / (1 + .15*num);
+	}
+} earthlinghoming;
+class UpEarthlingDefense : public Upgrade
+{
+	UPGRADE(UpEarthlingDefense)
+	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
+		name = "Upgrade Point Defense System Range (Earthling)";
+		if (strcmp("earcr", ship->type->id)) return false;
+		starbucks = 3 + num * 3;
+		buckazoids = BASE_BZ + 1;
+		return true;
+	}
+	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
+		((EarthlingCruiser*)ship)->specialRange *= 1 + .25 / (1 + .20*num);
+	}
+} earthlingdefense;
+class UpMyconPlasmaShield : public Upgrade
+{
+	UPGRADE(UpEarthlingDefense)
+	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
+		name = "Upgrade Plasma Shield (Mycon)";
+		if (strcmp("mycpo", ship->type->id)) return false;
+		if (num >= 3) return false;
+		starbucks = 12 + num * 12;
+		buckazoids = BASE_BZ + 1;
+		return true;
+	}
+	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
+		MyconPodship *mp = (MyconPodship *)ship;
+		if (mp->plasma_shield) mp->plasma_shield += 0.25;
+		else mp->plasma_shield = 0.5;
+	}
+} myconplasmashield;
+class UpUrquanFusion : public Upgrade
+{
+	UPGRADE(UpUrquanFusion)
+	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
+		name = "Upgrade Fusion Blaster (Green Urquan)";
+		if (strcmp("kzedr", ship->type->id)) return false;
+		starbucks = 4 + num * 4;
+		buckazoids = BASE_BZ + 1;
+		return true;
+	}
+	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
+		((KzerZaDreadnought*)ship)->weaponDamage += 2;
+		((KzerZaDreadnought*)ship)->weaponArmour += 2;
+		((KzerZaDreadnought*)ship)->weaponRange *= 1 + .2 / (1 + .15*num);
+	}
+} urquanfusion;
+class UpSpathiGun : public Upgrade
+{
+	UPGRADE(UpSpathiGun)
+	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
+		name = "Upgrade Spathi Gun (Spathi)";
+		if (strcmp("spael", ship->type->id)) return false;
+		starbucks = 4 + num * 4;
+		buckazoids = BASE_BZ + 1;
+		return true;
+	}
+	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
+		((SpathiEluder*)ship)->weaponDamage += 1;
+		((SpathiEluder*)ship)->weaponArmour += 1;
+		((SpathiEluder*)ship)->weaponRange *= 1 + .2 / (1 + .15*num);
+	}
+} spathigun;
+class UpSyreenGun : public Upgrade
+{
+	UPGRADE(UpSpathiGun)
+	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
+		name = "Upgrade Stileto (Syreen)";
+		if (strcmp("spael", ship->type->id)) return false;
+		starbucks = 4 + num * 3;
+		buckazoids = BASE_BZ + 1;
+		return true;
+	}
+	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
+		((SyreenPenetrator*)ship)->weaponDamage += 1;
+		((SyreenPenetrator*)ship)->weaponArmour += 1;
+		((SyreenPenetrator*)ship)->weaponRange *= 1 + .2 / (1 + .15*num);
+	}
+} syreengun;
+
+/*
 Special Upgrades
 */
 
@@ -404,10 +690,10 @@ class UpDivineFavor : public Upgrade
 {
 	UPGRADE(UpDivineFavor)
 	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
-		name = "Divine Favor (unique)";
+		name = "Divine Favor";
 		if (strcmp(station->build_type, "orzne")) return false;
 		if (num) return false;
-		starbucks = 150;
+		starbucks = 99;
 		buckazoids = 0;
 		return true;
 	}
@@ -425,24 +711,37 @@ class UpDivineFavor : public Upgrade
 class UpUnholyAura : public Upgrade
 {
 	UPGRADE(UpUnholyAura)
+		int last_time;
+	UnholyAura *aura;
 	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
 		name = "the Devil protects his own...";
 		starbucks = 6;
 		buckazoids = 66;
+		if (num) starbucks += 60;
+		if (num > 1) starbucks += 600;
+		if (num > 2) buckazoids += 600;
 		//if (strcmp(station->build_type, "orzne")) return false;
-		if (num) return false;
+		if (num && game->game_time < last_time + 666) return false;
 		if (((game->game_time / 1000) % 1000) == 666) return true;
 		if (((game->game_time / 1000) % 666) == 0) return true;
 		//666, 1332, 1666, 1998, etc.
 		return false;
 	}
 	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
-		game->add ( new UnholyAura ( ship ) );
+		last_time = game->game_time;
+		if (!num) {
+			aura = new UnholyAura ( ship );
+			game->add ( aura );
+		}
+		else aura->level ++;
 	}
 	void clear(Ship *oship, Ship *nship, GobPlayer *gs) {
 		if (!oship) num = 0;
 		else if (num) {
-			game->add ( new UnholyAura ( nship ) );
+			aura->die();
+			aura = new UnholyAura ( nship );
+			aura->level = num;
+			game->add ( aura );
 		}
 		return;
 	}
@@ -454,39 +753,63 @@ class UpUnholyAura : public Upgrade
 class UpDefender : public Upgrade
 {
 	UPGRADE(UpDefender)
+		public:
 		GobDefender *def[6];
+		bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
+			name = "External Defense System";
+			if (strcmp(station->build_type, "kohma")) return false;
+			if (num >= 6) return false;
+			starbucks = 5 + 5 * (num+1) * num;
+			buckazoids = 12 + 5 * num;
+			return true;
+		}
+		void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
+			def[num] = new GobDefender(ship);
+			int i;
+			for (i = 0; i <= num; i += 1) def[i]->base_phase = i * PI2 / (num+1);
+			gobgame->add (def[num]);
+		}
+		void clear(Ship *oship, Ship *nship, GobPlayer *gs) {
+			if (!oship) num = 0;
+			if (oship) {
+				for (int i = 0; i < num; i += 1) {
+					def[i]->die();
+					def[i] = new GobDefender(nship);
+					def[i]->base_phase = i * PI2 / num;
+					if (i < gs->upgrade_list[UpgradeIndex::defender2]->num) def[i]->advanced = 1;
+					game->add(def[i]);
+				}
+			}
+			//Upgrade::clear(oship, nship, gs);
+			return;
+		}
+		void charge(GobPlayer *gs) {
+			num += 1;
+		}
+} defender;
+class UpDefender2 : public Upgrade
+{
+	UPGRADE(UpDefender2)
 	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
-		name = "External Defense System";
+		name = "Advanced External Defense System";
 		if (strcmp(station->build_type, "kohma")) return false;
-		if (num >= 6) return false;
-		starbucks = 5 + 5 * (num+1) * num;
-		buckazoids = 12;
+		if (num >= gs->upgrade_list[UpgradeIndex::defender]->num) return false;
+		starbucks = 25 + 25 * (num+1) * num;
+		buckazoids = 75 + 15 * num * (num+1);
 		return true;
 	}
 	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
-		def[num] = new GobDefender(ship);
-		int i;
-		for (i = 0; i <= num; i += 1) def[i]->base_phase = i * PI2 / (num+1);
-		gobgame->add (def[num]);
+		for (int i = 0; i <= num; i++)
+			((UpDefender*)gs->upgrade_list[UpgradeIndex::defender])->def[i]->advanced = 1;
 	}
 	void clear(Ship *oship, Ship *nship, GobPlayer *gs) {
 		if (!oship) num = 0;
-		if (oship) {
-			for (int i = 0; i < num; i += 1) {
-				def[i]->die();
-				def[i] = new GobDefender(nship);
-				def[i]->base_phase = i * PI2 / num;
-				game->add(def[i]);
-			}
-		}
-		//Upgrade::clear(oship, nship, gs);
 		return;
 	}
 	void charge(GobPlayer *gs) {
-		gs->total += 1;
 		num += 1;
 	}
-} defender;
+} defender2;
 
 class UpPlanetLocater : public Upgrade
 {
@@ -503,7 +826,7 @@ class UpPlanetLocater : public Upgrade
 	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
 		locater = new Presence *[gobgame->num_planets];
 		for (int i = 0; i < gobgame->num_planets; i += 1) {
-			locater[i] = new WedgeIndicator ( gobgame->planet[i], 80, 2 );
+			locater[i] = new WedgeIndicator ( gobgame->planet[i], 50, i+1 );
 			gobgame->add (locater[i] );
 		}
 	}
@@ -521,7 +844,7 @@ class UpHyperDynamo : public Upgrade
 {
 	UPGRADE(UpHyperDynamo)
 	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
-		name = "Hyper Dynamo (ancient artifact)";
+		name = "Chronotronic Dynamo (ancient artifact)";
 		if (game->game_time / 1000 < 21 * 60) return false;
 		starbucks = 720 / (game->game_time / (1000*60*10) - 1);
 		//unavailable before 20 minutes
@@ -532,8 +855,8 @@ class UpHyperDynamo : public Upgrade
 		//144 starbucks at 60 minutes
 		//120 starbucks at 70 minutes
 		//102 starbucks at 80 minutes
-		//90 starbucks at 90 minutes
-		buckazoids = starbucks/2 + gs->total / 3;
+		// 90 starbucks at 90 minutes
+		buckazoids = starbucks/2 + BASE_BZ;
 		if (gs->starbucks < starbucks / 4) return false;
 		if (ship->recharge_amount == 0) return false;
 		if (num) return false;
@@ -544,31 +867,20 @@ class UpHyperDynamo : public Upgrade
 	}
 } hyperdynamo;
 
-/*class UpRoswellDevice : public Upgrade {
-	UPGRADE(UpUnholyAura)
+class UpRoswellDevice : public Upgrade
+{
+	UPGRADE(UpRoswellDevice);
 	bool update(Ship *ship, GobStation *station, GobPlayer *gs) {
 		name = "Roswell Device";
-		if (((game->game_time / 1000) % 1000) < 700) return false;
-		starbucks = 99;
-		buckazoids = 9;
 		if (strcmp(station->build_type, "utwju")) return false;
+		starbucks = 3;
+		buckazoids = 10 + BASE_BZ;
 		if (num) return false;
 		return true;
 	}
 	void execute(Ship *ship, GobStation *station, GobPlayer *gs) {
-		game->add ( new RoswellDevice ( ship ) );
 	}
-	void clear(Ship *oship, Ship *nship, GobPlayer *gs) {
-		if (!oship) num = 0;
-		else if (num) {
-			game->add ( new RoswellDevice ( nship ) );
-		}
-		return;
-	}
-	void charge(GobPlayer *gs) {
-		num += 1;
-	}
-} roswelldevice;*/
+} roswelldevice;
 
 /*
 note to future coders:
@@ -583,6 +895,8 @@ static Upgrade *_upgrade_list[] =
 	&thrusters,
 	&controljets,
 	&dynamo,
+	&sensor,
+	&repairsystem,
 	&supoxrange,
 	&supoxdamage,
 	&supoxblade,
@@ -598,12 +912,29 @@ static Upgrade *_upgrade_list[] =
 	&utwigrof,
 	&utwigmask1,
 	&utwigmask2,
+
+	&androsynthbubblerate,
+	&androsynthcomet,
+	&ariloulaserdamage,
+	&ariloulaserrange,
+	&chenjesumainweapon,
+	&chenjesuspecial,
+	&earthlingwarhead,
+	&earthlingmissile,
+	&earthlinghoming,
+	&earthlingdefense,
+	&myconplasmashield,
+	&urquanfusion,
+	&spathigun,
+	&syreengun,
+
 	&divinefavor,
 	&unholyaura,
 	&defender,
+	&defender2,
 	&planetlocater,
 	&hyperdynamo,
-	//	&roswelldevice,
+	&roswelldevice,
 	NULL
 };
 
@@ -613,6 +944,7 @@ UnholyAura::UnholyAura ( SpaceLocation * ship )
 {
 	focus = ship;
 	angle = 0;
+	level = 1;
 }
 
 
@@ -625,7 +957,7 @@ void UnholyAura::animate (Frame *frame)
 	color = tw_color ( color * 255 * 2 / speed, 0, 0);
 	Vector2 r;
 	r.y = space_zoom * 240;
-	r.x = r.y * 1.5;
+	r.x = r.y * 1.0;
 	double a = angle;
 	line (frame->surface,
 		p + r *(unit_vector(a +   0 * ANGLE_RATIO)),
@@ -662,9 +994,9 @@ void UnholyAura::calculate ()
 	if (angle < 0) angle += 360;
 	if (random(1700) < frame_time) {
 		Query q;
-		q.begin(focus, OBJECT_LAYERS, 666);
+		q.begin(focus, OBJECT_LAYERS, 666 * 2 * (0.8 + level * 0.2) * random(1.0));
 		for (;q.current; q.next() ) {
-			if (!(focus->sameTeam(q.current))) q.current->handle_damage(focus, 0, random() % 6);
+			if (!(focus->sameTeam(q.current))) q.current->handle_damage(focus, 0, random(5+level));
 		}
 	}
 }
@@ -742,8 +1074,6 @@ void GobRadar::animate ( Frame * frame ) {
 }
 
 GobRadar::GobRadar() {
-	STACKTRACE;
-  STACKTRACE;
 	attributes &= ~ATTRIB_SYNCHED;
 	team = 0;
 	gx = 0;

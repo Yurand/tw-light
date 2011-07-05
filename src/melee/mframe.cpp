@@ -471,6 +471,13 @@ bool SpaceLocation::change_owner(SpaceLocation *new_owner)
 }
 
 
+bool SpaceLocation::change_owner ( TeamCode team )
+{
+	ally_flag = physics->get_code(-1, team);
+	return true;
+}
+
+
 void SpaceLocation::death()
 {
 	STACKTRACE;

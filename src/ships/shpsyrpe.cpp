@@ -17,46 +17,7 @@ GNU General Public License for more details.
 #include "ship.h"
 REGISTER_FILE
 
-class SyreenPenetrator : public Ship
-{
-	public:
-		double       weaponRange;
-		double       weaponVelocity;
-		int          weaponDamage;
-		int          weaponArmour;
-
-		double       specialRange;
-		double       specialVelocity;
-		int          specialDamage;
-		int          specialFrames;
-
-	public:
-		SyreenPenetrator(Vector2 opos, double angle, ShipData *data, unsigned int code);
-
-		virtual int activate_weapon();
-		virtual int activate_special();
-};
-
-class CrewPod : public SpaceObject
-{
-	int frame_count;
-	int frame_size;
-	int frame_step;
-
-	double velocity;
-	int    life;
-	int    lifetime;
-
-	public:
-		CrewPod(Vector2 opos, double oVelocity, int oLifeTime,
-			Ship *oship, SpaceSprite *osprite, int ofcount, int ofsize);
-
-		virtual void calculate();
-		virtual int sameTeam(SpaceLocation *other);
-
-		virtual void inflict_damage(SpaceObject *other);
-		virtual int handle_damage(SpaceLocation *source, double normal, double direct);
-};
+#include "shpsyrpe.h"
 
 SyreenPenetrator::SyreenPenetrator(Vector2 opos, double angle, ShipData *data, unsigned int code)
 :
