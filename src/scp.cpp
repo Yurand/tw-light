@@ -520,6 +520,11 @@ void MainMenu::doit()
 				play_game("Melee");
 				enable();
 				break;
+			case MAIN_DIALOG_GOB:
+				disable();
+				play_game("GOB");
+				enable();
+				break;
 			case MAIN_DIALOG_MELEE_EXTENDED:
 				disable();
 				extended_menu();
