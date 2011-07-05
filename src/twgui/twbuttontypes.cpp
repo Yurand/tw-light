@@ -332,8 +332,7 @@ AreaTablet(menu, identbranch, 255)
 	if (button) {
 		bwhalf = button->w/2;
 		bhhalf = button->h/2;
-	}
-	else {
+	} else {
 		bwhalf = 0;
 		bhhalf = 0;
 	}
@@ -346,8 +345,7 @@ AreaTablet(menu, identbranch, 255)
 	if (direction == ver) {
 		pmin = bhhalf;
 		pmax = iround(size.y - bhhalf);
-	}
-	else {
+	} else {
 		pmin = bwhalf;
 		pmax = iround(size.x - bwhalf);
 	}

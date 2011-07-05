@@ -129,8 +129,7 @@ double ControlWussie::evasion (Ship * ship)
 			shotint = shot_pos.y - (shotslope * shot_pos.x);
 			if (fabs(shotint - shipint) < 1 || fabs(shotslope - shipslope) < 0.05) {
 				collideshot = FALSE;
-			}
-			else {
+			} else {
 				xs = (shipint - shotint) / (shotslope - shipslope);
 				ys = (shipslope * xs) + shipint;
 			}
@@ -222,8 +221,7 @@ int ControlWussie::think ()
 					velocity = option_velocity[state][0];
 					if (velocity == 0) velocity = MAX_SPEED;
 					rel = game->shot_relativity;
-				}
-				else {
+				} else {
 					velocity = ship->speed_max;
 				}
 				angle = intercept_angle2( ship->normal_pos(), ship->get_vel() * rel, velocity, ship->target->normal_pos(),
@@ -239,8 +237,7 @@ int ControlWussie::think ()
 					angle = ship->trajectory_angle (ship->target) - ship->get_angle ();
 					if (distance < min_range[state])
 						tactic_state = STATE_TOO_CLOSE;
-				}
-				else {
+				} else {
 					angle = ship->trajectory_angle (ship->target) - ship->get_angle () + PI;
 					if (distance > max_range[state])
 						tactic_state = STATE_TOO_FAR;
@@ -260,8 +257,7 @@ int ControlWussie::think ()
 	if (angle > PI) {
 		angle -= PI2;
 		action |= keyflag::left;
-	}
-	else {
+	} else {
 		action |= keyflag::right;
 	}
 	action |= keyflag::thrust;
@@ -412,8 +408,7 @@ int ControlWussie::think ()
 						if (ship->target->distance (bomb) > bombdistance[j]) {
 							option_held[j] = FALSE;
 							dontfireoption[j] = TRUE;
-						}
-						else {
+						} else {
 							bombdistance[j] = ship->target->distance (bomb);
 						}
 						delete bomb;

@@ -341,8 +341,7 @@ void WissumTripod::calculate()
 	if ( k == 2 ) {
 		accel_rate = 2 * default_accel_rate;
 		speed_max = 2 * default_speed_max;
-	}
-	else {
+	} else {
 		accel_rate = default_accel_rate;
 		speed_max = default_speed_max;
 	}

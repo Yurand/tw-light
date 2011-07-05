@@ -82,8 +82,7 @@ static void ase_rectbox(BITMAP *bmp, int x1, int y1, int x2, int y2, int flags)
 		fg = makecol(128, 128, 128);
 		top = 255;
 		bottom = 128;
-	}
-	else {
+	} else {
 		bg = makecol(255, 255, 255);
 		fg = makecol(0, 0, 0);
 		top = 255;
@@ -262,8 +261,7 @@ int d_aase_edit_proc(int msg, DIALOG *d, int c)
 		if (x <= d->w) {
 			b = l;
 			scroll = FALSE;
-		}
-		else {
+		} else {
 			b--;
 			scroll = TRUE;
 		}

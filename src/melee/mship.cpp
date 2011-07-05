@@ -516,8 +516,7 @@ void Ship::calculate()
 				death_counter = 0;
 				death_explosion_counter = 0;
 				collide_flag_anyone = collide_flag_sameship = collide_flag_sameteam = 0;
-			}
-			else {
+			} else {
 				state = 0;
 				game->add(new Animation(this, pos, meleedata.kaboomSprite, 0, KABOOM_FRAMES, time_ratio, DEPTH_EXPLOSIONS));
 			}
@@ -563,8 +562,7 @@ void Ship::calculate()
 					}
 					if (control->index != -1) {
 						if (i == control->index) break;
-					}
-					else {
+					} else {
 						if (i == 0) break;
 					}
 				}
@@ -583,8 +581,7 @@ void Ship::calculate()
 					if (control->index != -1) {
 						if (i == control->index)
 							break;
-					}
-					else {
+					} else {
 						if (i == 0) break;
 					}
 				}
@@ -711,8 +708,7 @@ int Ship::handle_damage(SpaceLocation *source, double normal, double direct)
 			death_counter = 0;
 			death_explosion_counter = 0;
 			collide_flag_anyone = collide_flag_sameship = collide_flag_sameteam = 0;
-		}
-		else {
+		} else {
 			state = 0;
 			game->add(new Animation(this, pos, meleedata.kaboomSprite, 0, KABOOM_FRAMES, time_ratio, DEPTH_EXPLOSIONS));
 		}

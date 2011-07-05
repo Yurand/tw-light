@@ -292,8 +292,7 @@ Color RaalrithMenacer::crewPanelColor(int k)
 			200,200,200
 		};
 		return c;
-	}
-	else {
+	} else {
 		return Ship::crewPanelColor(k);
 	}
 }

@@ -197,8 +197,7 @@ int ConfederationHornet::handle_damage(SpaceLocation *source, double normal, dou
 	if ((normal - shield) <= 0) {
 		shield -= iround(normal);
 		normal = 0;
-	}
-	else {
+	} else {
 		normal -= shield;
 		shield = 0;
 	}

@@ -176,8 +176,7 @@ void MelnormeShot::calculate()
 	STACKTRACE;
 	if (released) {
 		Shot::calculate();
-	}
-	else {
+	} else {
 		SpaceObject::calculate();
 	}
 	if (!exists()) return;
@@ -208,8 +207,7 @@ void MelnormeShot::calculate()
 			vel = v * unit_vector(angle);
 			released = TRUE;
 			play_sound(data->sampleSpecial[0]);
-		}
-		else {
+		} else {
 			angle = ship->get_angle();
 			//			x = ship->normal_x() + (cos(angle) * (ship->width() / 2.0));
 			//			y = ship->normal_y() + (sin(angle) * (ship->height() / 2.0));

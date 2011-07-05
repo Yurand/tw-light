@@ -977,7 +977,7 @@ void Game::init(Log *_log)
 
 	std::string client_ini = home_ini_full_path("client.ini");
 	std::string server_ini = home_ini_full_path("server.ini");
-	
+
 	tw_set_config_file(client_ini.c_str());
 	change_view(get_config_string("View", "View", "Hero"));
 
@@ -1102,8 +1102,7 @@ void Game::init_lag()
 		message.print(15000, 15, "target ping set to: %d ms (pessimistically: %d ms)", lag_time, iround(lag_frames * frame_time / normal_turbo));
 		for (int i = 0; i < lag_frames; i += 1)
 			increase_latency();
-	}
-	else {
+	} else {
 		int lag_frames = 0;		 //10;//0;
 		for (int i = 0; i < lag_frames; i += 1)
 			increase_latency();	 //*/
@@ -1300,8 +1299,7 @@ bool Game::handle_key(int k)
 			}
 			else if (frame_time < 30) {
 				frame_time = 10;
-			}
-			else {
+			} else {
 				frame_time = 25;
 			}
 			message.print(1000, 15, "Game Tic rate set to %f / second", 1000./frame_time);
@@ -1340,8 +1338,7 @@ bool Game::handle_key(int k)
 							chat_len -= 1;
 							chat_buf[chat_len] = 0;
 						}
-					}
-					else {
+					} else {
 						chat_buf[chat_len] = k & 255;
 						if (chat_len < 255) chat_len += 1;
 						chat_buf[chat_len] = 0;
@@ -1411,8 +1408,7 @@ void Game::play_music()
 	}
 	if (music) {
 		sound.play_music(music, TRUE);
-	}
-	else {
+	} else {
 		tw_error("Unable to load melee music!");
 	}
 	return;

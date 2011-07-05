@@ -156,8 +156,7 @@ void gamma_color_effects (Color *c)
 		c->r = _gamma_map[c->r];
 		c->g = _gamma_map[c->g];
 		c->b = _gamma_map[c->b];
-	}
-	else {
+	} else {
 		int alpha = (c->filler ^ 255) + 1;
 		int r, g, b;
 		r = (c->r << 8) / alpha;
@@ -233,8 +232,7 @@ void VideoSystem::preinit()
 			}
 			fclose(f);
 		}
-	}
-	else {
+	} else {
 		enum {
 			r_levels = 6,
 			g_levels = 6,
@@ -251,8 +249,7 @@ void VideoSystem::preinit()
 				j *= g_levels;
 				palette[i].b = ((i/j)%b_levels) * 255 / b_levels;
 				j *= b_levels;
-			}
-			else {
+			} else {
 				palette[i].r = 0;
 				palette[i].g = 0;
 				palette[i].b = 0;
@@ -444,8 +441,7 @@ void VideoWindow::lock ( )
 					lock_data[i].w = surface->cr - surface->cl;
 					lock_data[i].h = surface->cb - surface->ct;
 					set_clip(surface, x, y, x+w-1, y+h-1);
-				}
-				else {
+				} else {
 					lock_data[i].x = 0;
 					lock_data[i].y = 0;
 					lock_data[i].w = 0;
@@ -568,8 +564,7 @@ void VideoWindow::update_pos()
 			nw = videosystem.width;
 			nh = videosystem.height;
 		}
-	}
-	else {
+	} else {
 		if (parent) surface = parent->surface;
 		else surface = NULL;
 		if (surface) {
@@ -620,8 +615,9 @@ void VideoWindow::_event( Event *e )
 			} break;
 		}
 		issue_event( callback_list, &nve);
+	} else {
+		tw_error ( "VideoWindow got non-video event" );
 	}
-	else {tw_error ( "VideoWindow got non-video event" );}
 	return;
 }
 
@@ -767,8 +763,7 @@ void show_file(const char *file)
 	if (!f) {
 		willy = (char*) malloc(strlen(file)+1);
 		sprintf(willy, "Failed to load file \"%s\"", file);
-	}
-	else {
+	} else {
 		i = file_size(file);
 		willy = (char*)malloc(i+1);
 		i = pack_fread (willy, i, f);

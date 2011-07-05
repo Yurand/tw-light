@@ -116,9 +116,9 @@ int SoundSystem::play (SAMPLE *spl, int vol, int pan, int freq, bool loop)
 {
 	STACKTRACE;
 	if ((state & (ENABLED | SOUND_ON)) == (ENABLED | SOUND_ON)) {
-#ifdef TW_DEBUG_SOUND
+		#ifdef TW_DEBUG_SOUND
 		log_debug("SoundSystem::play %p, %d, %d, %d %s\n%s\n", spl, vol, pan, freq, ((loop)?"true":"false"), _stacktrace_.get_stack_trace_string().c_str());
-#endif
+		#endif
 		return ::play_sample (spl, (vol * sound_volume) >> 8, pan, freq, loop);
 	}
 	return -1;
@@ -129,9 +129,9 @@ void SoundSystem::stop (SAMPLE *spl)
 {
 	STACKTRACE;
 	if (state & ENABLED) {
-#ifdef TW_DEBUG_SOUND
+		#ifdef TW_DEBUG_SOUND
 		log_debug("SoundSystem::stop %p\n", spl);
-#endif
+		#endif
 		::stop_sample (spl);
 		return;
 	}

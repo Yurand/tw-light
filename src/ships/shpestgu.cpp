@@ -245,9 +245,7 @@ void EstionShot::inflict_damage(SpaceObject *other)
 			{
 			double delta = trajectory_angle (other);
 			vel = v * unit_vector( PI + 2 * delta - alpha );
-			}
-		else
-			{
+			} else {
 			double delta = trajectory_angle (mother_ship->platform[k]);
 			vel = v * unit_vector(delta);
 			}

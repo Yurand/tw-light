@@ -391,8 +391,7 @@ void _aa_masked_add_bpp_independant_calculations()
 		_aa.g = _aa.g >> (2 * aa_BITS);
 		_aa.b = _aa.b >> (2 * aa_BITS);
 		_aa.trans = _aa.trans >> (2 * aa_BITS);
-	}
-	else {
+	} else {
 		/*		tmp = 1 + (0xffffffffUL /  _aa.total );
 				_aa.r = (int)((_aa.r * (Uint64)tmp) >> 32);
 				_aa.g = (int)((_aa.g * (Uint64)tmp) >> 32);
@@ -446,8 +445,7 @@ _aa_add_rgba32 (BITMAP *_src, int _sx1, int _sx2, int _sy1, int _sy2)
 		b1 = MUL (getb32 (scolor), sx1f * ta);
 		a1 = MUL (ta, sx1f);
 		t1 = 0;
-	}
-	else {
+	} else {
 		r1 = g1 = b1 = a1 = 0;
 		t1 = sx1f;
 	}
@@ -550,8 +548,7 @@ _aa_add_rgba32 (BITMAP *_src, int _sx1, int _sx2, int _sy1, int _sy2)
 			b2 = MUL (getb32 (scolor), sx1f * ta);
 			a2 = MUL (ta, sx1f);
 			t2 = 0;
-		}
-		else {
+		} else {
 			r2 = g2 = b2 = a2 = 0;
 			t2 = sx1f;
 		}
@@ -628,8 +625,7 @@ _aa_add_rgba8888 (BITMAP *_src, int _sx1, int _sx2, int _sy1, int _sy2)
 		b1 = MUL (color.rgba.b, sx1f);
 		a1 = MUL (color.rgba.a, sx1f);
 		t1 = 0;
-	}
-	else {
+	} else {
 		r1 = g1 = b1 = a1 = 0;
 		t1 = sx1f;
 	}
@@ -726,8 +722,7 @@ _aa_add_rgba8888 (BITMAP *_src, int _sx1, int _sx2, int _sy1, int _sy2)
 			b2 = MUL (color.rgba.b, sx1f);
 			a2 = MUL (color.rgba.a, sx1f);
 			t2 = 0;
-		}
-		else {
+		} else {
 			r2 = g2 = b2 = a2 = 0;
 			t2 = sx1f;
 		}
@@ -774,8 +769,7 @@ _aa_add_rgba8888 (BITMAP *_src, int _sx1, int _sx2, int _sy1, int _sy2)
 			t1 = a1 + (t1 << 8);
 		}
 		else t1 = t1 << 8;
-	}
-	else {
+	} else {
 		//uh.. what do we do now?
 		_aa.r = rand() & 255;	 //graphics
 		t1 = 0;
@@ -814,8 +808,7 @@ _aa_add_rgba4444 (BITMAP *_src, int _sx1, int _sx2, int _sy1, int _sy2)
 		b1 = MUL (getb16a(scolor), sx1f);
 		a1 = MUL (geta16a(scolor), sx1f);
 		t1 = 0;
-	}
-	else {
+	} else {
 		r1 = g1 = b1 = a1 = 0;
 		t1 = sx1f;
 	}
@@ -912,8 +905,7 @@ _aa_add_rgba4444 (BITMAP *_src, int _sx1, int _sx2, int _sy1, int _sy2)
 			b2 = MUL (getb16a(scolor), sx1f);
 			a2 = MUL (geta16a(scolor), sx1f);
 			t2 = 0;
-		}
-		else {
+		} else {
 			r2 = g2 = b2 = a2 = 0;
 			t2 = sx1f;
 		}

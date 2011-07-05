@@ -237,9 +237,7 @@ void ShpHotSpot::calculate()
 					lens_vel += a * frame_time;
 				else
 					lens_vel -= a * frame_time;
-			}
-			else
-			{
+			} else {
 
 				// case 2, moving towards target as planned
 
@@ -294,8 +292,7 @@ void ShpHotSpot::calculate()
 			if ( batt < 0 )
 				batt = 0;
 		}
-	}
-	else {
+	} else {
 		drain_time = 0;
 	}
 }

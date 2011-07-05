@@ -194,8 +194,7 @@ int YevMech::activate_weapon()
 	if (!SaberDestroyed) {
 		if (SaberOn) {
 			SaberSlash = TRUE;
-		}
-		else {
+		} else {
 			ShieldOn = FALSE;
 			SaberOn  = TRUE;
 		}
@@ -262,8 +261,7 @@ void YevMech::calculate()
 		else if (thrust) {
 			//forward thrust
 			//SaberAttack   = 1;
-		}
-		else {
+		} else {
 			//saber spin
 			//SaberAttack   = 0;
 		}
@@ -419,8 +417,7 @@ void YevSaber::inflict_damage(SpaceObject *other)
 			ship->batt = 0;
 			sound.play(ship->data->sampleExtra[1]);
 
-		} else
-		{
+		} else {
 			damage(other, 1);
 			//sound.play(ship->data->sampleExtra[0]);
 			sound.play(data->sampleExtra[0]);

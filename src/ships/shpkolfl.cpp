@@ -142,8 +142,7 @@ void KoloryFlamer :: calculate ()
 								 // is nearly 1
 		slowdownfactor = exp(-frame_time*1E-3 / specialHalfTime);
 
-	}
-	else {
+	} else {
 		slowdownfactor = 1.0;
 	}
 
@@ -247,8 +246,7 @@ void Flamer::calculate()
 		pos = commandship->pos + D * unit_vector(commandship->angle);
 		vel = commandship->vel;	 // important for prediction?
 		angle = commandship->angle;
-	}
-	else {
+	} else {
 		pos = commandship->pos - D * unit_vector(commandship->angle);
 		vel = commandship->vel;
 		angle = commandship->angle + PI;

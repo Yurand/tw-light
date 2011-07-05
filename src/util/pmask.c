@@ -35,8 +35,7 @@ void set_pmask_pixel(struct PMASK *mask, int x, int y, int value)
 {
 	if (value) {
 		mask->mask[(mask->h * (x >> MASK_WORD_BITBITS)) + y] |= 1 << (x & (MASK_WORD_BITS-1));
-	}
-	else {
+	} else {
 		mask->mask[(mask->h * (x >> MASK_WORD_BITBITS)) + y] &=~(1 << (x & (MASK_WORD_BITS-1)));
 	}
 }
@@ -567,16 +566,14 @@ int check_pmask_collision(CONST struct PMASK *mask1, CONST struct PMASK *mask2, 
 	if (x1>x2) {
 		dx1=0;					 //don't need to shift mask 1.
 		dx2=x1-x2;				 //shift mask 2 left. Why left? Because we have the mask 1 being on the right of the mask 2, so we have to move mask 2 to the left to do the proper pixel perfect collision...
-	}
-	else {
+	} else {
 		dx1=x2-x1;				 //shift mask 1 left.
 		dx2=0;					 //don't need to shift mask 2.
 	}
 	if (y1>y2) {
 		dy1=0;
 		dy2=y1-y2;				 //we need to move this many rows up mask 2. Why up? Because we have mask 1 being down of mask 2, so we have to move mask 2 up to do the proper pixel perfect collision detection...
-	}
-	else {
+	} else {
 		dy1=y2-y1;				 //we need to move this many rows up mask 1.
 		dy2=0;
 	}
@@ -589,8 +586,7 @@ int check_pmask_collision(CONST struct PMASK *mask1, CONST struct PMASK *mask2, 
 	//This will calculate the maximum height that we will reach...
 	if (mask1->h-dy1 > mask2->h-dy2) {
 		maxh=mask2->h-dy2;
-	}
-	else {
+	} else {
 		maxh=mask1->h-dy1;
 	}
 	maxh--;
@@ -616,17 +612,16 @@ int check_pmask_collision(CONST struct PMASK *mask1, CONST struct PMASK *mask2, 
 		}
 		//Now we have to move to the next block...
 		//we do blocks twice because of the shift
-		if ( (!dx1) && (!dx2) ) { //In case both masks are lined up on the x axis...
+								 //In case both masks are lined up on the x axis...
+		if ( (!dx1) && (!dx2) ) {
 			block1 += h1;
 			block2 += h2;
-		}
-		else {
+		} else {
 			if (!dx1) {
 				block2 += h2;
 				dx1 = MASK_WORD_BITS - dx2;
 				dx2 = 0;
-			}
-			else {
+			} else {
 				if (!dx2) {
 					block1 += h1;
 					dx2 = MASK_WORD_BITS - dx1;

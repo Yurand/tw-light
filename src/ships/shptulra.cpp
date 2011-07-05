@@ -214,8 +214,7 @@ void TulkonRam::calculate_fire_weapon()
 	Ship::calculate_fire_weapon();
 	if ( !fire_weapon && ram->dist != TULKON_DEVICE_MAX_DIST ) {
 		ram->ramming = true;
-	}
-	else {
+	} else {
 		ram->ramming = false;
 	}
 }
@@ -377,8 +376,7 @@ void TulkonDevice::inflict_damage( SpaceObject* other )
 		damage_factor = 0;
 		SpaceObject::inflict_damage( other );
 		damage_factor = odf;
-	}
-	else {
+	} else {
 		SpaceObject::inflict_damage( other );
 	}
 	if ( ramming ) {
@@ -392,8 +390,7 @@ void TulkonDevice::inflict_damage( SpaceObject* other )
 			// we tell her to fly in the way we're facing
 			tb->rammed = true;
 			tb->angle = angle;
-		}
-		else {
+		} else {
 								 // stop ram_nohit.wav
 			sound.stop( data->sampleWeapon[1] );
 								 // play ram_ship.wav
@@ -438,8 +435,7 @@ void TulkonDevice::ram( bool mode )
 			0.001 * force;
 		dist = TULKON_DEVICE_MAX_DIST;
 		sound.stop( data->sampleWeapon[0] );
-	}
-	else {
+	} else {
 		//    vx = ship->get_vx();
 		//    vy = ship->get_vy();
 		vel = ship->get_vel();

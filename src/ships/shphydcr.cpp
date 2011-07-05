@@ -561,7 +561,7 @@ void HydrovarEsFighter::searchForTarget(void)
 	SpaceObject *o;
 	if (creator)
 		target=creator;			 //default is return to base if nothing found.
-	if (numberOfShots<1) return;	 //don't hunt for a target if out of ammo.
+	if (numberOfShots<1) return; //don't hunt for a target if out of ammo.
 	dist=1e30;
 	Query a;
 	if (this->targetsAsteroids) searchLayers += bit(LAYER_CBODIES);

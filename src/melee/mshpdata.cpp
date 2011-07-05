@@ -87,8 +87,7 @@ void save_spacesprite(SpaceSprite *ss, const char *spritename, const char *desti
 		for (i = 0; i < ss->frames(); i += 1) {
 			if (strchr(extension, '.')) {
 				sprintf(buf, "tmp/%s%03d%s", spritename, i, extension);
-			}
-			else {
+			} else {
 				sprintf(buf, "tmp/%s%03d.bmp", spritename, i);
 			}
 

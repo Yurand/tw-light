@@ -103,8 +103,7 @@ int OrzNemesis::activate_special()
 		if (turret_turn_step < 0.0 ) {
 			turretAngle -= (PI2/64);
 			turret_turn_step += (PI2/64);
-		}
-		else {
+		} else {
 			turretAngle += (PI2/64);
 			turret_turn_step -= (PI2/64);
 		}
@@ -280,16 +279,14 @@ void OrzMarine::calculate()
 				}
 				return;
 			}
-		}
-		else {
+		} else {
 			invading = NULL;
 			returning = TRUE;
 			collide_flag_sameship = bit(LAYER_SHIPS);
 			collide_flag_anyone = ALL_LAYERS;
 			sprite_index = 1;
 		}
-	}
-	else {
+	} else {
 		if (!(ship && ship->exists())) {
 			ship = 0;
 			state = 0;

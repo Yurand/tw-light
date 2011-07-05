@@ -476,8 +476,7 @@ void OrionMissile::calculate()
 	if (!isBurning && !isCoasting)
 	if (framesToIgnition>=0) {
 		framesToIgnition -= frame_time;
-	}
-	else {
+	} else {
 		framesToIgnition = 0;
 		isBurning = true;
 		vel = unit_vector(angle + (PI/2 * side)) / 2;
@@ -488,8 +487,7 @@ void OrionMissile::calculate()
 		play_sound2(data->sampleWeapon[1]);
 
 		offset = distance(ship);
-	}
-	else {
+	} else {
 		Vector2 normal;
 		normal = Vector2(-vel.y, vel.x);
 		normalize(normal);
@@ -526,8 +524,7 @@ void OrionMissile::calculate()
 		if (framesOfBurn>=0) {
 			framesOfBurn -= frame_time;
 			accelerate_gravwhip (this, facingAngle, /*acceleration / mass*/ acceleration * frame_time, maxSpeed);
-		}
-		else {
+		} else {
 			framesOfBurn = 0;
 			isBurning = false;
 			isCoasting = true;

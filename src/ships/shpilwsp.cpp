@@ -181,8 +181,7 @@ void IlwrathSpiderMine::inflict_damage(SpaceObject *other)
 	int freq;
 	if ( other->isShot() ) {
 		freq = (int)(magnitude_sqr(other->get_vel())*2000.0);
-	}
-	else {
+	} else {
 		freq = 2000 - 80*(int)other->mass;
 	}
 	play_sound2( data->sampleExtra[0], 512, freq<500?500:freq );
@@ -217,13 +216,11 @@ victim( ovictim ), life( olife )
 		if ( !victim->exists() ) {
 			victim = 0;
 			state = 0;
-		}
-		else {
+		} else {
 			if ( victim->isShot() ) {
 				old_v = ((Shot*)victim)->v;
 				((Shot*)victim)->v = 0;
-			}
-			else {
+			} else {
 				old_v = 0;
 			}
 		}

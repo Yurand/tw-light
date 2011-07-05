@@ -507,8 +507,9 @@ void ArkanoidPincerShip::Regrow(void)
 			pincerL->mass = weaponMass;
 			return;
 		}
+	} else {
+		tw_error("pincerL does not exist!");
 	}
-	else { tw_error("pincerL does not exist!"); }
 
 	if (pincerR) {
 		if (pincerR->isAlive==FALSE) {
@@ -521,8 +522,9 @@ void ArkanoidPincerShip::Regrow(void)
 			pincerR->mass = weaponMass;
 			return;
 		}
+	} else {
+		tw_error("pincerR does not exist!");
 	}
-	else { tw_error("pincerR does not exist!"); }
 
 	//message.print(1500,11,"Regrow2");
 }
@@ -742,13 +744,11 @@ int ArkanoidPincer::handle_damage (SpaceLocation *source, double normal, double 
 			//message.print(1500,15,"ArkanoidPincerHandleDamage Exit3");
 			state=1;
 			return(x);
-		}
-		else {
+		} else {
 			//message.print(1500,12,"Fall-Through");
 			armour -= iround(normal + direct);
 		}
-	}
-	else {
+	} else {
 		//message.print(1500,12,"No Creator -- Doing the subtraction!");
 		armour -= iround(normal + direct);
 	}

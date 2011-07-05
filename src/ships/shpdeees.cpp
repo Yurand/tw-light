@@ -120,8 +120,7 @@ void DeepSpaceEssence::calculate()
 			}
 			sprite_index &= 63;
 			sprite_index += sprite_phase * 64;
-		}
-		else {
+		} else {
 			sprite_step -= frame_time;
 		}
 		return;
@@ -132,8 +131,7 @@ void DeepSpaceEssence::calculate()
 		sprite_step += (int)(DEEP_SPACE_ANIM_RATE * (1.0 + 0.3 * (double)abs( 3 - sprite_phase%7 )));
 		sprite_phase++;
 		if ( sprite_phase == 14 ) sprite_phase = 0;
-	}
-	else {
+	} else {
 		sprite_step -= frame_time;
 	}
 	sprite_index &= 63;
@@ -358,8 +356,7 @@ void DeepSpaceWarrior::calculate()
 	if ( !exists() ) return;
 	if ( d < range ) {
 		if ( !target ) target = ship;
-	}
-	else {
+	} else {
 		target = ship;
 	}
 	HomingMissile::calculate();

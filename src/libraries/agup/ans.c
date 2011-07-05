@@ -137,8 +137,7 @@ int d_ans_button_proc(int msg, DIALOG *d, int c)
 				gui_textout_ex(bmp, (char *)d->dp, d->x + d->w / 2 + 1,
 					d->y + d->h / 2 - text_height(font) / 2 + 1, fg, -1,
 					TRUE);
-			}
-			else {
+			} else {
 				gui_textout_ex(bmp, (char *)d->dp, d->x + d->w / 2,
 					d->y + d->h / 2 - text_height(font) / 2, fg, -1, TRUE);
 			}
@@ -363,8 +362,7 @@ int d_ans_edit_proc(int msg, DIALOG *d, int c)
 		if (x <= d->w - 2) {
 			b = l;
 			p = 0;
-		}
-		else {
+		} else {
 			b--;
 			p = d->d2 - b + 1;
 			b = d->d2;
@@ -449,8 +447,7 @@ static void ns_draw_scrollable_frame(DIALOG *d, int listsize, int offset, int he
 				draw_sprite(bmp, handle_bmp, xx + 11 / 2 - 3, yy + i / 2 - 3);
 			}
 			yy += i + 1;
-		}
-		else {
+		} else {
 			ns_bevel(bmp, xx, yy-1, 11, d->h  - yy + d->y, 0);
 			if (i > 10) {
 				draw_sprite(bmp, handle_bmp, xx + 11 / 2 - 3, yy + i / 2 - 3);
@@ -487,8 +484,7 @@ int d_ans_list_proc(int msg, DIALOG *d, int c)
 				else if ((sel) && (sel[d->d2 + i])) {
 					fg = white;
 					bg = dgrey;
-				}
-				else {
+				} else {
 					fg = black;
 					bg = lgrey;
 				}
@@ -510,8 +506,7 @@ int d_ans_list_proc(int msg, DIALOG *d, int c)
 
 				if (x <= d->x + w)
 					rectfill(bmp, x, y, d->x+w, y+text_height(font)-1, bg);
-			}
-			else {
+			} else {
 				rectfill(bmp, d->x + 2, d->y + 2 + i * text_height(font),
 					d->x + w, d->y + 1 + (i + 1) * text_height(font),
 					lgrey);
@@ -556,8 +551,7 @@ int d_ans_textbox_proc(int msg, DIALOG *d, int c)
 
 		if (d->d1 > height) {
 			bar = 11;
-		}
-		else {
+		} else {
 			bar = 0;
 			d->d2 = 0;
 		}
@@ -611,8 +605,7 @@ int d_ans_slider_proc(int msg, DIALOG *d, int c)
 				d->y + d->h - slp - 3, white);
 			putpixel(bmp, d->x + d->w - 3, d->y + d->h - slp - 10, lgrey);
 			putpixel(bmp, d->x + 1, d->y + d->h - slp - 2, dgrey);
-		}
-		else {
+		} else {
 			ns_bevel(bmp, d->x + slp, d->y + 1, 10, d->h - 2, 0);
 			ns_bevel(bmp, d->x + slp + 9, d->y + 1, 10, d->h - 2, 0);
 			line(bmp, d->x + slp + 1, d->y + 2, d->x + slp + 1,
@@ -662,8 +655,7 @@ static void ns_draw_menu_item(MENU * m, int x, int y, int w, int h, int bar, int
 	if (m->flags & D_DISABLED) {
 		fg = disabled;
 		bg = lgrey;
-	}
-	else {
+	} else {
 		fg = black;
 		bg = (sel) ? white : lgrey;
 	}

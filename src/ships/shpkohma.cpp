@@ -157,8 +157,7 @@ void KohrAhBlade::calculate()
 			//			vx = (v / 10.0) * cos(angle);
 			//			vy = (v / 10.0) * sin(angle);
 			vel = (v / 10.0) * unit_vector(angle);
-		}
-		else {
+		} else {
 			//			vx = 0;
 			//			vy = 0;
 			vel = 0;

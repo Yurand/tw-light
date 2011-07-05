@@ -123,8 +123,7 @@ void OrbitHandler::calculate()
 	if (Lock==1) {
 		sun->pos=ipos;
 		sun->vel=0;
-	}
-	else {
+	} else {
 		pos=sun->pos;
 		vel=sun->vel;
 	}
@@ -221,8 +220,7 @@ void Sun::calculate()
 				r /= 40 * 4;
 				for (int i = 0; i < gravity_power; i += 1) sr *= r;
 				o->accelerate(this, trajectory_angle(o) + PI, frame_time * gravity_force / sr, MAX_SPEED);
-			}
-			else {
+			} else {
 				r = 1 - r/gravity_range;
 				for (int i = 0; i < -gravity_power; i += 1) sr *= r;
 				o->accelerate(this, trajectory_angle(o) + PI, frame_time * gravity_force * sr, MAX_SPEED);

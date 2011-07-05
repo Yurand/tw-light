@@ -168,8 +168,7 @@ void MonoTron::calculate_fire_special()
 	if ( fire_special ) {
 		if ( batt < special_drain ) {
 			special_low = TRUE;
-		}
-		else {
+		} else {
 			if ( !last_laser || !last_laser->exists() ) {
 				play_sound( copy_of_sampleSpecial );
 				last_laser = new MonoLaser( this, NULL, specialDamage );
@@ -391,8 +390,7 @@ void MonoMissile::set_up_beacons()
 	STACKTRACE;
 	if ( !target || !target->exists() || target->isInvisible() ) {
 		target = NULL;
-	}
-	else {
+	} else {
 		int iangle = (int)((angle + PI/4) / (PI/2)) % 4;
 		if ( from_beacon )
 			delete from_beacon;

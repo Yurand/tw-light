@@ -121,8 +121,7 @@ TWindow::TWindow(const char *identbase, int dx, int dy, BITMAP *outputscreen, bo
 		y = iround(dy * scale);
 		W = backgr->w;			 // background is already scaled !!
 		H = backgr->h;
-	}
-	else {
+	} else {
 		tw_error("TWindow: No background defined !!");
 	}
 
@@ -494,8 +493,7 @@ void TWindow::add(EmptyButton *newbutton)
 		button_first = newbutton;
 		button_last = newbutton;
 
-	}
-	else {
+	} else {
 		button_last->next = newbutton;
 		newbutton->prev = button_last;
 		button_last = newbutton;
@@ -627,8 +625,7 @@ void TWindow::calculate()
 					break;
 			}
 
-		}
-		else {
+		} else {
 
 			if (!lastfocus)
 				lastfocus = button_first;

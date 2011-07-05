@@ -300,8 +300,7 @@ void EarthlingCruiserMk3Beam::calculate()
 			angle = trajectory_angle(target);
 		}
 		if (!target->exists()) target = NULL;
-	}
-	else {
+	} else {
 		target = NULL;
 		if (switch_counter <= 0)
 			//			die();

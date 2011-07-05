@@ -97,8 +97,7 @@ int write_length_code (int max, int *clen, int len, unsigned char *where)
 		where[0] = len;
 		*clen = 1;
 		return 0;
-	}
-	else {
+	} else {
 		if (max < 3) return -1;
 		where[0] = 255;
 		if (len < 65535) {
@@ -106,8 +105,7 @@ int write_length_code (int max, int *clen, int len, unsigned char *where)
 			where[2] = len >> 8;
 			*clen = 3;
 			return 0;
-		}
-		else {
+		} else {
 			if (max < 7) return -1;
 			where[1] = 255;
 			where[2] = 255;

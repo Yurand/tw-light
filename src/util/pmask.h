@@ -197,8 +197,7 @@ inline void _set_pmask_pixel(struct PMASK *mask, int x, int y, int value)
 	//no bounds checking
 	if (value) {
 		mask->mask[(mask->h * (x >> MASK_WORD_BITBITS)) + y] |= 1 << (x & (MASK_WORD_BITS-1));
-	}
-	else {
+	} else {
 		mask->mask[(mask->h * (x >> MASK_WORD_BITBITS)) + y] &=~(1 << (x & (MASK_WORD_BITS-1)));
 	}
 }

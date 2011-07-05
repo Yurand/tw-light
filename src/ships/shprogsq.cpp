@@ -296,8 +296,7 @@ int RogueSquadron::activate_special()
 
 		ileader = 0;
 		regroup = 0;
-	}
-	else {
+	} else {
 		++ formation;
 		if ( formation > max_formations-1 )
 			formation = 0;
@@ -703,5 +702,6 @@ void PulseLaser::inflict_damage(SpaceObject *other)
 	state = 0;					 // this is different from space_line :)
 	return;
 }
+
 
 REGISTER_SHIP(RogueSquadron)

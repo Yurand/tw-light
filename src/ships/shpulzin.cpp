@@ -223,8 +223,7 @@ void UlzrakInterceptor::calculate_turn_left()
 			return;
 		else
 			Ship::calculate_turn_left();
-	}
-	else {
+	} else {
 		Ship::calculate_turn_left();
 	}
 }
@@ -244,8 +243,7 @@ void UlzrakInterceptor::calculate_turn_right()
 			return;
 		else
 			Ship::calculate_turn_right();
-	}
-	else {
+	} else {
 		Ship::calculate_turn_right();
 	}
 }
@@ -265,8 +263,7 @@ void UlzrakInterceptor::calculate_thrust()
 			return;
 		else
 			Ship::calculate_thrust();
-	}
-	else {
+	} else {
 		Ship::calculate_thrust();
 	}
 }

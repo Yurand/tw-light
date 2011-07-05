@@ -306,8 +306,7 @@ void InvisiblePlanet::calculate()
 
 				o->accelerate(this, trajectory_angle(o) + PI, frame_time * gravity_force / sr, MAX_SPEED);
 
-			}
-			else {
+			} else {
 				r = 1 - r/gravity_range;
 				for (int i = 0; i < -gravity_power; i += 1) sr *= r;
 				o->accelerate(this, trajectory_angle(o) + PI, frame_time * gravity_force * sr, MAX_SPEED);

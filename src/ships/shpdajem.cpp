@@ -664,8 +664,7 @@ void DajielkaTendril::calculate(void)
 		collide_flag_anyone = 0;
 		collide_flag_sameteam = 0;
 		collide_flag_sameship = 0;
-	}
-	else {
+	} else {
 		isActive = TRUE;
 		length = originalLength;
 		damage_factor = 1;
@@ -735,7 +734,7 @@ void DajielkaTendril::inflict_damage(SpaceObject *other)
 			}
 		}
 		//if (creator->crew<creator->crew_max && creator->batt>=creator->batt_max && creator->specialHarvestRegenEnabled && creator->fire_special) {//only when batteries full
-		if (FALSE) {				 //only when batteries full
+		if (FALSE) {			 //only when batteries full
 			//creator->redeployTime = 0;
 			this->energyLevel = 0;
 			this->isActive = 0;

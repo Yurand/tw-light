@@ -120,8 +120,7 @@ void MyconPlasma::inflict_damage(SpaceObject *other)
 		if (other->exists()) {
 			add(new FixedAnimation(this, other,
 				spriteWeaponExplosion, 0, 20, 50, DEPTH_EXPLOSIONS));
-		}
-		else {
+		} else {
 			add(new Animation(this, other->normal_pos(),
 				spriteWeaponExplosion, 0, 20, 50, DEPTH_EXPLOSIONS));
 		}

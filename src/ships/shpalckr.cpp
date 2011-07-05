@@ -223,8 +223,7 @@ int AlcheroKronos::activate_special()
 								 //specialSpeedDown;
 		turbo_change -= (t - tnew);
 		t = tnew;
-	}
-	else {
+	} else {
 
 		//turbo_change += specialMinTime - t;
 		//t = specialMinTime;
@@ -269,8 +268,7 @@ int AlcheroKronos::deactivate_special()
 	if ( turbo_change + specialSpeedUp < 0 ) {
 		t += specialSpeedUp;
 		turbo_change += specialSpeedUp;
-	}
-	else {
+	} else {
 		t -= turbo_change;
 		turbo_change = 0;
 	}
@@ -352,8 +350,7 @@ void AlcheroKronos::calculate_fire_special()
 
 		batt -= special_drain;
 		special_recharge += special_rate;
-	}
-	else {
+	} else {
 		if (batt < special_drain)
 			special_low = TRUE;
 
@@ -479,8 +476,7 @@ void AlcheroLaser::calculate()
 				//        vx = velocity * cos( angle ) + ship->get_vx() * game->shot_relativity;
 				//        vy = velocity * sin( angle ) + ship->get_vy() * game->shot_relativity;
 				vel = velocity * unit_vector(angle) + ship->get_vel() * game->shot_relativity;
-			}
-			else {
+			} else {
 				vel = velocity * unit_vector(angle);
 				//        vx = velocity * cos( angle );
 				//        vy = velocity * sin( angle );
@@ -488,19 +484,16 @@ void AlcheroLaser::calculate()
 			released = true;
 			sound.stop( data->sampleWeapon[0] );
 			play_sound2( data->sampleWeapon[1] );
-		}
-		else {
+		} else {
 			Laser::calculate();
 			if ( length < olength ) {
 				length /= 2;
-			}
-			else {
+			} else {
 				length += growth * frame_time;
 			}
 			olength = length;
 		}
-	}
-	else {
+	} else {
 		SpaceLocation::calculate();
 		//	vx *= 1.0 - deccel * frame_time;
 		//	vy *= 1.0 - deccel * frame_time;

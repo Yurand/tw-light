@@ -323,8 +323,7 @@ int ShipPart2::handle_damage(SpaceLocation *source, double normal, double direct
 		if (damage_factor > 0)
 			return 0;
 		return mother->handle_damage(source, normal, direct);
-	}
-	else {
+	} else {
 		mother = 0;
 		state = 0;
 		return 0;
@@ -684,8 +683,7 @@ void SefyNautilus2::calculate()
 
 			ArmLeft->offset_angle  = -arm_angle;
 			ArmRight->offset_angle = arm_angle;
-		}
-		else {
+		} else {
 			arm_movement = false;
 								 // anti-cl.w.
 			ArmLeft->offset_angle  = 0;
@@ -1040,8 +1038,7 @@ int Hook2::handle_damage(SpaceLocation *src, double normal, double direct)
 
 		return 0;
 
-	}
-	else {
+	} else {
 
 		SpaceObject::handle_damage(src, normal, direct);
 

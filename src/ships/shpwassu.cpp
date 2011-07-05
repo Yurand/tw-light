@@ -261,8 +261,7 @@ int WasxSuperposition::activate_special()
 			//			dy = normal_y() + sin((angle +  30) ) * 100;
 			D = normal_pos() + 100 * unit_vector((angle +  30 * ANGLE_RATIO) );
 			da = angle + (PI2/64);
-		}
-		else {
+		} else {
 			//			 dx = normal_x() + cos((angle + 330) ) * 100;
 			//			 dy = normal_y() + sin((angle + 330) ) * 100;
 			D = normal_pos() + 100 * unit_vector((angle +  330 * ANGLE_RATIO) );

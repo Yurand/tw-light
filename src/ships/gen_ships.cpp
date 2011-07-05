@@ -1,4 +1,4 @@
- /* This is generated file, do not edit, you changes will be lost 
+/* This is generated file, do not edit, you changes will be lost
 
 Run: gen_register_ships.py script to update it
 */
@@ -640,7 +640,6 @@ void register_ships()
 		void __register_shipclass_ArchTempest();
 		__register_shipclass_ArchTempest();
 	}
-
 
 	register_shiptype(data_full_path("shpulzin.ini").c_str());
 	register_shiptype(data_full_path("shppkufu.ini").c_str());

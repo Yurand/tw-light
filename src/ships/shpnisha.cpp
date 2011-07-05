@@ -109,8 +109,7 @@ int NisskHarasser::activate_special()
 		if (driveMode==0) {
 			driveMode=1;
 			this->recharge_rate = specialRechargeRate;
-		}
-		else {
+		} else {
 			driveMode=0;
 			this->recharge_rate = shipRechargeRate;
 		}
@@ -137,18 +136,15 @@ void NisskHarasser::calculate()
 			if (fire_special) {
 				this->recharge_rate = specialRechargeRate;
 				driveMode = 1;
-			}
-			else {
+			} else {
 				this->recharge_rate = shipRechargeRate;
 				driveMode = 0;
 			}
-		}
-		else {
+		} else {
 			if (fire_special) {
 				this->recharge_rate = shipRechargeRate;
 				driveMode = 0;
-			}
-			else {
+			} else {
 				this->recharge_rate = specialRechargeRate;
 				driveMode = 1 ;
 			}
@@ -161,8 +157,7 @@ void NisskHarasser::calculate()
 		speed_max = shipSpeedMax;
 		sprite_index = get_index(angle) + (0 * 64);
 		return;
-	}
-	else {
+	} else {
 		this->recharge_rate = specialRechargeRate;
 		//message.print(1500,9,"recharge_rate = %i", recharge_rate);
 		turn_rate = specialTurnRate;

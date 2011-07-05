@@ -77,8 +77,7 @@ int NormalGame::add_player (Control *c, int team_index, const char *name, const 
 		player_fleet[i]->load(fleet_file, fleet_section);
 		log_fleet(c->channel, player_fleet[i]);
 		c->target_sign_color = ((3+i) % 7) + 1;
-	}
-	else {
+	} else {
 		log_fleet(c->channel, player_fleet[i]);
 	}
 	tw_set_config_file(home_ini_full_path("tmp.ini"));
@@ -176,8 +175,7 @@ void NormalGame::init_players()
 							log_data(ch, (char*)name, name_length);
 							add_player(create_control(ch, type, config), ti, name, buffy);
 						}
-					}
-					else {
+					} else {
 						for (int i = 0; true; i += 1) {
 							int tmp;
 							log_int(ch, tmp);
@@ -310,8 +308,7 @@ void NormalGame::calculate()
 	// kill all ships and ship-objects in the melee-game
 	if (kill_all_delay_counter > 0) {
 		kill_all_delay_counter -= frame_time;
-	}
-	else {
+	} else {
 
 		if (key[KEY_LCONTROL] && key[KEY_ALT] && key[KEY_K]) {
 								 // 1 second delay
@@ -437,8 +434,7 @@ void NormalGame::choose_new_ships()
 	for (i = 0; i < num_players; i += 1) {
 		slot[i] = -2;
 		if (player_control[i]->ship) {
-		}
-		else {
+		} else {
 			//			if (player_panel[i]) player_panel[i]->window->hide();
 			//			player_panel[i] = NULL;
 			sprintf (tmp, "Player%d", i+1);

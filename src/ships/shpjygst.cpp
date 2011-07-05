@@ -126,8 +126,7 @@ int JyglarStarfarer::activate_weapon()
 			weaponVelocity, random(weaponDamage + 1), random((int)weaponRange + 1),
 			weaponArmour, this, data->spriteSpecial, weaponPull, beacon ));
 		weapon_sample = 7 + random(3);
-	}
-	else {
+	} else {
 		int shot_damage = random(weaponDamage + 1);
 		game->add( shot = new JyglarShot( this,
 			Vector2(-2.0 + 0.5 * (double)(random(5)), size.y * 0.5), angle +(- 2.0 + (double)(random(5)))*ANGLE_RATIO,
@@ -135,8 +134,7 @@ int JyglarStarfarer::activate_weapon()
 			weaponArmour, this, data->spriteSpecial, weaponPull, beacon ));
 		if ( shot_damage == 0 ) {
 			weapon_sample = 10;
-		}
-		else {
+		} else {
 			melody += -1 + random(3);
 			weapon_sample = abs( melody ) % 7;
 		}

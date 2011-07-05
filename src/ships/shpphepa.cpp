@@ -92,8 +92,7 @@ Color PhedarPatrolShip::crewPanelColor(int k)
 	if ( energizepersonalarmour ) {
 		Color c = {255,200,200};
 		return c;
-	}
-	else {
+	} else {
 		return Ship::crewPanelColor(k);
 	}
 }
@@ -131,8 +130,7 @@ void PhedarPatrolShip::calculate()
 	if ( energizepersonalarmour ) {
 		if ( energizetimer > 0 ) {
 			energizetimer -= frame_time;
-		}
-		else {
+		} else {
 			energizetimer = 0;
 			energizepersonalarmour = 0;
 			update_panel = 1;
@@ -182,8 +180,7 @@ int PhedarPatrolShip::handle_damage(SpaceLocation *src, double normal, double di
 			++evac;
 		}
 
-	}
-	else {
+	} else {
 		Ship::handle_damage(src, normal, direct);
 	}
 
@@ -251,8 +248,7 @@ void CrewPodPP::calculate()
 			vel = unit_vector(trajectory_angle(mother)) * mother->specialVelocity2;
 		else
 			vel = unit_vector(trajectory_angle(mother)) * mother->specialVelocity1;
-	}
-	else {
+	} else {
 		mother = 0;
 		state = 0;
 	}

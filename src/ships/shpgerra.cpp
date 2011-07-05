@@ -184,8 +184,7 @@ void JadRacer::calculate()
 		if (cur_speed_real < gearMinSpeed[0]) {
 			cur_speed_real += getAccel(cur_speed_real / gearMinSpeed[0])*accel_rate*frame_time;
 		}
-	}
-	else {
+	} else {
 		//		vel *= exp(drift_rate*frame_time);
 		if (shift_frame <= 0 && !thrust)
 			vel *= 1 - fabs(drift_rate) * frame_time;
@@ -274,9 +273,7 @@ void JadRacer::calculate_thrust()
 				accelerate_gravwhip(this, angle, new_speed, gearMaxSpeed[curGear]);
 			else if (thrust_backwards)
 				accelerate_gravwhip(this, angle+PI, getBrake(cur_gear_rel)*accel_rate*frame_time, gearMinSpeed[0]);
-		}
-
-		else {
+		} else {
 			accelerate_gravwhip(this, angle, vel.magnitude()+new_speed, gearMaxSpeed[curGear]);
 			if (thrust) {
 				if ((cur_speed_real + new_speed) <= gearMaxSpeed[curGear])
@@ -416,8 +413,7 @@ bool JadRacer::custom_panel_update(BITMAP* panel, int display_type)
 				col = makecol(iround(ceil(128*(float(i)/speedMax))+127), iround(ceil(64*(float(i)/speedMax))), iround(ceil(64*(float(i)/speedMax))));
 				putpixel(bmp, speed_x + bar_x, speed_y + bar_y, col);
 				putpixel(bmp, speed_x + bar_x + 1, speed_y + bar_y, col);
-			}
-			else {
+			} else {
 				putpixel(bmp, speed_x + bar_x, speed_y + bar_y, 0);
 				putpixel(bmp, speed_x + bar_x + 1, speed_y + bar_y, 0);
 			}
@@ -446,8 +442,7 @@ bool JadRacer::custom_panel_update(BITMAP* panel, int display_type)
 				col = makecol(iround(ceil(255*(float(i)/tachMax))), iround(ceil(255*(1.0-(float(i)/tachMax)))), 0);
 				putpixel(bmp, tach_x + bar_x, tach_y + bar_y, col);
 				putpixel(bmp, tach_x + bar_x + 1, tach_y + bar_y, col);
-			}
-			else {
+			} else {
 				putpixel(bmp, tach_x + bar_x, tach_y + bar_y, 0);
 				putpixel(bmp, tach_x + bar_x + 1, tach_y + bar_y, 0);
 			}

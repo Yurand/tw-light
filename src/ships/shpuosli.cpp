@@ -192,8 +192,7 @@ void UoiSlicer::calculate_turn_turret()
 		if (turret_turn_step < 0.0 ) {
 			turretAngle -= (PI2/64);
 			turret_turn_step += (PI2/64);
-		}
-		else {
+		} else {
 			turretAngle += (PI2/64);
 			turret_turn_step -= (PI2/64);
 		}

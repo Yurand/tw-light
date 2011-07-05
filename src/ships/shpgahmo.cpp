@@ -160,14 +160,12 @@ void GahmurTractor::inflict_damage(SpaceObject* other)
 			creator->tractorTarget = other;
 			creator->tractorLength = other->distance(creator->tractorSource);
 			creator->tractorAngle = creator->tractorSource->trajectory_angle(other);
-		}
-		else {
+		} else {
 			if (creator->distance(creator->tractorTarget) > creator->distance(other)) {
 				creator->tractorTarget = other;
 				creator->holdoverTractorTarget = other;
 				if (other->state==0) creator->isTractoring = false;
-			}
-			else {
+			} else {
 				creator->holdoverTractorTarget = creator->tractorTarget;;
 				if (!creator->tractorTarget->exists()) creator->isTractoring = false;
 			}
@@ -328,14 +326,12 @@ void GahmurMonitor::calculate()
 				isBeaming = true;
 				isLaunching = false;
 				wasFiredTooEarly = false;
-			}
-			else {
+			} else {
 				isBeaming = false;
 				isLaunching = true;
 				wasFiredTooEarly = false;
 			}
-		}
-		else {
+		} else {
 			if (isCharging) {
 				wasFiredTooEarly = true;
 				isCharging = true;
@@ -348,8 +344,7 @@ void GahmurMonitor::calculate()
 			chargingTime += frame_time;
 			batt -= requiredWeaponEnergy;
 			update_panel = TRUE;
-		}
-		else {
+		} else {
 			if (fire_weapon==0) {
 								 // a kludge
 				isCharging = false;
@@ -361,15 +356,13 @@ void GahmurMonitor::calculate()
 				if (fire_special) {
 					isLaunching = false;
 					isBeaming = true;
-				}
-				else {
+				} else {
 					isLaunching = true;
 					isBeaming = false;
 				}
 			}
 		}
-	}
-	else {
+	} else {
 								 //not charging
 		//chargingTime = 0;
 	}
@@ -386,8 +379,7 @@ void GahmurMonitor::calculate()
 			if (fire_special) {
 				isLaunching = false;
 				isBeaming = true;
-			}
-			else {
+			} else {
 				isLaunching = true;
 				isBeaming = false;
 			}

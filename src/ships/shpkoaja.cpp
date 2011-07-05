@@ -261,8 +261,7 @@ void KoanuaJavelinMissile::calculate(void)
 		framesToIgnition -= frame_time;
 		sprite_index = (get_index(facingAngle) +
 			(0 * 64));
-	}
-	else {
+	} else {
 		framesToIgnition = 0;
 		isBurning=TRUE;
 		damage_factor = damageAfterIgnition;
@@ -277,8 +276,7 @@ void KoanuaJavelinMissile::calculate(void)
 		if (framesOfBurn>=0) {
 			framesOfBurn -= frame_time;
 			accelerate_gravwhip (this, facingAngle, acceleration / mass, maxSpeed);
-		}
-		else {
+		} else {
 			framesOfBurn = 0;
 			isBurning = FALSE;
 			isCoasting = TRUE;

@@ -80,8 +80,7 @@ void calibrate_joysticks()
 				if (::joy[which_joystick].flags & JOYFLAG_CALIBRATE) {
 					calibrate_joystick(which_joystick);
 					save_joystick_data("joys.ini");
-				}
-				else {
+				} else {
 					tw_delete_file("joys.ini");
 					remove_joystick();
 					install_joystick(JOY_TYPE_AUTODETECT);

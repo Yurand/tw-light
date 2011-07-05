@@ -310,8 +310,7 @@ enum ABEOS_WIDGET_TYPE what, struct BDATA *bdata)
 				t = y;
 				b = y + h - 1;
 
-			}
-			else {
+			} else {
 				t = y + (h - 6) / 2;
 				b = t + 5;
 
@@ -354,8 +353,7 @@ enum ABEOS_WIDGET_TYPE what, struct BDATA *bdata)
 						rectfill (bmp, l + 1, y + h - off - 6, r - 1, b - 1, c[3]);
 						rectfill (bmp, l + 1, t + 1, r - 1, y + h - off - 7, c[4]);
 						draw_sprite (bmp, handle, x + (w - 13) / 2, t + h - off - 12);
-					}
-					else {
+					} else {
 						rectfill (bmp, l + 1, t + 1, x + off + 6, b - 1, c[3]);
 						rectfill (bmp, x + off + 7, t + 1, r - 1, b - 1, c[4]);
 						draw_sprite (bmp, handle, l + off, y + (h - 13) / 2);
@@ -623,8 +621,7 @@ d_abeos_edit_proc (int msg, DIALOG * d, int c)
 		if (x <= d->w - 2) {
 			b = l;
 			p = 0;
-		}
-		else {
+		} else {
 			b--;
 			p = d->d2 - b + 1;
 			b = d->d2;
@@ -688,8 +685,7 @@ d_abeos_list_proc (int msg, DIALOG * d, int c)
 				else if ((sel) && (sel[d->d2 + i])) {
 					fg = abeos_fg_color;
 					bg = normal[3];
-				}
-				else {
+				} else {
 					fg = abeos_fg_color;
 					bg = normal[0];
 				}
@@ -709,8 +705,7 @@ d_abeos_list_proc (int msg, DIALOG * d, int c)
 				if (x <= d->x + 1 + w)
 					rectfill (bmp, x, y, d->x + 1 + w,
 						y + text_height (font) - 1, bg);
-			}
-			else {
+			} else {
 				rectfill (bmp, d->x + 2, d->y + 2 + i * text_height (font),
 					d->x + 1 + w, d->y + 1 + (i + 1) * text_height (font),
 					normal[0]);
@@ -863,8 +858,7 @@ abeos_draw_menu_item (MENU * m, int x, int y, int w, int h, int bar, int sel)
 	if (m->flags & D_DISABLED) {
 		fg = abeos_mg_color;
 		bg = menu[2];
-	}
-	else {
+	} else {
 		fg = abeos_fg_color;
 		bg = (sel) ? menu[4] : menu[2];
 	}
@@ -892,8 +886,7 @@ abeos_draw_menu_item (MENU * m, int x, int y, int w, int h, int bar, int sel)
 
 		if ((m->child) && (!bar))
 			draw_sprite (bmp, arrow[sel ? 1 : 0], x + w - 12, y + h / 2 - 7);
-	}
-	else {
+	} else {
 		/* menu separator */
 		hline (bmp, x, y + text_height (font) / 2 - 1, x + w - 1, menu[4]);
 		hline (bmp, x, y + text_height (font) / 2, x + w - 1, menu[1]);

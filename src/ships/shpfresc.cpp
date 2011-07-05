@@ -120,8 +120,7 @@ void SchizmHealingbolt::inflict_damage(SpaceObject *other)
 		HomingMissile::inflict_damage(ship);
 		HomingMissile::inflict_damage(other);
 		die();
-	}
-	else {
+	} else {
 		die();
 	}
 

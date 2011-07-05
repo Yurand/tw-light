@@ -224,8 +224,7 @@ int Log::file_ready(const char *fname, void **location)
 			memcpy(&k, (log_data[channel_file_names] + i), sizeof(int));
 			j += intel_ordering(k);
 			i += sizeof(int);
-		}
-		else {
+		} else {
 			i += strlen((char*) log_data[channel_file_names] + i) + 1;
 			int k;
 			memcpy(&k, (log_data[channel_file_names] + i), sizeof(int));

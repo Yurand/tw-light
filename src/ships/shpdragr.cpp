@@ -232,8 +232,7 @@ void DraxMine::calculate()
 			v = MineSeekVel;
 			vel = MineSeekVel * unit_vector(angle);
 
-		}
-		else {
+		} else {
 			AnimatedShot::stop();
 		}
 	}

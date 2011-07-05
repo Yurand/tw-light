@@ -300,7 +300,7 @@ void GlutaSensorMarker::inflict_damage(SpaceObject *other)
 	int num;
 
 	//Test to see if you've targeted the same ship
-	if (specialMulti==0)			 //from INI file
+	if (specialMulti==0)		 //from INI file
 	for(num=0; num<MAX_TARGETS; num++) {
 		if (To_Target[num].Tagged==(Ship *)other) {
 			To_Target[num].Time_Count=0;

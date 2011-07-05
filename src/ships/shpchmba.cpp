@@ -357,8 +357,7 @@ void ChmmrBattleshipLaser::calculate()
 
 	if (frame < frame_count) {
 		frame += frame_time;
-	}
-	else {
+	} else {
 
 		if (!(tgt && tgt->exists())) {
 			tgt = 0;

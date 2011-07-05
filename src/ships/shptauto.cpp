@@ -118,8 +118,7 @@ int TauTor::activate_weapon()
 			vel.magnitude() + specialVelocity, specialDamage,
 			specialRange, specialArmour, this, this, data->spriteSpecial, 6, 50));
 		weapon_sample = 0;
-	}
-	else {
+	} else {
 		add(new TauTorTwister(Vector2(0.0, 24.0), angle, weaponVelocity, weaponDamage,
 			weaponRange, weaponArmour, this, this, data->spriteWeapon, 6, 50));
 		weapon_sample = 1;

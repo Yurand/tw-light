@@ -165,8 +165,7 @@ int KorvianSidekick::activate_special()
 		if (tugger == NULL)
 			return FALSE;
 		//play_sound2(data->sampleExtra[0]);
-	}
-	else {
+	} else {
 		tugger = NULL;
 		//play_sound2(data->sampleExtra[0]);
 	}
@@ -179,8 +178,7 @@ int KorvianSidekick::activate_special()
 	  while (fabs(Sidekick_turn_step) > (PI2/64)/2) {
 		if (Sidekick_turn_step < 0.0 ) {
 		  SidekickAngle -= (PI2/64);
-		  Sidekick_turn_step += (PI2/64); }
-		else {
+		  Sidekick_turn_step += (PI2/64); } else {
 		  SidekickAngle += (PI2/64);
 		  Sidekick_turn_step -= (PI2/64); }
 	  }
@@ -232,8 +230,7 @@ void KorvianSidekick::calculate()
 		if (Sidekick_turn_step < 0.0 ) {
 			SidekickAngle -= (PI2/64);
 			Sidekick_turn_step += (PI2/64);
-		}
-		else {
+		} else {
 			SidekickAngle += (PI2/64);
 			Sidekick_turn_step -= (PI2/64);
 		}

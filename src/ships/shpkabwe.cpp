@@ -279,8 +279,7 @@ void KaboMine::inflict_damage(SpaceObject *other)
 
 	if ( haze != 0 ) {			 // hey ! this ship is already targeted !!
 		haze->power += haze->basepower;
-	}
-	else {
+	} else {
 		// it's the first time a haze is applied to this ship ...
 		haze = new KaboHaze( this, (Ship*) other, Haze_basepower);
 

@@ -93,7 +93,7 @@ int mode )
 
 	if (((mode&~(AA_MASKED)) == AA_NO_AA) &&
 	(bitmap_color_depth(src) == bitmap_color_depth(dest))) {
-	//	if (0)
+		//	if (0)
 		if (mode & AA_MASKED)
 			masked_stretch_blit(src, dest,
 				sx>>aa_BITS, sy>>aa_BITS, sw>>aa_BITS,

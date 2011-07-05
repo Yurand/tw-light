@@ -164,8 +164,7 @@ void BahaoidBuzzsaw::calculate()
 	if (fire_weapon) {
 		can_turn = FALSE;
 		turn_step += weaponSpeed * frame_time;
-	}
-	else {
+	} else {
 		can_turn = TRUE;
 	}
 

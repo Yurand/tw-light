@@ -401,8 +401,7 @@ void NechanziMissile::calculate(void)
 		if (isActivated)framesToIgnition -= frame_time;
 		sprite_index = get_index(facingAngle) + (0 * 64) +
 			(missileType * 128);
-	}
-	else {
+	} else {
 		framesToIgnition = 0;
 		isBurning=TRUE;
 		damage_factor = damageAfterIgnition;
@@ -419,8 +418,7 @@ void NechanziMissile::calculate(void)
 
 			if (mass > 0)
 				accelerate_gravwhip (this, facingAngle, acceleration / mass, maxSpeed);
-		}
-		else {
+		} else {
 			framesOfBurn = 0;
 			isBurning = FALSE;
 			isCoasting = TRUE;

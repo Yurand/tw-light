@@ -327,8 +327,7 @@ char *genericListboxGetter(int index, int *list_size, char **_list)
 		while (_list[index]) index += 1;
 		*list_size = index;
 		return NULL;
-	}
-	else {
+	} else {
 		return(_list[index]);
 	}
 }
@@ -352,8 +351,7 @@ char *shippointsListboxGetter(int index, int *list_size)
 	if (index < 0) {
 		*list_size = reference_fleet->getSize();
 		return NULL;
-	}
-	else {
+	} else {
 		ShipType * type = reference_fleet->getShipType(index);
 		sprintf(buffy, "%3d %s", type->cost, type->name);
 	}
@@ -489,8 +487,7 @@ void _draw_listbox2(DIALOG *d)
 			else if ((sel) && (sel[d->d2+i])) {
 				fg = d->bg;
 				bg = gui_mg_color;
-			}
-			else {
+			} else {
 				fg = fg_color;
 				bg = d->bg;
 			}
@@ -511,8 +508,7 @@ void _draw_listbox2(DIALOG *d)
 			x += text_length(font, s);
 			if (x <= d->x+w)
 				rectfill(screen, x, y, d->x+w, y+text_height(font)-1, bg);
-		}
-		else {
+		} else {
 			rectfill(screen, d->x+2,  d->y+2+i*text_height(font),
 				d->x+w, d->y+1+(i+1)*text_height(font), d->bg);
 		}
@@ -584,8 +580,7 @@ int d_list_proc2(int msg, DIALOG *d, int c)
 					_handle_listbox_click2(d);
 					d->flags &= ~D_INTERNAL;
 				}
-			}
-			else {
+			} else {
 				_handle_scrollable_scroll_click(d, listsize, &d->d2, height);
 			}
 			break;
@@ -709,8 +704,7 @@ int my_d_button_proc(int msg, DIALOG * d, int c)
 			if (d->flags & D_DISABLED) {
 				if (menuDisabled != NULL)
 					sound.play(menuDisabled, 128);
-			}
-			else {
+			} else {
 				if (menuAccept != NULL)
 					sound.play(menuAccept, 64);
 			}

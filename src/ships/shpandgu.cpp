@@ -122,8 +122,7 @@ void AndrosynthGuardian::calculate_thrust()
 			bounce_status -= frame_time;
 			dv = specialVelocity * frame_time / specialBounceTime;
 			accelerate(this, angle, dv, specialVelocity);
-		}
-		else {
+		} else {
 			dv = specialVelocity / 2 * frame_time / 50.;
 			accelerate(this, angle, dv, specialVelocity);
 			accelerate(this, angle, dv, specialVelocity);
@@ -252,8 +251,7 @@ void AndrosynthBubble::calculate()
 					newAngle = trajectory_angle(s);
 				}
 			}
-		}
-		else {
+		} else {
 			for (i = 0; i < targets->N; i += 1) {
 				SpaceObject *s = targets->item[i];
 				if (s->sameTeam(this) && (distance(s) < r) && !s->isInvisible()) {

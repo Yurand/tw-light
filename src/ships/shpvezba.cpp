@@ -226,8 +226,7 @@ MissileCourse::MissileCourse(VezlagariMissile* omissile, int side)
 		Range2 = 0.25;
 		Range3 = 0.35;
 		Range4 = 0.37;
-	}
-	else {
+	} else {
 		Turn1 = Turn2 = Turn3 = Turn4 = 0;
 		Range1 = Range2 = Range3 = Range4 = 0.25;
 	}
@@ -254,8 +253,7 @@ double MissileCourse::GetCurrentFacing(double fractionTraveled)
 	else if (fractionTraveled<(Range1+Range2+Range3+Range4)) {
 		fracDist = (fractionTraveled-Range1-Range2-Range3) / Range4;
 		return(LaunchFacingAngle + Turn1 + Turn2 + Turn3 + (Turn4 * fracDist));
-	}
-	else {
+	} else {
 		return(LaunchFacingAngle+Turn1+Turn2+Turn3+Turn4);
 	}
 	//Missile::calculate();

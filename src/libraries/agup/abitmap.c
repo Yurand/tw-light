@@ -327,8 +327,7 @@ blit_column (BITMAP *bmp, struct ABMAP *pat, int x, int y, int w, int h, enum CO
 	else if (pat->flags & ABMAP_STRETCH_V) {
 		masked_stretch_blit (pat->bmp, bmp, bx, 0, bw, pat->bmp->h, x2, y, w2,
 			h);
-	}
-	else {
+	} else {
 		/* top */
 		if (pat->bt) {
 			bmp->ct = MAX (ct, y);
@@ -385,8 +384,7 @@ abitmap_draw_bmp (BITMAP *bmp, struct ABMAP *pat, int x, int y, int w, int h)
 	}
 	else if (pat->flags & ABMAP_STRETCH_H) {
 		blit_column (bmp, pat, x, y, w, h, COLUMN_STRETCH);
-	}
-	else {
+	} else {
 		int ox;
 		if (pat->flags & ABMAP_ALIGN_H)
 			ox = (x / pat_w) * pat_w - x;
@@ -528,8 +526,7 @@ abitmap_draw_slider (DIALOG *d)
 	if (w > h) {
 		abitmap_draw_box (d, B_SLIDERH);
 		abitmap_draw_area (d, B_SLIDERH_HANDLE, bar_p, 0, bar_size, h, 0, 0);
-	}
-	else {
+	} else {
 		abitmap_draw_box (d, B_SLIDERV);
 		abitmap_draw_area (d, B_SLIDERV_HANDLE, 0, h - bar_size - bar_p, w, bar_size, 0, 0);
 	}
@@ -666,8 +663,7 @@ d_abitmap_edit_proc (int msg, DIALOG *d, int c)
 		if (x <= d->w - 2) {
 			b = l;
 			p = 0;
-		}
-		else {
+		} else {
 			b--;
 			p = d->d2 - b + 1;
 			b = d->d2;
@@ -957,8 +953,7 @@ int sel)
 		fg = theme->bitmaps[B_MENUBAR_ITEM][c].color;
 		y2 -= 1;
 		h2 += 3;
-	}
-	else {
+	} else {
 		fg = theme->bitmaps[B_MENU_ITEM][c].color;
 		x2 -= 1;
 		w2 += 3;
@@ -1006,8 +1001,7 @@ int sel)
 		if ((m->child) && (!bar)) {
 			abitmap_draw_bmp (bmp, &theme->bitmaps[B_MENU_SUB][c], x + w - 12, y, 12, h);
 		}
-	}
-	else {
+	} else {
 		/* menu separator */
 		abitmap_draw_bmp (bmp, &theme->bitmaps[B_MENU_SEP][c], x, y, w, h);
 	}
@@ -1147,8 +1141,7 @@ find_theme_bitmap (DATAFILE *datafile, char const *name)
 		else
 			TRACE ("Bitmap %s not found in theme datafile.\n", str);
 		return NULL;
-	}
-	else {
+	} else {
 		BITMAP *bmp = find_used_bitmap (str);
 		if (!bmp) {
 			bmp = load_bitmap (str, NULL);
@@ -1314,9 +1307,8 @@ abitmap_init (char const *path, DATAFILE *datafile)
 					}
 				}
 				TRACE ("loaded successfully.\n");
-			}
-			else {
-			/* If everything fails, try to inherit from another bitmap. */
+			} else {
+				/* If everything fails, try to inherit from another bitmap. */
 				if (j) {
 					theme->bitmaps[bload[i].elem][j] =
 						theme->bitmaps[bload[i].elem][0];

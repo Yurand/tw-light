@@ -90,8 +90,7 @@ void ShofixtiScout::calculate_fire_special()
 					0, specialFrames, 50, DEPTH_EXPLOSIONS, specialScale));
 				play_sound2(data->sampleSpecial[0]);
 				damage(this, 0, 999);
-			}
-			else {
+			} else {
 				spritePanel->overlay(1, 5+glory, spritePanel->get_bitmap(2));
 				spritePanel->overlay(1, 5+glory, spritePanel->get_bitmap(3));
 				spritePanel->overlay(1, 5+glory, spritePanel->get_bitmap(4));

@@ -203,8 +203,7 @@ void MissileTrace::animate(Frame *space)
 			r = int(255.0 * v);
 			g = 50;
 			b = int(255.0 - r);
-		}
-		else {
+		} else {
 			r = 0;
 			g = 0;
 			b = 0;
@@ -695,8 +694,7 @@ void GravWell::calculate()
 			r /= 40 * 5;
 			for (int i = 0; i < -gravity_power; i += 1) sr *= r;
 			vadd = frame_time * gravity_force / sr;
-		}
-		else {
+		} else {
 			r = 1 - r/gravity_range;
 			for (int i = 0; i < gravity_power; i += 1) sr *= r;
 			vadd = frame_time * gravity_force * sr;
@@ -798,8 +796,7 @@ int ClowanFlurry::activate_weapon()
 
 		}
 
-	}
-	else {
+	} else {
 
 		// this is a special, defensive mode :)
 
@@ -975,8 +972,7 @@ void MassShot::calculate()
 
 		exist_time += dt;
 
-	}
-	else {
+	} else {
 		acceleration = 0;		 // reset acc. switch for next round
 		//no exist_time updated ... inside a grav well, the shots exist forever.
 	}

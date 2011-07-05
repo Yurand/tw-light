@@ -104,8 +104,7 @@ void IlwrathAvenger::calculate_fire_special()
 			cloak = FALSE;
 
 			play_sound2(data->sampleSpecial[1]);
-		}
-		else {
+		} else {
 			cloak = TRUE;
 			play_sound2(data->sampleSpecial[0]);
 			batt -= special_drain;

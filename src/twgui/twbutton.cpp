@@ -193,8 +193,7 @@ void EmptyButton::check_focus()
 			if (!flag.focus)
 				mainwindow->setfocus(this);
 
-		}
-		else {
+		} else {
 
 			if (flag.focus)
 				handle_defocus();
@@ -641,8 +640,7 @@ void GraphicButton::init_pos_size(BITMAP **bmp_default, const char *idstr)
 								 // note: it's already scaled on initialization.
 		size.x = (*bmp_default)->w;
 		size.y = (*bmp_default)->h;
-	}
-	else {
+	} else {
 		//tw_error("Could not initialize Button bitmap");
 		size = 0;
 	}

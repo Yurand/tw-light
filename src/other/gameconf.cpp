@@ -40,13 +40,13 @@
 static void static_get_home_directory(char* buff, int len)
 {
 	char homedir[2048];
-#ifdef WIN32
+	#ifdef WIN32
 	const char *twname = "tw-light";
 	SHGetFolderPath( 0, CSIDL_APPDATA|CSIDL_FLAG_CREATE, NULL, 0, homedir );
-#else
+	#else
 	const char *twname = ".tw-light";
 	strcpy(homedir, getenv("HOME"));
-#endif
+	#endif
 	tw_append_filename(buff, homedir, twname, len);
 }
 
@@ -77,8 +77,7 @@ std::string data_full_path(std::string path)
 
 	if (tw_exists("../data/gob.dat")) {
 		base_dir = "../data";
-	}
-	else {
+	} else {
 
 		base_dir = TWLIGHT_DATADIR;
 	}
@@ -92,8 +91,7 @@ std::string data_full_path(std::string path)
 
 	if (path.length()) {
 		ret = tw_append_filename(data, base_dir.c_str(), path.c_str(), 2039);
-	}
-	else {
+	} else {
 		return base_dir;
 	}
 	return ret;

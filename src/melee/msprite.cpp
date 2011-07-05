@@ -456,8 +456,7 @@ SpaceSprite::SpaceSprite(const TW_DATAFILE *images, int sprite_count, int _attri
 				if (general_attributes & ALPHA) handle_alpha_load((BITMAP *)(images[i].dat));
 				if (obpp != bpp) {
 					convert_bitmap((BITMAP *)(images[i].dat), bmp, (general_attributes & MASKED) ? AA_MASKED : 0);
-				}
-				else {
+				} else {
 					if (general_attributes & MASKED) draw_sprite(bmp, (BITMAP*)images[i].dat, 0, 0);
 					else blit((BITMAP*)images[i].dat, bmp, 0, 0, 0, 0, w, h);
 				}
@@ -513,8 +512,7 @@ SpaceSprite::SpaceSprite(const TW_DATAFILE *images, int sprite_count, int _attri
 				if (bpp == obpp) {
 					bmp = tmp;
 					tmp = NULL;
-				}
-				else {
+				} else {
 					bmp = create_bitmap_ex ( bpp, w, h);
 
 					// added, otherwise maybe the "convert" skips masked parts in
@@ -750,8 +748,7 @@ void SpaceSprite::draw(Vector2 pos, Vector2 size, int index, BITMAP *surface)
 	aa_set_mode(find_aa_mode(general_attributes));
 	if (tw_aa_mode & AA_NO_ALIGN) {
 		aa_stretch_blit(bmp, surface, 0,0,bmp->w,bmp->h, pos.x, pos.y, size.x, size.y);
-	}
-	else {
+	} else {
 		ix = iround(pos.x);
 		iy = iround(pos.y);
 		iw = iround_up(size.x);
@@ -792,8 +789,7 @@ void SpaceSprite::draw(Vector2 pos, Vector2 size, int index, Frame *frame)
 		ih = iround_up(pos.y+size.y) + 1 - iy;
 		aa_stretch_blit(bmp, frame->surface, 0,0,bmp->w,bmp->h,
 			pos.x, pos.y, size.x, size.y);
-	}
-	else {
+	} else {
 		ix = iround(pos.x);
 		iy = iround(pos.y);
 		iw = iround(size.x);

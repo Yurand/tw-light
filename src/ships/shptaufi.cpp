@@ -122,8 +122,7 @@ void TauFiend::calculate_fire_special()
 		if (charge_count < charge_time) {
 			charge_count += frame_time;
 			residual_drain += frame_time * (double)special_drain / charge_time;
-		}
-		else {
+		} else {
 			cooling_count = cooling_time;
 			charge_count = -1;
 			play_sound(data->sampleSpecial[0]);

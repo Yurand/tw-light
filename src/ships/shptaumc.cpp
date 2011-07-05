@@ -409,8 +409,7 @@ double TauMCMissile::get_aim(SpaceObject *tgt)
 		if (p > 0) t = p;
 		else       t = q;
 		if (t < 0) return (1e10);
-	}
-	else {
+	} else {
 		if (fabs(t)<1e-6) return (1e10);
 		else    t = - 0.5 * r2 / t;
 		if (t < 0) return (1e10);

@@ -170,8 +170,7 @@ Color UtwigDefender::crewPanelColor(int k)
 		double a = energizetimer / energizetimemax;
 		Color c = {255,200*a,200*a};
 		return c;
-	}
-	else {
+	} else {
 		return Ship::crewPanelColor(k);
 	}
 }
@@ -233,8 +232,7 @@ void UtwigDefender::calculate()
 	if (batt < minBattForThrust) {
 		if (inverseLights)
 			sprite_index += 64;
-	}
-	else {
+	} else {
 		if (!inverseLights)
 			sprite_index += 64;
 	}
@@ -245,8 +243,7 @@ void UtwigDefender::calculate()
 	if ( energizepersonalarmour ) {
 		if ( energizetimer > 0 ) {
 			energizetimer -= frame_time;
-		}
-		else {
+		} else {
 			energizetimer = 0;
 			energizepersonalarmour = 0;
 			update_panel = 1;
@@ -309,8 +306,7 @@ int UtwigDefender::handle_damage(SpaceLocation *src, double normal, double direc
 			++evac;
 		}
 
-	}
-	else {
+	} else {
 		Ship::handle_damage(src, normal, direct);
 	}
 

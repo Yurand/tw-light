@@ -59,8 +59,7 @@ fixed _scalex, fixed _scaley, int _mode)
 		xend = _dst->cr;
 		ybeg = _dst->ct;
 		yend = _dst->cb;
-	}
-	else {
+	} else {
 		xbeg = 0;
 		xend = _dst->w;
 		ybeg = 0;
@@ -141,8 +140,7 @@ fixed _scalex, fixed _scaley, int _mode)
 		point[1].sx = 0;
 		point[2].sx = sw;
 		point[3].sx = 0;
-	}
-	else {
+	} else {
 		point[0].sx = 0;
 		point[1].sx = sw;
 		point[2].sx = 0;
@@ -153,8 +151,7 @@ fixed _scalex, fixed _scaley, int _mode)
 		point[1].sy = sh;
 		point[2].sy = 0;
 		point[3].sy = 0;
-	}
-	else {
+	} else {
 		point[0].sy = 0;
 		point[1].sy = 0;
 		point[2].sy = sh;
@@ -178,8 +175,7 @@ fixed _scalex, fixed _scaley, int _mode)
 			redge[0] = 1;
 			redge[1] = 3;
 			redge[2] = 2;
-		}
-		else {
+		} else {
 			ledge[0] = 0;
 			ledge[1] = 2;
 			ledge[2] = 3;
@@ -204,8 +200,7 @@ fixed _scalex, fixed _scaley, int _mode)
 			redge[0] = 2;
 			redge[1] = 0;
 			redge[2] = 1;
-		}
-		else {
+		} else {
 			ledge[0] = 2;
 			ledge[1] = 3;
 			ledge[2] = 1;
@@ -230,8 +225,7 @@ fixed _scalex, fixed _scaley, int _mode)
 			redge[0] = 3;
 			redge[1] = 2;
 			redge[2] = 0;
-		}
-		else {
+		} else {
 			ledge[0] = 3;
 			ledge[1] = 1;
 			ledge[2] = 0;
@@ -239,8 +233,7 @@ fixed _scalex, fixed _scaley, int _mode)
 			redge[1] = 0;
 			redge[2] = 1;
 		}
-	}
-	else {
+	} else {
 		if (point[1].dy < point[3].dy) {
 			ledge[0] = 1;
 			ledge[1] = 0;
@@ -256,8 +249,7 @@ fixed _scalex, fixed _scaley, int _mode)
 			redge[0] = 3;
 			redge[1] = 2;
 			redge[2] = 0;
-		}
-		else {
+		} else {
 			ledge[0] = 1;
 			ledge[1] = 0;
 			ledge[2] = 2;

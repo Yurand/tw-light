@@ -202,8 +202,7 @@ void VenKekFrigate::calculate()
 	double powerNeeded;
 	if (afterburner) {
 		spark_threshhold = (int)((double)1000 / (double)sparksPerSecondAfterburner);
-	}
-	else {
+	} else {
 		spark_threshhold = (int)((double)1000 / (double)sparksPerSecondNormal);
 	}
 	spark_counter += frame_time;

@@ -389,8 +389,7 @@ void YRadar::PaintItem(BITMAP *Slate, Vector2 T, SpaceLocation *o, double Scale)
 
 		masked_blit(bmp, Slate,
 			0, 0, (int)pos.x, (int)pos.y, bmp->w, bmp->h);
-	}
-	else {
+	} else {
 		putpixel(Slate, (int)pos.x, (int)pos.y, makecol(200,200,200));
 	}
 
@@ -665,8 +664,7 @@ ImIndicator::ImIndicator(SpaceLocation *o)
 		SpaceSprite *src;
 		src = ((SpaceObject*)o)->get_sprite();
 		src->draw_character(0, 0, bmp->w, bmp->h, 0, colortype(o), bmp);
-	}
-	else {
+	} else {
 		clear_to_color(bmp, 0x0408090);
 	}
 }
@@ -703,8 +701,7 @@ void ImIndicator::newtarget(SpaceLocation *o)
 		SpaceSprite *src;
 		src = ((SpaceObject*)o)->get_sprite();
 		src->draw_character(0, 0, bmp->w, bmp->h, 0, colortype(o), bmp);
-	}
-	else {
+	} else {
 		clear_to_color(bmp, 0x0408090);
 	}
 }

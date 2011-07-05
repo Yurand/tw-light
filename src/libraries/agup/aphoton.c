@@ -100,8 +100,7 @@ GOURAUD_RANGE *range, int vert)
 
 			vline(bmp, x, y1, y2, makecol(gamma.r, gamma.g, gamma.b));
 		}
-	}
-	else {
+	} else {
 		for (y=y1; y<=y2; y++) {
 			gamma.r = range->from.r + (range->to.r - range->from.r) * (y - y1) / (y2 - y1);
 			gamma.g = range->from.g + (range->to.g - range->from.g) * (y - y1) / (y2 - y1);
@@ -177,8 +176,7 @@ int vert, int pos, int len)
 
 		if (sly+slh+1 < y+h)
 			hline(bmp, slx, sly+slh+1, slx+slw-1, scrollbar_gray2);
-	}
-	else {
+	} else {
 		slx = x + pos;
 		slw = len;
 		sly = y;
@@ -256,8 +254,7 @@ int d_aphoton_button_proc(int msg, DIALOG *d, int c)
 			top_color = button_border_gray;
 			bottom_color = white;
 			shift = 1;
-		}
-		else {
+		} else {
 			top_color = white;
 			bottom_color = button_border_gray;
 			shift = 0;
@@ -318,8 +315,7 @@ int d_aphoton_check_proc(int msg, DIALOG *d, int c)
 			/* cross */
 			line(bmp, d->x+6, d->y+d->h/2-4, d->x+13, d->y+d->h/2+3, check_black);
 			line(bmp, d->x+6, d->y+d->h/2+3, d->x+13, d->y+d->h/2-4, check_black);
-		}
-		else {
+		} else {
 			rect(bmp, d->x+6, d->y+d->h/2-4, d->x+13, d->y+d->h/2+3, check_gray2);
 		}
 
@@ -453,8 +449,7 @@ int d_aphoton_edit_proc(int msg, DIALOG *d, int c)
 		if (x <= d->w-2) {
 			b = l;
 			p = 0;
-		}
-		else {
+		} else {
 			b--;
 			p = d->d2-b+1;
 			b = d->d2;
@@ -540,8 +535,7 @@ int d_aphoton_list_proc(int msg, DIALOG *d, int c)
 				else if ((sel) && (sel[d->d2+i])) {
 					fg = list_white;
 					bg = list_green;
-				}
-				else {
+				} else {
 					fg = black;
 					bg = list_white;
 				}
@@ -565,8 +559,7 @@ int d_aphoton_list_proc(int msg, DIALOG *d, int c)
 				x += text_length(font, s);
 				if (x <= d->x+w)
 					rectfill(bmp, x, y, d->x+w, y+char_height-1, bg);
-			}
-			else {
+			} else {
 				rectfill(bmp, d->x+2,  d->y+2+i*char_height,
 					d->x+w, d->y+1+(i+1)*char_height, list_white);
 			}
@@ -614,8 +607,7 @@ int d_aphoton_textbox_proc(int msg, DIALOG *d, int c)
 
 		if (d->d1 > height) {
 			bar = 11;
-		}
-		else {
+		} else {
 			bar = 0;
 			d->d2 = 0;
 		}

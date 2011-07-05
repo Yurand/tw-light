@@ -158,8 +158,7 @@ void TauMercury::calculate()
 		if (bank_position > 0) {
 			bank_position -= bank_max * frame_time / bank_relax;
 			if (bank_position < 0) bank_position = 0;
-		}
-		else {
+		} else {
 			bank_position += bank_max * frame_time / bank_relax;
 			if (bank_position > 0) bank_position = 0;
 		}

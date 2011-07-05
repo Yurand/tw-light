@@ -286,8 +286,7 @@ void GerlVirtualship::calculate()
 			//			// well... too quirky and not that useful I guess.
 		}
 
-	}
-	else {
+	} else {
 		// watch where the (helpless) morons are going ...
 		pos = morons->pos;
 		vel = morons->vel;
@@ -463,8 +462,7 @@ void GerlHero::calculate()
 	if (!beingbusy ) {
 		vel += dvel;
 		angle += dangle;
-	}
-	else {
+	} else {
 		vel = 0;
 		angle += 0.5 * dangle;	 // more difficult to turn, when you're attached?!
 	}
@@ -539,208 +537,211 @@ void GerlHero::calculate()
 
 		// he can choose to release, when he uses his special, while attached
 		if ( activateyourspecial /*|| forcerelease*/ ) {
-			leavingship = 1;
-			comeaboard = 0;
-			attached = 0;
-			// command received - hero retreating from his attack position
-		}
+		leavingship = 1;
+		comeaboard = 0;
+		attached = 0;
+		// command received - hero retreating from his attack position
+	}
+
+}
+
+
+if ( leavingship ) {
+	// slowly move away !!
+
+	double a = angle;
+	vel = boardingship->vel + 0.1 * unit_vector(a);
+
+	double R;
+	Vector2 Vd;
+	Vd = pos - boardingship->pos;
+	R = magnitude(Vd);
+
+	// check if you're far away enough from the ship:
+	if ( R > 0.5*(boardingship->get_size().x + get_size().x) ) {
+		attached = 0;
+		comeaboard = 0;
+		leavingship = 0;
+		boardingship = 0;
+
+		collide_flag_sameteam = ALL_LAYERS;
+		collide_flag_sameship = ALL_LAYERS;
+		collide_flag_anyone = ALL_LAYERS;
 
 	}
 
-	if ( leavingship ) {
-		// slowly move away !!
+}
 
-		double a = angle;
-		vel = boardingship->vel + 0.1 * unit_vector(a);
 
-		double R;
-		Vector2 Vd;
-		Vd = pos - boardingship->pos;
+//	double iweaponDrain = 4;
+if ( activateyourweapon && attached && mother->ship->batt >= mother->weapon_drain ) {
+	activateyourweapon = 0;
+								 // it's the (virtual) mother that does the damage
+	mother->damage(boardingship, mother->weaponDamage, 0);
+
+	int i = mother->data->spriteWeapon->frames();
+	game->add( new Animation(this, pos + Vector2(tw_random(10), tw_random(10)), mother->data->spriteWeapon, 0,
+		i, time_ratio, LAYER_EXPLOSIONS) );
+
+	// take some energy
+	mother->handle_fuel_sap(this, mother->weapon_drain);
+
+	// also, stun the enemy for a few seconds:
+	//game->add( new GerlHeroStun(boardingship, 5.0) );
+	// disabled: it's a bit worthless, and not nice.
+
+	// he can fall off when he uses his weapon
+	/*
+	double targetdangle = target->angle - targetlastangle;
+	targetlastangle = target->angle;
+	if ( fabs(targetdangle*100) > tw_random()%100 )
+	{
+		attached = 0;
+		angle = target->angle + 90 * sign(targetdangle);
+		heroV = 1.0;
+		double a = angle*PI/180;
+		vx = heroV * cos(a);
+		vy = heroV * sin(a);
+	}
+	*/
+}
+
+
+if ( (activateyourspecial && !attached && !leavingship) || movetotip ) {
+	if (activateyourspecial && !attached)
+		if (movetotip == 1)
+			movetotip = 0;		 // toggle the move command off
+
+	if ( !(moronbrother && moronbrother->exists()) ) {
+		movetotip = 0;
+	} else {
+
+		double R, R0;
+		Vector2 Vd, Vtip;
+
+		//a = moronbrother->angle;
+		R0 = 100.0;
+
+		Vtip = moronbrother->pos + R0 * unit_vector(moronbrother->angle);
+
+		// move automatically towards the tip:
+
+		double a1, a2, da, R1, R2;
+
+		Vd = pos - moronbrother->pos;
+		a1 = atan(Vd);
+		R1 = magnitude(Vd);
+
+		// only move automatically, if the hero is close enough to the moron ship
+		double autoguide_range = 200.0;
+
+		if ( R1 < autoguide_range )
+			movetotip = 1;
+		else
+			movetotip = 0;
+
+		if ( movetotip ) {
+
+			a2 = moronbrother->angle;
+			R2 = R0;			 // distance you want to achieve
+
+			double dda, davel;
+
+			// the angle remaining
+			dda = a2 - a1;
+			while ( dda >   PI )    dda -= 2*PI;
+			while ( dda <= -PI )    dda += 2*PI;
+
+			// always move at max angular velocity in some direction
+								 // max. 20 degree per second
+			davel = 20.0 * ANGLE_RATIO;
+			if ( dda > 0 )
+				da =  davel;
+			else
+				da = -davel;
+
+			da *= frame_time / 1000.0;
+
+			// check if you don't overshoot the optimal point:
+			if ( da >  fabs(dda) )      da =  fabs(dda);
+			if ( da < -fabs(dda) )      da = -fabs(dda);
+
+			if ( fabs(da) > 1E-3 )
+				R = R1 + (R2 - R1) * da / dda;
+			else
+				R = R2;			 // should be the target distance.
+
+			double dR = 50.0 * frame_time * 1E-3;
+								 // don't move too fast though ;)
+			if ( R - R1 > dR )
+				R = R1 + dR;
+			if ( R - R1 < -dR )
+				R = R1 - dR;
+
+			double a;
+			a = a1 + da;
+
+			Vector2 oldpos;
+			oldpos = pos;
+
+			pos = moronbrother->pos + R * unit_vector(a);
+								 // match velocity with the moron's ship
+			vel = moronbrother->vel;
+
+			// also, re-orientate the hero vessel till it's aligned with the moron ship
+			// the target angle
+			dda = moronbrother->angle - angle;
+			while ( dda >=  PI )    dda -= 2*PI;
+			while ( dda <  -PI )    dda += 2*PI;
+
+			// the angular change
+			davel = 180.0 * ANGLE_RATIO;
+			if ( dda > 0 )
+				da =  davel;
+			else
+				da = -davel;
+
+			da *= frame_time / 1000.0;
+
+			// check if you don't overshoot the optimal point:
+			if ( da >  fabs(dda) )      da =  fabs(dda);
+			if ( da < -fabs(dda) )      da = -fabs(dda);
+
+			angle += da;
+		}
+
+		Vd = pos - Vtip;
 		R = magnitude(Vd);
 
-		// check if you're far away enough from the ship:
-		if ( R > 0.5*(boardingship->get_size().x + get_size().x) ) {
-			attached = 0;
-			comeaboard = 0;
-			leavingship = 0;
-			boardingship = 0;
+		da = angle - moronbrother->angle;
+		while ( da >=  PI ) da -= 2*PI;
+		while ( da <  -PI ) da += 2*PI;
 
-			collide_flag_sameteam = ALL_LAYERS;
-			collide_flag_sameship = ALL_LAYERS;
-			collide_flag_anyone = ALL_LAYERS;
+		if ( R < 1.0 && fabs(da) < 1.0 * ANGLE_RATIO ) {
 
-		}
-
-	}
-
-	//	double iweaponDrain = 4;
-	if ( activateyourweapon && attached && mother->ship->batt >= mother->weapon_drain ) {
-		activateyourweapon = 0;
-								 // it's the (virtual) mother that does the damage
-		mother->damage(boardingship, mother->weaponDamage, 0);
-
-		int i = mother->data->spriteWeapon->frames();
-		game->add( new Animation(this, pos + Vector2(tw_random(10), tw_random(10)), mother->data->spriteWeapon, 0,
-			i, time_ratio, LAYER_EXPLOSIONS) );
-
-		// take some energy
-		mother->handle_fuel_sap(this, mother->weapon_drain);
-
-		// also, stun the enemy for a few seconds:
-		//game->add( new GerlHeroStun(boardingship, 5.0) );
-		// disabled: it's a bit worthless, and not nice.
-
-		// he can fall off when he uses his weapon
-		/*
-		double targetdangle = target->angle - targetlastangle;
-		targetlastangle = target->angle;
-		if ( fabs(targetdangle*100) > tw_random()%100 )
-		{
-			attached = 0;
-			angle = target->angle + 90 * sign(targetdangle);
-			heroV = 1.0;
-			double a = angle*PI/180;
-			vx = heroV * cos(a);
-			vy = heroV * sin(a);
-		}
-		*/
-	}
-
-	if ( (activateyourspecial && !attached && !leavingship) || movetotip ) {
-		if (activateyourspecial && !attached)
-			if (movetotip == 1)
-				movetotip = 0;	 // toggle the move command off
-
-		if ( !(moronbrother && moronbrother->exists()) ) {
-			movetotip = 0;
-		}
-		else {
-
-			double R, R0;
-			Vector2 Vd, Vtip;
-
-			//a = moronbrother->angle;
-			R0 = 100.0;
-
-			Vtip = moronbrother->pos + R0 * unit_vector(moronbrother->angle);
-
-			// move automatically towards the tip:
-
-			double a1, a2, da, R1, R2;
-
-			Vd = pos - moronbrother->pos;
-			a1 = atan(Vd);
-			R1 = magnitude(Vd);
-
-			// only move automatically, if the hero is close enough to the moron ship
-			double autoguide_range = 200.0;
-
-			if ( R1 < autoguide_range )
-				movetotip = 1;
-			else
-				movetotip = 0;
-
-			if ( movetotip ) {
-
-				a2 = moronbrother->angle;
-				R2 = R0;		 // distance you want to achieve
-
-				double dda, davel;
-
-				// the angle remaining
-				dda = a2 - a1;
-				while ( dda >   PI )    dda -= 2*PI;
-				while ( dda <= -PI )    dda += 2*PI;
-
-				// always move at max angular velocity in some direction
-								 // max. 20 degree per second
-				davel = 20.0 * ANGLE_RATIO;
-				if ( dda > 0 )
-					da =  davel;
-				else
-					da = -davel;
-
-				da *= frame_time / 1000.0;
-
-				// check if you don't overshoot the optimal point:
-				if ( da >  fabs(dda) )      da =  fabs(dda);
-				if ( da < -fabs(dda) )      da = -fabs(dda);
-
-				if ( fabs(da) > 1E-3 )
-					R = R1 + (R2 - R1) * da / dda;
-				else
-					R = R2;		 // should be the target distance.
-
-				double dR = 50.0 * frame_time * 1E-3;
-								 // don't move too fast though ;)
-				if ( R - R1 > dR )
-					R = R1 + dR;
-				if ( R - R1 < -dR )
-					R = R1 - dR;
-
-				double a;
-				a = a1 + da;
-
-				Vector2 oldpos;
-				oldpos = pos;
-
-				pos = moronbrother->pos + R * unit_vector(a);
-								 // match velocity with the moron's ship
-				vel = moronbrother->vel;
-
-				// also, re-orientate the hero vessel till it's aligned with the moron ship
-				// the target angle
-				dda = moronbrother->angle - angle;
-				while ( dda >=  PI )    dda -= 2*PI;
-				while ( dda <  -PI )    dda += 2*PI;
-
-				// the angular change
-				davel = 180.0 * ANGLE_RATIO;
-				if ( dda > 0 )
-					da =  davel;
-				else
-					da = -davel;
-
-				da *= frame_time / 1000.0;
-
-				// check if you don't overshoot the optimal point:
-				if ( da >  fabs(dda) )      da =  fabs(dda);
-				if ( da < -fabs(dda) )      da = -fabs(dda);
-
-				angle += da;
-			}
-
-			Vd = pos - Vtip;
-			R = magnitude(Vd);
-
-			da = angle - moronbrother->angle;
-			while ( da >=  PI ) da -= 2*PI;
-			while ( da <  -PI ) da += 2*PI;
-
-			if ( R < 1.0 && fabs(da) < 1.0 * ANGLE_RATIO ) {
-
-				// launch !
+			// launch !
 								 // very fast ?!
-				double heroV = 1.25;
+			double heroV = 1.25;
 								 // launched in the orientation of the moron ship!
-				vel = moronbrother->vel + heroV * unit_vector(angle);
+			vel = moronbrother->vel + heroV * unit_vector(angle);
 
-				// rebound of the moron ship upon launch ... does this work?
-				moronbrother->vel -= 0.5 * heroV * unit_vector(angle);
+			// rebound of the moron ship upon launch ... does this work?
+			moronbrother->vel -= 0.5 * heroV * unit_vector(angle);
 
-				movetotip = 0;
+			movetotip = 0;
 
-			}
 		}
 	}
+}
 
-	activateyourweapon = 0;
-	activateyourspecial = 0;
 
-	if ( attached )				 // set your priorites right correctly
-		movetotip = 0;
+activateyourweapon = 0;
+activateyourspecial = 0;
 
-	return;
+if ( attached )					 // set your priorites right correctly
+	movetotip = 0;
+
+return;
 }
 
 
@@ -759,30 +760,31 @@ void GerlHero::inflict_damage(SpaceObject *other)
 		// (it certainly must not be a weapon or planet)
 
 		if ( !attached && (other/*->get_serial()*/ != moronbrother/*->get_serial()*/) ) {
-			comeaboard = 1;
-			boardingship = other;
+		comeaboard = 1;
+		boardingship = other;
 
-			collide_flag_sameship = 0;
-			collide_flag_sameteam = 0;
-			collide_flag_anyone = 0;
+		collide_flag_sameship = 0;
+		collide_flag_sameteam = 0;
+		collide_flag_anyone = 0;
 
-			Vboarding = boardingship->pos;
+		Vboarding = boardingship->pos;
 
-			// give the enemy a small amount of impact velocity ;)
-			boardingship->vel = 0.5 * (boardingship->vel + vel);
-			//if (boardingship->vel
-
-		}
+		// give the enemy a small amount of impact velocity ;)
+		boardingship->vel = 0.5 * (boardingship->vel + vel);
+		//if (boardingship->vel
 
 	}
 
-	// important: isn't detected by handle_damage ?!
-	if ( other->isPlanet() )
-		state = 0;
+}
 
-	// is already done by handle_damage:
-	if ( state == 0 )
-		mother->ship->crew -= 1;
+
+// important: isn't detected by handle_damage ?!
+if ( other->isPlanet() )
+	state = 0;
+
+// is already done by handle_damage:
+if ( state == 0 )
+	mother->ship->crew -= 1;
 
 }
 
@@ -1023,8 +1025,7 @@ void GerlMorons::avoid_location(Vector2 pos, double min_angle, double max_angle)
 			angle -= da_max;	 //calculate_turn_right();
 		if ( da < 0 )
 			angle += da_max;	 //calculate_turn_left();
-	}
-	else {
+	} else {
 		if ( da > 0 )
 			angle += da_max;
 		if ( da < 0 )

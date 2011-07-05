@@ -149,8 +149,7 @@ void TauSlider::calculate_fire_special()
 				special_low = true;
 				activate_special();
 				return;
-			}
-			else {
+			} else {
 				special_charge++;
 				batt -= special_drain;
 				special_recharge += special_rate;
@@ -159,8 +158,7 @@ void TauSlider::calculate_fire_special()
 					activate_special();
 			}
 		}
-	}
-	else {
+	} else {
 		if (holding_special)
 			if (!in_jump)
 				activate_special();

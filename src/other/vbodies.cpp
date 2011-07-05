@@ -543,8 +543,7 @@ bool VGroundDefenseLaser::BattleAction()
 				else if ((ta<(0.5*PI))||(ta>(1.5*PI))) {
 					o = a.currento;
 					r = this->location->distance(o);
-				}
-				else {
+				} else {
 					;			 //do nothing
 				}
 			}
@@ -692,7 +691,7 @@ void VSpaceMine::inflict_damage(SpaceObject* other)
 {
 	STACKTRACE;
 	Vector2 V;
-	if (!other->isShip()) return; //only damages ships!!!
+	if (!other->isShip()) return;//only damages ships!!!
 	this->damage_factor = this->damage;
 	SpaceObject::inflict_damage(other);
 	V = unit_vector(this->trajectory_angle(other));
@@ -1025,8 +1024,7 @@ void VGasCloud::calculate(void)
 	if (this->isEnergized) {
 		this->isEnergized = false;
 		this->set_sprite(VGasCloud::mySprite2);
-	}
-	else {
+	} else {
 		this->damageFactor = 0;
 		this->damage_factor = this->damageFactor;
 		this->set_sprite(VGasCloud::mySprite1);
@@ -1187,8 +1185,7 @@ void VStar::AttractShots(int warping_power, double intensity)
 				for(i=0;i<(warping_power);i++)
 					distEffect *= scale_range(10.0) * dist;
 				;
-			}
-			else {
+			} else {
 				distEffect = scale_range(10.0);
 			}
 			V *= distEffect * intensity;
@@ -1470,8 +1467,7 @@ void VMetalShard::compareSprites(void)
 	STACKTRACE;
 	if (this->sprite==this->mySprite) {
 		tw_error("Identical sprites");
-	}
-	else {
+	} else {
 		tw_error("non-identical sprites!");
 	}
 }

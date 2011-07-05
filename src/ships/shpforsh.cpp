@@ -84,8 +84,7 @@ Ship(opos, shipAngle, shipData, code)
 		special_sprite= data->spriteExtraExplosion;
 		special_frame_size = iround(specialRange/specialVelocity/32);
 		special_frame_num = 32;
-	}
-	else {
+	} else {
 		special_sprite = data->spriteSpecial;
 		special_frame_size = 50;
 		special_frame_num = 2;

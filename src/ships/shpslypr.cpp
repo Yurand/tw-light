@@ -241,8 +241,7 @@ void SlylandroProbe::calculate()
 			sprite_index2++;
 			if (sprite_index2 == 64)
 				sprite_index2 = 0;
-		}
-		else {
+		} else {
 			sprite_index2--;
 			if (sprite_index2 == -1)
 				sprite_index2 = 63;
@@ -438,8 +437,7 @@ void SlylandroLaserNew::calculate()
 			if ( recalclights ) {
 				if ( i == 0 ) {
 					lights[i].pos1 = Vector2(0.0, 0.0);
-				}
-				else {
+				} else {
 					lights[i].pos1 = lights[i-1].pos2;
 				}
 

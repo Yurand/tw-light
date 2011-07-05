@@ -250,8 +250,7 @@ void ShipPanel::draw_stuff (int x, int y, int w, int h, int dx, int dy, int m, i
 		// crew offset
 		xl = 3;
 		xr = 11;
-	}
-	else {
+	} else {
 		// batt offset
 		xl = 51;
 		xr = 59;
@@ -328,8 +327,7 @@ void ShipPanel::draw_stuff (int x, int y, int w, int h, int dx, int dy, int m, i
 			rectfill(panel, _x, _y, _x+w, _y+h, color);
 		}
 
-	}
-	else {
+	} else {
 
 		// percentile crew/batt bar
 

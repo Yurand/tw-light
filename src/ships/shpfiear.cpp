@@ -209,8 +209,7 @@ void FierasArbiter::calculate()
 					nv -= specialVelocity*specialPlanetBounceFactor*rc;
 					if (nv < 0)
 						this->accelerate(this, 2*tv*nv, MAX_SPEED*specialSpeedLimitFactor);
-				}
-				else {
+				} else {
 					o->translate(tv*(repulsor_radius-r));
 					nv -= specialVelocity*specialBounceFactor*rc;
 
@@ -279,8 +278,7 @@ void FierasShot::calculate()
 			if (ship)
 				changeDirection(ship->angle);
 			d = 0;
-		}
-		else {
+		} else {
 			double da = 0;
 			if (ship) {
 				if (ship->turn_left) da -= 1;

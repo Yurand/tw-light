@@ -235,8 +235,7 @@ void VelronCruiser::calculate()
 	if (batt < minBattForThrust) {
 		if (inverseLights)
 			sprite_index += 64;
-	}
-	else {
+	} else {
 		if (!inverseLights)
 			sprite_index += 64;
 	}
@@ -273,8 +272,7 @@ double VelronCruiser::get_aim(SpaceObject *tgt, double min_angle, double max_ang
 		if (p > 0) t = p;
 		else       t = q;
 		if (t < 0) return (-1000);
-	}
-	else {
+	} else {
 		if (fabs(t)<1e-6) return (-1000);
 		else    t = - 0.5 * r2 / t;
 		if (t < 0) return (-1000);

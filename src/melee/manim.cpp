@@ -105,8 +105,7 @@ void FixedAnimation::calculate()
 	if (follow->exists()) {
 		pos = follow->normal_pos();
 		Animation::calculate();
-	}
-	else {
+	} else {
 		state = 0;
 		follow = NULL;
 	}

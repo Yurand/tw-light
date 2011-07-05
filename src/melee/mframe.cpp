@@ -87,8 +87,7 @@ void Query::begin (SpaceLocation *qtarget, int qlayers, double qrange)
 		qy_max = (int)ceil ((target->normal_pos().y + qrange) * QUADI_Y) + 1;
 		if (qy_min < 0) qy_min += QUADS_Y;
 		if (qy_max >= QUADS_Y) qy_max -= QUADS_Y;
-	}
-	else {
+	} else {
 		qx_min = 0;
 		qx_max = 0;
 		qy_min = 0;
@@ -121,8 +120,7 @@ void Query::begin (SpaceLocation *qtarget, Vector2 center, int qlayers, double q
 		qy_max = (int)ceil ((target_pos.y + qrange) * QUADI_Y) + 1;
 		if (qy_min < 0) qy_min += QUADS_Y;
 		if (qy_max >= QUADS_Y) qy_max -= QUADS_Y;
-	}
-	else {
+	} else {
 		qx_min = 0;
 		qx_max = 0;
 		qy_min = 0;
@@ -208,8 +206,7 @@ void Query2::begin (SpaceLocation *qtarget, Uint64 attribute_filter, double qran
 		qy_max = (int)ceil ((target->normal_pos().y + qrange) * QUADI_Y) + 1;
 		if (qy_min < 0) qy_min += QUADS_Y;
 		if (qy_max >= QUADS_Y) qy_max -= QUADS_Y;
-	}
-	else {
+	} else {
 		qx_min = 0;
 		qx_max = 0;
 		qy_min = 0;
@@ -246,8 +243,7 @@ void Query2::begin (SpaceLocation *qtarget, Vector2 center, Uint64 attribute_fil
 		qy_max = (int)ceil ((target_pos.y + qrange) * QUADI_Y) + 1;
 		if (qy_min < 0) qy_min += QUADS_Y;
 		if (qy_max >= QUADS_Y) qy_max -= QUADS_Y;
-	}
-	else {
+	} else {
 		qx_min = 0;
 		qx_max = 0;
 		qy_min = 0;
@@ -441,8 +437,7 @@ collide_flag_sameship(0)
 		data = creator->data;
 		if (data) data->lock();
 		target = creator->target;
-	}
-	else {
+	} else {
 		ally_flag = 0;
 		ship = NULL;
 		data = NULL;
@@ -467,8 +462,7 @@ bool SpaceLocation::change_owner(SpaceLocation *new_owner)
 		ally_flag = new_owner->ally_flag;
 		ship = new_owner->ship;
 		target = new_owner->target;
-	}
-	else {
+	} else {
 		ally_flag = 0;
 		ship = NULL;
 		target = NULL;
@@ -760,8 +754,7 @@ void SpaceLocation::_accelerate(double angle, double velocity, double max_speed)
 	nvm = magnitude_sqr(nv);
 	if ((nvm <= max_speed * max_speed) || (nvm <= ovm)) {
 		vel = nv;
-	}
-	else {
+	} else {
 		if (ovm <= max_speed * max_speed) ovm = max_speed;
 		else ovm = sqrt(ovm);
 		vel = nv * ovm / (ovm + velocity);
@@ -783,8 +776,7 @@ void SpaceLocation::_accelerate(Vector2 delta_v, double max_speed)
 		//if new velocity is slow, handle normally
 		//if new velocity is fast, but we're decelerating, still handle normally
 		vel = nv;
-	}
-	else {
+	} else {
 		if (ovm <= max_speed * max_speed) ovm = max_speed;
 		else ovm = sqrt(ovm);
 		//otherwise, slow down closer to the maximum speed
@@ -988,7 +980,8 @@ void SpaceObject::inflict_damage(SpaceObject *other)
 		if (i >= BOOM_SAMPLES) i = BOOM_SAMPLES - 1;
 		play_sound((SAMPLE *)(melee[MELEE_BOOM + i].dat));
 		damage(other, damage_factor);
-	} else {
+	}
+	else {
 		damage(other, 0);
 	}
 	return;

@@ -230,14 +230,11 @@ void AlaryBC::calculate()
 			if (tw_random()%2 == 0) {
 				SpaceLocation *ani = new Animation(this, pos+rrr*unit_vector(aaa), data->spriteSpecialExplosion, 0, 10, 50, DEPTH_EXPLOSIONS);
 				game->add(ani);
-			}
-			//				ani->play_sound((SAMPLE *)(melee[MELEE_BOOM + 1].dat));}
-			else {
+			} else {
 				SpaceLocation *ani = new Animation(this, pos+rrr*unit_vector(aaa), data->spriteExtraExplosion, 0, 10, 50, DEPTH_EXPLOSIONS);
 				game->add(ani);
 				ani->play_sound(data->sampleWeapon[2]);
 			}
-			//				ani->play_sound((SAMPLE *)(melee[MELEE_BOOM + 3].dat)); }
 		}
 	}
 
@@ -418,8 +415,7 @@ void AlaryBC::animate(Frame *space)
 			if (turret[i]->fire_frame[1] < 4)
 				data->more_sprites[2]->animate(Vector2(pos.x+0.5+ry*tx-rx*ty + 13*ttx-3*tty, pos.y+0.5+ry*ty+rx*tx + 13*tty+3*ttx), turret[i]->fire_frame[1], space);
 			data->more_sprites[0]->animate(Vector2(pos.x+0.5+ry*tx-rx*ty, pos.y+0.5+ry*ty+rx*tx), (iround(si) + 32) & 127, space);
-		}
-		else {
+		} else {
 			data->more_sprites[1]->animate(Vector2(pos.x+0.5+ry*tx-rx*ty, pos.y+0.5+ry*ty+rx*tx), ((iround(normalize(angle+turret[i]->angle,PI2)/(PI2/128)) + 32) & 127), space);
 		}
 	}
@@ -461,8 +457,7 @@ int AlaryBC::handle_damage(SpaceLocation* source, double normal, double direct)
 		absorbed_damage += extraThreshold;
 		total += normal / extraDamageReduction;
 		total += (normal - extraThreshold) / extraDirectDamageReduction;
-	}
-	else {
+	} else {
 		absorbed_damage += normal;
 		total += normal / extraDamageReduction;
 	}
@@ -471,8 +466,7 @@ int AlaryBC::handle_damage(SpaceLocation* source, double normal, double direct)
 		// shield "fails", and the ships absorbs damage relatively normally (except the default reduction)
 		total += (absorbed_damage - extraCapacity) / extraDirectDamageReduction;
 		absorbed_damage = extraCapacity;
-	}
-	else {
+	} else {
 		// give some sound for the shield if the shield absorbs its damage.
 		if (data->num_extra_samples >= 2)
 			play_sound(data->sampleExtra[1]);
@@ -652,8 +646,7 @@ void AlaryBCTorpedo::calculate()
 
 			state = 0;
 		}
-	}
-	else {
+	} else {
 		if (inactive <= 0) target = NULL;
 
 		//find another target???????
@@ -809,8 +802,7 @@ double AlaryBCTurret::get_aim(SpaceObject *tgt)
 		if (p > 0) t = p;
 		else       t = q;
 		if (t < 0) return (-1);
-	}
-	else {
+	} else {
 		if (fabs(t)<1e-6) return (-1);
 		else    t = - 0.5 * r2 / t;
 		if (t < 0) return (-1);
@@ -923,8 +915,7 @@ void AlaryBCTurret::calculate()
 							if (target->isShot()) {
 								if (shots_fired >= ((Shot*)target)->armour * ship->specialMaxShots / ship->specialDamage) {
 									shots_fired = 0;
-									target = get_target(NULL); } }
-							else {
+									target = get_target(NULL); } } else {
 								if (target->isAsteroid())
 									if (shots_fired >= ship->specialMaxShots) {
 										shots_fired = 0;
@@ -932,8 +923,7 @@ void AlaryBCTurret::calculate()
 							}
 						}
 			*/
-		}
-		else {
+		} else {
 			shots_fired = 0;
 			target = get_target(NULL);
 		}

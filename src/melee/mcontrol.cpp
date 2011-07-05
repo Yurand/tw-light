@@ -257,8 +257,7 @@ void Control::target_stuff()
 			index = random() % targets->N;
 			target = targets->item[index];
 			goto validate;
-		}
-		else {
+		} else {
 			goto done;
 		}
 	}
@@ -268,8 +267,7 @@ void Control::target_stuff()
 			index -= 1;
 			if (index < 0) index = 0;
 			goto blah;
-		}
-		else {
+		} else {
 			index = -1;
 			target = NULL;
 			goto change;
@@ -359,8 +357,8 @@ void Control::calculate()
 		else if (already > lf) {
 								 //stupid error check
 			tw_error("Control::calculate() - inconcievable!");
-		}
-		else {					 //stable, perform no action
+		}						 //stable, perform no action
+		else {
 			game->log_short(channel + Game::_channel_buffered, keys);
 		}
 	}

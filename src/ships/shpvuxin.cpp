@@ -221,8 +221,7 @@ void VuxIntruder::animate(Frame *space)
 			rotate(Vector2(-back_x, back_y_1), angle-PI/2),
 								 //graphics
 			s_index + ((rand()%3) << 6), space);
-	}
-	else {
+	} else {
 		if (turn_left)
 			data->spriteWeapon->animate(pos +
 				rotate(Vector2(-back_x, back_y), angle-PI/2),

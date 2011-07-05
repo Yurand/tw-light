@@ -175,8 +175,7 @@ void BlinkyIndicator::animate(Frame *space)
 	if (color == -1) {
 		s->draw(p, s->size() * space_zoom,
 			target->get_sprite_index(), space);
-	}
-	else {
+	} else {
 		Vector2 size = s->size() * space_zoom;
 		s->draw_character((int)p.x, (int)p.y, (int)size.x, (int)size.y,
 			target->get_sprite_index(), palette_color[color], space);
@@ -254,8 +253,7 @@ void Orbiter::calculate()
 
 	if (r < 1) {
 		accelerate(this, angle +PI, 0.0001 * (r-1) * frame_time, MAX_SPEED);
-	}
-	else {
+	} else {
 		accelerate(this, angle, 0.0001 * (1-r) * frame_time, MAX_SPEED);
 		if (r > 4) translate(unit_vector(angle) * radius*(4-r));
 	}

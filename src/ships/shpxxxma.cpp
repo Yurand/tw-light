@@ -284,8 +284,7 @@ void XXXMangler::calculate()
 
 		pos = grabbed->normal_pos() - grabdistance * unit_vector(grabangle);
 
-	}
-	else {
+	} else {
 		recharge_rate=normal_rate;
 		recharge_amount=normal_recharge;
 
@@ -339,8 +338,7 @@ void XXXMangler::animate(Frame *space)
 		CurrBodyFrame = RandFrame;
 		if (CurrBodyFrame == 0) ToggleDirection = FALSE;
 		else ToggleDirection = TRUE;
-	}
-	else {
+	} else {
 		if (BodyFrames <= 0) {
 			if (!( (CurrBodyFrame > 0) && (CurrBodyFrame < 3) ))
 				ToggleDirection = !ToggleDirection;
@@ -376,8 +374,7 @@ void XXXMangler::inflict_damage(SpaceObject *other)
 						+ ((weaponDamage % tentacleFrames) > 0.00001);
 					damageFrameLeft = 1;
 					damageFrameAmount = 1;
-				}
-				else {
+				} else {
 					damageFrameAmount = (tentacleFrames/weaponDamage);
 					damageFrameLeft = damageFrameAmount;
 					tentacleDamagePerDamageFrame = 1;
@@ -432,8 +429,7 @@ void XXXManglerMine::calculate()
 //      vy = 0;
 	  vel = 0;
 	  }
-	}
-  else {
+	} else {
 	SpaceObject *o, *t = NULL;
 	double oldrange = 999999;
 	Query a;

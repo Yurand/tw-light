@@ -334,8 +334,7 @@ int d_agtk_edit_proc(int msg, DIALOG *d, int c)
 		if (x <= d->w-2) {
 			b = l;
 			p = 0;
-		}
-		else {
+		} else {
 			b--;
 			p = d->d2-b+1;
 			b = d->d2;
@@ -444,8 +443,7 @@ int d_agtk_list_proc(int msg, DIALOG *d, int c)
 				else if ((sel) && (sel[d->d2+i])) {
 					fg = white;
 					bg = blue;
-				}
-				else {
+				} else {
 					fg = black;
 					bg = white;
 				}
@@ -472,8 +470,7 @@ int d_agtk_list_proc(int msg, DIALOG *d, int c)
 				if (d->d2+i == d->d1)
 					rect(bmp, x-text_length(font, s)-8, y, d->x+w, y+text_height(font)-1, yellow);
 				#endif
-			}
-			else {
+			} else {
 				rectfill(bmp, d->x+2,  d->y+2+i*text_height(font),
 					d->x+w, d->y+1+(i+1)*text_height(font), white);
 			}
@@ -519,8 +516,7 @@ int d_agtk_textbox_proc(int msg, DIALOG *d, int c)
 
 		if (d->d1 > height) {
 			bar = 11;
-		}
-		else {
+		} else {
 			bar = 0;
 			d->d2 = 0;
 		}
@@ -571,8 +567,7 @@ int d_agtk_slider_proc(int msg, DIALOG *d, int c)
 			sly = d->y+2+(d->h)-(hh+slp);
 			slw = d->w-1-3;
 			slh = hh-1-3;
-		}
-		else {
+		} else {
 			slx = d->x+2+slp;
 			sly = d->y+2;
 			slw = hh-1-3;
@@ -637,8 +632,7 @@ static void gtk_draw_menu_item(MENU *m, int x, int y, int w, int h, int bar, int
 	if (m->flags & D_DISABLED) {
 		fg = nshadow;
 		bg = normal;
-	}
-	else {
+	} else {
 		fg = black;
 		bg = (sel) ? highlight : normal;
 	}
@@ -665,8 +659,7 @@ static void gtk_draw_menu_item(MENU *m, int x, int y, int w, int h, int bar, int
 
 		if ((m->child) && (!bar))
 			draw_sprite(bmp, menu_arrow_bmp, x+w-12, y+(h-menu_arrow_bmp->h)/2);
-	}
-	else {
+	} else {
 		hline(bmp, x+4, y+text_height(font)/2+2, x+w-4, nshadow);
 		hline(bmp, x+4, y+text_height(font)/2+3, x+w-4, highlight);
 	}

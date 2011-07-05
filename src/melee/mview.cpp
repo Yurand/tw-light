@@ -366,8 +366,7 @@ void View::init(View *old)
 		key_alter2 = old->key_alter2;
 		frame = new Frame(1024);
 		window = frame->window;
-	}
-	else {
+	} else {
 		frame = new Frame(1024);
 		window = frame->window;
 		camera.pos = Vector2(0,0);
@@ -508,8 +507,7 @@ void message_type::animate(Frame *frame)
 	if (frame) {
 		text_mode(-1);
 		bmp = frame->surface;
-	}
-	else {
+	} else {
 		text_mode(0);
 		videosystem.window.lock();
 		bmp = videosystem.window.surface;
@@ -679,8 +677,7 @@ void View_Dynamic::calculate(Game *game)
 		cpos.vel /= 1.0f + (0.002f * frame_time);
 		// Zoom out slowly
 		cpos.z *= 1.0f + (0.0002f * frame_time);
-	}
-	else {
+	} else {
 		cpos.Set(c->pos,c->vel,f,power);
 
 		for(i=0; i<=game->num_focuses; i++) {
@@ -806,8 +803,7 @@ void View_Enemy_Discrete::calculate(Game *game)
 	if (c->target && !(camera_hides_cloakers && c->target->isInvisible())) {
 		focus(&n, c, c->target);
 		n.z *= 1.4;
-	}
-	else {
+	} else {
 		focus(&n, c);
 		// but, if the target is invisible, you usually want more zoom to plan where to go, right...
 		n.z = 900;

@@ -331,8 +331,7 @@ void Frame::erase()
 		old_item_count = item_count;
 		item_count = 0;
 		drawn_items = 0;
-	}
-	else {
+	} else {
 		if (old_item_count + item_count > list_size) {
 			full_redraw += 1;
 		}
@@ -398,8 +397,7 @@ void Frame::draw()
 		blit(surface, tmp, 0, 0, window->x, window->y, window->w, window->h);
 		window->unlock();
 		if (full_redraw > 0) full_redraw -= 1;
-	}
-	else {
+	} else {
 		tmp = create_sub_bitmap ( tmp, window->x, window->y, window->w, window->h);
 		acquire_bitmap(tmp);
 

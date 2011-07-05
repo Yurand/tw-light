@@ -121,8 +121,7 @@ void AsteroidCenter::calculate()
 	STACKTRACE;
 	if (creator == NULL) {
 		this->~AsteroidCenter();
-	}
-	else {
+	} else {
 		// translate(creator->normal_x() - normal_x(), creator->normal_y() - normal_y());
 		pos = creator->normal_pos();
 		AsteroidDebris::calculate();
@@ -192,16 +191,13 @@ void ChoraliTractorBeam::inflict_damage(SpaceObject *other)
 				if (other->trajectory_angle(this) <= other->get_angle() ) {
 					if ((other->get_angle() - other->trajectory_angle(this)) <= PI) {
 						((Ship*)other)->turn_step+=CH_TWIST_ANGLE;
-					}
-					else {
+					} else {
 						((Ship*)other)->turn_step-=CH_TWIST_ANGLE;
 					}
-				}
-				else {
+				} else {
 					if ((other->trajectory_angle(this) - other->get_angle()) <= PI) {
 						((Ship*)other)->turn_step-=CH_TWIST_ANGLE;
-					}
-					else {
+					} else {
 						((Ship*)other)->turn_step+=CH_TWIST_ANGLE;
 					}
 				}
@@ -295,8 +291,7 @@ void AsteroidMissile::calculate()
 	HomingMissile::calculate();
 	if (sprite_index_count<63) {
 		sprite_index_count++;
-	}
-	else {
+	} else {
 		sprite_index_count=0;
 	}
 	sprite_index=sprite_index_count;
@@ -507,15 +502,13 @@ int ChoraliExtractor::activate_weapon()
 		else if (grabbed == NULL) {
 			drillFrames=0;
 			return(TRUE);
-		}
-		else {
+		} else {
 			grabbed->die();
 			add(new AsteroidMissile(0.0, (size.y * 1.0), angle, AsteroidMissileVelocity, AsteroidMissileDamage, AsteroidMissileRange, AsteroidMissileArmour, AsteroidMissileTurnRate, this, meleedata.asteroidSprite, 1,
 				tractorR, tractorRmin, tractorG, tractorGmin, tractorB, tractorBmin ));
 			return(TRUE);
 		}
-	}
-	else {
+	} else {
 		drillFrames = weaponFrames;
 		return(TRUE);
 	}
@@ -535,8 +528,7 @@ int ChoraliExtractor::activate_special()
 		if ((grabbed != NULL) && (grabbed->mass > 0)) {
 			grabbed->accelerate(this, grabbed->trajectory_angle(spacePlanet), specialForce / (grabbed->mass + this->mass), MAX_SPEED);
 			this->accelerate(this, this->trajectory_angle(spacePlanet), specialForce / (grabbed->mass + this->mass), MAX_SPEED);
-		}
-		else {
+		} else {
 			this->accelerate(this, this->trajectory_angle(spacePlanet), specialForce / this->mass, MAX_SPEED);
 		}
 	}

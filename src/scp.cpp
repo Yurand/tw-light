@@ -270,8 +270,7 @@ void showLoadingScreen()
 	if (logo != NULL ) {
 		if (screen->w/2 >= logo->w) {
 			draw_sprite(screen, logo, screen->w/2 - logo->w/2, screen->h/2 - logo->h/2);
-		}
-		else {
+		} else {
 			float ratio = logo->w / logo->h;
 
 			int h = screen->h/4;
@@ -692,8 +691,7 @@ int tw_main(int argc, char *argv[])
 					auto_port = atoi(argv[i]);
 					i += 1;
 				}
-			}
-			else {
+			} else {
 				log_debug("unrecognized command-line argument\n");
 			}
 		}
@@ -743,8 +741,7 @@ int tw_main(int argc, char *argv[])
 
 		if (auto_play) {		 // FIX ME
 			if (!strcmp(auto_play, "game")) play_game(auto_param, NULL);
-		}
-		else {
+		} else {
 			mainmenu.preinit();
 			mainmenu.init(&videosystem.window);
 			mainmenu.doit();
@@ -1378,8 +1375,7 @@ void ship_view_dialog(int si, Fleet *fleet)
 			if (!sname) {
 				sprintf(dialog_string[0], "(Null)");
 				sprintf(dialog_string[1], "(Null)");
-			}
-			else {
+			} else {
 				ShipType *type = fleet->getShipType(si);
 
 				if (sprite)
@@ -1403,8 +1399,7 @@ void ship_view_dialog(int si, Fleet *fleet)
 					PACKFILE * f = pack_fopen(type->text, F_READ);
 					if (!f) {
 						sprintf(textFile, "Failed to load file \"%s\"", type->text);
-					}
-					else {
+					} else {
 						unsigned long textFileSize = file_size(type->text);
 						if (textFileSize > MAX_SHIP_TEXT_FILE_SIZE)
 							textFileSize = MAX_SHIP_TEXT_FILE_SIZE;
@@ -1422,8 +1417,7 @@ void ship_view_dialog(int si, Fleet *fleet)
 					if (!f) {
 						inifile = (char*) malloc(strlen("Failed to load file \"\"") + strlen(type->file) + 1);
 						sprintf(inifile, "Failed to load file \"%s\"", type->file);
-					}
-					else {
+					} else {
 						unsigned long iniFileSize = file_size(type->file);
 						inifile = (char*) malloc(iniFileSize +1 );
 						i = pack_fread(inifile, iniFileSize, f);

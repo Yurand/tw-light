@@ -155,8 +155,7 @@ void BasiliskAimline::calculate()
 			fabs(temp_angle-angle)  <= angle_range) {
 				angle = temp_angle;
 				color = oncolor;
-			}
-			else {
+			} else {
 				target = NULL;
 				color = offcolor;
 			}
@@ -409,8 +408,7 @@ void BasiLink::animate(Frame *space)
 		aa_set_trans ( iround(255 * ((max_health-health) / (max_health + 1))) );
 		sprite->animate(pos, sprite_index, space);
 		aa_set_trans(_old_trans);
-	}
-	else {
+	} else {
 		int col = makecol(150,40,0);
 		sprite->animate_character(pos, sprite_index, col, space);
 
@@ -655,8 +653,7 @@ void BChain::animate(Frame *space)
 		aa_set_trans ( iround(255 * ((max_health-health) / (max_health + 1)) ));
 		sprite->animate(pos, sprite_index, space);
 		aa_set_trans(_old_trans);
-	}
-	else {
+	} else {
 		int col = makecol(150,40,0);
 		sprite->animate_character(pos, sprite_index, col, space);
 
@@ -1198,8 +1195,7 @@ void BasiliskGas::inflict_damage(SpaceObject *other)
 	if (other->isShip()) {
 		add(new BasiliskPoison(this, duration, poison, (Ship*)other, data->spriteWeapon));
 		add(new FixedAnimation(this, other, data->spriteWeaponExplosion, 0, 8, 150, LAYER_EXPLOSIONS));
-	}
-	else {
+	} else {
 		add(new Animation(this, pos, data->spriteWeaponExplosion, 0, 8, 150, LAYER_EXPLOSIONS));
 	}
 
@@ -1277,8 +1273,7 @@ void BasiliskPoison::calculate()
 	if (!(oship && oship->exists())) {
 		oship = 0;
 		state = 0;
-	}
-	else {
+	} else {
 		if (start) {
 			start = FALSE;
 			if (oship->spritePanel) {

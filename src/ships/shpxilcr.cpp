@@ -128,8 +128,7 @@ int XillzCrescent::activate_special()
 		orbiters[Norbiters] = xo;
 		++Norbiters;
 		return TRUE;
-	}
-	else {
+	} else {
 
 		int k;
 

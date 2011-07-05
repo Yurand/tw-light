@@ -326,8 +326,7 @@ void BipoleKatamaran::calculate()
 	if (game->frame_number & 1) {
 		  left->vx = (decay * -frame_time + 1) * ( left->vx - right->vx ) + right->vx;
 		  left->vy = (decay * -frame_time + 1) * ( left->vy - right->vy ) + right->vy;
-		  }
-	else {
+	} else {
 		  right->vx = (decay * -frame_time + 1) * ( right->vx - left->vx ) + left->vx;
 		  right->vy = (decay * -frame_time + 1) * ( right->vy - left->vy ) + left->vy;
 	}*/
@@ -463,7 +462,8 @@ int BipoleShip::activate_weapon()
 {
 	STACKTRACE;
 	shooting = !shooting;
-	if ( !shooting ) return FALSE;// if we would return TRUE single ship would fire slower
+								 // if we would return TRUE single ship would fire slower
+	if ( !shooting ) return FALSE;
 
 	weapon_sample = random(11);
 	game->add( new Missile( this, Vector2(0.0,size.y/2.0), angle, weaponVelocity, weaponDamage,

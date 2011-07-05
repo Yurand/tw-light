@@ -95,8 +95,7 @@ void QuaiShot::calculate()
 		SpaceObject::calculate();// need this, to check for other pointers... this is used best! (target pointers)
 		twait += frame_time * 1E-3;
 
-	}
-	else {
+	} else {
 
 		vel = v * unit_vector(angle);
 
@@ -240,8 +239,7 @@ int Quai::activate_special()
 			if ((*i)->target == this)
 				(*i)->target = tmp;
 		}
-	}
-	else {
+	} else {
 		enginereleased = 0;
 
 		// add this thing to the targetlist

@@ -303,8 +303,7 @@ void TauEMPJammer::calculate()
 
 		if (jamtime <= 0)
 			state = 0;
-	}
-	else {
+	} else {
 		state = 0;
 		//jamtarget = 0; no, we need this once more.
 	}

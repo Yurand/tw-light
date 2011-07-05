@@ -216,8 +216,7 @@ void TauHunter::calculate_fire_special()
 			add(s);
 			s->play_sound(data->sampleExtra[0]);
 		}
-	}
-	else {
+	} else {
 		if ( ( special_recharge > 0 ) || in_jump )
 			return;
 		if ( batt < special_drain ) {
@@ -267,12 +266,10 @@ void TauHunter::calculate()
 				special_recharge = special_rate;
 				vel = speed_max * extraExitVelocityFactor * vv;
 
-			}
-			else {
+			} else {
 				pos = normalize(ee - vv * exit_countdown, map_size);
 			}
-		}
-		else {
+		} else {
 			vv = extraVelocity * unit_vector(angle);
 			pos = normalize(pos + vv * frame_time, map_size);
 			if (batt <= extraDrain*extraFrameTime*16) {

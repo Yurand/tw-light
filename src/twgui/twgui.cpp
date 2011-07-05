@@ -86,8 +86,7 @@ void TextButton::set_text(char *newtext, int color)
 
 		text = new char [strlen(newtext) + 1];
 		strcpy(text, newtext);
-	}
-	else {
+	} else {
 		if (!text)
 			text = new char [1];
 		text[0] = 0;
@@ -356,8 +355,7 @@ void TextList::subanimate()
 		if ( i != scroll.yselect ) {
 			text_mode(-1);
 			c = text_color;
-		}
-		else {
+		} else {
 			text_mode( makecol(0,0,0) );
 			//c = makecol(255,255,255);
 			c = text_color;

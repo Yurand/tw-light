@@ -261,8 +261,7 @@ void DyzunMissile::calculate(void)
 		this->v =  burnVelocity2;
 		this->relativity = 0.0;
 		this->sprite_index = get_index(this->angle) + 128;
-	}
-	else {
+	} else {
 		state = 0;
 		this->sprite_index = get_index(this->angle) + 128;
 		HomingMissile::calculate();

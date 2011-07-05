@@ -175,8 +175,7 @@ void Crash::animate(Frame *f)
 	if (ast) {
 		spr = ast->get_sprite();
 		spr->animate_character(ast->pos, ast->get_sprite_index(), tw_makecol(0,128,0), f);
-	}
-	else {
+	} else {
 		ast = closest_asteroid(weaponActionRange);
 
 		if (ast) {

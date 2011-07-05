@@ -85,10 +85,12 @@ char *tw_append_filename(char *dest, const char *path, const char *filename, int
 	return append_filename(dest, path, filename, size);
 }
 
+
 int tw_is_relative_filename(const char *filename)
 {
 	return is_relative_filename(filename);
 }
+
 
 char *tw_canonicalize_filename(char *dest, const char *filename, int size)
 {
@@ -110,15 +112,18 @@ int tw_get_config_int(const char *section, const char *name, int def)
 	return get_config_int(section, name, def);
 }
 
+
 float tw_get_config_float(const char *section, const char *name, float def)
 {
 	return get_config_float(section, name, def);
 }
 
+
 int tw_get_desktop_resolution(int *width, int *height)
 {
 	return get_desktop_resolution(width, height);
 }
+
 
 int tw_desktop_color_depth()
 {

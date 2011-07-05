@@ -89,12 +89,11 @@ void trapShip::calculate()
 			//drainRate = 0;
 			drainRate -= drainDelay;
 		}
-	}
-	else {
+	} else {
 		state = 0;
 		return;
 	}
-	if (soundDelay < 25)			 // Needed to make sound loop properly :)
+	if (soundDelay < 25)		 // Needed to make sound loop properly :)
 		soundDelay++;
 	else {
 		play_sound2(data->sampleExtra[1]);
@@ -301,8 +300,7 @@ int ArilouTrapper::activate_weapon()
 		play_sound2(data->sampleWeapon[1]);
 		add(new quasiTrap(Vector2(0.0, (size.y * 1)), angle, trapInitialVelocity, trapAccel, weaponRange*1.5, drainDelay,
 			drainAmount, trapTurn, this, data->spriteWeaponExplosion));
-	}
-	else {
+	} else {
 		play_sound2(data->sampleWeapon[0]);
 		add(new AnimatedShot(this, Vector2(0.0, (size.y/3.0)), angle , weaponVelocity,
 			weaponDamage, weaponRange, weaponArmour, this, data->spriteWeapon, 10,
@@ -327,8 +325,7 @@ void ArilouTrapper::calculate_fire_special()
 			play_sound2(data->sampleSpecial[0]);
 			cloak = FALSE;
 			recharge_amount = normalRechargeAmount;
-		}
-		else {
+		} else {
 			play_sound2(data->sampleSpecial[0]);
 			cloak = TRUE;
 			batt -= special_drain;

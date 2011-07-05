@@ -73,16 +73,14 @@ int stupid_bot(Ship *ship)
 	a = fmod(a + PI2, PI2);
 	if (a < PI) {
 		r |= keyflag::right;
-	}
-	else {
+	} else {
 		r |= keyflag::left;
 		return r;
 	}
 	a = int(ship->distance(ship->target));
 	if (a > 2000) {
 		r |= keyflag::thrust;
-	}
-	else {
+	} else {
 		r |= keyflag::thrust;
 		r |= keyflag::fire;
 	}

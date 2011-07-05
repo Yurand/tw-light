@@ -152,8 +152,7 @@ void DjinniLancer::calculate()
 					}
 					regenrateCount = regenrateFrames;
 				}
-			}
-			else {
+			} else {
 				regenrating = FALSE;
 			}
 		}
@@ -187,8 +186,7 @@ int DjinniLancer::handle_damage(SpaceLocation *source, double normal, double dir
 		if ((normal - shield) <= 0) {
 			shield -= normal;
 			normal = 0;
-		}
-		else {
+		} else {
 			normal -= shield;
 			shield = 0;
 		}

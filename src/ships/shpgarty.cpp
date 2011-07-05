@@ -404,7 +404,7 @@ void GarashShot::calculate()
 		if (frame == frame_count) {
 			frame = 0;
 
-			if (!released) {		 //3
+			if (!released) {	 //3
 				charge_frame++;
 								 //4
 				if (charge_frame == 5) {
@@ -428,8 +428,7 @@ void GarashShot::calculate()
 			if (Timer > MinTL)
 								 //shoot
 				play_sound(data->sampleWeapon[0]);
-		}
-		else {
+		} else {
 			angle = ship->get_angle();
 			pos = ship->normal_pos() + unit_vector(angle) * ship->size.y/2.6;
 			vel = ship->get_vel();

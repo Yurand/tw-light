@@ -405,8 +405,7 @@ void TextInfo::reset(ScrollControl *scroll)
 				break;
 			// value 0 indicates the end of the text.
 
-		}
-		else {
+		} else {
 			char txt[2];
 			txt[0] = textinfo[n];
 			txt[1] = 0;

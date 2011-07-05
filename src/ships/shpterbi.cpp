@@ -521,8 +521,7 @@ int TeronBuilder::activate_special()
 	else if ( !select_all && current_option == option_order_return_to_dock ) {
 		if ( current_drone ) current_drone->return_to_dock();
 
-	}
-	else {
+	} else {
 		Query q;
 		for( q.begin( this, bit(LAYER_SHIPS), selectRange ); q.currento; q.next() ) {
 			if ( sameShip( q.currento ) && q.currento->get_sprite() == data->TERON_DRONE_SPRITE ) {
@@ -579,8 +578,7 @@ void TeronBuilder::calculate()
 			handle_fuel_sap(this, -asteroid_value);
 		}
 		collecting = NULL;
-	}
-	else {
+	} else {
 		if ( collect_step <= 0 && collectRange ) {
 			Query q;
 			for( q.begin( this, bit(LAYER_CBODIES), collectRange ); q.currento; q.next() ) {
@@ -594,8 +592,7 @@ void TeronBuilder::calculate()
 				}
 			}
 			q.end();
-		}
-		else {
+		} else {
 			collect_step -= frame_time;
 		}
 	}
@@ -638,8 +635,7 @@ void TeronBuilder::calculate_fire_weapon()
 				select_all = false;
 				current_drone = NULL;
 				message.out( "All drones deselected" );
-			}
-			else {
+			} else {
 				select_all = true;
 				message.out( "All drones selected" );
 			}
@@ -886,8 +882,7 @@ void TeronDrone::return_to_dock()
 		control->target = ship;
 		target = ship;
 		roger();
-	}
-	else {
+	} else {
 		collect_resources();
 	}
 }
@@ -977,8 +972,7 @@ void TeronDrone::calculate()
 		cvy = vy;
 		#endif
 		if ( !ship ) leave_dock();
-	}
-	else {
+	} else {
 		Ship::calculate();
 		if ( !target || goal == collect ) {
 			if ( goal == build ) assist_building();
@@ -1013,8 +1007,7 @@ rel_pos, osinc_angle ), collecting( NULL ), drone( creator )
 	STACKTRACE;
 	if ( !damage_factor ) {
 		collide_flag_anyone = collide_flag_sameteam = collide_flag_sameship = bit(LAYER_SPECIAL);
-	}
-	else {
+	} else {
 		collide_flag_anyone = collide_flag_sameteam = collide_flag_sameship = bit(LAYER_CBODIES);
 	}
 }
@@ -1029,8 +1022,7 @@ void TeronDroneLaser::calculate()
 				//ship->fuel_sap -= drone->asteroid_value;
 				//ship->handle_damage( ship );
 				ship->handle_fuel_sap(this, -drone->asteroid_value);
-			}
-			else {
+			} else {
 				drone->resource += drone->asteroid_value;
 			}
 		}

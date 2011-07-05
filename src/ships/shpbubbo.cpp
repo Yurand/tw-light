@@ -231,30 +231,29 @@ int BubalosBomber::activate_weapon()
 		DeltaA = fabs(angle - trajectory_angle(target));
 		if (DeltaA > PI*3/2) DeltaA = 0;
 	}
-	//                DetonateRange = distance(target); }
-	else { DeltaA = 0; DetonateRange = weaponRange; }
+	//                DetonateRange = distance(target); } else { DeltaA = 0; DetonateRange = weaponRange; }
 
 	DetonateRange = weaponRange;
 	if (DeltaA <= PI/2)
-		{ FireAngle = angle; Direction = 1; }
-		else
-			{ FireAngle = angle + PI; Direction = -1; }
+		{ FireAngle = angle; Direction = 1; } else {
+		FireAngle = angle + PI; Direction = -1;
+	}
 
-			//  int wo = (weapon_offset>3)?(6-weapon_offset):weapon_offset;
+	//  int wo = (weapon_offset>3)?(6-weapon_offset):weapon_offset;
 
-			// remove the alternating fire
-			/* weapon_offset = (weapon_offset + 1) % 6;
+	// remove the alternating fire
+	/* weapon_offset = (weapon_offset + 1) % 6;
 
-			  double dx;
-				switch (wo) {
-				  case 0: dx = -12; break;
-				case 1: dx = -8; break;
-				case 2: dx = 8; break;
-				case 3: dx = 12;  break;
-				default: tw_error("Unexpected value of weapon_offset"); dx=0;break;
-				}
-			*/
-			double dx;
+	  double dx;
+		switch (wo) {
+		  case 0: dx = -12; break;
+		case 1: dx = -8; break;
+		case 2: dx = 8; break;
+		case 3: dx = 12;  break;
+		default: tw_error("Unexpected value of weapon_offset"); dx=0;break;
+		}
+	*/
+	double dx;
 	dx = 0;
 
 	BMIRV = new BubalosMIRV(dx, 54 * Direction, FireAngle,weaponVelocity,
@@ -435,8 +434,7 @@ int BubalosBomber::activate_special()
 	if (DeltaA <= PI/2) {
 		FireAngle = angle;
 		Direction = 1;
-	}
-	else {
+	} else {
 		FireAngle = angle + PI;
 		Direction = -1;
 	}

@@ -195,26 +195,26 @@ void TauArchon::calculate()
 	Ship::calculate();
 
 	if ((fire_weapon || fire_special) && (batt >= weapon_drain/(double)special_drain)/* && (weapon_recharge <= 0)*/) {
-		weapon_charge_counter += frame_time;
-		if (weapon_charge_counter > weaponChargeTime)
-			weapon_charge_counter = weaponChargeTime;
-		//		recharge_step = recharge_rate;
-	}
-	else {
+	weapon_charge_counter += frame_time;
+	if (weapon_charge_counter > weaponChargeTime)
+		weapon_charge_counter = weaponChargeTime;
+	//		recharge_step = recharge_rate;
+} else {
+	if (bCoolDownThenCharge)
+		recharge_amount = 0;
+	weapon_charge_counter -= frame_time;
+	if (weapon_charge_counter < 0) {
+		weapon_charge_counter = 0;
 		if (bCoolDownThenCharge)
-			recharge_amount = 0;
-		weapon_charge_counter -= frame_time;
-		if (weapon_charge_counter < 0) {
-			weapon_charge_counter = 0;
-			if (bCoolDownThenCharge)
-				recharge_amount = orig_amount;
-		}
+			recharge_amount = orig_amount;
 	}
+}
 
-	if (weapon_sound_timer > 0)
-		weapon_sound_timer -= frame_time;
 
-	return;
+if (weapon_sound_timer > 0)
+	weapon_sound_timer -= frame_time;
+
+return;
 }
 
 
@@ -432,8 +432,7 @@ void TauArchonShot::inflict_damage(SpaceObject *other)
 			if (damage_factor < min_damage)
 				damage_factor = min_damage;
 		}
-	}
-	else {
+	} else {
 		other->handle_fuel_sap(this, fuel_sap);
 		damage_factor = min_damage;
 	}

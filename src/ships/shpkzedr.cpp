@@ -194,8 +194,7 @@ void KzerZaFighter::calculate()
 			tw_get_palete_color(laser_color), laser_range, laser_damage,
 			laser_frames, this, Vector2(0.0, -size.y / 2.0)));
 		batt = recharge_frames;
-	}
-	else {
+	} else {
 		Vector2 t = target->normal_pos();
 		double ta = target->get_angle();
 		double a = target->trajectory_angle(this) - target->get_angle();
@@ -208,8 +207,7 @@ void KzerZaFighter::calculate()
 		if (d_l < d_r) {
 			angle = atan(min_delta(l, pos));
 			d2t = d_l;
-		}
-		else {
+		} else {
 			angle = atan(min_delta(r, pos));
 			d2t = d_r;
 		}

@@ -242,8 +242,7 @@ void BoggCenturion::calculate()
 		if (startup_time > 0)
 			gun_speed += frame_time / (double)startup_time;
 		else    gun_speed = 1.0;
-	}
-	else {
+	} else {
 		slowing_down = true;
 		gun_full_speed = false;
 		delay_count = 0;

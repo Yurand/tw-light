@@ -226,7 +226,7 @@ void BathaDeviant::calculate ()
 		SpaceObject *o = a.currento;
 		if (!o->isObject())
 			continue;
-		if (/*!(o->isPlanet()) &&*/ o->mass != 0 && o != ship ) {
+		if (o->mass != 0 && o != ship ) {
 
 			Vector2 Vd = min_delta(pos - o->pos, map_size);
 			double R = magnitude(Vd);
@@ -237,7 +237,7 @@ void BathaDeviant::calculate ()
 			double Rscaled = R / well_size;
 
 			if ( Rscaled > 1.0 )
-								 // outside the gravity well
+				// outside the gravity well
 				bb = 1.0 / (Rscaled * sqrt(Rscaled));
 			// not R*R gravity, but slightly less for better feel (R*root(R))
 			// also adds an extra velocity increase.

@@ -68,8 +68,7 @@ void Histograph::_add(double v)
 			for (i = base - next_ratio + max; i < max; i += 1) {
 				sum += element[i];
 			}
-		}
-		else {
+		} else {
 			for (i = base - next_ratio; i < base; i += 1) {
 				sum += element[i];
 			}

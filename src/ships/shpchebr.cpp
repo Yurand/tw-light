@@ -218,8 +218,7 @@ void ChenjesuDOGI::calculate()
 
 	if (ship && ship->exists()) {
 		target = ship->target;
-	}
-	else {
+	} else {
 		state = 0;
 		return;
 	}

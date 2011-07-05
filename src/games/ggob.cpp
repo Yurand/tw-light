@@ -616,8 +616,7 @@ void GobPlayer::new_ship(ShipType *type)
 			0,0.1,
 			0,0.25
 			);
-	}
-	else {
+	} else {
 		panel->window->locate(
 			0,0.9,
 			0,0.25,
@@ -669,8 +668,7 @@ void GobStation::buy_new_ship_menu(GobPlayer *s)
 			s->buckazoids -= nsbz - osbz;
 			s->new_ship(ntype);
 		}
-	}
-	else {
+	} else {
 		if (game->is_local(s->channel))
 			alert (buffy1, buffy2, "You don't have enough to buy it", "Cancel", NULL, 0, 0);
 	}
@@ -756,8 +754,7 @@ void GobStation::station_screen(GobPlayer *s)
 						if (s->starbucks) {
 							s->starbucks -= 1;
 							s->ship->crew = s->ship->crew_max;
-						}
-						else {
+						} else {
 							if (game->is_local(s->channel))
 								alert("You don't have enough!", NULL, NULL, "&Shit", NULL, 's', 0);
 						}
@@ -768,8 +765,7 @@ void GobStation::station_screen(GobPlayer *s)
 						if (s->buckazoids) {
 							s->buckazoids -= 1;
 							s->ship->crew = s->ship->crew_max;
-						}
-						else {
+						} else {
 							if (game->is_local(s->channel))
 								alert("You don't have enough!", NULL, NULL, "&Shit", NULL, 's', 0);
 						}
@@ -1019,8 +1015,7 @@ void RainbowRift::calculate()
 					p->starbucks += random() % 80;
 					p->buckazoids += random() % 80;
 					game->add(new RainbowRift());
-				}
-				else {
+				} else {
 					p->starbucks += random() % (1+p->value_starbucks);
 					p->buckazoids += random() % (1+p->value_buckazoids);
 					p->new_ship(reference_fleet->getShipType(i));

@@ -151,6 +151,7 @@ int handleGammaSliderChange(void *dp3, int d2)
 	return d2;
 }
 
+
 static int static_get_native_resolution_index()
 {
 	int i;
@@ -165,6 +166,7 @@ static int static_get_native_resolution_index()
 	return i;
 }
 
+
 static int static_get_native_bpp_index()
 {
 	int i;
@@ -178,6 +180,7 @@ static int static_get_native_bpp_index()
 	}
 	return i;
 }
+
 
 static void static_video_dialog_to_params(DIALOG* dlg, int* width, int* height, int* bpp, int* fullscreen, int* native_res, int* native_bpp)
 {
@@ -205,6 +208,7 @@ static void static_video_dialog_to_params(DIALOG* dlg, int* width, int* height, 
 	}
 	*fullscreen = dlg[DIALOG_VIDEO_FULLSCREEN].flags & D_SELECTED;
 }
+
 
 void video_menu (Game *game)
 {
@@ -382,8 +386,7 @@ char *viewListboxGetter(int index, int *list_size)
 	if (index < 0) {
 		*list_size = num_views;
 		return NULL;
-	}
-	else {
+	} else {
 		return(view_name[index]);
 	}
 }

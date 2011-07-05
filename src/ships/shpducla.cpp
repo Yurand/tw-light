@@ -385,8 +385,7 @@ int ShipPart::handle_damage(SpaceLocation *source, double normal, double direct)
 	if (mother && mother->exists()) {
 		state = 1;
 		return mother->handle_damage(source, normal, direct);
-	}
-	else {
+	} else {
 		mother = 0;
 		state = 0;
 		return 0;
@@ -727,8 +726,7 @@ void DuclyLanternjaws::calculate()
 			ArcLeft->R = R;
 			ArcLeft->relpos = Vector2( dx, -dy);
 
-		}
-		else {
+		} else {
 			arm_time = 0;
 			arm_movement = 0;
 
@@ -1056,8 +1054,7 @@ void Lantern::calculate()
 
 			// some force feedback
 			mother->accelerate(this, angle+a+PI, weaponAccel);
-		}
-		else {
+		} else {
 			a = tw_random(-PI, PI);
 			L *= ( 0.1 + 0.9 * fabs(cos(0.5*a)) );
 			a += angle;

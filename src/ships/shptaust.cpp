@@ -194,8 +194,7 @@ void TauStormMissile::calculate()
 		if (latched->mass > 1) {
 			latched->accelerate(this, angle, thrust * frame_time / latched->mass, booster_speed);
 			jr *= jr * 0.5 * latched->mass;
-		}
-		else {
+		} else {
 			latched->accelerate(this, angle, thrust * frame_time, booster_speed);
 			jr *= jr * 0.5;
 		}
@@ -221,8 +220,7 @@ void TauStormMissile::calculate()
 		HomingMissile::calculate();
 		vel = ov;
 		accelerate(this, angle, accel*frame_time, v);
-	}
-	else {
+	} else {
 		if (latched)
 			damage(latched, 0, 1);
 		handle_damage(this, 999);

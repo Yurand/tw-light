@@ -508,8 +508,7 @@ int Hook::handle_damage(SpaceLocation *src, double normal, double direct)
 
 		return 0;
 
-	}
-	else {
+	} else {
 
 		SpaceObject::handle_damage(src, normal, direct);
 

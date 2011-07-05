@@ -160,8 +160,7 @@ void NaroolLurker::calculate_fire_special()
 
 			play_sound2(data->sampleSpecial[1]);
 			recharge_amount = normalRechargeAmount;
-		}
-		else {
+		} else {
 			cloak = TRUE;
 			play_sound2(data->sampleSpecial[0]);
 			//batt -= special_drain;
@@ -267,8 +266,7 @@ void NaroolGas::inflict_damage(SpaceObject *other)
 	if (other->isShip()) {
 		add( new NaroolPoison(this, duration, poison, (Ship*)other, data->spriteWeapon));
 		add(new FixedAnimation(this, other, data->spriteWeaponExplosion, 0, 8, 150, LAYER_EXPLOSIONS));
-	}
-	else {
+	} else {
 		add(new Animation(this, pos, data->spriteWeaponExplosion, 0, 8, 150, LAYER_EXPLOSIONS));
 	}
 	AnimatedShot::inflict_damage(other);
@@ -337,8 +335,7 @@ void NaroolPoison::calculate()
 	if (!(oship && oship->exists())) {
 		oship = 0;
 		state = 0;
-	}
-	else {
+	} else {
 		if (start) {
 			start = FALSE;
 			if (oship->spritePanel) {

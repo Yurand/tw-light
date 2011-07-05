@@ -351,8 +351,7 @@ void OlidandeeHabitat::inflict_damage(SpaceObject *other)
 		other->handle_damage(this, -armour, 0);
 		state = 0;
 		--mother->Nspecial;
-	}
-	else {
+	} else {
 		other->handle_damage(this, 1, 0);
 		--armour;
 

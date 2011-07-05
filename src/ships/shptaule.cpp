@@ -165,9 +165,7 @@ void LeviathanMissile::inflict_damage(SpaceObject *other)
 		add(new LeviathanJammer(this, other, expl_sprite));
 
 		play_sound(extraSample);
-	}
-
-	else {
+	} else {
 
 		animateExplosion();
 
@@ -451,9 +449,7 @@ FixedAnimation(creator, opos, osprite, 0, 20, 50, LAYER_EXPLOSIONS)
 					((LeviathanJammer*)q.current)->victim = 0; }
 		}
 		*/
-	}
-
-	else {
+	} else {
 		victim = 0;
 	}
 

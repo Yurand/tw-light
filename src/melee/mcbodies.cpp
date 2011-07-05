@@ -153,8 +153,7 @@ void Planet::calculate()
 				r /= 40 * 5;
 				for (int i = 0; i < -gravity_power; i += 1) sr *= r;
 				o->accelerate(this, trajectory_angle(o) + PI, frame_time * gravity_force / sr, MAX_SPEED);
-			}
-			else {
+			} else {
 				r = 1 - r/gravity_range;
 				for (int i = 0; i < gravity_power; i += 1)
 					sr *= r;
@@ -257,8 +256,7 @@ int aa_mode
 	if (aa_mode) {
 		iwx = iround_up(wx);
 		iwy = iround_up(wy);
-	}
-	else {
+	} else {
 		iwx = iround_down(0.5 + wx);
 		iwy = iround_down(0.5 + wy);
 	}
@@ -280,8 +278,7 @@ int aa_mode
 	clear_to_color(bmp, 0);
 	if (aa_mode) {
 		sprite->draw( Vector2((iwx - wx) / 2, (iwy-wy)/2), Vector2(wx, wy), index, bmp);
-	}
-	else {
+	} else {
 		sprite->draw(Vector2(0, 0), Vector2(iwx, iwy), index, bmp);
 	}
 
@@ -421,8 +418,7 @@ void Stars::animate(Frame *space)
 						seed + layer,
 						aa_mode
 						);
-				}
-				else {
+				} else {
 					_draw_starfield_raw (
 						space,
 						pic[layer%num_pics], 0, 1,

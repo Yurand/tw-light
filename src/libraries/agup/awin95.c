@@ -196,8 +196,7 @@ static void win95_box(BITMAP *bmp, int x, int y, int w, int h, int pressed)
 		rectedge(bmp, x,     y,     x + w - 1, y + h - 1, highlight, black);
 		rectedge(bmp, x + 1, y + 1, x + w - 2, y + h - 2, white, gray);
 		rectfill(bmp, x + 2, y + 2, x + w - 3, y + h - 3, normal);
-	}
-	else {
+	} else {
 		rectedge(bmp, x,     y,     x + w - 1, y + h - 1, gray, white);
 		rectedge(bmp, x + 1, y + 1, x + w - 2, y + h - 2, black, highlight);
 		rectfill(bmp, x + 2, y + 2, x + w - 3, y + h - 3, normal);
@@ -259,8 +258,7 @@ int d_awin95_button_proc(int msg, DIALOG *d, int c)
 			s = 1;
 			rect(bmp, d->x, d->y, d->x + d->w - 1, d->y + d->h - 1, black);
 			rect(bmp, d->x + 1, d->y + 1, d->x + d->w - 2, d->y + d->h - 2, gray);
-		}
-		else {
+		} else {
 			if (d->flags & D_GOTFOCUS) {
 				f = 1;
 				rect(bmp, d->x, d->y, d->x + d->w - 1, d->y + d->h - 1, black);
@@ -516,8 +514,7 @@ int d_awin95_edit_proc(int msg, DIALOG *d, int c)
 		if (x <= d->w-2) {
 			b = l;
 			p = 0;
-		}
-		else {
+		} else {
 			b--;
 			p = d->d2-b+1;
 			b = d->d2;
@@ -619,8 +616,7 @@ int d_awin95_list_proc(int msg, DIALOG *d, int c)
 				else if ((sel) && (sel[d->d2+i])) {
 					fg = white;
 					bg = blue;
-				}
-				else {
+				} else {
 					fg = black;
 					bg = white;
 				}
@@ -639,8 +635,7 @@ int d_awin95_list_proc(int msg, DIALOG *d, int c)
 				x += text_length(font, s);
 				if (x <= d->x+w)
 					rectfill(bmp, x, y, d->x+w, y+text_height(font)-1, bg);
-			}
-			else {
+			} else {
 				rectfill(bmp, d->x+2,  d->y+2+i*text_height(font),
 					d->x+w, d->y+1+(i+1)*text_height(font), white);
 			}
@@ -686,8 +681,7 @@ int d_awin95_textbox_proc(int msg, DIALOG *d, int c)
 
 		if (d->d1 > height) {
 			bar = 11;
-		}
-		else {
+		} else {
 			bar = 0;
 			d->d2 = 0;
 		}
@@ -738,8 +732,7 @@ int d_awin95_slider_proc(int msg, DIALOG *d, int c)
 			sly = d->y+2+(d->h)-(hh+slp);
 			slw = d->w-1-3;
 			slh = hh-1-3;
-		}
-		else {
+		} else {
 			slx = d->x+2+slp;
 			sly = d->y+2;
 			slw = hh-1-3;
@@ -793,8 +786,7 @@ static void win95_draw_menu_item(MENU *m, int x, int y, int w, int h, int bar, i
 	if (m->flags & D_DISABLED) {
 		fg = nshadow;
 		bg = normal;
-	}
-	else {
+	} else {
 		fg = (sel && !bar) ? normal : black;
 		bg = (sel && !bar) ? blue : normal;
 	}

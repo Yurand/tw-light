@@ -514,8 +514,7 @@ int ConfedCargotran::activate_special()
 		Head->Uncouple();
 		Head=NULL;
 		return(TRUE);
-	}
-	else {
+	} else {
 		Head->Pull_Last_Link();
 		return(FALSE);
 	}
@@ -547,8 +546,7 @@ void ConfedCargotran::animate(Frame *space)
 			pos.y + back_y_1 * ty + back_x * tx), s_index + ((rand()%3) << 6), space);
 		data->spriteExtra->animate(Vector2(pos.x + back_y_1 * tx + back_x * ty,
 			pos.y + back_y_1 * ty - back_x * tx), s_index + ((rand()%3) << 6), space);
-	}
-	else {
+	} else {
 		if (turn_left)
 			data->spriteWeapon->animate(Vector2(pos.x + back_y * tx - back_x * ty,
 				pos.y + back_y * ty + back_x * tx), s_index + ((rand()%3) << 6), space);

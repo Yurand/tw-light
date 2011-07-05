@@ -153,9 +153,7 @@ void Crome::calculate()
 					xp = p / sqrt(mass);
 					xt = t / sqrt(mass);
 				}
-			}
-
-			else {
+			} else {
 				if (q.currento->mass > 1 && mass > 1) {
 					xp = (p / sqrt(mass)) * (1-1/sqrt(q.currento->mass));
 					xt = (t / sqrt(mass)) * (1-1/sqrt(q.currento->mass));

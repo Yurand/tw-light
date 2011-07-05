@@ -203,8 +203,7 @@ int enable_input (int which)
 			failed |= 1;
 			log_debug("keyboard failed initialization\n");
 			allegro_message("Can't find keyboard.\nStart with the -nokeyboard option to avoid this message");
-		}
-		else {
+		} else {
 			log_debug("keyboard initialized\n");
 			poll_keyboard();
 			set_keyboard_rate(0,0);
@@ -216,8 +215,7 @@ int enable_input (int which)
 			failed |= 2;
 			log_debug("mouse failed initialization\n");
 			allegro_message("Can't find mouse.\nStart with the -nomouse option to avoid this message");
-		}
-		else {
+		} else {
 			log_debug("mouse initialized\n");
 			poll_mouse();
 		}
@@ -227,8 +225,7 @@ int enable_input (int which)
 		if (install_joystick(JOY_TYPE_AUTODETECT) < 0) {
 			failed |= 4;
 			log_debug("joystick failed initialization\n");
-		}
-		else {
+		} else {
 			log_debug("joystick initialized (%d joysticks)\n", num_joysticks);
 			poll_joystick();
 		}
@@ -297,8 +294,7 @@ int key_to_description(Key which_key, char *dest_buffer)
 			else
 				sprintf(buffer, "Joystick %d | Button %d (%s)",
 					joy_num, joy_button, joy[joy_num].button[joy_button].name);
-		}
-		else {
+		} else {
 			if ((joy_num >= num_joysticks) ||
 				(joy_stick >= joy[joy_num].num_sticks) ||
 				(joy_axi   >= joy[joy_num].stick[joy_stick].num_axis))

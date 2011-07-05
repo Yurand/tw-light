@@ -120,8 +120,7 @@ const char *message
 	if (line >= 0) {
 		log_debug(        "(from %s, Line %d)\n", file, line);
 		cp += sprintf(cp, "\n(from %s, line %d)\n", file, line);
-	}
-	else {
+	} else {
 		log_debug("(from unspecified file & linenumber)\n");
 		cp += sprintf(cp, "\n");
 	}
