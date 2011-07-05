@@ -501,6 +501,6 @@ EXTRA_DIST = \
 
 indent:
 	find src -type f "(" -name "*.c" -o -name "*.cpp" -o -name "*.h" ")" | xargs -i{} -t bcpp -bcl -yb -t {}
-	find src -type f "(" -name "*.c" -o -name "*.cpp" -o -name "*.h" ")" | xargs -i{} -t sed -i 's/if(/if (/g' {}
+	find src -type f "(" -name "*.c" -o -name "*.cpp" -o -name "*.h" ")" | xargs -i{} -t python -c 'import sys;import re;f = open(sys.argv[1], "rb");data = f.read().decode();f.close();data = data.replace("if(", "if (");data = re.sub(r"}\s+else\s+{", "} else {", data, re.M);f = open(sys.argv[1], "wb");f.write(data.encode());f.close();' {}
 
 
