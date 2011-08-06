@@ -307,7 +307,7 @@ endif
 
 OBJDIR := ${addsuffix -win32,$(OBJDIR)}
 NAME := ${addsuffix .exe,$(NAME)}
-CFLAGS += -DWIN32 -I ./mingw32-libs/include -L ./mingw32-libs/lib
+CFLAGS += -DWIN32 -static-libgcc -static-libstdc++ -I ./mingw32-libs/include -L ./mingw32-libs/lib
 LIBS += -lalleg44.dll
 
 CFLAGS += -I./src
