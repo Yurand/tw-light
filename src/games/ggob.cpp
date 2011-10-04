@@ -618,10 +618,10 @@ void GobGame::add_new_enemy()
 		{						 //9
 			"mmrxf", 2, 0
 		},
-/*		{						 //10
-			"lk_sa", 2, 0
-		},
-*/
+		/*		{						 //10
+					"lk_sa", 2, 0
+				},
+		*/
 		{						 //11
 			"druma", 2, 1
 		},
@@ -634,10 +634,10 @@ void GobGame::add_new_enemy()
 		{						 //14
 			"yehte", 3, 2
 		},
-/*		{						 //15
-			"herex", 3, 2
-		},
-*/
+		/*		{						 //15
+					"herex", 3, 2
+				},
+		*/
 		{						 //16
 			"narlu", 4, 2
 		},
@@ -650,10 +650,10 @@ void GobGame::add_new_enemy()
 		{						 //19
 			"chmav", 4, 2
 		},
-/*		{						 //20
-			"plopl", 4, 2
-		},
-*/
+		/*		{						 //20
+					"plopl", 4, 2
+				},
+		*/
 		{						 //21
 			"alabc", 4, 3
 		},
