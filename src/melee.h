@@ -25,6 +25,7 @@ GNU General Public License for more details.
 #include <allegro.h>
 
 #include "util/port.h"
+#include "melee/mvideosystem.h"
 
 #ifndef PI
 #   define PI 3.14159265358979323846
@@ -256,33 +257,6 @@ class ConfigEvent : public Event
 		};
 };
 
-class VideoEvent : public Event
-{
-	public:
-		class VideoWindow *window;
-		enum {
-			/// \brief happens before surface is invalidated
-			/// before a resolution change, whatever
-			INVALID,
-			/// \brief the opposite of an invalid event
-			/// after an alt-tab back, after a resolution change, whatever
-			VALID,
-			/// \brief happens when size is changed
-			/// after a resolution change, or a window resize
-			/// ?? after alt-tabbing back in ??
-			RESIZE,
-			/// \brief happens when the color format changes
-			CHANGE_BPP,
-			/// \brief happens when contents are changed
-			/// ?? after alt-tabbing back in ??
-			/// ?? after window translated ??
-			/// ? after any resize event ?
-			REDRAW
-		};
-		virtual int _get_size() const {return sizeof(*this);}
-};
-extern volatile int debug_value;
-
 //#define make_rgb(r,g,b)
 //
 //inline RGB makeRGB (int r, int g, int b)
@@ -305,68 +279,6 @@ double scale_acceleration (double acceleration, double hotspot_rate = 0) ;
 
 void show_file(const char *file) ;
 void show_text(const char *text) ;
-
-class VideoWindow : public BaseClass
-{
-	float const_x, const_y, const_w, const_h;
-	float propr_x, propr_y, propr_w, propr_h;
-
-	char lock_level;
-	//struct VW_lock_data *lock_data;
-
-	public:void update_pos();
-
-	VideoWindow *parent;
-	std::list<BaseClass*> callback_list;
-	public:
-		void add_callback ( BaseClass * );
-		void remove_callback ( BaseClass * );
-		virtual void _event ( Event *e );
-
-		int x, y, w, h;
-		Surface *surface;
-		void event(int subtype);
-		void redraw() {event(VideoEvent::REDRAW);}
-		void preinit ();
-		void init ( VideoWindow *parent_window);
-		void locate ( double c_x, double p_x, double c_y, double p_y, double c_w, double p_w, double c_h, double p_h );
-		void lock();
-		void unlock();
-		void hide();
-		void match ( VideoWindow *old );
-		void deinit();
-		virtual ~VideoWindow();
-		virtual int _get_size() const {return sizeof(*this);}
-};
-
-class VideoSystem : public BaseClass
-{
-	public:
-		int width, height, bpp, gamma;
-		int fullscreen;
-		TW_DATAFILE *font_data;	 //fonts
-		FONT *basic_font;		 //font to use if no other is available
-		Color *palette;
-		volatile bool screen_corrupted;
-		int last_poll;
-		Surface *surface;
-		VideoWindow window;
-
-		FONT *get_font(int size);
-
-		void preinit() ;
-		int poll_redraw();
-								 //returns 0 on failure
-		int set_resolution (int width, int height, int bpp, int fullscreen) ;
-		void set_palette(Color *pal);
-		void (*color_effects)(Color *color);
-		void update_colors();
-		void redraw();
-} extern videosystem;
-
-int get_gamma();
-void set_gamma(int gamma);
-void gamma_color_effects (Color *color) ;
 
 struct registered_file_type
 {

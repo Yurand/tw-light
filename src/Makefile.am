@@ -107,6 +107,11 @@ melee/mshot.cpp \
 melee/mgame.h \
 melee/mmath.cpp \
 melee/mtarget.h \
+melee/mvideoevent.h \
+melee/mvideosystem.cpp \
+melee/mvideosystem.h \
+melee/mvideowindow.cpp \
+melee/mvideowindow.h \
 melee/mview.cpp \
 melee/mshot.h \
 scp.h \
