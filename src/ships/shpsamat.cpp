@@ -432,7 +432,6 @@ void SaMatra::relocate()
 	STACKTRACE;
 	// find the planet.
 
-	int i;
 	for(std::list<SpaceLocation*>::iterator i = game->item.begin();i!=game->item.end();i++) {
 		if ((*i)->isPlanet()) {
 			double a, R;

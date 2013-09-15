@@ -29,6 +29,9 @@
 #ifdef WIN32
 #include <allegro/platform/aintwin.h>
 #include <winalleg.h>
+#include <windows.h>
+#include <string.h>
+#include <TCHAR.H>
 #endif
 
 #ifdef HAVE_CONFIG_H
@@ -566,9 +569,9 @@ int tw_main(int argc, char *argv[])
 {
 	STACKTRACE;
 	#ifdef WIN32
-	char szPath[MAX_PATH];
+	TCHAR szPath[MAX_PATH];
 	GetModuleFileName(NULL, szPath, sizeof(szPath));
-	if (strrchr(szPath, '\\')) *strrchr(szPath, '\\') = '\0';
+	if (_tcsrchr(szPath, '\\')) *_tcsrchr(szPath, '\\') = '\0';
 	SetCurrentDirectory(szPath);
 	#endif
 	int i;

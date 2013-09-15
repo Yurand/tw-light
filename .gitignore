@@ -29,3 +29,6 @@ tw-light.exe
 tw-light-debug.exe
 .geanyprj
 obj-win32
+Debug
+Release
+allegro-4.4.2-msvc-9.0

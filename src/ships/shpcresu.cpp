@@ -68,8 +68,6 @@ int CrewSupplyship::activate_weapon()
 {
 	STACKTRACE;
 	// find the planet
-	int i;
-
 	Planet * planet = nearest_planet();
 	if (planet) {
 		add(new SupplyShuttle(this, Vector2(0,50), angle,

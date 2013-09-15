@@ -505,7 +505,8 @@ int ShipPart::collide_SpaceObject(SpaceObject *other)
 		int a1 = c1->canCollide(c2);
 		int a2 = c2->canCollide(c1);
 		bool b = ((c1->canCollide(c2) & c2->canCollide(c1)) == 0 );
-		tw_error("velocity error in collision involving objects [%s] and [%s]", c1->get_identity(), c2->get_identity());
+		//tw_error("velocity error in collision involving objects [%s] and [%s]", c1->get_identity(), c2->get_identity());
+		tw_error("velocity error in collision involving objects");
 	}
 	#endif
 

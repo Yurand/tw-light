@@ -237,7 +237,7 @@ struct BLOAD bload[] =
 /* Given two sizes, return an offset <= 0, so when texturing the area of size1
  * with a texture of size size2, the center will be aligned.
  */
-static inline int
+static int
 centered_offset (int size1, int size2)
 {
 	int center1, center2, o;
@@ -253,7 +253,7 @@ centered_offset (int size1, int size2)
 }
 
 
-static inline void
+static void
 masked_non_stretched_blit (BITMAP *s, BITMAP *d, int sx, int sy, int w, int h,
 int dx, int dy, int _, int __)
 {
@@ -273,7 +273,7 @@ enum COLUMN_TYPE
 };
 /* Draw a column of pattern pat into the bitmap bmp inside the given rectangle.
  */
-static inline void
+static void
 blit_column (BITMAP *bmp, struct ABMAP *pat, int x, int y, int w, int h, enum COLUMN_TYPE f)
 {
 	int ct = bmp->ct, cb = bmp->cb;
@@ -421,7 +421,7 @@ abitmap_draw_bmp (BITMAP *bmp, struct ABMAP *pat, int x, int y, int w, int h)
 }
 
 
-static inline int
+static int
 get_state (DIALOG *d)
 {
 	if (d->flags & D_DISABLED)

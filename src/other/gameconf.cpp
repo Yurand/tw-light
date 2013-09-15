@@ -28,6 +28,7 @@
 #include <io.h>
 #include <shlobj.h>
 #include <direct.h>
+#include <TCHAR.H>
 #else
 #include <unistd.h>
 #endif
@@ -39,11 +40,12 @@
 
 static void static_get_home_directory(char* buff, int len)
 {
-	char homedir[2048];
 	#ifdef WIN32
-	const char *twname = "tw-light";
+	TCHAR homedir[2048];
+	const TCHAR *twname = _T("tw-light");
 	SHGetFolderPath( 0, CSIDL_APPDATA|CSIDL_FLAG_CREATE, NULL, 0, homedir );
 	#else
+	char homedir[2048];
 	const char *twname = ".tw-light";
 	strcpy(homedir, getenv("HOME"));
 	#endif

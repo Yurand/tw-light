@@ -812,7 +812,7 @@ void View_Enemy_Discrete::calculate(Game *game)
 	if (n.z < 480) n.z = 480;
 
 	double ref_size = 480;
-	n.z = ref_size * pow( 2, iround( ceil(log(n.z/ref_size) / log(2.0))) );
+	n.z = ref_size * pow( 2.0, iround( ceil(log(n.z/ref_size) / log(2.0))) );
 	track(n);
 	return;
 }

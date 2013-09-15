@@ -24,6 +24,7 @@
 #else
 #include <unistd.h>
 #endif
+#include <sys/stat.h>
 
 #define PLATFORM_IS_ALLEGRO
 
@@ -40,7 +41,8 @@
  */
 int tw_exists(const char *file)
 {
-	return !access(file, F_OK);
+	struct stat   buffer;
+	return (stat (file, &buffer) == 0);
 }
 
 
