@@ -1403,8 +1403,7 @@ void Physics::animate (Frame *frame)
 
 	std::copy(item.begin(),item.end(),back_inserter(animate_buffer));
 	animate_buffer2 = presence;
-	animate_buffer.merge(animate_buffer2);
-	//animate_buffer.merge(presence);
+	animate_buffer.merge(animate_buffer2, presence_cmp);
 
 	prepare();
 	RGB back = { frame->background_red, frame->background_green, frame->background_blue };
