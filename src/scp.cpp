@@ -81,12 +81,6 @@ REGISTER_FILE
 
 #include "util/sounds.h"
 
-//deprecated.  This mode of using dat files is terrible, I can't believe
-//this technique was ever created.
-#define SCPGUI_TITLE   0
-
-TW_DATAFILE *scp = NULL;
-
 FILE *debug_file;
 
 /*! \brief Blits GUI background bitmap on to a video window */
@@ -189,10 +183,6 @@ BITMAP * titlePic     = NULL;
 void prepareTitleScreenAssets()
 {
 	STACKTRACE;
-	scp = tw_load_datafile(data_full_path("scpgui.dat").c_str());
-	if (!scp)
-		tw_error("Couldnt load title music");
-
 	{
 		TW_DATAFILE * data = tw_load_datafile_object(data_full_path("titlescreen.dat").c_str(), "TITLEMUSIC");
 		if (data != NULL && data->type==DAT_SAMPLE) {
@@ -322,12 +312,8 @@ void play_game(const char *_gametype_name, Log *_log)
 	for (c = strchr(gametype_name, '_'); c; c = strchr(c, '_'))
 		*c = ' ';
 
-	if (scp) {
-		gui_stuff = true;
-		sound.stop_music();
-		if (scp) tw_unload_datafile(scp);
-		scp = NULL;
-	}
+	gui_stuff = true;
+	sound.stop_music();
 
 	try
 	{
@@ -377,7 +363,6 @@ void play_game(const char *_gametype_name, Log *_log)
 	}
 
 	if (gui_stuff) {
-		prepareTitleScreenAssets();
 		showTitle();
 	}
 	return;
