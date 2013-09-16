@@ -512,6 +512,26 @@
 					>
 				</File>
 				<File
+					RelativePath=".\src\melee\mvideoevent.h"
+					>
+				</File>
+				<File
+					RelativePath=".\src\melee\mvideosystem.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\melee\mvideosystem.h"
+					>
+				</File>
+				<File
+					RelativePath=".\src\melee\mvideowindow.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\melee\mvideowindow.h"
+					>
+				</File>
+				<File
 					RelativePath=".\src\melee\mview.cpp"
 					>
 				</File>
