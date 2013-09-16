@@ -234,13 +234,18 @@ void prepareTitleScreenAssets()
 		}
 	}
 	{
-		TW_DATAFILE * data = tw_load_datafile_object(data_full_path("scpgui.dat").c_str(), "SCPTITLE");
+		if (titlePic)
+			destroy_bitmap(titlePic);
 		titlePic = create_bitmap(videosystem.window.w, videosystem.window.h);
-		aa_stretch_blit((BITMAP*)data->dat, titlePic,
-			0,0,((BITMAP*)data->dat)->w,((BITMAP*)data->dat)->h,
+		BITMAP * tmp = videosystem.load_bitmap(data_full_path("scpgui/scptitle.bmp").c_str());
+		if (!tmp)
+		{
+			tw_error("Unable to load scpgui/scptitle.bmp");
+		}
+		stretch_blit(tmp, titlePic,
+			0, 0, tmp->w, tmp->h,
 			0, 0, titlePic->w, titlePic->h);
-		tw_unload_datafile_object(data);
-
+		destroy_bitmap(tmp);
 	}
 }
 
@@ -435,10 +440,17 @@ void MainMenu::_event(Event *e)
 {
 	STACKTRACE;
 	if (e->type == Event::VIDEO) {
-		if (e->subtype == VideoEvent::REDRAW) if (state & 1) showTitle();
+		if (e->subtype == VideoEvent::REDRAW)
+		{
+			if (state & 1)
+				showTitle();
+		}
+		else if (e->subtype == VideoEvent::VALID)
+		{
+			prepareTitleScreenAssets();
+		}
 	}
 }
-
 
 void MainMenu::enable()
 {
@@ -446,7 +458,6 @@ void MainMenu::enable()
 	if (!(state & 2)) window->add_callback(this);
 	state |= 3;
 }
-
 
 void MainMenu::disable()
 {
@@ -472,8 +483,8 @@ void MainMenu::init(VideoWindow *parent)
 		window->preinit();
 		window->init(parent);
 	}
+	prepareTitleScreenAssets();
 }
-
 
 void MainMenu::deinit()
 {
@@ -509,13 +520,11 @@ void MainMenu::doit()
 		player_team[i] = get_config_int (tmp, "Team", 0);
 	}
 
-	prepareTitleScreenAssets();
-	showTitle();
 	enable();
-
 	int mainRet;
 	do {
 		//mainRet = popup_dialog(mainDialog, MAIN_DIALOG_MELEE);
+		showTitle();
 		mainRet = tw_do_dialog(window, mainDialog, MAIN_DIALOG_MELEE);
 		switch (mainRet) {
 			case MAIN_DIALOG_MELEE:
@@ -542,7 +551,6 @@ void MainMenu::doit()
 				break;
 			case MAIN_DIALOG_TEAMS:
 				change_teams();
-				showTitle();
 				break;
 		}
 	} while((mainRet != MAIN_DIALOG_EXIT) && (mainRet != -1));
@@ -711,7 +719,7 @@ int tw_main(int argc, char *argv[])
 			"\tfullscreen = %d\n", screen_width, screen_height, screen_bpp, fullscreen);
 
 		srand(time(NULL));
-		set_color_conversion(COLORCONV_KEEP_TRANS);
+		set_color_conversion(COLORCONV_DITHER|COLORCONV_KEEP_TRANS);
 
 		if (!videosystem.set_resolution(screen_width, screen_height, screen_bpp, fullscreen)) {
 			// try safest defaults
@@ -798,17 +806,24 @@ void showTitle(VideoWindow *window)
 
 	if (!window->surface)
 		return;
+
 	window->lock();
-	aa_stretch_blit(src, window->surface,
-		0,0,src->w,src->h,
-		window->x, window->y, window->w, window->h);
+	if (bitmap_color_depth(titlePic) != bitmap_color_depth(window->surface))
+	{
+		tw_error("Title picture and screen bpp don't match: %d, %d", bitmap_color_depth(titlePic), bitmap_color_depth(window->surface));
+	}
+	if (titlePic->w != window->surface->w ||
+		titlePic->h != window->surface->h)
+	{
+		tw_error("Title picture and screen format don't match");
+	}
+	blit(src, window->surface, 0, 0, window->x, window->y, src->w, src->h);
 	textout_right(screen, font, tw_version(),
 		screen->w, screen->h - text_height(font),
 		palette_color[15]);
 	window->unlock();
 	return;
 }
-
 
 const char *select_game_menu ()
 {

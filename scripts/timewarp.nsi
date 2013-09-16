@@ -84,6 +84,8 @@ Section "TimeWarp Core (required)"
   File /r "..\data\*.dat"
   File /r "..\data\*.html"
   File /r "..\data\palette"
+  SetOutPath $INSTDIR\data\scpgui
+  File /r "..\data\scpgui\*.bmp"
 
   ; Write the installation path into the registry
   WriteRegStr HKLM SOFTWARE\TW-Light "Install_Dir" "$INSTDIR"

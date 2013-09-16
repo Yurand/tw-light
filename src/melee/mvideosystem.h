@@ -51,6 +51,8 @@ class VideoSystem : public BaseClass
 		void (*color_effects)(Color *color);
 		void update_colors();
 		void redraw();
+
+		BITMAP *load_bitmap(const char* path);
 } extern videosystem;
 
 #endif

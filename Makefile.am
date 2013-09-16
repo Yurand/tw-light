@@ -12,7 +12,7 @@ data/melee.dat \
 data/palette \
 data/readme.html \
 data/scp.ini \
-data/scpgui.dat \
+data/scpgui/scptitle.bmp \
 data/server.ini \
 data/shpaktgu.dat \
 data/shpaktgu.ini \

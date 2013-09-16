@@ -336,3 +336,12 @@ int VideoSystem::set_resolution (int width, int height, int bpp, int fullscreen)
 	redraw();
 	return true;
 }
+
+BITMAP* VideoSystem::load_bitmap(const char* path)
+{
+	BITMAP* tmp = ::load_bitmap(path, NULL);
+	BITMAP* tmp2 = create_bitmap_ex(bpp, tmp->w, tmp->h);
+	blit(tmp, tmp2, 0, 0, 0, 0, tmp->w, tmp->h);
+	destroy_bitmap(tmp);
+	return tmp2;
+}
