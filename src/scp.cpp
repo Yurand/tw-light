@@ -169,74 +169,65 @@ char *detect_gametype( Log *_log )
 	return strdup(buffy);
 }
 
-
-Music * titleMusic   = NULL;
 SAMPLE * menuAccept   = NULL;
 SAMPLE * menuFocus    = NULL;
 SAMPLE * menuDisabled = NULL;
 SAMPLE * menuSpecial  = NULL;
-BITMAP * titlePic     = NULL;
+static Music * g_titleMusic   = NULL;
+static BITMAP * g_titlePic = NULL;
+static BITMAP * g_logoPic = NULL;
 
 /**
   loads up the title screen and music, and starts playing the background menu music.
 */
-void prepareTitleScreenAssets()
+static void prepareTitleScreenAssets()
 {
 	STACKTRACE;
-	{
-		TW_DATAFILE * data = tw_load_datafile_object(data_full_path("titlescreen.dat").c_str(), "TITLEMUSIC");
-		if (data != NULL && data->type==DAT_SAMPLE) {
-			titleMusic = (Music *) data->dat;
-		}
+
+	if (!g_titleMusic) {
+		g_titleMusic = load_sample(data_full_path("scpgui/titlemusic.wav").c_str());
+		if (!g_titleMusic)
+			tw_error("Couldnt load title music");
 	}
 
-	if (!titleMusic && sound.is_music_supported())
-		tw_error("Couldnt load title music");
-
-	if (titleMusic)
-		sound.play_music( titleMusic, TRUE);
-
-	{
-		TW_DATAFILE * data = tw_load_datafile_object(data_full_path("titlescreen.dat").c_str(), "MENUACCEPT");
-		if (data != NULL && data->type==DAT_SAMPLE) {
-			menuAccept = (SAMPLE*) data->dat;
-		}
+	if (!menuAccept) {
+		menuAccept = load_sample(data_full_path("scpgui/menuaccept.wav").c_str());
+		if (!menuAccept)
+			tw_error("Couldnt load menuAccept sound");
+	}
+	if (!menuFocus) {
+		menuFocus = load_sample(data_full_path("scpgui/menufocus.wav").c_str());
+		if (!menuFocus)
+			tw_error("Couldnt load menuFocus sound");
+	}
+	if (!menuDisabled) {
+		menuDisabled = load_sample(data_full_path("scpgui/menudisabled.wav").c_str());
+		if (!menuDisabled)
+			tw_error("Couldnt load menuDisabled sound");
+	}
+	if (!menuSpecial) {
+		menuSpecial = load_sample(data_full_path("scpgui/menuspecial.wav").c_str());
+		if (!menuSpecial)
+			tw_error("Couldnt load menuSpecial sound");
 	}
 
-	{
-		TW_DATAFILE * data = tw_load_datafile_object(data_full_path("titlescreen.dat").c_str(), "MENUFOCUS");
-		if (data != NULL && data->type==DAT_SAMPLE) {
-			menuFocus = (SAMPLE*) data->dat;
-		}
+	if (g_titlePic)
+		destroy_bitmap(g_titlePic);
+	g_titlePic = create_bitmap(videosystem.window.w, videosystem.window.h);
+	BITMAP * tmp = videosystem.load_bitmap(data_full_path("scpgui/scptitle.bmp"));
+	if (!tmp) {
+		tw_error("Unable to load scpgui/scptitle.bmp");
 	}
+	stretch_blit(tmp, g_titlePic,
+		0, 0, tmp->w, tmp->h,
+		0, 0, g_titlePic->w, g_titlePic->h);
+	destroy_bitmap(tmp);
 
-	{
-		TW_DATAFILE * data = tw_load_datafile_object(data_full_path("titlescreen.dat").c_str(), "MENUDISABLED");
-		if (data != NULL && data->type==DAT_SAMPLE) {
-			menuDisabled = (SAMPLE*) data->dat;
-		}
-	}
-
-	{
-		TW_DATAFILE * data = tw_load_datafile_object(data_full_path("titlescreen.dat").c_str(), "MENUSPECIAL");
-		if (data != NULL && data->type==DAT_SAMPLE) {
-			menuSpecial = (SAMPLE*) data->dat;
-		}
-	}
-	{
-		if (titlePic)
-			destroy_bitmap(titlePic);
-		titlePic = create_bitmap(videosystem.window.w, videosystem.window.h);
-		BITMAP * tmp = videosystem.load_bitmap(data_full_path("scpgui/scptitle.bmp").c_str());
-		if (!tmp)
-		{
-			tw_error("Unable to load scpgui/scptitle.bmp");
-		}
-		stretch_blit(tmp, titlePic,
-			0, 0, tmp->w, tmp->h,
-			0, 0, titlePic->w, titlePic->h);
-		destroy_bitmap(tmp);
-	}
+	if (g_logoPic)
+		destroy_bitmap(g_logoPic);
+	g_logoPic = videosystem.load_bitmap(data_full_path("scpgui/logo.bmp"));
+	if (!g_logoPic)
+		tw_error("Unable to load scpgui/logo.bmp");
 }
 
 
@@ -245,48 +236,33 @@ void prepareTitleScreenAssets()
 void showLoadingScreen()
 {
 	STACKTRACE;
-	static BITMAP * logo = NULL;
-	static int depth = bitmap_color_depth(screen);
-	std::string path;
 
-	acquire_screen();
-	clear_to_color(screen, 0);
+	VideoWindow *window = &videosystem.window;
+	if (!window->surface)
+		return;
 
-	if (NULL == logo || bitmap_color_depth(screen) != depth) {
-		depth = bitmap_color_depth(screen);
+	window->lock();
+	clear_to_color(window->surface, 0);
+	if (window->surface->w/2 >= g_logoPic->w)	{
+		draw_sprite(window->surface, g_logoPic, window->surface->w/2 - g_logoPic->w/2, window->surface->h/2 - g_logoPic->h/2);
+	} 
+	else
+	{
+		float ratio = g_logoPic->w / g_logoPic->h;
 
-		path = data_full_path("titlescreen.dat");
-		TW_DATAFILE * data = tw_load_datafile_object(path.c_str(),"LOGO");
-		if (data != NULL && data->type==DAT_BITMAP) {
-			BITMAP * temp = (BITMAP*) data->dat;
-			logo = create_bitmap(temp->w, temp->h);
-			blit(temp, logo, 0,0, 0,0, temp->w, temp->h);
-			tw_unload_datafile_object(data);
-		}
+		int h = window->surface->h/4;
+		int w = iround(ratio * h);
+		stretch_blit(g_logoPic, window->surface,
+			0,0,
+			g_logoPic->w, g_logoPic->h,
+			window->surface->w/2 - w/2, window->surface->h/2 - h/2,
+			w, h);
 	}
-
-	if (logo != NULL ) {
-		if (screen->w/2 >= logo->w) {
-			draw_sprite(screen, logo, screen->w/2 - logo->w/2, screen->h/2 - logo->h/2);
-		} else {
-			float ratio = logo->w / logo->h;
-
-			int h = screen->h/4;
-			int w = iround(ratio * h);
-
-			stretch_blit(logo, screen,
-				0,0,
-				logo->w, logo->h,
-				screen->w/2 - w/2, screen->h/2 - h/2,
-				w, h);
-		}
-	}
-
 	const char * loadString = "Loading...";
-	textout_right(screen, font, loadString,
-		screen->w - 1*text_length(font, loadString), screen->h - 4*text_height(font),
+	textout_right(window->surface, font, loadString,
+		window->surface->w - 1*text_length(font, loadString), window->surface->h - 4*text_height(font),
 		palette_color[15]);
-	release_screen();
+	window->unlock();
 }
 
 
@@ -468,7 +444,6 @@ void MainMenu::init(VideoWindow *parent)
 		window->preinit();
 		window->init(parent);
 	}
-	prepareTitleScreenAssets();
 }
 
 void MainMenu::deinit()
@@ -481,7 +456,6 @@ void MainMenu::deinit()
 		window = NULL;
 	}
 }
-
 
 void MainMenu::doit()
 {
@@ -505,6 +479,7 @@ void MainMenu::doit()
 		player_team[i] = get_config_int (tmp, "Team", 0);
 	}
 
+	sound.play_music(g_titleMusic, TRUE);
 	enable();
 	int mainRet;
 	do {
@@ -716,6 +691,7 @@ int tw_main(int argc, char *argv[])
 				tw_error_exit("Unable to init screen!!!");
 			}
 		}
+		prepareTitleScreenAssets();
 		if (!theme)
 			theme = agup_theme_by_name("Photon");
 		agup_init(theme);
@@ -783,26 +759,25 @@ int tw_main(int argc, char *argv[])
 void showTitle(VideoWindow *window)
 {
 	STACKTRACE;
-	BITMAP *src = titlePic;
-	if (!src) {
-		return;
+	if (!g_titlePic) {
 		tw_error("Unable to open title pic");
+		return;
 	}
 
 	if (!window->surface)
 		return;
 
 	window->lock();
-	if (bitmap_color_depth(titlePic) != bitmap_color_depth(window->surface))
+	if (bitmap_color_depth(g_titlePic) != bitmap_color_depth(window->surface))
 	{
-		tw_error("Title picture and screen bpp don't match: %d, %d", bitmap_color_depth(titlePic), bitmap_color_depth(window->surface));
+		tw_error("Title picture and screen bpp don't match: %d, %d", bitmap_color_depth(g_titlePic), bitmap_color_depth(window->surface));
 	}
-	if (titlePic->w != window->surface->w ||
-		titlePic->h != window->surface->h)
+	if (g_titlePic->w != window->surface->w ||
+		g_titlePic->h != window->surface->h)
 	{
 		tw_error("Title picture and screen format don't match");
 	}
-	blit(src, window->surface, 0, 0, window->x, window->y, src->w, src->h);
+	blit(g_titlePic, window->surface, 0, 0, window->x, window->y, g_titlePic->w, g_titlePic->h);
 	textout_right(screen, font, tw_version(),
 		screen->w, screen->h - text_height(font),
 		palette_color[15]);

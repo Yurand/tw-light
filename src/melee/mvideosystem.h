@@ -17,6 +17,7 @@ GNU General Public License for more details.
 #ifndef __TW_VIDEOSYSTEM_H__
 #define __TW_VIDEOSYSTEM_H__
 
+#include <string>
 #include <allegro.h>
 
 #include "util/port.h"
@@ -52,7 +53,7 @@ class VideoSystem : public BaseClass
 		void update_colors();
 		void redraw();
 
-		BITMAP *load_bitmap(const char* path);
+		BITMAP *load_bitmap(const std::string& path);
 } extern videosystem;
 
 #endif
