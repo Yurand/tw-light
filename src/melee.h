@@ -547,6 +547,6 @@ class TW_Dialog_Player : public BaseClass
 struct DIALOG;
 int tw_do_dialog ( VideoWindow *window, DIALOG *d, int index );
 int tw_popup_dialog ( VideoWindow *window, DIALOG *d, int index );
-int d_tw_bitmap_proc(int msg, DIALOG *d, int c);
+int d_tw_shipinfo_bitmap_proc(int msg, DIALOG *d, int c);
 int d_tw_yield_proc(int msg, DIALOG *d, int c);
 #endif							 // __MELEE_H__

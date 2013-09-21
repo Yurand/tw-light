@@ -284,12 +284,15 @@ or something
 */
 
 /* d_bitmap_proc:
- *  Simple dialog procedure: draws the bitmap which is pointed to by dp.
+ *  Simple dialog procedure: draws the bitmap which is pointed to by dp. bitmap is rotated 
  */
-int d_tw_bitmap_proc(int msg, DIALOG *d, int c)
+int d_tw_shipinfo_bitmap_proc(int msg, DIALOG *d, int c)
 {
 	STACKTRACE;
 	BITMAP *b = (BITMAP *)d->dp;
+
+	acquire_bitmap(b);
+	acquire_screen();
 
 	if (b && ((msg==MSG_IDLE) || (msg==MSG_DRAW))) {
 		int ocl, oct, ocr, ocb;
@@ -298,6 +301,8 @@ int d_tw_bitmap_proc(int msg, DIALOG *d, int c)
 		rotate_sprite ( screen, b, d->x+d->w/2 - b->w/2, d->y+d->h/2 - b->h/2, get_time() * 4096 );
 		screen->cl = ocl; screen->ct = oct; screen->cr = ocr; screen->cb = ocb;
 	}
+	release_screen();
+	release_bitmap(b);
 	return D_O_K;
 }
 

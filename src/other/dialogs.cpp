@@ -424,17 +424,17 @@ const char *sorttypes[] = { "Name", "Cost", "Origin", "Coders", NULL };
 // SHIPVIEW - dialog structure
 DIALOG shipviewDialog[] =
 {
-	// (dialog proc)     (x)   (y)   (w)   (h)   (fg)  (bg)  (key) (flags)  (d1)  (d2)  (dp)
-	{ d_agup_textbox_proc,    5,    5,    220,  40,   255,  0,    0,    0,       0,    0,    (void *)"Select a ship to examine", NULL, NULL },
-	{ my_d_button_proc,  300,  5,    120,  30,   255,  0,    0,    D_EXIT,  0,    0,    (void *)"Done", NULL, NULL },
-	{ my_d_button_proc,  300,  45,   120,  30,   255,  0,    0,    D_EXIT,  0,    0,    (void *)"Font Size", NULL, NULL },
-	{ d_list_proc2,      430,  5,    120,  60,   255,  0,    0,    D_EXIT,  0,    0,    (void *) genericListboxGetter, NULL, sorttypes },
-	{ d_list_proc2,      5,    50,   220,  420,  255,  0,    0,    D_EXIT,  0,    0,    (void *) fleetListboxGetter, NULL, NULL },
-	{ d_agup_textbox_proc,    230,  110,  400,  160,  255,  0,    0,    0,       0,    0,    (void *) NULL, NULL, NULL },
-	{ d_agup_textbox_proc,    230,  280,  400,  190,  255,  0,    0,    0,       0,    0,    (void *) NULL, NULL, NULL },
-	{ d_tw_bitmap_proc,  230,  5,    64,   100,  255,  0,    0,    0,       0,    0,    (void *) NULL, NULL, NULL },
-	{ d_tw_yield_proc,   0,    0,    0,    0,    255,  0,    0,    0,       0,    0,    NULL, NULL, NULL },
-	{ NULL,              0,    0,    0,    0,    255,  0,    0,    0,       0,    0,    NULL, NULL, NULL }
+	// (dialog proc)               (x)   (y)  (w)   (h)   (fg) (bg) (key) (flags)  (d1)  (d2)  (dp)
+	{ d_agup_textbox_proc,          5,    5,  220,  40,   255,  0,    0,    0,       0,    0,    (void *)"Select a ship to examine", NULL, NULL },//SHIPVIEW_DIALOG_DONE
+	{ my_d_button_proc,           300,    5,  120,  30,   255,  0,    0,    D_EXIT,  0,    0,    (void *)"Done", NULL, NULL }, //SHIPVIEW_DIALOG_FONT
+	{ my_d_button_proc,           300,   45,  120,  30,   255,  0,    0,    D_EXIT,  0,    0,    (void *)"Font Size", NULL, NULL }, //SHIPVIEW_DIALOG_SORT
+	{ d_list_proc2,               430,    5,  120,  60,   255,  0,    0,    D_EXIT,  0,    0,    (void *) genericListboxGetter, NULL, sorttypes }, //SHIPVIEW_DIALOG_LIST
+	{ d_list_proc2,                 5,   50,  220, 420,   255,  0,    0,    D_EXIT,  0,    0,    (void *) fleetListboxGetter, NULL, NULL }, //SHIPVIEW_DIALOG_DESCRIPTION
+	{ d_agup_textbox_proc,        230,  110,  400, 160,   255,  0,    0,    0,       0,    0,    (void *) NULL, NULL, NULL }, //SHIPVIEW_DIALOG_DESCRIPTION
+	{ d_agup_textbox_proc,        230,  280,  400, 190,   255,  0,    0,    0,       0,    0,    (void *) NULL, NULL, NULL }, //SHIPVIEW_DIALOG_TXTFILE
+	{ d_tw_shipinfo_bitmap_proc,  230,    5,   64, 100,   255,  0,    0,    0,       0,    0,    (void *) NULL, NULL, NULL }, //SHIPVIEW_DIALOG_PICTURES
+	{ d_tw_yield_proc,              0,    0,    0,   0,   255,  0,    0,    0,       0,    0,    NULL, NULL, NULL }, //SHIPVIEW_DIALOG_TWYIELD
+	{ NULL,                         0,    0,    0,   0,   255,  0,    0,    0,       0,    0,    NULL, NULL, NULL }
 };
 
 // DIAGNOSTICS - dialog structure
