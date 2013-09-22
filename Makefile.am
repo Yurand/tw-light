@@ -12,7 +12,13 @@ data/melee.dat \
 data/palette \
 data/readme.html \
 data/scp.ini \
+data/scpgui/logo.bmp \
+data/scpgui/menuaccept.wav \
+data/scpgui/menudisabled.wav \
+data/scpgui/menufocus.wav \
+data/scpgui/menuspecial.wav \
 data/scpgui/scptitle.bmp \
+data/scpgui/titlemusic.wav \
 data/server.ini \
 data/shpaktgu.dat \
 data/shpaktgu.ini \
@@ -488,6 +494,8 @@ EXTRA_DIST = \
 	tw-light.rc \
 	tw-light.desktop \
 	tw-light.png \
+	tw-light.sln \
+	tw-light.vcproj \
 	doc/Doxyfile \
 	doc/permissions.txt \
 	scripts/stacktrace.pl \
