@@ -473,7 +473,6 @@ data/shpzfpst.dat \
 data/shpzfpst.ini \
 data/shpzfpst.txt \
 data/stars.dat \
-data/titlescreen.dat \
 data/version.txt \
 data/vobject.ini
 
