@@ -79,8 +79,9 @@ std::string data_full_path(std::string path)
 
 	if (tw_exists("../data/gob.dat")) {
 		base_dir = "../data";
+	} else if (tw_exists("./data/gob.dat")) {
+		base_dir = "./data";
 	} else {
-
 		base_dir = TWLIGHT_DATADIR;
 	}
 

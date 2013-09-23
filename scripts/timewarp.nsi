@@ -1,6 +1,6 @@
 ;NSIS Setup Script
 
-!define VER_VERSION "0.4"
+!define VER_VERSION "0.5"
 !define PRODUCT_NAME "TW-Light"
 !define PRODUCT_WEB_SITE "http://tw-light.appspot.com"
 
@@ -74,8 +74,8 @@ Section "TimeWarp Core (required)"
   SetOutPath $INSTDIR
   
   ; Put file there
-  File "..\*.dll"
-  File "..\tw-light.exe"
+  File "..\allegro-4.4.2-msvc-9.0\bin\allegro-4.4.2-monolith-mt.dll"
+  File "..\Release\tw-light.exe"
   File "..\INSTALL"
 
   SetOutPath $INSTDIR\data
@@ -86,6 +86,7 @@ Section "TimeWarp Core (required)"
   File /r "..\data\palette"
   SetOutPath $INSTDIR\data\scpgui
   File /r "..\data\scpgui\*.bmp"
+  File /r "..\data\scpgui\*.wav"
 
   ; Write the installation path into the registry
   WriteRegStr HKLM SOFTWARE\TW-Light "Install_Dir" "$INSTDIR"
