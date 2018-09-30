@@ -35,7 +35,7 @@ twgui/twbuttontypes.cpp \
 twgui/twpopup.cpp \
 twgui/twbutton.cpp \
 scp.cpp \
-gui.h \
+scpgui.h \
 frame.h \
 input.cpp  \
 util/history.cpp \
@@ -144,7 +144,7 @@ other/configrw.h \
 other/dialogs.h \
 other/dialogs.cpp \
 frame.cpp \
-gui.cpp
+scpgui.cpp
 
 INCLUDES = -I$(srcdir) $(allegro_CFLAGS)
 

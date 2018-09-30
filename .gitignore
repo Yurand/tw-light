@@ -17,6 +17,7 @@ libtool
 stamp-h1
 /config.h
 /config.h.in
+/compile
 intltool-*
 mkinstalldirs
 install-sh
