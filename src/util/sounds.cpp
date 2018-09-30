@@ -1,3 +1,4 @@
+#include <cstdint>
 #include <allegro.h>
 #ifdef WIN32
 #include <winalleg.h>

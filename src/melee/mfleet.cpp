@@ -14,10 +14,10 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
-#include <string.h>
-#include <stdio.h>
-#include <ctype.h>
-#include <stdlib.h>
+#include <cstring>
+#include <cstdio>
+#include <cstdint>
+#include <cstdlib>
 #include <allegro.h>
 
 #include "melee.h"

@@ -14,9 +14,10 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
+#include <cstdint>
+#include <cstring>
+#include <cstdio>
 #include <allegro.h>
-#include <string.h>
-#include <stdio.h>
 #include "melee.h"
 REGISTER_FILE
 #include "id.h"

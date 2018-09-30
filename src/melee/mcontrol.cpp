@@ -13,9 +13,9 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
-
-#include <string.h>
-#include <stdio.h>
+#include <cstdint>
+#include <cstring>
+#include <cstdio>
 #include <allegro.h>
 
 #include "melee.h"
@@ -24,7 +24,7 @@ REGISTER_FILE
 #include "id.h"
 
 #include "frame.h"
-#include "gui.h"
+#include "scpgui.h"
 
 #include "mnet1.h"
 #include "mview.h"				 //remove this

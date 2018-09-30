@@ -14,21 +14,22 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
+#include <cstdint>
+#include <cstdio>
+#include <cstring>
+#include <cstdlib>
+
 #include <allegro.h>
 #ifdef WIN32
 #include <winalleg.h>
 #endif
-
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 
 #include "melee.h"
 REGISTER_FILE
 
 #include "moptions.h"
 #include "scp.h"
-#include "gui.h"
+#include "scpgui.h"
 
 #include "util/aastr.h"
 #include "util/helper.h"

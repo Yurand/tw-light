@@ -14,6 +14,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
+#include <cstdint>
 #include <allegro.h>
 #ifdef WIN32
 #include <winalleg.h>
@@ -22,7 +23,7 @@ GNU General Public License for more details.
 #include "scp.h"
 #include "dialogs.h"
 #include "melee.h"
-#include "gui.h"
+#include "scpgui.h"
 #include "melee/mcontrol.h"
 #include "melee/moptions.h"
 #include "melee/mgame.h"

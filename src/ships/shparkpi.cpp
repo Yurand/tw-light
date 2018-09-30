@@ -1,5 +1,6 @@
 /* $Id: shparkpi.cpp,v 1.21 2006/06/05 19:03:43 geomannl Exp $ */
 
+#include <cstdint>
 #include <allegro.h>
 #include "../ship.h"
 #include "../melee/mview.h"

@@ -1,4 +1,5 @@
-#include <string.h>
+#include <cstdint>
+#include <cstring>
 #include <allegro.h>
 #include "melee.h"
 #include "melee/mframe.h"

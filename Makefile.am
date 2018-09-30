@@ -488,13 +488,13 @@ appicon_DATA = tw-light.png
 EXTRA_DIST = \
 	THANKS \
 	autogen.sh \
-	makefile.win32 \
 	tw-light.ico \
 	tw-light.rc \
 	tw-light.desktop \
 	tw-light.png \
 	tw-light.sln \
-	tw-light.vcproj \
+	tw-light.vcxproj \
+	tw-light.vcxproj.filters \
 	doc/Doxyfile \
 	doc/permissions.txt \
 	scripts/stacktrace.pl \

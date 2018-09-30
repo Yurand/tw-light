@@ -1,5 +1,6 @@
-#include <string.h>
-#include <stdio.h>
+#include <cstdint>
+#include <cstdio>
+#include <cstring>
 #include <allegro.h>
 #ifdef WIN32
 #include <winalleg.h>

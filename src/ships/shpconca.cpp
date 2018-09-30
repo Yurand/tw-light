@@ -14,7 +14,8 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
-#include <stdio.h>
+#include <cstdint>
+#include <cstdio>
 #include <allegro.h>
 #include "ship.h"
 #include "melee/mview.h"

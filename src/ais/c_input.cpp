@@ -20,7 +20,7 @@ GNU General Public License for more details.
 REGISTER_FILE
 #include "ais.h"
 #include "melee/mship.h"
-#include "gui.h"
+#include "scpgui.h"
 #include "other/dialogs.h"
 
 #include "other/twconfig.h"

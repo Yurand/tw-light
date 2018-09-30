@@ -1,0 +1,1571 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\ais">
+      <UniqueIdentifier>{48795136-db74-4c5d-a145-49e94b086ed0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\games">
+      <UniqueIdentifier>{4c8bc680-4a7c-4ed6-9459-fa246cf36e97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\libraries">
+      <UniqueIdentifier>{5af8a73f-97c1-434b-a2a2-3c0661cedbb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\libraries\agup">
+      <UniqueIdentifier>{fb2335fd-3a1f-4a5f-ae5b-1ace363037d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\melee">
+      <UniqueIdentifier>{15755727-8810-4557-9998-f62012721e43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\other">
+      <UniqueIdentifier>{a3c4ff0f-bce5-4002-8a4d-d877d859c35e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ships">
+      <UniqueIdentifier>{d3ca6954-8ec2-47d9-8f8f-61489f7eda64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\twgui">
+      <UniqueIdentifier>{364de9e5-14fd-4c95-a187-3c2a93a86b14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\util">
+      <UniqueIdentifier>{69c786c0-622c-4649-986b-b759e29bb351}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Source Files\libraries\allegro">
+      <UniqueIdentifier>{e7c2ced2-333a-4121-a36b-b61b09f5b62c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\libraries\allegro\include">
+      <UniqueIdentifier>{1f06f191-0f24-4390-abc4-3fd7135e94f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\libraries\allegro\src">
+      <UniqueIdentifier>{e6abd008-49c8-4022-b55b-0f24ba5d043a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\libraries\allegro\src\win">
+      <UniqueIdentifier>{76877a03-8aea-44a6-af3a-3d955019943d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\libraries\allegro\src\c">
+      <UniqueIdentifier>{f0a65dc6-02f0-4a88-83b2-a054339b5fe7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\libraries\allegro\src\misc">
+      <UniqueIdentifier>{5dc0b3b0-74f9-4bf2-9816-fc26c8a74137}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\ais.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\frame.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\id.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\input.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\melee.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scp.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ship.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\games\gflmelee.h">
+      <Filter>Source Files\games</Filter>
+    </ClInclude>
+    <ClInclude Include="src\games\ggob.h">
+      <Filter>Source Files\games</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libraries\agup\aalg.h">
+      <Filter>Source Files\libraries\agup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libraries\agup\aase.h">
+      <Filter>Source Files\libraries\agup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libraries\agup\abeos.h">
+      <Filter>Source Files\libraries\agup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libraries\agup\agtk.h">
+      <Filter>Source Files\libraries\agup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libraries\agup\agup.h">
+      <Filter>Source Files\libraries\agup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libraries\agup\agupitrn.h">
+      <Filter>Source Files\libraries\agup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libraries\agup\ans.h">
+      <Filter>Source Files\libraries\agup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libraries\agup\aphoton.h">
+      <Filter>Source Files\libraries\agup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libraries\agup\awin95.h">
+      <Filter>Source Files\libraries\agup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\melee\manim.h">
+      <Filter>Source Files\melee</Filter>
+    </ClInclude>
+    <ClInclude Include="src\melee\mcbodies.h">
+      <Filter>Source Files\melee</Filter>
+    </ClInclude>
+    <ClInclude Include="src\melee\mcontrol.h">
+      <Filter>Source Files\melee</Filter>
+    </ClInclude>
+    <ClInclude Include="src\melee\mfleet.h">
+      <Filter>Source Files\melee</Filter>
+    </ClInclude>
+    <ClInclude Include="src\melee\mframe.h">
+      <Filter>Source Files\melee</Filter>
+    </ClInclude>
+    <ClInclude Include="src\melee\mgame.h">
+      <Filter>Source Files\melee</Filter>
+    </ClInclude>
+    <ClInclude Include="src\melee\mitems.h">
+      <Filter>Source Files\melee</Filter>
+    </ClInclude>
+    <ClInclude Include="src\melee\mlog.h">
+      <Filter>Source Files\melee</Filter>
+    </ClInclude>
+    <ClInclude Include="src\melee\mmain.h">
+      <Filter>Source Files\melee</Filter>
+    </ClInclude>
+    <ClInclude Include="src\melee\mnet1.h">
+      <Filter>Source Files\melee</Filter>
+    </ClInclude>
+    <ClInclude Include="src\melee\moptions.h">
+      <Filter>Source Files\melee</Filter>
+    </ClInclude>
+    <ClInclude Include="src\melee\mship.h">
+      <Filter>Source Files\melee</Filter>
+    </ClInclude>
+    <ClInclude Include="src\melee\mshot.h">
+      <Filter>Source Files\melee</Filter>
+    </ClInclude>
+    <ClInclude Include="src\melee\mshppan.h">
+      <Filter>Source Files\melee</Filter>
+    </ClInclude>
+    <ClInclude Include="src\melee\mtarget.h">
+      <Filter>Source Files\melee</Filter>
+    </ClInclude>
+    <ClInclude Include="src\melee\mvideoevent.h">
+      <Filter>Source Files\melee</Filter>
+    </ClInclude>
+    <ClInclude Include="src\melee\mvideosystem.h">
+      <Filter>Source Files\melee</Filter>
+    </ClInclude>
+    <ClInclude Include="src\melee\mvideowindow.h">
+      <Filter>Source Files\melee</Filter>
+    </ClInclude>
+    <ClInclude Include="src\melee\mview.h">
+      <Filter>Source Files\melee</Filter>
+    </ClInclude>
+    <ClInclude Include="src\other\configrw.h">
+      <Filter>Source Files\other</Filter>
+    </ClInclude>
+    <ClInclude Include="src\other\dialogs.h">
+      <Filter>Source Files\other</Filter>
+    </ClInclude>
+    <ClInclude Include="src\other\fontmorph.h">
+      <Filter>Source Files\other</Filter>
+    </ClInclude>
+    <ClInclude Include="src\other\gameconf.h">
+      <Filter>Source Files\other</Filter>
+    </ClInclude>
+    <ClInclude Include="src\other\gup.h">
+      <Filter>Source Files\other</Filter>
+    </ClInclude>
+    <ClInclude Include="src\other\nullphas.h">
+      <Filter>Source Files\other</Filter>
+    </ClInclude>
+    <ClInclude Include="src\other\objanim.h">
+      <Filter>Source Files\other</Filter>
+    </ClInclude>
+    <ClInclude Include="src\other\orbit.h">
+      <Filter>Source Files\other</Filter>
+    </ClInclude>
+    <ClInclude Include="src\other\planet3d.h">
+      <Filter>Source Files\other</Filter>
+    </ClInclude>
+    <ClInclude Include="src\other\radar.h">
+      <Filter>Source Files\other</Filter>
+    </ClInclude>
+    <ClInclude Include="src\other\shippart.h">
+      <Filter>Source Files\other</Filter>
+    </ClInclude>
+    <ClInclude Include="src\other\twconfig.h">
+      <Filter>Source Files\other</Filter>
+    </ClInclude>
+    <ClInclude Include="src\other\vbodies.h">
+      <Filter>Source Files\other</Filter>
+    </ClInclude>
+    <ClInclude Include="src\other\vtarget.h">
+      <Filter>Source Files\other</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ships\shpandgu.h">
+      <Filter>Source Files\ships</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ships\shparisk.h">
+      <Filter>Source Files\ships</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ships\shpchebr.h">
+      <Filter>Source Files\ships</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ships\shpchmav.h">
+      <Filter>Source Files\ships</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ships\shpdruma.h">
+      <Filter>Source Files\ships</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ships\shpearcr.h">
+      <Filter>Source Files\ships</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ships\shpilwsp.h">
+      <Filter>Source Files\ships</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ships\shpkohma.h">
+      <Filter>Source Files\ships</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ships\shpkzedr.h">
+      <Filter>Source Files\ships</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ships\shpmycpo.h">
+      <Filter>Source Files\ships</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ships\shporzne.h">
+      <Filter>Source Files\ships</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ships\shpshosc.h">
+      <Filter>Source Files\ships</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ships\shpspael.h">
+      <Filter>Source Files\ships</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ships\shpsupbl.h">
+      <Filter>Source Files\ships</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ships\shpsyrpe.h">
+      <Filter>Source Files\ships</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ships\shputwju.h">
+      <Filter>Source Files\ships</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ships\shpzfpst.h">
+      <Filter>Source Files\ships</Filter>
+    </ClInclude>
+    <ClInclude Include="src\twgui\gamebuttonevent.h">
+      <Filter>Source Files\twgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\twgui\twbutton.h">
+      <Filter>Source Files\twgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\twgui\twbuttontypes.h">
+      <Filter>Source Files\twgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\twgui\twgui.h">
+      <Filter>Source Files\twgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\twgui\twhelpers.h">
+      <Filter>Source Files\twgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\twgui\twmenuexamples.h">
+      <Filter>Source Files\twgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\twgui\twpopup.h">
+      <Filter>Source Files\twgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\twgui\twwindow.h">
+      <Filter>Source Files\twgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\twgui\utils.h">
+      <Filter>Source Files\twgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\aastr.h">
+      <Filter>Source Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\aautil.h">
+      <Filter>Source Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\base.h">
+      <Filter>Source Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\endian.h">
+      <Filter>Source Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\errors.h">
+      <Filter>Source Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\get_time.h">
+      <Filter>Source Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\helper.h">
+      <Filter>Source Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\history.h">
+      <Filter>Source Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\pmask.h">
+      <Filter>Source Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\port.h">
+      <Filter>Source Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\random.h">
+      <Filter>Source Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\round.h">
+      <Filter>Source Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\sounds.h">
+      <Filter>Source Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\types.h">
+      <Filter>Source Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\vector2.h">
+      <Filter>Source Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libraries\allegro\src\win\wddraw.h">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libraries\allegro\src\c\cblit.h">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libraries\allegro\src\c\cdefs8.h">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libraries\allegro\src\c\cdefs15.h">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libraries\allegro\src\c\cdefs16.h">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libraries\allegro\src\c\cdefs24.h">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libraries\allegro\src\c\cdefs32.h">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libraries\allegro\src\c\cgfx.h">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libraries\allegro\src\c\cscan.h">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libraries\allegro\src\c\cspr.h">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libraries\allegro\src\c\czscan.h">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scpgui.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libraries\allegro\src\misc\fm_drum.h">
+      <Filter>Source Files\libraries\allegro\src\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libraries\allegro\src\misc\fm_emu.h">
+      <Filter>Source Files\libraries\allegro\src\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libraries\allegro\src\misc\fm_instr.h">
+      <Filter>Source Files\libraries\allegro\src\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libraries\allegro\src\misc\modexsms.h">
+      <Filter>Source Files\libraries\allegro\src\misc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\doxygen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\frame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ais\c_input.cpp">
+      <Filter>Source Files\ais</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ais\c_other.cpp">
+      <Filter>Source Files\ais</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ais\c_wussie.cpp">
+      <Filter>Source Files\ais</Filter>
+    </ClCompile>
+    <ClCompile Include="src\games\gdefender.cpp">
+      <Filter>Source Files\games</Filter>
+    </ClCompile>
+    <ClCompile Include="src\games\gflmelee.cpp">
+      <Filter>Source Files\games</Filter>
+    </ClCompile>
+    <ClCompile Include="src\games\ggob.cpp">
+      <Filter>Source Files\games</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\agup\aalg.c">
+      <Filter>Source Files\libraries\agup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\agup\aase.c">
+      <Filter>Source Files\libraries\agup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\agup\abeos.c">
+      <Filter>Source Files\libraries\agup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\agup\abitmap.c">
+      <Filter>Source Files\libraries\agup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\agup\agtk.c">
+      <Filter>Source Files\libraries\agup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\agup\agup.c">
+      <Filter>Source Files\libraries\agup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\agup\ans.c">
+      <Filter>Source Files\libraries\agup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\agup\aphoton.c">
+      <Filter>Source Files\libraries\agup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\agup\awin95.c">
+      <Filter>Source Files\libraries\agup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\melee\manim.cpp">
+      <Filter>Source Files\melee</Filter>
+    </ClCompile>
+    <ClCompile Include="src\melee\mcbodies.cpp">
+      <Filter>Source Files\melee</Filter>
+    </ClCompile>
+    <ClCompile Include="src\melee\mcontrol.cpp">
+      <Filter>Source Files\melee</Filter>
+    </ClCompile>
+    <ClCompile Include="src\melee\mfleet.cpp">
+      <Filter>Source Files\melee</Filter>
+    </ClCompile>
+    <ClCompile Include="src\melee\mframe.cpp">
+      <Filter>Source Files\melee</Filter>
+    </ClCompile>
+    <ClCompile Include="src\melee\mgame.cpp">
+      <Filter>Source Files\melee</Filter>
+    </ClCompile>
+    <ClCompile Include="src\melee\mhelpers.cpp">
+      <Filter>Source Files\melee</Filter>
+    </ClCompile>
+    <ClCompile Include="src\melee\mitems.cpp">
+      <Filter>Source Files\melee</Filter>
+    </ClCompile>
+    <ClCompile Include="src\melee\mlog.cpp">
+      <Filter>Source Files\melee</Filter>
+    </ClCompile>
+    <ClCompile Include="src\melee\mmain.cpp">
+      <Filter>Source Files\melee</Filter>
+    </ClCompile>
+    <ClCompile Include="src\melee\mmath.cpp">
+      <Filter>Source Files\melee</Filter>
+    </ClCompile>
+    <ClCompile Include="src\melee\mnet1.cpp">
+      <Filter>Source Files\melee</Filter>
+    </ClCompile>
+    <ClCompile Include="src\melee\moptions.cpp">
+      <Filter>Source Files\melee</Filter>
+    </ClCompile>
+    <ClCompile Include="src\melee\mship.cpp">
+      <Filter>Source Files\melee</Filter>
+    </ClCompile>
+    <ClCompile Include="src\melee\mshot.cpp">
+      <Filter>Source Files\melee</Filter>
+    </ClCompile>
+    <ClCompile Include="src\melee\mshpdata.cpp">
+      <Filter>Source Files\melee</Filter>
+    </ClCompile>
+    <ClCompile Include="src\melee\mshppan.cpp">
+      <Filter>Source Files\melee</Filter>
+    </ClCompile>
+    <ClCompile Include="src\melee\msprite.cpp">
+      <Filter>Source Files\melee</Filter>
+    </ClCompile>
+    <ClCompile Include="src\melee\mtarget.cpp">
+      <Filter>Source Files\melee</Filter>
+    </ClCompile>
+    <ClCompile Include="src\melee\mvideosystem.cpp">
+      <Filter>Source Files\melee</Filter>
+    </ClCompile>
+    <ClCompile Include="src\melee\mvideowindow.cpp">
+      <Filter>Source Files\melee</Filter>
+    </ClCompile>
+    <ClCompile Include="src\melee\mview.cpp">
+      <Filter>Source Files\melee</Filter>
+    </ClCompile>
+    <ClCompile Include="src\other\configrw.cpp">
+      <Filter>Source Files\other</Filter>
+    </ClCompile>
+    <ClCompile Include="src\other\dialogs.cpp">
+      <Filter>Source Files\other</Filter>
+    </ClCompile>
+    <ClCompile Include="src\other\fontmorph.cpp">
+      <Filter>Source Files\other</Filter>
+    </ClCompile>
+    <ClCompile Include="src\other\gameconf.cpp">
+      <Filter>Source Files\other</Filter>
+    </ClCompile>
+    <ClCompile Include="src\other\gup.cpp">
+      <Filter>Source Files\other</Filter>
+    </ClCompile>
+    <ClCompile Include="src\other\nullphas.cpp">
+      <Filter>Source Files\other</Filter>
+    </ClCompile>
+    <ClCompile Include="src\other\objanim.cpp">
+      <Filter>Source Files\other</Filter>
+    </ClCompile>
+    <ClCompile Include="src\other\orbit.cpp">
+      <Filter>Source Files\other</Filter>
+    </ClCompile>
+    <ClCompile Include="src\other\planet3d.cpp">
+      <Filter>Source Files\other</Filter>
+    </ClCompile>
+    <ClCompile Include="src\other\radar.cpp">
+      <Filter>Source Files\other</Filter>
+    </ClCompile>
+    <ClCompile Include="src\other\shippart.cpp">
+      <Filter>Source Files\other</Filter>
+    </ClCompile>
+    <ClCompile Include="src\other\twconfig.cpp">
+      <Filter>Source Files\other</Filter>
+    </ClCompile>
+    <ClCompile Include="src\other\vbodies.cpp">
+      <Filter>Source Files\other</Filter>
+    </ClCompile>
+    <ClCompile Include="src\other\vtarget.cpp">
+      <Filter>Source Files\other</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\gen_ships.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpaktgu.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpalabc.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpalckr.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpalhdr.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpandgu.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shparisk.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shparitr.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shparkpi.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpartem.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpastba.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpayrbs.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpbahbu.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpbatde.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpbipka.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpbogce.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpbubbo.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpbubex.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpchebr.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpchmav.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpchmba.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpchoex.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpclofl.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpconca.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpconho.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpcrapl.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpcresu.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpcrore.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpdajem.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpdeees.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpdjila.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpdragr.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpdruma.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpducla.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpdyzha.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpearc2.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpearc3.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpearcr.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpestgu.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpfiear.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpfopsl.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpforsh.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpfrebo.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpfresc.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpfweav.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpgahmo.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpgarty.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpgerhe.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpgeror.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpgerra.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpglacr.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpglads.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpgluse.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shphotsp.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shphubde.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shphydcr.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpiceco.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpilwav.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpilwsp.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpjnkla.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpjurcu.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpjygst.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpkabwe.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpkahbo.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpkatpo.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpklidr.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpkoaja.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpkoapa.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpkohma.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpkolfl.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpkorsi.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpktesa.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpkzedr.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpleimu.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shplyrwa.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpmekpi.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpmeltr.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpmmrxf.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpmoisp.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpmontr.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpmycpo.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpnarlu.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpneccr.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpneodr.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpnisha.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpoliha.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shporzne.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpostdi.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpostor.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shppanav.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpphepa.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shppkufu.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpplala.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpplane.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpqlore.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpquasi.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpquawr.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpraame.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpradfi.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shprekas.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shprogsq.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpsacda.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpsamat.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpsclfr.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpsefn2.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpsefna.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpshosc.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpslypr.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpspael.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpstaba.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpstrgu.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpstrsc.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpsupbl.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpsyrpe.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shptauar.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shptaubo.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shptauda.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shptauem.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shptaufi.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shptaugl.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shptauhu.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shptaule.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shptaumc.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shptaume.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shptausl.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shptaust.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shptauto.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shptautu.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shptelno.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpterbi.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpthrto.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shptougr.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shptrige.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shptulra.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpulzin.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpumgdr.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpuosli.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shputwde.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shputwju.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpuxjba.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpvelcr.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpvenke.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpvezba.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpvioge.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpvirli.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpvuvji.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpvuxin.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpwassu.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpwistr.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpxaaar.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpxilcr.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpxxxas.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpxxxma.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpyehte.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpyevme.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpyurpa.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpyusra.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpzeksh.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpzfpst.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\twgui\twbutton.cpp">
+      <Filter>Source Files\twgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\twgui\twbuttontypes.cpp">
+      <Filter>Source Files\twgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\twgui\twgui.cpp">
+      <Filter>Source Files\twgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\twgui\twhelpers.cpp">
+      <Filter>Source Files\twgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\twgui\twmenuexamples.cpp">
+      <Filter>Source Files\twgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\twgui\twpopup.cpp">
+      <Filter>Source Files\twgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\twgui\twwindow.cpp">
+      <Filter>Source Files\twgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\twgui\utils.cpp">
+      <Filter>Source Files\twgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\aarot.c">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\aastr.c">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\aautil.c">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\base.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\endian.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\errors.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\errors_c.c">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\get_time.c">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\helper.c">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\history.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\pmask.c">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\port_allegro.c">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\random.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\round.c">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\sounds.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\types.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\vector2.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\allegro.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\blit.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\bmp.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\clip3d.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\clip3df.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\colblend.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\color.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\config.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\datafile.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\dataregi.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\digmid.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\dispsw.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\dither.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\drvlist.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\file.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\fli.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\flood.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\font.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\fontbios.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\fontbmp.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\fontdat.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\fontgrx.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\fonttxt.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\fsel.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\gfx.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\glyph.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\graphics.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\gsprite.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\gui.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\guiproc.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\inline.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\joystick.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\keyboard.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\lbm.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\libc.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\lzss.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\math.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\math3d.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\midi.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\mixer.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\modesel.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\mouse.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\pcx.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\poly3d.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\polygon.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\quantize.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\quat.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\readbmp.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\readfont.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\readsmp.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\rle.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\rotate.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\rsfb.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\scene3d.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\sound.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\spline.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\stream.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\text.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\tga.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\timer.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\unicode.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\vtable.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\vtable8.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\vtable15.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\vtable16.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\vtable24.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\vtable32.c">
+      <Filter>Source Files\libraries\allegro\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\gdi.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wddaccel.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wddbmp.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wddbmpl.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wddfull.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wddlock.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wddmode.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wddovl.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wddraw.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wddwin.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wdispsw.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wdsinput.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wdsndmix.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wdsound.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wdxver.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wfile.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wgdi.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wgfxdrv.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\winput.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wjoydrv.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wjoydx.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wjoyhelp.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wjoyw32.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wkeybd.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wmidi.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wmouse.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wsnddrv.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wsndwo.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wsystem.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wthread.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wtimer.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\win\wwnd.c">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\cblit8.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\cblit16.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\cblit24.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\cblit32.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\ccpu.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\ccsprite.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\cgfx8.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\cgfx15.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\cgfx16.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\cgfx24.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\cgfx32.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\cmisc.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\cscan8.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\cscan15.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\cscan16.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\cscan24.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\cscan32.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\cspr8.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\cspr15.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\cspr16.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\cspr24.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\cspr32.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\cstretch.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\czscan8.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\czscan15.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\czscan16.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\czscan24.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\c\czscan32.c">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scpgui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\misc\colconv.c">
+      <Filter>Source Files\libraries\allegro\src\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\misc\ccolconv.c">
+      <Filter>Source Files\libraries\allegro\src\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\misc\modex.c">
+      <Filter>Source Files\libraries\allegro\src\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\misc\modexsms.c">
+      <Filter>Source Files\libraries\allegro\src\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\misc\pckeys.c">
+      <Filter>Source Files\libraries\allegro\src\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\misc\runner.c">
+      <Filter>Source Files\libraries\allegro\src\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\misc\test.cpp">
+      <Filter>Source Files\libraries\allegro\src\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\misc\vbeaf.c">
+      <Filter>Source Files\libraries\allegro\src\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\misc\vga.c">
+      <Filter>Source Files\libraries\allegro\src\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\misc\vgaregs.c">
+      <Filter>Source Files\libraries\allegro\src\misc</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\libraries\agup\alex.pcx">
+      <Filter>Source Files\libraries\agup</Filter>
+    </None>
+    <None Include="src\libraries\agup\clean8.pcx">
+      <Filter>Source Files\libraries\agup</Filter>
+    </None>
+    <None Include="src\libraries\agup\README">
+      <Filter>Source Files\libraries\agup</Filter>
+    </None>
+    <None Include="src\libraries\agup\readme.html">
+      <Filter>Source Files\libraries\agup</Filter>
+    </None>
+    <None Include="src\libraries\agup\version">
+      <Filter>Source Files\libraries\agup</Filter>
+    </None>
+    <None Include="src\libraries\allegro\src\win\asmlock.s">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </None>
+    <None Include="src\libraries\allegro\src\c\cmiscs.s">
+      <Filter>Source Files\libraries\allegro\src\c</Filter>
+    </None>
+    <None Include="src\libraries\allegro\src\misc\asmcapa.s">
+      <Filter>Source Files\libraries\allegro\src\misc</Filter>
+    </None>
+    <None Include="src\libraries\allegro\src\misc\icolconv.s">
+      <Filter>Source Files\libraries\allegro\src\misc</Filter>
+    </None>
+    <None Include="src\libraries\allegro\src\misc\modexgfx.s">
+      <Filter>Source Files\libraries\allegro\src\misc</Filter>
+    </None>
+    <None Include="src\libraries\allegro\src\misc\vbeafs.s">
+      <Filter>Source Files\libraries\allegro\src\misc</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\libraries\agup\LICENCE.txt">
+      <Filter>Source Files\libraries\agup</Filter>
+    </Text>
+    <Text Include="src\twgui\twgui.txt">
+      <Filter>Source Files\twgui</Filter>
+    </Text>
+    <Text Include="src\twgui\twgui_infot.txt">
+      <Filter>Source Files\twgui</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="tw-light.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+    <ResourceCompile Include="src\libraries\allegro\src\win\dllver.rc">
+      <Filter>Source Files\libraries\allegro\src\win</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

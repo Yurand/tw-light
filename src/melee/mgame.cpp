@@ -18,6 +18,7 @@ GNU General Public License for more details.
 //for debuging
 
 #include <exception>
+#include <iterator>
 using std::exception;
 #include <typeinfo>				 //
 

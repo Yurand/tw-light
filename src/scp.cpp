@@ -20,6 +20,7 @@
  *      MA 02110-1301, USA.
  */
 
+#include <cstdint>
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
@@ -63,7 +64,7 @@ const char *tw_version()
 #include "melee.h"
 REGISTER_FILE
 #include "scp.h"
-#include "gui.h"
+#include "scpgui.h"
 #include "frame.h"
 
 #include "util/get_time.h"

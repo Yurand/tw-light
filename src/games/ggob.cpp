@@ -1,8 +1,8 @@
-
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
-#include <math.h>
+#include <cstdlib>
+#include <cstdint>
+#include <cstring>
+#include <cstdio>
+#include <cmath>
 
 #include <allegro.h>
 

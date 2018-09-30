@@ -1,0 +1,613 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{AC938CB4-B552-4F99-B72C-B6F947A2D7CA}</ProjectGuid>
+    <RootNamespace>twlight</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>14.0.25431.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)\src\libraries\allegro\include;$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>TWLIGHT_DATADIR="../data";VERSION="0.5";WIN32;ALLEGRO_STATICLINK;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;ole32.lib;ddraw.lib;dxguid.lib;dinput8.lib;winmm.lib;dsound.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\allegro-4.4.2-msvc-9.0\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(ProjectDir)\src\libraries\allegro\include;$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>TWLIGHT_DATADIR="../data";VERSION="0.5";WIN32;ALLEGRO_STATICLINK;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;ole32.lib;ddraw.lib;dxguid.lib;dinput8.lib;winmm.lib;dsound.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\allegro-4.4.2-msvc-9.0\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="src\ais.h" />
+    <ClInclude Include="src\frame.h" />
+    <ClInclude Include="src\games\gflmelee.h" />
+    <ClInclude Include="src\games\ggob.h" />
+    <ClInclude Include="src\libraries\allegro\src\misc\fm_drum.h" />
+    <ClInclude Include="src\libraries\allegro\src\misc\fm_emu.h" />
+    <ClInclude Include="src\libraries\allegro\src\misc\fm_instr.h" />
+    <ClInclude Include="src\libraries\allegro\src\misc\modexsms.h" />
+    <ClInclude Include="src\scpgui.h" />
+    <ClInclude Include="src\id.h" />
+    <ClInclude Include="src\input.h" />
+    <ClInclude Include="src\libraries\agup\aalg.h" />
+    <ClInclude Include="src\libraries\agup\aase.h" />
+    <ClInclude Include="src\libraries\agup\abeos.h" />
+    <ClInclude Include="src\libraries\agup\agtk.h" />
+    <ClInclude Include="src\libraries\agup\agup.h" />
+    <ClInclude Include="src\libraries\agup\agupitrn.h" />
+    <ClInclude Include="src\libraries\agup\ans.h" />
+    <ClInclude Include="src\libraries\agup\aphoton.h" />
+    <ClInclude Include="src\libraries\agup\awin95.h" />
+    <ClInclude Include="src\libraries\allegro\src\c\cblit.h" />
+    <ClInclude Include="src\libraries\allegro\src\c\cdefs15.h" />
+    <ClInclude Include="src\libraries\allegro\src\c\cdefs16.h" />
+    <ClInclude Include="src\libraries\allegro\src\c\cdefs24.h" />
+    <ClInclude Include="src\libraries\allegro\src\c\cdefs32.h" />
+    <ClInclude Include="src\libraries\allegro\src\c\cdefs8.h" />
+    <ClInclude Include="src\libraries\allegro\src\c\cgfx.h" />
+    <ClInclude Include="src\libraries\allegro\src\c\cscan.h" />
+    <ClInclude Include="src\libraries\allegro\src\c\cspr.h" />
+    <ClInclude Include="src\libraries\allegro\src\c\czscan.h" />
+    <ClInclude Include="src\libraries\allegro\src\win\wddraw.h" />
+    <ClInclude Include="src\melee.h" />
+    <ClInclude Include="src\melee\manim.h" />
+    <ClInclude Include="src\melee\mcbodies.h" />
+    <ClInclude Include="src\melee\mcontrol.h" />
+    <ClInclude Include="src\melee\mfleet.h" />
+    <ClInclude Include="src\melee\mframe.h" />
+    <ClInclude Include="src\melee\mgame.h" />
+    <ClInclude Include="src\melee\mitems.h" />
+    <ClInclude Include="src\melee\mlog.h" />
+    <ClInclude Include="src\melee\mmain.h" />
+    <ClInclude Include="src\melee\mnet1.h" />
+    <ClInclude Include="src\melee\moptions.h" />
+    <ClInclude Include="src\melee\mship.h" />
+    <ClInclude Include="src\melee\mshot.h" />
+    <ClInclude Include="src\melee\mshppan.h" />
+    <ClInclude Include="src\melee\mtarget.h" />
+    <ClInclude Include="src\melee\mvideoevent.h" />
+    <ClInclude Include="src\melee\mvideosystem.h" />
+    <ClInclude Include="src\melee\mvideowindow.h" />
+    <ClInclude Include="src\melee\mview.h" />
+    <ClInclude Include="src\other\configrw.h" />
+    <ClInclude Include="src\other\dialogs.h" />
+    <ClInclude Include="src\other\fontmorph.h" />
+    <ClInclude Include="src\other\gameconf.h" />
+    <ClInclude Include="src\other\gup.h" />
+    <ClInclude Include="src\other\nullphas.h" />
+    <ClInclude Include="src\other\objanim.h" />
+    <ClInclude Include="src\other\orbit.h" />
+    <ClInclude Include="src\other\planet3d.h" />
+    <ClInclude Include="src\other\radar.h" />
+    <ClInclude Include="src\other\shippart.h" />
+    <ClInclude Include="src\other\twconfig.h" />
+    <ClInclude Include="src\other\vbodies.h" />
+    <ClInclude Include="src\other\vtarget.h" />
+    <ClInclude Include="src\scp.h" />
+    <ClInclude Include="src\ship.h" />
+    <ClInclude Include="src\ships\shpandgu.h" />
+    <ClInclude Include="src\ships\shparisk.h" />
+    <ClInclude Include="src\ships\shpchebr.h" />
+    <ClInclude Include="src\ships\shpchmav.h" />
+    <ClInclude Include="src\ships\shpdruma.h" />
+    <ClInclude Include="src\ships\shpearcr.h" />
+    <ClInclude Include="src\ships\shpilwsp.h" />
+    <ClInclude Include="src\ships\shpkohma.h" />
+    <ClInclude Include="src\ships\shpkzedr.h" />
+    <ClInclude Include="src\ships\shpmycpo.h" />
+    <ClInclude Include="src\ships\shporzne.h" />
+    <ClInclude Include="src\ships\shpshosc.h" />
+    <ClInclude Include="src\ships\shpspael.h" />
+    <ClInclude Include="src\ships\shpsupbl.h" />
+    <ClInclude Include="src\ships\shpsyrpe.h" />
+    <ClInclude Include="src\ships\shputwju.h" />
+    <ClInclude Include="src\ships\shpzfpst.h" />
+    <ClInclude Include="src\twgui\gamebuttonevent.h" />
+    <ClInclude Include="src\twgui\twbutton.h" />
+    <ClInclude Include="src\twgui\twbuttontypes.h" />
+    <ClInclude Include="src\twgui\twgui.h" />
+    <ClInclude Include="src\twgui\twhelpers.h" />
+    <ClInclude Include="src\twgui\twmenuexamples.h" />
+    <ClInclude Include="src\twgui\twpopup.h" />
+    <ClInclude Include="src\twgui\twwindow.h" />
+    <ClInclude Include="src\twgui\utils.h" />
+    <ClInclude Include="src\util\aastr.h" />
+    <ClInclude Include="src\util\aautil.h" />
+    <ClInclude Include="src\util\base.h" />
+    <ClInclude Include="src\util\endian.h" />
+    <ClInclude Include="src\util\errors.h" />
+    <ClInclude Include="src\util\get_time.h" />
+    <ClInclude Include="src\util\helper.h" />
+    <ClInclude Include="src\util\history.h" />
+    <ClInclude Include="src\util\pmask.h" />
+    <ClInclude Include="src\util\port.h" />
+    <ClInclude Include="src\util\random.h" />
+    <ClInclude Include="src\util\round.h" />
+    <ClInclude Include="src\util\sounds.h" />
+    <ClInclude Include="src\util\types.h" />
+    <ClInclude Include="src\util\vector2.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\ais\c_input.cpp" />
+    <ClCompile Include="src\ais\c_other.cpp" />
+    <ClCompile Include="src\ais\c_wussie.cpp" />
+    <ClCompile Include="src\doxygen.cpp" />
+    <ClCompile Include="src\frame.cpp" />
+    <ClCompile Include="src\games\gdefender.cpp" />
+    <ClCompile Include="src\games\gflmelee.cpp" />
+    <ClCompile Include="src\games\ggob.cpp" />
+    <ClCompile Include="src\libraries\allegro\src\misc\ccolconv.c" />
+    <ClCompile Include="src\libraries\allegro\src\misc\colconv.c" />
+    <ClCompile Include="src\libraries\allegro\src\misc\modex.c" />
+    <ClCompile Include="src\libraries\allegro\src\misc\modexsms.c" />
+    <ClCompile Include="src\libraries\allegro\src\misc\pckeys.c" />
+    <ClCompile Include="src\libraries\allegro\src\misc\runner.c" />
+    <ClCompile Include="src\libraries\allegro\src\misc\test.cpp" />
+    <ClCompile Include="src\libraries\allegro\src\misc\vbeaf.c" />
+    <ClCompile Include="src\libraries\allegro\src\misc\vga.c" />
+    <ClCompile Include="src\libraries\allegro\src\misc\vgaregs.c" />
+    <ClCompile Include="src\scpgui.cpp" />
+    <ClCompile Include="src\input.cpp" />
+    <ClCompile Include="src\libraries\agup\aalg.c" />
+    <ClCompile Include="src\libraries\agup\aase.c" />
+    <ClCompile Include="src\libraries\agup\abeos.c" />
+    <ClCompile Include="src\libraries\agup\abitmap.c" />
+    <ClCompile Include="src\libraries\agup\agtk.c" />
+    <ClCompile Include="src\libraries\agup\agup.c" />
+    <ClCompile Include="src\libraries\agup\ans.c" />
+    <ClCompile Include="src\libraries\agup\aphoton.c" />
+    <ClCompile Include="src\libraries\agup\awin95.c" />
+    <ClCompile Include="src\libraries\allegro\src\allegro.c">
+      <PreprocessToFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</PreprocessToFile>
+    </ClCompile>
+    <ClCompile Include="src\libraries\allegro\src\blit.c" />
+    <ClCompile Include="src\libraries\allegro\src\bmp.c" />
+    <ClCompile Include="src\libraries\allegro\src\clip3d.c" />
+    <ClCompile Include="src\libraries\allegro\src\clip3df.c" />
+    <ClCompile Include="src\libraries\allegro\src\colblend.c" />
+    <ClCompile Include="src\libraries\allegro\src\color.c" />
+    <ClCompile Include="src\libraries\allegro\src\config.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\cblit16.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\cblit24.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\cblit32.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\cblit8.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\ccpu.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\ccsprite.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\cgfx15.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\cgfx16.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\cgfx24.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\cgfx32.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\cgfx8.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\cmisc.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\cscan15.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\cscan16.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\cscan24.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\cscan32.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\cscan8.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\cspr15.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\cspr16.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\cspr24.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\cspr32.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\cspr8.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\cstretch.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\czscan15.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\czscan16.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\czscan24.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\czscan32.c" />
+    <ClCompile Include="src\libraries\allegro\src\c\czscan8.c" />
+    <ClCompile Include="src\libraries\allegro\src\datafile.c" />
+    <ClCompile Include="src\libraries\allegro\src\dataregi.c" />
+    <ClCompile Include="src\libraries\allegro\src\digmid.c" />
+    <ClCompile Include="src\libraries\allegro\src\dispsw.c" />
+    <ClCompile Include="src\libraries\allegro\src\dither.c" />
+    <ClCompile Include="src\libraries\allegro\src\drvlist.c" />
+    <ClCompile Include="src\libraries\allegro\src\file.c" />
+    <ClCompile Include="src\libraries\allegro\src\fli.c" />
+    <ClCompile Include="src\libraries\allegro\src\flood.c" />
+    <ClCompile Include="src\libraries\allegro\src\font.c" />
+    <ClCompile Include="src\libraries\allegro\src\fontbios.c" />
+    <ClCompile Include="src\libraries\allegro\src\fontbmp.c" />
+    <ClCompile Include="src\libraries\allegro\src\fontdat.c" />
+    <ClCompile Include="src\libraries\allegro\src\fontgrx.c" />
+    <ClCompile Include="src\libraries\allegro\src\fonttxt.c" />
+    <ClCompile Include="src\libraries\allegro\src\fsel.c" />
+    <ClCompile Include="src\libraries\allegro\src\gfx.c" />
+    <ClCompile Include="src\libraries\allegro\src\glyph.c" />
+    <ClCompile Include="src\libraries\allegro\src\graphics.c" />
+    <ClCompile Include="src\libraries\allegro\src\gsprite.c" />
+    <ClCompile Include="src\libraries\allegro\src\gui.c" />
+    <ClCompile Include="src\libraries\allegro\src\guiproc.c" />
+    <ClCompile Include="src\libraries\allegro\src\inline.c" />
+    <ClCompile Include="src\libraries\allegro\src\joystick.c" />
+    <ClCompile Include="src\libraries\allegro\src\keyboard.c" />
+    <ClCompile Include="src\libraries\allegro\src\lbm.c" />
+    <ClCompile Include="src\libraries\allegro\src\libc.c" />
+    <ClCompile Include="src\libraries\allegro\src\lzss.c" />
+    <ClCompile Include="src\libraries\allegro\src\math.c" />
+    <ClCompile Include="src\libraries\allegro\src\math3d.c" />
+    <ClCompile Include="src\libraries\allegro\src\midi.c" />
+    <ClCompile Include="src\libraries\allegro\src\mixer.c" />
+    <ClCompile Include="src\libraries\allegro\src\modesel.c" />
+    <ClCompile Include="src\libraries\allegro\src\mouse.c" />
+    <ClCompile Include="src\libraries\allegro\src\pcx.c" />
+    <ClCompile Include="src\libraries\allegro\src\poly3d.c" />
+    <ClCompile Include="src\libraries\allegro\src\polygon.c" />
+    <ClCompile Include="src\libraries\allegro\src\quantize.c" />
+    <ClCompile Include="src\libraries\allegro\src\quat.c" />
+    <ClCompile Include="src\libraries\allegro\src\readbmp.c" />
+    <ClCompile Include="src\libraries\allegro\src\readfont.c" />
+    <ClCompile Include="src\libraries\allegro\src\readsmp.c" />
+    <ClCompile Include="src\libraries\allegro\src\rle.c" />
+    <ClCompile Include="src\libraries\allegro\src\rotate.c" />
+    <ClCompile Include="src\libraries\allegro\src\rsfb.c" />
+    <ClCompile Include="src\libraries\allegro\src\scene3d.c" />
+    <ClCompile Include="src\libraries\allegro\src\sound.c" />
+    <ClCompile Include="src\libraries\allegro\src\spline.c" />
+    <ClCompile Include="src\libraries\allegro\src\stream.c" />
+    <ClCompile Include="src\libraries\allegro\src\text.c" />
+    <ClCompile Include="src\libraries\allegro\src\tga.c" />
+    <ClCompile Include="src\libraries\allegro\src\timer.c" />
+    <ClCompile Include="src\libraries\allegro\src\unicode.c" />
+    <ClCompile Include="src\libraries\allegro\src\vtable.c" />
+    <ClCompile Include="src\libraries\allegro\src\vtable15.c" />
+    <ClCompile Include="src\libraries\allegro\src\vtable16.c" />
+    <ClCompile Include="src\libraries\allegro\src\vtable24.c" />
+    <ClCompile Include="src\libraries\allegro\src\vtable32.c" />
+    <ClCompile Include="src\libraries\allegro\src\vtable8.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\gdi.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wddaccel.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wddbmp.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wddbmpl.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wddfull.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wddlock.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wddmode.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wddovl.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wddraw.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wddwin.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wdispsw.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wdsinput.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wdsndmix.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wdsound.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wdxver.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wfile.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wgdi.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wgfxdrv.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\winput.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wjoydrv.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wjoydx.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wjoyhelp.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wjoyw32.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wkeybd.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wmidi.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wmouse.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wsnddrv.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wsndwo.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wsystem.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wthread.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wtimer.c" />
+    <ClCompile Include="src\libraries\allegro\src\win\wwnd.c" />
+    <ClCompile Include="src\melee\manim.cpp" />
+    <ClCompile Include="src\melee\mcbodies.cpp" />
+    <ClCompile Include="src\melee\mcontrol.cpp" />
+    <ClCompile Include="src\melee\mfleet.cpp" />
+    <ClCompile Include="src\melee\mframe.cpp" />
+    <ClCompile Include="src\melee\mgame.cpp" />
+    <ClCompile Include="src\melee\mhelpers.cpp" />
+    <ClCompile Include="src\melee\mitems.cpp" />
+    <ClCompile Include="src\melee\mlog.cpp" />
+    <ClCompile Include="src\melee\mmain.cpp" />
+    <ClCompile Include="src\melee\mmath.cpp" />
+    <ClCompile Include="src\melee\mnet1.cpp" />
+    <ClCompile Include="src\melee\moptions.cpp" />
+    <ClCompile Include="src\melee\mship.cpp" />
+    <ClCompile Include="src\melee\mshot.cpp" />
+    <ClCompile Include="src\melee\mshpdata.cpp" />
+    <ClCompile Include="src\melee\mshppan.cpp" />
+    <ClCompile Include="src\melee\msprite.cpp" />
+    <ClCompile Include="src\melee\mtarget.cpp" />
+    <ClCompile Include="src\melee\mvideosystem.cpp" />
+    <ClCompile Include="src\melee\mvideowindow.cpp" />
+    <ClCompile Include="src\melee\mview.cpp" />
+    <ClCompile Include="src\other\configrw.cpp" />
+    <ClCompile Include="src\other\dialogs.cpp" />
+    <ClCompile Include="src\other\fontmorph.cpp" />
+    <ClCompile Include="src\other\gameconf.cpp" />
+    <ClCompile Include="src\other\gup.cpp" />
+    <ClCompile Include="src\other\nullphas.cpp" />
+    <ClCompile Include="src\other\objanim.cpp" />
+    <ClCompile Include="src\other\orbit.cpp" />
+    <ClCompile Include="src\other\planet3d.cpp" />
+    <ClCompile Include="src\other\radar.cpp" />
+    <ClCompile Include="src\other\shippart.cpp" />
+    <ClCompile Include="src\other\twconfig.cpp" />
+    <ClCompile Include="src\other\vbodies.cpp" />
+    <ClCompile Include="src\other\vtarget.cpp" />
+    <ClCompile Include="src\scp.cpp" />
+    <ClCompile Include="src\ships\gen_ships.cpp" />
+    <ClCompile Include="src\ships\shpaktgu.cpp" />
+    <ClCompile Include="src\ships\shpalabc.cpp" />
+    <ClCompile Include="src\ships\shpalckr.cpp" />
+    <ClCompile Include="src\ships\shpalhdr.cpp" />
+    <ClCompile Include="src\ships\shpandgu.cpp" />
+    <ClCompile Include="src\ships\shparisk.cpp" />
+    <ClCompile Include="src\ships\shparitr.cpp" />
+    <ClCompile Include="src\ships\shparkpi.cpp" />
+    <ClCompile Include="src\ships\shpartem.cpp" />
+    <ClCompile Include="src\ships\shpastba.cpp" />
+    <ClCompile Include="src\ships\shpayrbs.cpp" />
+    <ClCompile Include="src\ships\shpbahbu.cpp" />
+    <ClCompile Include="src\ships\shpbatde.cpp" />
+    <ClCompile Include="src\ships\shpbipka.cpp" />
+    <ClCompile Include="src\ships\shpbogce.cpp" />
+    <ClCompile Include="src\ships\shpbubbo.cpp" />
+    <ClCompile Include="src\ships\shpbubex.cpp" />
+    <ClCompile Include="src\ships\shpchebr.cpp" />
+    <ClCompile Include="src\ships\shpchmav.cpp" />
+    <ClCompile Include="src\ships\shpchmba.cpp" />
+    <ClCompile Include="src\ships\shpchoex.cpp" />
+    <ClCompile Include="src\ships\shpclofl.cpp" />
+    <ClCompile Include="src\ships\shpconca.cpp" />
+    <ClCompile Include="src\ships\shpconho.cpp" />
+    <ClCompile Include="src\ships\shpcrapl.cpp" />
+    <ClCompile Include="src\ships\shpcresu.cpp" />
+    <ClCompile Include="src\ships\shpcrore.cpp" />
+    <ClCompile Include="src\ships\shpdajem.cpp" />
+    <ClCompile Include="src\ships\shpdeees.cpp" />
+    <ClCompile Include="src\ships\shpdjila.cpp" />
+    <ClCompile Include="src\ships\shpdragr.cpp" />
+    <ClCompile Include="src\ships\shpdruma.cpp" />
+    <ClCompile Include="src\ships\shpducla.cpp" />
+    <ClCompile Include="src\ships\shpdyzha.cpp" />
+    <ClCompile Include="src\ships\shpearc2.cpp" />
+    <ClCompile Include="src\ships\shpearc3.cpp" />
+    <ClCompile Include="src\ships\shpearcr.cpp" />
+    <ClCompile Include="src\ships\shpestgu.cpp" />
+    <ClCompile Include="src\ships\shpfiear.cpp" />
+    <ClCompile Include="src\ships\shpfopsl.cpp" />
+    <ClCompile Include="src\ships\shpforsh.cpp" />
+    <ClCompile Include="src\ships\shpfrebo.cpp" />
+    <ClCompile Include="src\ships\shpfresc.cpp" />
+    <ClCompile Include="src\ships\shpfweav.cpp" />
+    <ClCompile Include="src\ships\shpgahmo.cpp" />
+    <ClCompile Include="src\ships\shpgarty.cpp" />
+    <ClCompile Include="src\ships\shpgerhe.cpp" />
+    <ClCompile Include="src\ships\shpgeror.cpp" />
+    <ClCompile Include="src\ships\shpgerra.cpp" />
+    <ClCompile Include="src\ships\shpglacr.cpp" />
+    <ClCompile Include="src\ships\shpglads.cpp" />
+    <ClCompile Include="src\ships\shpgluse.cpp" />
+    <ClCompile Include="src\ships\shphotsp.cpp" />
+    <ClCompile Include="src\ships\shphubde.cpp" />
+    <ClCompile Include="src\ships\shphydcr.cpp" />
+    <ClCompile Include="src\ships\shpiceco.cpp" />
+    <ClCompile Include="src\ships\shpilwav.cpp" />
+    <ClCompile Include="src\ships\shpilwsp.cpp" />
+    <ClCompile Include="src\ships\shpjnkla.cpp" />
+    <ClCompile Include="src\ships\shpjurcu.cpp" />
+    <ClCompile Include="src\ships\shpjygst.cpp" />
+    <ClCompile Include="src\ships\shpkabwe.cpp" />
+    <ClCompile Include="src\ships\shpkahbo.cpp" />
+    <ClCompile Include="src\ships\shpkatpo.cpp" />
+    <ClCompile Include="src\ships\shpklidr.cpp" />
+    <ClCompile Include="src\ships\shpkoaja.cpp" />
+    <ClCompile Include="src\ships\shpkoapa.cpp" />
+    <ClCompile Include="src\ships\shpkohma.cpp" />
+    <ClCompile Include="src\ships\shpkolfl.cpp" />
+    <ClCompile Include="src\ships\shpkorsi.cpp" />
+    <ClCompile Include="src\ships\shpktesa.cpp" />
+    <ClCompile Include="src\ships\shpkzedr.cpp" />
+    <ClCompile Include="src\ships\shpleimu.cpp" />
+    <ClCompile Include="src\ships\shplyrwa.cpp" />
+    <ClCompile Include="src\ships\shpmekpi.cpp" />
+    <ClCompile Include="src\ships\shpmeltr.cpp" />
+    <ClCompile Include="src\ships\shpmmrxf.cpp" />
+    <ClCompile Include="src\ships\shpmoisp.cpp" />
+    <ClCompile Include="src\ships\shpmontr.cpp" />
+    <ClCompile Include="src\ships\shpmycpo.cpp" />
+    <ClCompile Include="src\ships\shpnarlu.cpp" />
+    <ClCompile Include="src\ships\shpneccr.cpp" />
+    <ClCompile Include="src\ships\shpneodr.cpp" />
+    <ClCompile Include="src\ships\shpnisha.cpp" />
+    <ClCompile Include="src\ships\shpoliha.cpp" />
+    <ClCompile Include="src\ships\shporzne.cpp" />
+    <ClCompile Include="src\ships\shpostdi.cpp" />
+    <ClCompile Include="src\ships\shpostor.cpp" />
+    <ClCompile Include="src\ships\shppanav.cpp" />
+    <ClCompile Include="src\ships\shpphepa.cpp" />
+    <ClCompile Include="src\ships\shppkufu.cpp" />
+    <ClCompile Include="src\ships\shpplala.cpp" />
+    <ClCompile Include="src\ships\shpplane.cpp" />
+    <ClCompile Include="src\ships\shpqlore.cpp" />
+    <ClCompile Include="src\ships\shpquasi.cpp" />
+    <ClCompile Include="src\ships\shpquawr.cpp" />
+    <ClCompile Include="src\ships\shpraame.cpp" />
+    <ClCompile Include="src\ships\shpradfi.cpp" />
+    <ClCompile Include="src\ships\shprekas.cpp" />
+    <ClCompile Include="src\ships\shprogsq.cpp" />
+    <ClCompile Include="src\ships\shpsacda.cpp" />
+    <ClCompile Include="src\ships\shpsamat.cpp" />
+    <ClCompile Include="src\ships\shpsclfr.cpp" />
+    <ClCompile Include="src\ships\shpsefn2.cpp" />
+    <ClCompile Include="src\ships\shpsefna.cpp" />
+    <ClCompile Include="src\ships\shpshosc.cpp" />
+    <ClCompile Include="src\ships\shpslypr.cpp" />
+    <ClCompile Include="src\ships\shpspael.cpp" />
+    <ClCompile Include="src\ships\shpstaba.cpp" />
+    <ClCompile Include="src\ships\shpstrgu.cpp" />
+    <ClCompile Include="src\ships\shpstrsc.cpp" />
+    <ClCompile Include="src\ships\shpsupbl.cpp" />
+    <ClCompile Include="src\ships\shpsyrpe.cpp" />
+    <ClCompile Include="src\ships\shptauar.cpp" />
+    <ClCompile Include="src\ships\shptaubo.cpp" />
+    <ClCompile Include="src\ships\shptauda.cpp" />
+    <ClCompile Include="src\ships\shptauem.cpp" />
+    <ClCompile Include="src\ships\shptaufi.cpp" />
+    <ClCompile Include="src\ships\shptaugl.cpp" />
+    <ClCompile Include="src\ships\shptauhu.cpp" />
+    <ClCompile Include="src\ships\shptaule.cpp" />
+    <ClCompile Include="src\ships\shptaumc.cpp" />
+    <ClCompile Include="src\ships\shptaume.cpp" />
+    <ClCompile Include="src\ships\shptausl.cpp" />
+    <ClCompile Include="src\ships\shptaust.cpp" />
+    <ClCompile Include="src\ships\shptauto.cpp" />
+    <ClCompile Include="src\ships\shptautu.cpp" />
+    <ClCompile Include="src\ships\shptelno.cpp" />
+    <ClCompile Include="src\ships\shpterbi.cpp" />
+    <ClCompile Include="src\ships\shpthrto.cpp" />
+    <ClCompile Include="src\ships\shptougr.cpp" />
+    <ClCompile Include="src\ships\shptrige.cpp" />
+    <ClCompile Include="src\ships\shptulra.cpp" />
+    <ClCompile Include="src\ships\shpulzin.cpp" />
+    <ClCompile Include="src\ships\shpumgdr.cpp" />
+    <ClCompile Include="src\ships\shpuosli.cpp" />
+    <ClCompile Include="src\ships\shputwde.cpp" />
+    <ClCompile Include="src\ships\shputwju.cpp" />
+    <ClCompile Include="src\ships\shpuxjba.cpp" />
+    <ClCompile Include="src\ships\shpvelcr.cpp" />
+    <ClCompile Include="src\ships\shpvenke.cpp" />
+    <ClCompile Include="src\ships\shpvezba.cpp" />
+    <ClCompile Include="src\ships\shpvioge.cpp" />
+    <ClCompile Include="src\ships\shpvirli.cpp" />
+    <ClCompile Include="src\ships\shpvuvji.cpp" />
+    <ClCompile Include="src\ships\shpvuxin.cpp" />
+    <ClCompile Include="src\ships\shpwassu.cpp" />
+    <ClCompile Include="src\ships\shpwistr.cpp" />
+    <ClCompile Include="src\ships\shpxaaar.cpp" />
+    <ClCompile Include="src\ships\shpxilcr.cpp" />
+    <ClCompile Include="src\ships\shpxxxas.cpp" />
+    <ClCompile Include="src\ships\shpxxxma.cpp" />
+    <ClCompile Include="src\ships\shpyehte.cpp" />
+    <ClCompile Include="src\ships\shpyevme.cpp" />
+    <ClCompile Include="src\ships\shpyurpa.cpp" />
+    <ClCompile Include="src\ships\shpyusra.cpp" />
+    <ClCompile Include="src\ships\shpzeksh.cpp" />
+    <ClCompile Include="src\ships\shpzfpst.cpp" />
+    <ClCompile Include="src\twgui\twbutton.cpp" />
+    <ClCompile Include="src\twgui\twbuttontypes.cpp" />
+    <ClCompile Include="src\twgui\twgui.cpp" />
+    <ClCompile Include="src\twgui\twhelpers.cpp" />
+    <ClCompile Include="src\twgui\twmenuexamples.cpp" />
+    <ClCompile Include="src\twgui\twpopup.cpp" />
+    <ClCompile Include="src\twgui\twwindow.cpp" />
+    <ClCompile Include="src\twgui\utils.cpp" />
+    <ClCompile Include="src\util\aarot.c" />
+    <ClCompile Include="src\util\aastr.c" />
+    <ClCompile Include="src\util\aautil.c" />
+    <ClCompile Include="src\util\base.cpp" />
+    <ClCompile Include="src\util\endian.cpp" />
+    <ClCompile Include="src\util\errors.cpp" />
+    <ClCompile Include="src\util\errors_c.c" />
+    <ClCompile Include="src\util\get_time.c" />
+    <ClCompile Include="src\util\helper.c" />
+    <ClCompile Include="src\util\history.cpp" />
+    <ClCompile Include="src\util\pmask.c" />
+    <ClCompile Include="src\util\port_allegro.c" />
+    <ClCompile Include="src\util\random.cpp" />
+    <ClCompile Include="src\util\round.c" />
+    <ClCompile Include="src\util\sounds.cpp" />
+    <ClCompile Include="src\util\types.cpp" />
+    <ClCompile Include="src\util\vector2.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\libraries\agup\alex.pcx" />
+    <None Include="src\libraries\agup\clean8.pcx" />
+    <None Include="src\libraries\agup\README" />
+    <None Include="src\libraries\agup\readme.html" />
+    <None Include="src\libraries\agup\version" />
+    <None Include="src\libraries\allegro\src\c\cmiscs.s" />
+    <None Include="src\libraries\allegro\src\misc\asmcapa.s" />
+    <None Include="src\libraries\allegro\src\misc\icolconv.s" />
+    <None Include="src\libraries\allegro\src\misc\modexgfx.s" />
+    <None Include="src\libraries\allegro\src\misc\vbeafs.s" />
+    <None Include="src\libraries\allegro\src\win\asmlock.s" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\libraries\agup\LICENCE.txt" />
+    <Text Include="src\twgui\twgui.txt" />
+    <Text Include="src\twgui\twgui_infot.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="src\libraries\allegro\src\win\dllver.rc" />
+    <ResourceCompile Include="tw-light.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

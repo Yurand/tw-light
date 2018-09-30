@@ -14,9 +14,10 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
+#include <cstdint>
+#include <cstdio>
+#include <cstring>
 #include <allegro.h>
-#include <string.h>
-#include <stdio.h>
 
 #include "configrw.h"
 #include "other/twconfig.h"

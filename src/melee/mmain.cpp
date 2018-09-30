@@ -14,9 +14,11 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
+#include <cstdint>
+#include <cstdio>
+#include <cstring>
+#include <cstdlib>
+
 #include <time.h>
 #include <allegro.h>
 

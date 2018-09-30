@@ -1,5 +1,6 @@
-#include <stdlib.h>
-#include <math.h>
+#include <cstdint>
+#include <cstdlib>
+#include <cmath>
 #include "base.h"
 #include "history.h"
 #include "errors.h"

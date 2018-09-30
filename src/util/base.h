@@ -3,6 +3,13 @@
 
 #include "types.h"
 
+#ifdef __cplusplus
+#include <cmath>
+#include <cstdint>
+#include <iterator>
+#include <list>
+#endif
+
 #ifdef _MSC_VER
 #define for  if (0) ; else for
 #ifndef INLINE
@@ -45,8 +52,6 @@ static inline void operator delete(void *item) {tw_free(item);}
 #endif
 
 #ifdef __cplusplus
-
-#include <list>
 
 class __call_before_main
 {

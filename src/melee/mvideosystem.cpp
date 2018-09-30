@@ -14,8 +14,9 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
-#include <stdio.h>
-#include <math.h>
+#include <cstdint>
+#include <cstdio>
+#include <cmath>
 
 #include "mvideosystem.h"
 #include "other/gameconf.h"

@@ -1,5 +1,6 @@
-#include <math.h>
-#include <string.h>
+#include <cstdint>
+#include <cmath>
+#include <cstring>
 
 #include "base.h"
 #include "errors.h"

@@ -74,7 +74,6 @@ Section "TimeWarp Core (required)"
   SetOutPath $INSTDIR
   
   ; Put file there
-  File "..\allegro-4.4.2-msvc-9.0\bin\allegro-4.4.2-monolith-mt.dll"
   File "..\Release\tw-light.exe"
   File "..\INSTALL"
 
