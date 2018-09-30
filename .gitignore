@@ -15,8 +15,8 @@ configure
 libtool
 *.tar.gz
 stamp-h1
-config.h
-config.h.in
+/config.h
+/config.h.in
 intltool-*
 mkinstalldirs
 install-sh
