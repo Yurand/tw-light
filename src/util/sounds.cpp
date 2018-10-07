@@ -31,6 +31,7 @@ SoundSystem::SoundSystem()
 	state = 0;
 	fake_mod_playing = false;
 	current_music = NULL;
+	current_voice = 0;
 }
 
 

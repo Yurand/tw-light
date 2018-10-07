@@ -82,10 +82,15 @@ int num_registered_files = 0;
 void _register_file (const char *fname, const char *fdate, const char *ftime)
 {
 	registered_files = (registered_file_type*) realloc(registered_files, sizeof(registered_file_type) * (num_registered_files+1));
-	registered_files[num_registered_files].fname = fname;
-	registered_files[num_registered_files].fdate = fdate;
-	registered_files[num_registered_files].ftime = ftime;
-	num_registered_files += 1;
+	if (registered_files) {
+		registered_files[num_registered_files].fname = fname;
+		registered_files[num_registered_files].fdate = fdate;
+		registered_files[num_registered_files].ftime = ftime;
+		num_registered_files += 1;
+	}
+	else {
+		tw_error("Memory error");
+	}
 	return;
 }
 
@@ -145,21 +150,29 @@ void show_file(const char *file)
 {
 	STACKTRACE;
 	int i;
-	char *willy;
+	char *willy = NULL;
 	PACKFILE *f;
 	f = pack_fopen (file, F_READ);
 	if (!f) {
-		willy = (char*) malloc(strlen(file)+1);
-		sprintf(willy, "Failed to load file \"%s\"", file);
+		willy = (char*) malloc(strlen(file) + strlen("Failed to load file \"\"") + 1);
+		if (willy)
+			sprintf(willy, "Failed to load file \"%s\"", file);
+		else
+			tw_error("Memory error");
 	} else {
 		i = file_size(file);
 		willy = (char*)malloc(i+1);
-		i = pack_fread (willy, i, f);
-		pack_fclose(f);
-		willy[i] = 0;
+		if (willy) {
+			i = pack_fread(willy, i, f);
+			willy[i] = 0;
+		} else
+			tw_error("Memory error");
 	}
 	show_text(willy);
-	free(willy);
+	if (willy)
+		free(willy);
+	if (f)
+		pack_fclose(f);
 	return;
 }
 

@@ -273,7 +273,7 @@ void poll_input()
 int key_to_description(Key which_key, char *dest_buffer)
 {
 	STACKTRACE;
-	char _buffer[512];
+	char _buffer[512] = {0};
 	char *buffer = &_buffer[0];
 
 	if (which_key < 0)

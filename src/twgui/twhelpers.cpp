@@ -33,6 +33,8 @@ ScrollControl::ScrollControl()
 	STACKTRACE;
 	x = 0;
 	y = 0;
+	Nx = 0;
+	Ny = 0;
 
 	left = 0;
 	right = 0;

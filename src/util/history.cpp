@@ -34,6 +34,7 @@ Histograph::Histograph(Uint16 max)
 	STACKTRACE;
 	num = 0;
 	base = 0;
+	_filler = 0;
 	this->max = max;
 	element = new HISTOGRAPH_ELEMENT_TYPE[max];
 	next = NULL;

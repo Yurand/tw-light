@@ -8,7 +8,7 @@ class Vector2
 {
 	public:
 		double x, y;
-		Vector2 () {}
+		Vector2 () : x(0), y(0) {}
 		Vector2 (double a, double b) : x(a), y(b) {}
 		Vector2 (Vector2i v2i);
 		Vector2 (_Ignore_Me *nothing) : x(0), y(0) {}
@@ -132,7 +132,7 @@ class Vector2i
 {
 	public:
 		int x, y;
-		Vector2i () {}
+		Vector2i () : x(0), y(0) {}
 		Vector2i (int a, int b) : x(a), y(b) {}
 		Vector2i (_Ignore_Me *nothing) : x(0), y(0) {}
 		Vector2i &operator= (_Ignore_Me *nothing) {x = y = 0; return *this;}

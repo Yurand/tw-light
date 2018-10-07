@@ -130,7 +130,7 @@ BigShip(opos, shipAngle, shipData, code | SpaceSprite::NO_AA)
 	Nparts = Nx * Ny;
 
 	//	ayronparts = new (AyronShipPart*) [N];
-	ayronparts = new AyronShipPart* [Nparts];
+	ayronparts = new AyronShipPart* [Nparts]();
 	parts = (BigShipPart**) ayronparts;
 
 	int *itype, *iweapon;
