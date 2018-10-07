@@ -138,6 +138,9 @@ void ShipData::unlock()
 {
 	STACKTRACE;
 	references -= 1;
+	if (references < 0) {
+		tw_error("Too few references.");
+	}
 	if ((references == 0) && auto_unload) {
 		unload();
 	}
