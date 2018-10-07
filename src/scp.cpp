@@ -952,8 +952,38 @@ int d_check_proc_fleeteditor(int msg, DIALOG *d, int c)
 	return d_agup_check_proc(msg, d, 0);
 }
 
+static bool safeToDrawPreview = false;
+static ShipType* showing_shipimage_type = NULL;
+static int rotationFrame = 0;
 
-bool safeToDrawPreview = false;
+static void add_ship_image(int k)
+{
+	STACKTRACE;
+	// show a new ship image.
+	ShipType* type = reference_fleet->getShipType(k);
+	if (type && type->data)	{
+		type->data->lock();
+
+		if (type->data->spriteShip)
+			rotationFrame = 0;//(int)(fractionRotated * type->data->spriteShip->frames());
+		showing_shipimage_type = type;
+	}
+}
+
+static void remove_ship_image()
+{
+	STACKTRACE;
+	if (showing_shipimage_type)	{
+		// if some image was shown, then you should remove/dereference it.
+		safeToDrawPreview = false;
+		ShipType* type = showing_shipimage_type;
+		if (type && type->data) {
+			type->data->unlock();
+
+			showing_shipimage_type = NULL;
+		}
+	}
+}
 
 // FLEET - dialog function
 void edit_fleet(int player)
@@ -1177,14 +1207,10 @@ void edit_fleet(int player)
 	showTitle();
 }
 
-
-int scp_fleet_dialog_text_list_proc(int msg, DIALOG* d, int c)
-{
+int scp_fleet_dialog_text_list_proc(int msg, DIALOG* d, int c) {
 	STACKTRACE;
-
 	static int next_anim_time = get_time();
 	int old_d1 = d->d1;
-
 	int ret = 0;
 
 	// allow user to select the ships based on keystrokes:
@@ -1192,103 +1218,90 @@ int scp_fleet_dialog_text_list_proc(int msg, DIALOG* d, int c)
 	bool shouldConsumeChar = false;
 	if (msg == MSG_CHAR) {
 		char typed = (char)(0xff & c);
-		if (isalnum (typed)) {
-			d->d1 = reference_fleet->getNextFleetEntryByCharacter( d->d1, typed);
-			shouldConsumeChar = true;
-			if (d->d1 != old_d1) {
+		//        if (isalnum (typed)) {
+		d->d1 = reference_fleet->getNextFleetEntryByCharacter(d->d1, typed);
+		shouldConsumeChar = true;
+		if (d->d1 != old_d1) {
 
-				int size = reference_fleet->getSize();
-				int height = (d->h-4) / text_height(font);
+			int size = reference_fleet->getSize();
+			int height = (d->h - 4) / text_height(font);
 
-				ret = D_USED_CHAR;
-				d->flags |= D_DIRTY;
+			ret = D_USED_CHAR;
+			d->flags |= D_DIRTY;
 
-				//scroll such that the selection is shown.
-				//only change the scroll if the selection is not already shown,
-				//and the number of ships in the list is greater than the number
-				//of slots that can be shown simultaneously.
-				if ( (size > height) &&
-					( (d->d1 < d->d2) ||
-				(d->d1 >= d->d2 + height))) {
-					if (d->d1 <= (height/2))
-						d->d2 = 0;
+			//scroll such that the selection is shown.
+			//only change the scroll if the selection is not already shown,
+			//and the number of ships in the list is greater than the number
+			//of slots that can be shown simultaneously.
+			if ((size > height) &&
+				((d->d1 < d->d2) ||
+				(d->d1 >= d->d2 + height)))
+			{
+				if (d->d1 <= (height / 2))
+					d->d2 = 0;
+				else {
+
+					if (d->d1 >= (size - height))
+						d->d2 = (size - height);
 					else {
-
-						if (d->d1 >= (size - height))
-							d->d2 = (size - height);
-						else {
-							d->d2 = d->d1 - height/2;
-						}
+						d->d2 = d->d1 - height / 2;
 					}
 				}
 			}
 		}
+		//        }
 	}
-	ret = d_agup_text_list_proc( msg, d, c );
+	ret = d_text_list_proc(msg, d, c);
 
 	if (shouldConsumeChar)
 		ret = D_USED_CHAR;
 
+	// this is initialized once
 	static BITMAP* panel = create_bitmap(fleetDialog[FLEET_DIALOG_SHIP_PICTURE_BITMAP].w,
 		fleetDialog[FLEET_DIALOG_SHIP_PICTURE_BITMAP].h);
 	fleetDialog[FLEET_DIALOG_SHIP_PICTURE_BITMAP].dp = panel;
 
+	// this is initialized once
 	static BITMAP * sprite = create_bitmap(fleetDialog[FLEET_DIALOG_SHIP_PICTURE_BITMAP].w,
 		fleetDialog[FLEET_DIALOG_SHIP_PICTURE_BITMAP].h);
-	static int rotationFrame = 0;
+
+	if (!sprite || !panel)
+		throw("bitmap error");
 
 	//selection has changed
-	if (d->d1 != old_d1) {
-		safeToDrawPreview = false;
-		float fractionRotated = 0;
+	// (or nothing is shown, yet)
 
-		{
-			ShipType* type = reference_fleet->getShipType(old_d1);
-
-			if (type && type->data) {
-				if (type->data->spriteShip) {
-
-					fractionRotated = (float)((float)rotationFrame / (float)(type->data->spriteShip->frames()));
-				}
-				type->data->unlock();
-			}
-		}
-
-		rotationFrame = 0;
-
-		{
-			ShipType* type = reference_fleet->getShipType(d->d1);
-			if (type && type->data) {
-				type->data->lock();
-				if (type->data->spriteShip)
-					rotationFrame = (int)(fractionRotated * type->data->spriteShip->frames());
-			}
-		}
+	if (d->d1 != old_d1 || !showing_shipimage_type)
+	{
+		remove_ship_image();
+		add_ship_image(d->d1);
 	}
 
-	if ( ( d->d1 != old_d1 || msg == MSG_START) ||
-	(msg == MSG_IDLE && next_anim_time < get_time()) ) {
+	if ((d->d1 != old_d1 || msg == MSG_START) ||
+		(msg == MSG_IDLE && next_anim_time < get_time())) {
 		safeToDrawPreview = false;
 
 		//next_anim_time = get_time() + 50 + rand() % 200;
 		next_anim_time = get_time() + 20;
 
-		ShipType* type = reference_fleet->getShipType(d->d1);
+		ShipType* type = showing_shipimage_type;
 
 		clear_to_color(sprite, 0);
 
 		if (type && type->data && type->data->spriteShip) {
-
-			type->data->spriteShip->draw(
-				Vector2(fleetDialog[FLEET_DIALOG_SHIP_PICTURE_BITMAP].w/2,
-				fleetDialog[FLEET_DIALOG_SHIP_PICTURE_BITMAP].h/2) - type->data->spriteShip->size()/2,
-				type->data->spriteShip->size(),
-				rotationFrame, sprite
-				);
-
 			rotationFrame++;
 			if (rotationFrame >= type->data->spriteShip->frames())
 				rotationFrame = 0;
+
+			if (rotationFrame < 0)
+				rotationFrame = 0;
+
+			type->data->spriteShip->draw(
+				Vector2(fleetDialog[FLEET_DIALOG_SHIP_PICTURE_BITMAP].w / 2,
+					fleetDialog[FLEET_DIALOG_SHIP_PICTURE_BITMAP].h / 2) - type->data->spriteShip->size() / 2,
+				type->data->spriteShip->size(),
+				rotationFrame, sprite
+			);
 		}
 		stretch_blit(sprite, panel, 0, 0, sprite->w, sprite->h, 0, 0, panel->w, panel->h);
 		safeToDrawPreview = true;
@@ -1298,9 +1311,9 @@ int scp_fleet_dialog_text_list_proc(int msg, DIALOG* d, int c)
 		SEND_MESSAGE(&fleetDialog[FLEET_DIALOG_SHIP_PICTURE_BITMAP], MSG_DRAW, 0);
 		unscare_mouse();
 	}
-
 	return ret;
 }
+
 
 
 int scp_fleet_dialog_bitmap_proc(int msg, DIALOG* d, int c)
