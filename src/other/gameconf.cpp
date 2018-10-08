@@ -38,6 +38,7 @@
 
 #include "util/errors.h"
 #include "util/helper.h"
+#include "other/twconfig.h"
 
 static void static_get_home_directory(char* buff, int len)
 {
@@ -57,7 +58,6 @@ static void static_get_home_directory(char* buff, int len)
 #endif
 	tw_append_filename(buff, homedir, twname, len);
 }
-
 
 std::string home_ini_full_path(std::string path)
 {
@@ -123,32 +123,43 @@ int create_user_ini()
 	if (!tw_exists(curFile.c_str()))
 		tw_mkdir(curFile.c_str());
 
+	bool needUpdate = false;
 	curFile = home_ini_full_path("client.ini");
-	if (!tw_exists(curFile.c_str()))
+	if (!tw_exists(curFile.c_str())) {
+		needUpdate = true;
+	} else {
+		tw_set_config_file("client.ini");
+		const char* homeVersion = tw_get_config_string("System", "Version", "0.0");
+		if (strcmp(homeVersion, VERSION) != 0)
+			needUpdate = true;
+	}
+
+	curFile = home_ini_full_path("client.ini");
+	if (!tw_exists(curFile.c_str()) || needUpdate)
 		if (!tw_copy_file(data_full_path("client.ini").c_str(), curFile.c_str())) {
 			tw_error(tw_string_format("unable to copy client.ini file to '%s'", curFile.c_str()).c_str());
 		}
 
 	curFile = home_ini_full_path("fleets.ini");
-	if (!tw_exists(curFile.c_str()))
+	if (!tw_exists(curFile.c_str()) || needUpdate)
 		if (!tw_copy_file(data_full_path("fleets.ini").c_str(), curFile.c_str())) {
 			tw_error(tw_string_format("unable to copy fleets.ini file to '%s'", curFile.c_str()).c_str());
 		}
 
 	curFile = home_ini_full_path("scp.ini");
-	if (!tw_exists(curFile.c_str()))
+	if (!tw_exists(curFile.c_str()) || needUpdate)
 		if (!tw_copy_file(data_full_path("scp.ini").c_str(), curFile.c_str())) {
 			tw_error(tw_string_format("unable to copy scp.ini file to '%s'", curFile.c_str()).c_str());
 		}
 
 	curFile = home_ini_full_path("server.ini");
-	if (!tw_exists(curFile.c_str()))
+	if (!tw_exists(curFile.c_str()) || needUpdate)
 		if (!tw_copy_file(data_full_path("server.ini").c_str(), curFile.c_str())) {
 			tw_error(tw_string_format("unable to copy server.ini file to '%s'", curFile.c_str()).c_str());
 		}
 
 	curFile = home_ini_full_path("vobject.ini");
-	if (!tw_exists(curFile.c_str()))
+	if (!tw_exists(curFile.c_str()) || needUpdate)
 		if (!tw_copy_file(data_full_path("vobject.ini").c_str(), curFile.c_str())) {
 			tw_error(tw_string_format("unable to copy vobject.ini file to '%s'", curFile.c_str()).c_str());
 		}

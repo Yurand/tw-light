@@ -33,12 +33,8 @@ void tw_set_config_file(const std::string& filename)
 {
 	STACKTRACE;
 	std::string file = home_ini_full_path(filename);
-	//if (exists(file.c_str()))
 	set_config_file(file.c_str());
-	//  else
-	//  tw_error("File %s does not exist", file.c_str());
 }
-
 
 int tw_delete_file(const std::string& filename)
 {
@@ -46,7 +42,6 @@ int tw_delete_file(const std::string& filename)
 	std::string file = home_ini_full_path(filename);
 	return delete_file(file.c_str());
 }
-
 
 /*
 Configuration string format
