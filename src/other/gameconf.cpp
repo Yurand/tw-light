@@ -30,7 +30,6 @@
 #include <io.h>
 #include <shlobj.h>
 #include <direct.h>
-#include <TCHAR.H>
 #else
 #include <unistd.h>
 #endif
