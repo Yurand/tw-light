@@ -1513,6 +1513,9 @@
     <ClCompile Include="src\util\helper.cpp">
       <Filter>Source Files\util</Filter>
     </ClCompile>
+    <ClCompile Include="src\games\gastroid.cpp">
+      <Filter>Source Files\games</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\libraries\agup\alex.pcx">

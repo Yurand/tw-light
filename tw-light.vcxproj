@@ -210,6 +210,7 @@
     <ClCompile Include="src\ais\c_wussie.cpp" />
     <ClCompile Include="src\doxygen.cpp" />
     <ClCompile Include="src\frame.cpp" />
+    <ClCompile Include="src\games\gastroid.cpp" />
     <ClCompile Include="src\games\gdefender.cpp" />
     <ClCompile Include="src\games\gflmelee.cpp" />
     <ClCompile Include="src\games\ggob.cpp" />
