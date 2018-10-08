@@ -35,7 +35,6 @@
 #include <winalleg.h>
 #include <windows.h>
 #include <string.h>
-#include <TCHAR.H>
 #endif
 
 #ifdef HAVE_CONFIG_H
@@ -62,7 +61,6 @@ const char *tw_version()
 	sprintf(tw_version_string, "%s %s version: %s", __TIME__, __DATE__, VERSION);
 	return tw_version_string;
 }
-
 
 #include "melee.h"
 REGISTER_FILE
@@ -521,7 +519,6 @@ void MainMenu::doit()
 
 }
 
-
 int tw_main(int argc, char *argv[]);
 
 #ifndef UNITTEST
@@ -532,7 +529,6 @@ int main(int argc, char *argv[])
 	r = tw_main(argc, argv);
 	return r;
 }
-
 
 END_OF_MAIN();
 #endif
