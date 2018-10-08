@@ -499,6 +499,11 @@ void MainMenu::doit()
 				play_game("GOB");
 				enable();
 				break;
+			case MAIN_DIALOG_DEFENDER:
+				disable();
+				play_game("Defender");
+				enable();
+				break;
 			case MAIN_DIALOG_MELEE_EXTENDED:
 				disable();
 				extended_menu();
