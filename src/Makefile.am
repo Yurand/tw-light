@@ -49,7 +49,7 @@ util/types.cpp \
 util/errors.cpp \
 util/sounds.h \
 util/vector2.h \
-util/helper.c \
+util/helper.cpp \
 util/round.h \
 util/helper.h \
 util/errors_c.c \

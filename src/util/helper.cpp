@@ -19,6 +19,9 @@
  *      MA 02110-1301, USA.
  */
 
+#include <string>
+#include <codecvt>
+
 #ifdef WIN32
 #include <io.h>
 #else
@@ -36,15 +39,86 @@
 
 /** Check if file or directory exists on filesystem
  *
- * @param file path to file
+ * @param filename path to file
  * @return not 0 if file exists, 0 otherwise
  */
-int tw_exists(const char *file)
+int tw_exists(const char *filename)
 {
+#ifdef WIN32
+	struct _stat buffer;
+	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+	std::wstring wfilename = converter.from_bytes(filename);
+	return (_wstat(wfilename.c_str(), &buffer) == 0);
+#else
 	struct stat   buffer;
 	return (stat (file, &buffer) == 0);
+#endif
 }
 
+/** Open file, expect utf-8 string as filename
+ * @param filename File name.
+ * @param mode Kind of access that's enabled.
+ * @return returns a pointer to the open file. A null pointer value indicates an error.
+*/
+FILE *tw_fopen(const char *filename, const char *mode)
+{
+#ifdef WIN32
+	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+	std::wstring wfilename = converter.from_bytes(filename);
+	std::wstring wmode = converter.from_bytes(mode);
+
+	return _wfopen(wfilename.c_str(), wmode.c_str());
+#else
+	return fopen(filename, mode);
+#endif
+}
+
+/** Copy file from source to target,
+ *
+ * @param source utf-8 source encoded path
+ * @param target utf-8 target encoded path
+ * @return Returns TRUE on success, FALSE on error
+ */
+int tw_copy_file(const char * source, const char * target)
+{
+	PACKFILE * fsrc = pack_fopen(source, F_READ);
+	if (!fsrc)
+		return FALSE;
+
+	PACKFILE * ftrg = pack_fopen(target, F_WRITE);
+	if (!ftrg) {
+		pack_fclose(fsrc);
+		return FALSE;
+	}
+
+	unsigned char buffer[1024];
+	int readed = 1;
+	while (readed != 0) {
+		readed = pack_fread(buffer, 1024, fsrc);
+		if (!readed)
+			break;
+		int written = pack_fwrite(buffer, readed, ftrg);
+	}
+	pack_fclose(fsrc);
+	pack_fclose(ftrg);
+	return TRUE;
+}
+
+/** Creates a new directory.
+ *
+ * @param dirname utf-8 encoded path for a new directory
+ * @return returns the value 0 if the new directory was created. On an error, the function returns –1 and sets errno
+ */
+int tw_mkdir(const char *dirname)
+{
+#ifdef WIN32
+	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+	std::wstring wdirname = converter.from_bytes(dirname);
+	return _wmkdir(wdirname.c_str());
+#else
+	return mkdir(dirname, 0777);
+#endif
+}
 
 /** Finds out the filename portion of a completely specified file path.
  *
@@ -126,8 +200,8 @@ int tw_get_desktop_resolution(int *width, int *height)
 	return get_desktop_resolution(width, height);
 }
 
-
 int tw_desktop_color_depth()
 {
 	return desktop_color_depth();
 }
+

@@ -1072,9 +1072,6 @@
     <ClCompile Include="src\util\get_time.c">
       <Filter>Source Files\util</Filter>
     </ClCompile>
-    <ClCompile Include="src\util\helper.c">
-      <Filter>Source Files\util</Filter>
-    </ClCompile>
     <ClCompile Include="src\util\history.cpp">
       <Filter>Source Files\util</Filter>
     </ClCompile>
@@ -1512,6 +1509,9 @@
     </ClCompile>
     <ClCompile Include="src\libraries\allegro\src\misc\vgaregs.c">
       <Filter>Source Files\libraries\allegro\src\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\helper.cpp">
+      <Filter>Source Files\util</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

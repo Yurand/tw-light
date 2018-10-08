@@ -23,6 +23,7 @@ GNU General Public License for more details.
 
 #include "util/round.h"
 #include "util/errors.h"
+#include "util/helper.h"
 
 /*------------------------------
 		Video mode
@@ -135,7 +136,7 @@ void VideoSystem::preinit()
 	basic_font = NULL;
 	palette = (Color*)malloc(sizeof(Color) * 256);
 	if (1) {
-		FILE *f = fopen(data_full_path("palette").c_str(), "rb");
+		FILE *f = tw_fopen(data_full_path("palette").c_str(), "rb");
 		if (!f) {
 			log_debug("Error reading palette: %s\n", data_full_path("palette").c_str());
 		}

@@ -24,6 +24,7 @@
 #include <cstring>
 #include <cstdlib>
 #include <string>
+#include <codecvt>
 
 #ifdef WIN32
 #include <io.h>
@@ -41,15 +42,20 @@
 
 static void static_get_home_directory(char* buff, int len)
 {
-	#ifdef WIN32
-	TCHAR homedir[2048];
-	const TCHAR *twname = _T("tw-light");
-	SHGetFolderPath( 0, CSIDL_APPDATA|CSIDL_FLAG_CREATE, NULL, 0, homedir );
-	#else
+#ifdef WIN32
+	char homedir[2048];
+	const char *twname = "tw-light";
+	const wchar_t *wtwname = L"tw-light";
+	wchar_t whomedir[2048];
+	SHGetFolderPathW(0, CSIDL_APPDATA | CSIDL_FLAG_CREATE, NULL, 0, whomedir);
+
+	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>, wchar_t> convert;
+	strcpy(homedir, convert.to_bytes(whomedir).c_str());
+#else
 	char homedir[2048];
 	const char *twname = ".tw-light";
 	strcpy(homedir, getenv("HOME"));
-	#endif
+#endif
 	tw_append_filename(buff, homedir, twname, len);
 }
 
@@ -88,7 +94,16 @@ std::string data_full_path(std::string path)
 
 	if (tw_is_relative_filename(base_dir.c_str())) {
 		char buffer[50000];
+#ifdef WIN32
+		wchar_t wbuffer[5000];
+		wchar_t *wcwd = _wgetcwd(wbuffer, sizeof(wbuffer) / sizeof(wbuffer[0]));
+
+		std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>, wchar_t> convert;
+		std::string dest = convert.to_bytes(wcwd);
+		strcpy(buffer, convert.to_bytes(wcwd).c_str());
+#else
 		char *cwd = getcwd(buffer, sizeof(buffer));
+#endif
 		tw_append_filename(buffer, buffer, base_dir.c_str(), sizeof(buffer));
 		base_dir = tw_canonicalize_filename(buffer, buffer, sizeof(buffer));
 	}
@@ -101,70 +116,42 @@ std::string data_full_path(std::string path)
 	return ret;
 }
 
-
-static bool static_copy_file(const char * source, const char * target)
-{
-	STACKTRACE;
-	FILE * fsrc = fopen(source, "rb");
-	if (!fsrc)
-		return false;
-
-	FILE * ftrg = fopen(target, "wb+");
-	if (!ftrg) {
-		tw_error("ACK!!! copy file '%s' failed!!!", target);
-		fclose(fsrc);
-		return false;
-	}
-
-	unsigned char buffer[1024];
-	int readed = 1;
-	while(readed!=0) {
-		readed = fread(buffer, 1, 1024, fsrc);
-		int written = fwrite(buffer, 1, readed,ftrg);
-		if (readed != written)
-			tw_error("ACK!!! copy file failed");
-	}
-	fclose(fsrc);
-	fclose(ftrg);
-	return true;
-}
-
-
-#ifdef WIN32
-#define mkdir(x,y) mkdir(x)
-#endif
-
 int create_user_ini()
 {
 	STACKTRACE;
 
 	std::string curFile = home_ini_full_path("");
 	if (!tw_exists(curFile.c_str()))
-		mkdir(curFile.c_str(), 0777);
+		tw_mkdir(curFile.c_str());
 
 	curFile = home_ini_full_path("client.ini");
 	if (!tw_exists(curFile.c_str()))
-		static_copy_file(data_full_path("client.ini").c_str(),
-			curFile.c_str());
+		if (!tw_copy_file(data_full_path("client.ini").c_str(), curFile.c_str())) {
+			tw_error(tw_string_format("unable to copy client.ini file to '%s'", curFile.c_str()).c_str());
+		}
 
 	curFile = home_ini_full_path("fleets.ini");
 	if (!tw_exists(curFile.c_str()))
-		static_copy_file(data_full_path("fleets.ini").c_str(),
-			curFile.c_str());
+		if (!tw_copy_file(data_full_path("fleets.ini").c_str(), curFile.c_str())) {
+			tw_error(tw_string_format("unable to copy fleets.ini file to '%s'", curFile.c_str()).c_str());
+		}
 
 	curFile = home_ini_full_path("scp.ini");
 	if (!tw_exists(curFile.c_str()))
-		static_copy_file(data_full_path("scp.ini").c_str(),
-			curFile.c_str());
+		if (!tw_copy_file(data_full_path("scp.ini").c_str(), curFile.c_str())) {
+			tw_error(tw_string_format("unable to copy scp.ini file to '%s'", curFile.c_str()).c_str());
+		}
 
 	curFile = home_ini_full_path("server.ini");
 	if (!tw_exists(curFile.c_str()))
-		static_copy_file(data_full_path("server.ini").c_str(),
-			curFile.c_str());
+		if (!tw_copy_file(data_full_path("server.ini").c_str(), curFile.c_str())) {
+			tw_error(tw_string_format("unable to copy server.ini file to '%s'", curFile.c_str()).c_str());
+		}
 
 	curFile = home_ini_full_path("vobject.ini");
 	if (!tw_exists(curFile.c_str()))
-		static_copy_file(data_full_path("vobject.ini").c_str(),
-			curFile.c_str());
+		if (!tw_copy_file(data_full_path("vobject.ini").c_str(), curFile.c_str())) {
+			tw_error(tw_string_format("unable to copy vobject.ini file to '%s'", curFile.c_str()).c_str());
+		}
 	return 0;
 }

@@ -25,6 +25,7 @@ REGISTER_FILE
 #include "mfleet.h"
 
 #include "other/twconfig.h"
+#include "util/helper.h"
 
 #include <algorithm>
 #include <functional>
@@ -156,7 +157,7 @@ void Fleet::deserialize(void *data, int psize)
 		if (!t) {
 			// extra debug info :
 			FILE *f;
-			f = fopen("error2.log", "wt");
+			f = tw_fopen("error2.log", "wt");
 			fprintf(f, "j = %i  size = %i\n", j, _fleet_size);
 
 			s = s1;

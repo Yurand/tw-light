@@ -575,7 +575,7 @@
     <ClCompile Include="src\util\errors.cpp" />
     <ClCompile Include="src\util\errors_c.c" />
     <ClCompile Include="src\util\get_time.c" />
-    <ClCompile Include="src\util\helper.c" />
+    <ClCompile Include="src\util\helper.cpp" />
     <ClCompile Include="src\util\history.cpp" />
     <ClCompile Include="src\util\pmask.c" />
     <ClCompile Include="src\util\port_allegro.c" />

@@ -8,6 +8,7 @@
 
 //#include "base.h"
 #include "errors.h"
+#include "helper.h"
 
 int __error_flag = 0;
 
@@ -117,7 +118,7 @@ void log_debug(const char *format, ...)
 	}
 
 	if (!debug_log_file && !format)
-		debug_log_file = fopen("tw_sys.log", "wt");
+		debug_log_file = tw_fopen("tw_sys.log", "wt");
 
 	return;
 }

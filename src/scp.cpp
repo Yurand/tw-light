@@ -21,6 +21,9 @@
  */
 
 #include <cstdint>
+#include <vector>
+#include <cwchar>
+#include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
@@ -538,10 +541,15 @@ int tw_main(int argc, char *argv[])
 {
 	STACKTRACE;
 	#ifdef WIN32
-	TCHAR szPath[MAX_PATH];
-	GetModuleFileName(NULL, szPath, sizeof(szPath));
-	if (_tcsrchr(szPath, '\\')) *_tcsrchr(szPath, '\\') = '\0';
-	SetCurrentDirectory(szPath);
+	std::vector<wchar_t> pathBuf;
+	DWORD copied = 0;
+	do {
+		pathBuf.resize(pathBuf.size() + MAX_PATH);
+		copied = GetModuleFileNameW(0, &pathBuf.at(0), pathBuf.size());
+	} while (copied >= pathBuf.size());
+	pathBuf.resize(copied);
+	std::wstring path(pathBuf.begin(), pathBuf.end());
+	SetCurrentDirectoryW(path.substr(0, path.rfind(L'\\')).c_str());
 	#endif
 	int i;
 	int auto_port = -1;
@@ -571,6 +579,7 @@ int tw_main(int argc, char *argv[])
 	log_debug("Log started at %s\n", asctime(localtime(&start_time)));
 	if (allegro_init() < 0)
 		tw_error_exit("Allegro initialization failed");
+
 	create_user_ini();
 	videosystem.preinit();
 

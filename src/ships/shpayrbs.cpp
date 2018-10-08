@@ -106,7 +106,7 @@ BigShip(opos, shipAngle, shipData, code | SpaceSprite::NO_AA)
 	// read the layout
 	FILE *inp;
 
-	inp = fopen(data_full_path("shpayrbs_layout.txt").c_str(), "rt");
+	inp = tw_fopen(data_full_path("shpayrbs_layout.txt").c_str(), "rt");
 	if (!inp) {tw_error("couldn't find the AyronBS layout");}
 
 	fscanf(inp, "%i\n", &nBSinfo);

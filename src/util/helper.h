@@ -22,12 +22,18 @@
 #ifndef __HELPER_H__
 #define __HELPER_H__
 
+#include <stdio.h>
+
 #ifdef __cplusplus
 extern "C"
 {
-	#endif
+#endif
 
 	int tw_exists(const char *file);
+	FILE *tw_fopen(const char *filename, const char *mode);
+	int tw_copy_file(const char * source, const char * target);
+	int tw_mkdir(const char *dirname);
+
 	const char *tw_get_filename(const char *file);
 	char *tw_replace_extension(char *dest, const char *filename, const char *ext, int size);
 	char *tw_append_filename(char *dest, const char *path, const char *filename, int size);
@@ -41,7 +47,21 @@ extern "C"
 	int tw_get_desktop_resolution(int *width, int *height);
 	int tw_desktop_color_depth();
 
-	#ifdef __cplusplus
+#ifdef __cplusplus
 }
+	#include <string>
+	#include <memory>
+
+	/** sprintf like formating for std::string
+	*/
+	template<typename ... Args>
+	std::string tw_string_format(const std::string& format, Args ... args)
+	{
+		size_t size = snprintf(nullptr, 0, format.c_str(), args ...) + 1; // Extra space for '\0'
+		std::unique_ptr<char[]> buf(new char[size]);
+		snprintf(buf.get(), size, format.c_str(), args ...);
+		return std::string(buf.get(), buf.get() + size - 1); // We don't want the '\0' inside
+	}
 #endif
+
 #endif
