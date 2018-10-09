@@ -35,6 +35,10 @@
 #include <allegro.h>
 #endif
 
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
+
 #include "helper.h"
 
 /** Check if file or directory exists on filesystem
