@@ -51,7 +51,7 @@ int tw_exists(const char *filename)
 	return (_wstat(wfilename.c_str(), &buffer) == 0);
 #else
 	struct stat   buffer;
-	return (stat (file, &buffer) == 0);
+	return (stat (filename, &buffer) == 0);
 #endif
 }
 
