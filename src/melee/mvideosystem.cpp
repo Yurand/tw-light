@@ -252,7 +252,7 @@ int VideoSystem::set_resolution (int width, int height, int bpp, int fullscreen)
 	if (height == 0) height = this->height;
 	if (bpp == 0) bpp = this->bpp;
 	if (!basic_font) basic_font = font;
-	if (!font_data) font_data = tw_load_datafile("fonts.dat");
+	if (!font_data) font_data = tw_load_datafile(data_full_path("fonts.dat").c_str());
 	if ((bpp == this->bpp) && (width == this->width) && (height == this->height) && (fullscreen == this->fullscreen)) return true;
 	if ((width < 300) || (height < 200)) {
 		char buffy[512];

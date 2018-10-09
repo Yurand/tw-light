@@ -12,6 +12,7 @@ data/scpgui/scptitle.bmp \
 data/scpgui/titlemusic.wav \
 data/client.ini \
 data/fleets.ini \
+data/fonts.dat \
 data/gob.dat \
 data/ingame.txt \
 data/melee.dat \
