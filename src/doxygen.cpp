@@ -1,8 +1,8 @@
 /*
 This file is part of "TW-Light"
-					http://tw-light.appspot.com/
-Copyright (C) 2001-2004  TimeWarp development team
-Copyright (C) 2008  Yura Siamashka <yurand2@gmail.com>
+					https://tw-light.appspot.com/
+Copyright (C) 2001-2018 TimeWarp development team
+Copyright (C) 2008  Yury Siamashka <yurand2@gmail.com>
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -191,7 +191,7 @@ GNU General Public License for more details.
  *
  * \section licene_sec License
  *
- *  Copyright (C) 2004-2008 <a href=mailto:yurand2@gmail.com>Yura Siamashka</a>
+ *  Copyright (C) 2004-2008 <a href=mailto:yurand2@gmail.com>Yury Siamashka</a>
  *  Copyright (C) 2001-2004 TimeWarp development team
  *
  *  This program is free software; you can redistribute it and/or modify

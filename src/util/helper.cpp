@@ -1,7 +1,7 @@
 /*
  *      helper.c
  *
- *      Copyright 2008 Yura Siamashka <yurand2@gmail.com>
+ *      Copyright 2008-2018 Yury Siamashka <yurand2@gmail.com>
  *
  *      This program is free software; you can redistribute it and/or modify
  *      it under the terms of the GNU General Public License as published by

@@ -1,6 +1,6 @@
 /*
 This file is part of "TW-Light"
-					http://tw-light.appspot.com/
+					https://tw-light.appspot.com/
 Copyright (C) 2001-2013  TimeWarp development team
 
 This program is free software; you can redistribute it and/or modify

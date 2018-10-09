@@ -2,7 +2,7 @@
 
 !define VER_VERSION "0.5"
 !define PRODUCT_NAME "TW-Light"
-!define PRODUCT_WEB_SITE "http://tw-light.appspot.com"
+!define PRODUCT_WEB_SITE "https://tw-light.appspot.com"
 
 ;--------------------------------
 ;Configuration
@@ -43,7 +43,7 @@ Caption "${PRODUCT_NAME} ${VER_VERSION} Setup"
 !insertmacro MUI_PAGE_INSTFILES
 
 !define MUI_FINISHPAGE_LINK "Visit the ${PRODUCT_NAME} website for the latest news"
-!define MUI_FINISHPAGE_LINK_LOCATION "http://tw-light.appspot.com/"
+!define MUI_FINISHPAGE_LINK_LOCATION "https://tw-light.appspot.com/"
 
 !define MUI_FINISHPAGE_RUN "$INSTDIR\tw-light.exe"
 !define MUI_FINISHPAGE_NOREBOOTSUPPORT

@@ -1,8 +1,8 @@
 /*
  *      scp.cpp
  *
- *      Copyright 2001-2004  TimeWarp development team
- *      Copyright 2008 Yura Siamashka <yurand2@gmail.com>
+ *      Copyright 2001-2018  TimeWarp development team
+ *      Copyright 2008-2018 Yury Siamashka <yurand2@gmail.com>
  *
  *      This program is free software; you can redistribute it and/or modify
  *      it under the terms of the GNU General Public License as published by
