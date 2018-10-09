@@ -36,6 +36,10 @@
 
 #include <sys/stat.h>
 
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
+
 #include "util/errors.h"
 #include "util/helper.h"
 #include "other/twconfig.h"
