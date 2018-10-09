@@ -2,8 +2,14 @@
 
 SUBDIRS = src
 
-
 GAMEDATA = \
+data/scpgui/logo.bmp \
+data/scpgui/menuaccept.wav \
+data/scpgui/menudisabled.wav \
+data/scpgui/menufocus.wav \
+data/scpgui/menuspecial.wav \
+data/scpgui/scptitle.bmp \
+data/scpgui/titlemusic.wav \
 data/client.ini \
 data/fleets.ini \
 data/gob.dat \
@@ -12,16 +18,10 @@ data/melee.dat \
 data/palette \
 data/readme.html \
 data/scp.ini \
-data/scpgui/logo.bmp \
-data/scpgui/menuaccept.wav \
-data/scpgui/menudisabled.wav \
-data/scpgui/menufocus.wav \
-data/scpgui/menuspecial.wav \
-data/scpgui/scptitle.bmp \
-data/scpgui/titlemusic.wav \
 data/server.ini \
 data/shpaktgu.dat \
 data/shpaktgu.ini \
+data/shpaktgu.txt \
 data/shpalabc.dat \
 data/shpalabc.ini \
 data/shpalabc.txt \
@@ -45,6 +45,7 @@ data/shparkpi.ini \
 data/shparkpi.txt \
 data/shpartem.dat \
 data/shpartem.ini \
+data/shpartem.txt \
 data/shpastba.dat \
 data/shpastba.ini \
 data/shpastba.txt \
@@ -63,11 +64,13 @@ data/shpbipka.ini \
 data/shpbipka.txt \
 data/shpbogce.dat \
 data/shpbogce.ini \
+data/shpbogce.txt \
 data/shpbubbo.dat \
 data/shpbubbo.ini \
 data/shpbubbo.txt \
 data/shpbubex.dat \
 data/shpbubex.ini \
+data/shpbubex.txt \
 data/shpchebr.dat \
 data/shpchebr.ini \
 data/shpchebr.txt \
@@ -76,6 +79,7 @@ data/shpchmav.ini \
 data/shpchmav.txt \
 data/shpchmba.dat \
 data/shpchmba.ini \
+data/shpchmba.txt \
 data/shpchoex.dat \
 data/shpchoex.ini \
 data/shpchoex.txt \
@@ -102,6 +106,7 @@ data/shpdajem.ini \
 data/shpdajem.txt \
 data/shpdeees.dat \
 data/shpdeees.ini \
+data/shpdeees.txt \
 data/shpdjila.dat \
 data/shpdjila.ini \
 data/shpdjila.txt \
@@ -131,6 +136,7 @@ data/shpestgu.ini \
 data/shpestgu.txt \
 data/shpfiear.dat \
 data/shpfiear.ini \
+data/shpfiear.txt \
 data/shpfopsl.dat \
 data/shpfopsl.ini \
 data/shpfopsl.txt \
@@ -139,11 +145,13 @@ data/shpforsh.ini \
 data/shpforsh.txt \
 data/shpfrebo.dat \
 data/shpfrebo.ini \
+data/shpfrebo.txt \
 data/shpfresc.dat \
 data/shpfresc.ini \
 data/shpfresc.txt \
 data/shpfweav.dat \
 data/shpfweav.ini \
+data/shpfweav.txt \
 data/shpgahmo.dat \
 data/shpgahmo.ini \
 data/shpgahmo.txt \
@@ -167,6 +175,7 @@ data/shpglads.ini \
 data/shpglads.txt \
 data/shpgluse.dat \
 data/shpgluse.ini \
+data/shpgluse.txt \
 data/shphotsp.dat \
 data/shphotsp.ini \
 data/shphotsp.txt \
@@ -187,8 +196,10 @@ data/shpilwsp.ini \
 data/shpilwsp.txt \
 data/shpjnkla.dat \
 data/shpjnkla.ini \
+data/shpjnkla.txt \
 data/shpjurcu.dat \
 data/shpjurcu.ini \
+data/shpjurcu.txt \
 data/shpjygst.dat \
 data/shpjygst.ini \
 data/shpjygst.txt \
@@ -272,8 +283,10 @@ data/shporzne.ini \
 data/shporzne.txt \
 data/shpostdi.dat \
 data/shpostdi.ini \
+data/shpostdi.txt \
 data/shpostor.dat \
 data/shpostor.ini \
+data/shpostor.txt \
 data/shppanav.dat \
 data/shppanav.ini \
 data/shppanav.txt \
@@ -285,11 +298,13 @@ data/shppkufu.ini \
 data/shppkufu.txt \
 data/shpplala.dat \
 data/shpplala.ini \
+data/shpplala.txt \
 data/shpplane.dat \
 data/shpplane.ini \
 data/shpplane.txt \
 data/shpqlore.dat \
 data/shpqlore.ini \
+data/shpqlore.txt \
 data/shpquasi.dat \
 data/shpquasi.ini \
 data/shpquasi.txt \
@@ -310,15 +325,19 @@ data/shprogsq.ini \
 data/shprogsq.txt \
 data/shpsacda.dat \
 data/shpsacda.ini \
+data/shpsacda.txt \
 data/shpsamat.dat \
 data/shpsamat.ini \
+data/shpsamat.txt \
 data/shpsclfr.dat \
 data/shpsclfr.ini \
 data/shpsclfr.txt \
 data/shpsefn2.dat \
 data/shpsefn2.ini \
+data/shpsefn2.txt \
 data/shpsefna.dat \
 data/shpsefna.ini \
+data/shpsefna.txt \
 data/shpshosc.dat \
 data/shpshosc.ini \
 data/shpshosc.txt \
@@ -333,6 +352,7 @@ data/shpstaba.ini \
 data/shpstaba.txt \
 data/shpstrgu.dat \
 data/shpstrgu.ini \
+data/shpstrgu.txt \
 data/shpstrsc.dat \
 data/shpstrsc.ini \
 data/shpstrsc.txt \
@@ -356,6 +376,7 @@ data/shptauem.ini \
 data/shptauem.txt \
 data/shptaufi.dat \
 data/shptaufi.ini \
+data/shptaufi.txt \
 data/shptaugl.dat \
 data/shptaugl.ini \
 data/shptaugl.txt \
@@ -412,6 +433,7 @@ data/shpuosli.ini \
 data/shpuosli.txt \
 data/shputwde.dat \
 data/shputwde.ini \
+data/shputwde.txt \
 data/shputwju.dat \
 data/shputwju.ini \
 data/shputwju.txt \
@@ -435,11 +457,13 @@ data/shpvirli.ini \
 data/shpvirli.txt \
 data/shpvuvji.dat \
 data/shpvuvji.ini \
+data/shpvuvji.txt \
 data/shpvuxin.dat \
 data/shpvuxin.ini \
 data/shpvuxin.txt \
 data/shpwassu.dat \
 data/shpwassu.ini \
+data/shpwassu.txt \
 data/shpwistr.dat \
 data/shpwistr.ini \
 data/shpwistr.txt \
@@ -454,6 +478,7 @@ data/shpxxxas.ini \
 data/shpxxxas.txt \
 data/shpxxxma.dat \
 data/shpxxxma.ini \
+data/shpxxxma.txt \
 data/shpyehte.dat \
 data/shpyehte.ini \
 data/shpyehte.txt \
