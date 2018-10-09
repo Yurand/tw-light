@@ -17,6 +17,9 @@ GNU General Public License for more details.
 #ifndef __MVIEW_H__
 #define __MVIEW_H__
 
+#include <string>
+#include <list>
+
 #include "melee.h"
 #include "mframe.h"
 
@@ -133,20 +136,23 @@ class View : public BaseClass
 class message_type
 {
 	enum { max_messages = 16 };
-	struct entry_type
+
+	class entry_type
 	{
-		char *string;
-		int end_time;
-		int color;
-	} messages[max_messages];
+		public:
+			std::string msg;
+			int end_time;
+			int color;
+			entry_type(const std::string& _msg, int _end_time, int _color) : msg(_msg), end_time(_end_time), color(_color) {}
+	};
+	std::list<entry_type> messages;
 	int ox, oy;
-	int num_messages;
 	void clean();
-	public:
-		message_type() {num_messages = ox = oy = 0;}
+public:
+		message_type(): ox(0), oy(0) {}
 		void animate(Frame *frame);
 		void flush();
-		void out(char *string, int dur = 2000, int c = 15);
-		void print(int dur, int c, const char *format, ...);
+		void out(const char *msg, int dur = 2000, int color = 15);
+		void print(int dur, int color, const char *format, ...);
 } extern message;
 #endif							 // __MVIEW_H__

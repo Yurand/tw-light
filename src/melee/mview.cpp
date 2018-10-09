@@ -424,28 +424,31 @@ void View::calculate(Game *game)
 	STACKTRACE;
 }
 
-
-void message_type::out(char *string, int dur, int c)
+void message_type::out(const char *msg, int dur, int color)
 {
 	STACKTRACE;
-	ASSERT (c < 256);
-	if (num_messages == max_messages - 1) {
-		messages[0].end_time = -1;
-		clean();
-	}
-	if (num_messages >= max_messages - 1) throw "bad dog!";
-	messages[num_messages].string = strdup(string);
-	if (game) messages[num_messages].end_time = game->game_time + dur;
-	else messages[num_messages].end_time = 0 + dur;
-	messages[num_messages].color = palette_color[c];
-	num_messages += 1;
-
+	ASSERT (color < 256);
 	clean();
-	return;
+	if (messages.size() == max_messages)
+	{
+		std::list<entry_type>::iterator mintime = messages.begin();
+		for (std::list<entry_type>::iterator i = messages.begin(); i != messages.end(); i++)
+		{
+			if ((*i).end_time < (*mintime).end_time)
+				mintime = i;
+		}
+		messages.erase(mintime);
+	}
+	if (messages.size() == max_messages)
+		tw_error("messages.size() == max_messages");
+
+	int end_time = dur;
+	if (game)
+		end_time = end_time + game->game_time;
+	messages.push_back(entry_type(msg, end_time, palette_color[color]));
 }
 
-
-void message_type::print(int dur, int c, const char *format, ...)
+void message_type::print(int dur, int color, const char *format, ...)
 {
 	STACKTRACE;
 	char buf[1024];
@@ -461,49 +464,45 @@ void message_type::print(int dur, int c, const char *format, ...)
 	//vsnprintf(buf, 1000, format, those_dots); //it would be nice to use this line...
 	#endif
 	va_end (those_dots);
-	out(buf, dur, c);
+	out(buf, dur, color);
 	return;
 }
-
 
 void message_type::clean()
 {
 	STACKTRACE;
-	int kill_time;
-	if (game) kill_time = game->game_time;
-	else kill_time = 0;
-	for (int i = 0; i < num_messages; i += 1) {
-		if (messages[i].end_time <= kill_time) {
-			free (messages[i].string);
-			num_messages -= 1;
-			memmove (&messages[i], &messages[i+1], (num_messages - i) * sizeof(entry_type));
-			i -= 1;
+	int kill_time = 0;
+	if (game)
+		kill_time = game->game_time;
+
+	for (std::list<entry_type>::iterator i = messages.begin(); i != messages.end();)
+	{
+		if ((*i).end_time <= kill_time)
+		{
+			i = messages.erase(i);
+		}
+		else {
+			i++;
 		}
 	}
-	return;
 }
-
 
 void message_type::flush()
 {
 	STACKTRACE;
-	for (int i = 0; i < num_messages; i += 1) {
-		if (messages[i].string)
-			free (messages[i].string);
-	}
-	num_messages = ox = oy = 0;
+	messages.clear();
+	ox = oy = 0;
 	return;
 }
-
 
 void message_type::animate(Frame *frame)
 {
 	STACKTRACE;
 
-	if (num_messages <= 0)
+	if (messages.empty())
 		return;
 
-	int i, x = 0, y = 0, tmp;
+	int x = 0, y = 0, tmp;
 	BITMAP *bmp;
 	if (frame) {
 		text_mode(-1);
@@ -514,11 +513,13 @@ void message_type::animate(Frame *frame)
 		bmp = videosystem.window.surface;
 	}
 	clean();
-	if (!frame) rectfill(bmp, 0, 0, ox, oy, 0);
-	for (i = 0; i < num_messages; i += 1) {
-		textprintf(bmp, font, 0, y, messages[i].color, "%s", messages[i].string);
-		tmp = text_length(font, messages[i].string);
-		if (x < tmp) x = tmp;
+	if (!frame)
+		rectfill(bmp, 0, 0, ox, oy, 0);
+	for (std::list<entry_type>::iterator i = messages.begin(); i != messages.end(); i++) {
+		textprintf(bmp, font, 0, y, (*i).color, "%s", (*i).msg.c_str());
+		tmp = text_length(font, (*i).msg.c_str());
+		if (x < tmp)
+			x = tmp;
 		y += text_height(font);
 	}
 	if (frame && !frame->full_redraw) frame->add_box(0, 0, x, y);
@@ -528,7 +529,6 @@ void message_type::animate(Frame *frame)
 	oy = y;
 	return;
 }
-
 
 void View::_event( Event *e )
 {
