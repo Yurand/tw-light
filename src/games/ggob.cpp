@@ -338,9 +338,13 @@ void GobGame::init(Log *_log)
 
 	add_new_enemy();
 	add_new_enemy();
+
+	message.out("Use \"=\" and \"-\" for zooming in and out!", 10000, 2);
+	message.out("", 10000, 2);
+	message.out("Gob is like a cross between Asteroids, Life-Force, and Star Control.", 20000, 7);
+	message.out("It's the game of survival with custom ship upgrades.", 20000, 7);
 	return;
 }
-
 
 GobGame::~GobGame()
 {
