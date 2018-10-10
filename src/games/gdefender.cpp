@@ -79,13 +79,16 @@ class DefenderGame : public Game
 		//begin the game
 		void restart();
 
-		/// here we check to see if the player lost the game and we add new enemies if it's time for that
+		virtual void object_died(SpaceObject *who, SpaceLocation *source);
+		virtual void ship_died(Ship *who, SpaceLocation *source);
+		/// add new enemies if it's time for that
 		virtual void calculate ( ) ;
 		/// this is used to display the starbases current health
 		virtual void fps();
 
 		/// a pointer at the player
 		Control *player;
+		int kills;
 
 		/// a pointer at the starbase
 		DefenderStation *starbase;
@@ -98,6 +101,28 @@ class DefenderGame : public Game
 };
 
 #define defendergame ((DefenderGame*)game)
+
+
+class DefenderGameDelayedGameActionEndGame : public DelayedGameAction
+{
+private:
+	virtual void action(void);
+public:
+	DefenderGameDelayedGameActionEndGame(int delay) : DelayedGameAction(delay) {}
+};
+
+void DefenderGameDelayedGameActionEndGame::action(void)
+{
+	char buffer[1024];
+	if (game->game_done)
+		return;
+	game->quit(NULL);
+	sprintf(buffer,
+		"                Game Over\n\nSurvived:          %5d seconds\nEnemy killed:      %5d ships",
+		game->game_time / 1000,
+		defendergame->kills);
+		tw_alert(buffer, "OK");
+}
 
 int DefenderStation::handle_damage ( SpaceLocation *source, double normal, double direct)
 {
@@ -145,27 +170,42 @@ void DefenderStation::calculate ( )
 	return;
 }
 
-
 static int num_ships = 4;
 static const char *someships[] = { "thrto", "supbl", "syrpe", "shosc", NULL };
+
+void DefenderGame::object_died(SpaceObject *who, SpaceLocation *source)
+{
+	STACKTRACE;
+	if (starbase && starbase == who) {
+		game->add(new DefenderGameDelayedGameActionEndGame(2000));
+		starbase = NULL;
+	}
+	Game::object_died(who, source);
+	return;
+}
+
+void DefenderGame::ship_died(Ship *who, SpaceLocation *source)
+{
+	STACKTRACE;
+	if (player->ship == who) {
+		game->add(new DefenderGameDelayedGameActionEndGame(2000));
+	} else if (source == player->ship || (source && source->ship == player->ship)) {
+		defendergame->kills += 1;
+	}
+	Game::ship_died(who, source);
+	return;
+}
 
 void DefenderGame::calculate ( )
 {
 	Game::calculate();
-	static bool first = true;
-	if ((!starbase || !starbase->exists())&& first) {
-		first = false;
-		starbase = NULL;
-		char buffy[1024];
-		sprintf(buffy, "You lost after %d seconds", game_time/1000);
-		message.print(9999000, 15, buffy);
-	}
-	else if (game_time >= time_for_next_attack) {
+	if (game_time >= time_for_next_attack) {
 		time_for_next_attack += time_between_attacks + (random(10000)) - 4000;
 		time_between_attacks -= 10;
 		time_between_attacks = iround(time_between_attacks * 0.975);
 		time_between_attacks += 10;
 		SpaceObject *whatever = create_ship ( channel_none, someships[random(num_ships)], "WussieBot", Vector2(0, 2000), 0, enemy_team);
+		whatever->attributes |= ATTRIB_NOTIFY_ON_DEATH;
 		add (whatever);
 	}
 	return;
@@ -179,6 +219,7 @@ void DefenderGame::preinit()
 	//because the desctructor deals with stationsprite, we have to initialize it here
 	//just in case the normal init() function doesn't get called
 	stationsprite = NULL;
+	kills = 0;
 }
 
 
@@ -194,9 +235,10 @@ void DefenderGame::fps()
 {
 	STACKTRACE;
 	int s = 0;
-	if (starbase)
+	if (starbase && starbase->exists())
 		s = iround(starbase->health);
 	message.print((int)msecs_per_fps, 15, "Current Time: %d", game->game_time / 1000);
+	message.print((int)msecs_per_fps, 15, "kills: %d", defendergame->kills);
 	message.print((int)msecs_per_fps, 12, "Starbase Health: %d", s);
 	int p = 0;
 	if (player->ship)
@@ -213,15 +255,18 @@ void DefenderGame::restart()
 		if ((*i)->exists())
 			(*i)->die();
 	}
+	kills = 0;
 	game_time = 0;
 
 	Ship *ship = create_ship("supbl", player, Vector2(500, 200), 270);
+	ship->attributes |= ATTRIB_NOTIFY_ON_DEATH;
 	add(ship);
 
 	Planet *planet = new Planet ( 0, meleedata.planetSprite, random(3) );
 	add ( planet );
 
 	starbase =  new DefenderStation ( stationsprite, planet);
+	starbase->attributes |= ATTRIB_NOTIFY_ON_DEATH;
 	add ( starbase );
 	starbase->change_owner ( ship );
 	gametargets.add(starbase);

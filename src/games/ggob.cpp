@@ -62,15 +62,15 @@ REGISTER_FILE
 ////////////////////////////////////////////////////////////////////////
 //				Gob stuff
 ////////////////////////////////////////////////////////////////////////
-class DelayedGameActionEndGame : public DelayedGameAction
+class GobDelayedGameActionEndGame : public DelayedGameAction
 {
 private:
 	virtual void action(void);
 public:
-	DelayedGameActionEndGame(int delay) : DelayedGameAction(delay) {}
+	GobDelayedGameActionEndGame(int delay) : DelayedGameAction(delay) {}
 };
 
-void DelayedGameActionEndGame::action(void)
+void GobDelayedGameActionEndGame::action(void)
 {
 	char buffer[1024];
 
@@ -229,7 +229,7 @@ void GobPlayer::died(SpaceLocation *killer)
 		ship->vel = 0;
 	} else {
 		ship = NULL;
-		gobgame->add(new DelayedGameActionEndGame(2000));
+		gobgame->add(new GobDelayedGameActionEndGame(2000));
 	}
 	return;
 }
@@ -378,9 +378,8 @@ void GobGame::init(Log *_log)
 	add_new_enemy();
 
 	message.out("Use \"=\" and \"-\" for zooming in and out!", 10000, 2);
-	message.out("", 10000, 2);
-	message.out("Gob is like a cross between Asteroids, Life-Force, and Star Control.", 20000, 7);
-	message.out("It's the game of survival with custom ship upgrades.", 20000, 7);
+	message.out("Gob is like a cross between Asteroids, Life-Force and Star Control.", 5000, 7);
+	message.out("It's the game of survival with custom ship upgrades.", 5000, 7);
 	return;
 }
 
