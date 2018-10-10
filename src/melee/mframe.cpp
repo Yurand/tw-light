@@ -401,6 +401,25 @@ bool Presence::isSynched() const
 	return ((attributes & ATTRIB_SYNCHED) != 0);
 }
 
+DelayedGameAction::DelayedGameAction(int delay)
+{
+	action_time = 0;
+	if (game)
+		action_time = game->game_time + delay;
+}
+
+void DelayedGameAction::action(void)
+{
+}
+
+void DelayedGameAction::calculate(void)
+{
+	if (game && game->game_time >= action_time) {
+		action();
+		die();
+	}
+}
+
 
 SpaceLocation *Presence::get_focus()
 {

@@ -62,6 +62,41 @@ REGISTER_FILE
 ////////////////////////////////////////////////////////////////////////
 //				Gob stuff
 ////////////////////////////////////////////////////////////////////////
+class DelayedGameActionEndGame : public DelayedGameAction
+{
+private:
+	virtual void action(void);
+public:
+	DelayedGameActionEndGame(int delay) : DelayedGameAction(delay) {}
+};
+
+void DelayedGameActionEndGame::action(void)
+{
+	char buffer[1024];
+
+	int i = 0;
+	bool all_player_died = true;
+	for (i = 0; i < gobgame->gobplayers; i += 1) {
+		if (gobgame->gobplayer[i]->ship && gobgame->gobplayer[i]->ship->exists()) {
+			all_player_died = false;
+			break;
+		}
+	}
+	if (all_player_died) {
+		gobgame->quit(NULL);
+	}
+	for (i = 0; i < gobgame->gobplayers; i += 1) {
+		if (!gobgame->is_local(gobgame->gobplayer[i]->channel))
+			continue;
+		sprintf(buffer,
+			"                Game Over\n\nSurvived:          %5d seconds\nEnemy killed:      %5d ships\nStarbucks earned:  %5d\nBuckazoids earned: %5d",
+			game->game_time / 1000,
+			gobgame->gobplayer[i]->kills,
+			gobgame->gobplayer[i]->total_starbucks_earned,
+			gobgame->gobplayer[i]->total_buckazoids_earned);
+		tw_alert(buffer, "OK");
+	}
+}
 
 int GobAsteroid::handle_damage(SpaceLocation *source, double normal, double direct)
 {
@@ -71,11 +106,13 @@ int GobAsteroid::handle_damage(SpaceLocation *source, double normal, double dire
 	int i = Asteroid::handle_damage(source, normal, direct);
 	if (!exists()) {
 		GobPlayer *p = gobgame->get_player(source);
-		if (p) p->buckazoids += 1;
+		if (p) {
+			p->buckazoids += 1;
+			p->total_buckazoids_earned += 1;
+		}
 	}
 	return i;
 }
-
 
 void GobAsteroid::death ()
 {
@@ -190,11 +227,12 @@ void GobPlayer::died(SpaceLocation *killer)
 		game->add(ship->get_ship_phaser());
 		ship->attributes |= ATTRIB_NOTIFY_ON_DEATH;
 		ship->vel = 0;
+	} else {
+		ship = NULL;
+		gobgame->add(new DelayedGameActionEndGame(2000));
 	}
-	else ship = NULL;
 	return;
 }
-
 
 void GobGame::play_sound (SAMPLE *sample, SpaceLocation *source, int vol, int freq)
 {
@@ -832,6 +870,8 @@ void GobEnemy::died(SpaceLocation *what)
 	if (p) {
 		p->starbucks += starbucks;
 		p->buckazoids += buckazoids;
+		p->total_starbucks_earned += starbucks;
+		p->total_buckazoids_earned += buckazoids;
 		p->kills += 1;
 	}
 	return;
@@ -851,6 +891,8 @@ void GobPlayer::init(Control *c, TeamCode team)
 	channel = c->channel;
 	starbucks = 0;
 	buckazoids = 0;
+	total_starbucks_earned = 0;
+	total_buckazoids_earned = 0;
 	kills = 0;
 	value_starbucks = 0;
 	value_buckazoids = 0;

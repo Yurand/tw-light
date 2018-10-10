@@ -51,6 +51,8 @@ class GobPlayer
 		int total;				 //total upgrades purchased, used in calculating price of future upgrades
 		int starbucks;
 		int buckazoids;
+		int total_starbucks_earned;
+		int total_buckazoids_earned;
 		int kills;
 		int value_starbucks;
 		int value_buckazoids;

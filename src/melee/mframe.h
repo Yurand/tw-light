@@ -186,6 +186,16 @@ class Presence : public BaseClass
 
 };
 
+class DelayedGameAction : public Presence
+{
+	private:
+		int action_time;
+		virtual void action(void);
+	public:
+		DelayedGameAction(int delay);
+		virtual void calculate();
+};
+
 /// \brief any item in the game that has a location
 								 // base class for all items in game
 class SpaceLocation : public Presence
