@@ -514,6 +514,10 @@ appicon_DATA = tw-light.png
 EXTRA_DIST = \
 	THANKS \
 	autogen.sh \
+	dat.vcxproj \
+	dat.vcxproj.filters \
+	grabber.vcxproj \
+	grabber.vcxproj.filters \
 	tw-light.ico \
 	tw-light.rc \
 	tw-light.desktop \

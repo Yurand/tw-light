@@ -35,5 +35,7 @@ Release
 *.suo
 *.ncb
 /.vs
+/dat.vcxproj.user
+/grabber.vcxproj.user
 /tw-light.vcxproj.user
 
