@@ -45,16 +45,16 @@ const char *b4 = NULL,
 const char *b5 = NULL
 )
 {
-	int l = 1;
+	int l = 0;
 	if (b2)
-		l = 2;
+		l = 1;
 	if (b3)
-		l = 3;
+		l = 2;
 	if (b4)
-		l = 4;
+		l = 3;
 	if (b5)
-		l = 5;
-	DIALOG *dialog = tw_alert_dialogs[l-1];
+		l = 4;
+	DIALOG *dialog = tw_alert_dialogs[l];
 	dialog[1].dp = (void*)message;
 	if (b1) {
 		dialog[2].dp = (void*)b1;

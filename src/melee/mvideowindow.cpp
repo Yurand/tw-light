@@ -107,21 +107,11 @@ void VideoWindow::hide()
 void VideoWindow::add_callback( BaseClass *callee )
 {
 	STACKTRACE;
-	//int i;
-	//	for (i = 0; i < num_callbacks; i += 1) {
-	//	if (callback_list[i] == callee) {tw_error("adding VideoWindow callback twice");}
-	//}
 	std::list<BaseClass*>::iterator cb = std::find(callback_list.begin(),callback_list.end(), callee);
 	if (cb != callback_list.end()) {
 		tw_error("adding VideoWindow callback twice");
 	}
 	callback_list.push_back(callee);
-	//	if (!(num_callbacks & (VideoWindow_callbacklist_units-1))) {
-	//	callback_list = (BaseClass**) realloc(callback_list, sizeof(BaseClass*) *
-	//		(num_callbacks + VideoWindow_callbacklist_units) );
-	//}
-	//callback_list[num_callbacks] = callee;
-	//num_callbacks += 1;
 	return;
 }
 
@@ -129,16 +119,6 @@ void VideoWindow::add_callback( BaseClass *callee )
 void VideoWindow::remove_callback( BaseClass *callee )
 {
 	STACKTRACE;
-	//int i;
-	//	for (i = 0; i < num_callbacks; i += 1) {
-	//	if (callback_list[i] == callee) {
-	//		callback_list[i] = callback_list[num_callbacks-1];
-	//		num_callbacks -= 1;
-	//		if (!(num_callbacks & (VideoWindow_callbacklist_units-1))) callback_list = (BaseClass**)
-	//			realloc(callback_list, sizeof(BaseClass*) * (num_callbacks) );
-	//		return;
-	//	}
-	//}
 	callback_list.remove(callee);
 	return;
 }

@@ -320,7 +320,7 @@ int d_tw_yield_proc(int msg, DIALOG *d, int c)
 {
 	STACKTRACE;
 	if (msg == MSG_IDLE) {
-		rest(20);
+		rest(1);
 	}
 
 	return D_O_K;

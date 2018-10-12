@@ -92,14 +92,14 @@ DIALOG tw_alert_dialog2[] =
 
 DIALOG tw_alert_dialog3[] =
 {
-	// (dialog proc)     (x)   (y)   (w)   (h)   (fg)  (bg)  (key) (flags)  (d1)  (d2)  (dp)
-	{ d_agup_box_proc,        180,  170,  280,  140,  255,  0,    0,    0,       0,    0,    NULL, NULL, NULL },
-	{ d_agup_textbox_proc,    185,  175,  270,  95,   255,  0,    0,    0,       80,   0,    NULL, NULL, NULL },
-	{ d_agup_button_proc,     230,  280,  50,   20,   255,  0,    0,    D_EXIT,  0,    0,    NULL, NULL, NULL },
-	{ d_agup_button_proc,     290,  280,  50,   20,   255,  0,    0,    D_EXIT,  0,    0,    NULL, NULL, NULL },
-	{ d_agup_button_proc,     350,  280,  50,   20,   255,  0,    0,    D_EXIT,  0,    0,    NULL, NULL, NULL },
-	{ d_tw_yield_proc,   0,    0,    0,    0,    255,  0,    0,    0,       0,    0,    NULL, NULL, NULL },
-	{ NULL,              0,    0,    0,    0,    255,  0,    0,    0,       0,    0,    NULL, NULL, NULL }
+	// (dialog proc)           (x)   (y)   (w)   (h)   (fg)  (bg)  (key) (flags)  (d1)  (d2)  (dp)
+	{ d_agup_box_proc,        180,  170,  280,   140,  255,  0,    0,    0,       0,    0,    NULL, NULL, NULL },
+	{ d_agup_textbox_proc,    185,  175,  270,    95,   255,  0,    0,    0,       80,   0,    NULL, NULL, NULL },
+	{ d_agup_button_proc,     185,  275,   100,   30,   255,  0,    0,    D_EXIT,  0,    0,    NULL, NULL, NULL },
+	{ d_agup_button_proc,     290,  275,   100,   30,   255,  0,    0,    D_EXIT,  0,    0,    NULL, NULL, NULL },
+	{ d_agup_button_proc,     395,  275,   60,   30,   255,  0,    0,    D_EXIT,  0,    0,    NULL, NULL, NULL },
+	{ d_tw_yield_proc,   0,    0,    0,     0,    255,  0,    0,    0,       0,    0,    NULL, NULL, NULL },
+	{ NULL,              0,    0,    0,     0,    255,  0,    0,    0,       0,    0,    NULL, NULL, NULL }
 };
 
 DIALOG tw_alert_dialog4[] =

@@ -1259,8 +1259,11 @@ bool Game::handle_key(int k)
 		{
 			//(*((int*)NULL)) = 0;
 			pause();
-			if (tw_alert("Game is paused", "&Abort game", "&Resume playing") == 1) {
+			int ret = tw_alert("Game is paused", "&Abort game", "&Resume playing", "&Help");
+			if (ret == 1) {
 				game->quit("quit - Game aborted from keyboard");
+			} else if (ret == 3) {
+				show_file(data_full_path("ingame.txt").c_str());
 			}
 			unpause();
 			return true;
