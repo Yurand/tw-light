@@ -2008,8 +2008,13 @@ PACKFILE *pack_fopen_chunk(PACKFILE *f, int pack)
           * an atomic operation, this is not secure
           */
          tmpnam_string = tmpnam(NULL);
-         tmp_name = _AL_MALLOC_ATOMIC(strlen(tmp_dir) + strlen(tmpnam_string) + 2);
-         sprintf(tmp_name, "%s/%s", tmp_dir, tmpnam_string);
+         if (is_relative_filename(tmpnam_string)) {
+             tmp_name = _AL_MALLOC_ATOMIC(strlen(tmp_dir) + strlen(tmpnam_string) + 2);
+             sprintf(tmp_name, "%s/%s", tmp_dir, tmpnam_string);
+         } else {
+             tmp_name = _AL_MALLOC_ATOMIC(strlen(tmpnam_string) + 1);
+             sprintf(tmp_name, "%s", tmpnam_string);
+         }
 
          if (tmp_name) {
 #ifndef ALLEGRO_MPW
