@@ -232,7 +232,7 @@ void YushSpear::inflict_damage( SpaceObject* other )
 int YushSpear::handle_damage( SpaceLocation* other, double normal, double direct )
 {
 	STACKTRACE;
-	if ( latched ) {
+	if ( latched && latched->exists()) {
 		latched->handle_damage( other, normal, direct );
 		// commenting out the following two lines makes the spears vulnerable to damage
 		normal = direct = 0;
