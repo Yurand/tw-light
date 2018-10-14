@@ -75,7 +75,7 @@ struct lightsegstr
 {
 	//double	x1, y1, x2, y2;
 	Vector2 pos1, pos2;
-	int     color;
+	int     color = 0;
 };
 
 class SlylandroLaserNew : public Presence
@@ -309,7 +309,7 @@ int SlylandroProbe::activate_weapon()
 
 // ALTERNATIVE FOR THE SLYLANDRO LASER
 
-SlylandroLaserNew::SlylandroLaserNew(SpaceLocation *lroot, SpaceLocation *ltarget)
+SlylandroLaserNew::SlylandroLaserNew(SpaceLocation *lroot, SpaceLocation *ltarget): nseg(), lastnseg(), oldlifeframe(0)
 {
 	STACKTRACE;
 
@@ -331,7 +331,7 @@ SlylandroLaserNew::SlylandroLaserNew(SpaceLocation *lroot, SpaceLocation *ltarge
 								 // white
 	defaultcolor[0] = tw_makecol(200,200,200);
 								 // blue
-	defaultcolor[1] = tw_makecol(  0,  0,255);
+//	defaultcolor[1] = tw_makecol(  0,  0,255);
 
 	newlifeframe = -1;			 // nothing yet: the first beam will be calculated.
 }
@@ -344,8 +344,11 @@ void SlylandroLaserNew::calculate()
 
 	if ( lifetime > existtime || !(mother && mother->exists()) ) {
 		state = 0;
-		mother = 0;				 // needed, next iteration mother may be really removed.
+		mother = NULL;				 // needed, next iteration mother may be really removed.
 		return;
+	}
+	if (target && !target->exists()) {
+		target = NULL;
 	}
 
 	Presence::calculate();
@@ -364,7 +367,7 @@ void SlylandroLaserNew::calculate()
 	else
 		directedbeam = 1;
 
-	if ( directedbeam )
+	if (directedbeam)
 		D = min_delta(target->normal_pos(), mother->normal_pos(), map_size);
 	else
 		D = Vector2(1,1);		 // just some arbitrary value, so that the math works at least
@@ -443,8 +446,8 @@ void SlylandroLaserNew::calculate()
 
 				// move (a little) towards the enemy:
 				double adirect, danoise, da;
-				if ( directedbeam )
-								 // perfect direction
+				if (directedbeam)
+					// perfect direction
 					adirect = atan(min_delta(target->normal_pos(), mother->normal_pos() + lights[i].pos1, map_size));
 				else
 					adirect = 0.0;
@@ -524,9 +527,8 @@ void SlylandroLaserNew::calculate()
 						// add a sprite there
 						// sparks
 						// how ?! I've to make them first :(
-						game->add(new Animation( mother, mother->normal_pos() + lights[i].pos2, this->mother->data->spriteWeaponExplosion, 0,
-							1, 30, DEPTH_EXPLOSIONS));
-
+						game->add(new Animation(mother, mother->normal_pos() + lights[i].pos2, this->mother->data->spriteWeaponExplosion, 0,
+								1, 30, DEPTH_EXPLOSIONS));
 						continue;
 					}
 
