@@ -1,5 +1,4 @@
 ;NSIS Setup Script
-
 !define VER_VERSION "0.5"
 !define PRODUCT_NAME "TW-Light"
 !define PRODUCT_WEB_SITE "https://tw-light.appspot.com"
@@ -18,6 +17,7 @@ RequestExecutionLevel admin
 
 ;Include Modern UI
 !include "MUI2.nsh"
+!include WinVer.nsh
 
 ;--------------------------------
 ;Configuration
@@ -64,10 +64,16 @@ Caption "${PRODUCT_NAME} ${VER_VERSION} Setup"
 
 ;--------------------------------
 ;Installer Sections
+Function .onInit
+${If} ${AtLeastWinVista}
+${Else}
+     MessageBox MB_OK|MB_ICONEXCLAMATION "You need at least Windows Vista to run this game!"
+     Abort
+${EndIf}
+FunctionEnd
 
 ; The stuff to install
 Section "TimeWarp Core (required)"
-
   SectionIn RO
   
   ; Set output path to the installation directory.
