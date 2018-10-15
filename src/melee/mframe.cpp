@@ -96,7 +96,29 @@ void Query::begin (SpaceLocation *qtarget, int qlayers, double qrange)
 	}
 	qy = qy_min;
 	qx = qx_min;
-	current = physics->quadrant[qy * QUADS_X + qx];
+
+	int index = qy * QUADS_X + qx;
+	if (index < 0) {
+		//		tw_error("index was less than 0");
+		qx_min = 0;
+		qx_max = 0;
+		qy_min = 0;
+		qy_max = 0;
+		qy = qy_min;
+		qx = qx_min;
+		index = qy * QUADS_X + qx;
+	}
+	if (index >= physics->quadrant.size()) {
+		//		tw_error("index was too large");
+		qx_min = 0;
+		qx_max = 0;
+		qy_min = 0;
+		qy_max = 0;
+		qy = qy_min;
+		qx = qx_min;
+		index = qy * QUADS_X + qx;
+	}
+	current = physics->quadrant[index];
 	if (!current) next_quadrant();
 	if (!current) return;
 	if (current_invalid()) next();
@@ -129,7 +151,29 @@ void Query::begin (SpaceLocation *qtarget, Vector2 center, int qlayers, double q
 	}
 	qy = qy_min;
 	qx = qx_min;
-	current = physics->quadrant[qy * QUADS_X + qx];
+
+	int index = qy * QUADS_X + qx;
+	if (index < 0) { 
+//		tw_error("index was less than 0");
+		qx_min = 0;
+		qx_max = 0;
+		qy_min = 0;
+		qy_max = 0;
+		qy = qy_min;
+		qx = qx_min;
+		index = qy * QUADS_X + qx;
+	}
+	if (index >= physics->quadrant.size()) {
+//		tw_error("index was too large");
+		qx_min = 0;
+		qx_max = 0;
+		qy_min = 0;
+		qy_max = 0;
+		qy = qy_min;
+		qx = qx_min;
+		index = qy * QUADS_X + qx;
+	}
+	current = physics->quadrant[index];
 	if (!current) next_quadrant();
 	if (!current) return;
 	if (current_invalid()) next();
@@ -155,10 +199,28 @@ void Query::next_quadrant ()
 		}
 		qx = qx_min;
 	}
-	int tmp = qy * QUADS_X + qx;
-	if (tmp < 0) {tw_error ("tmp was less than 0");}
-	if (tmp > QUADS_TOTAL) {tw_error ("tmp was too large");}
-	current = physics->quadrant[tmp];
+	int index = qy * QUADS_X + qx;
+	if (index < 0) {
+		//		tw_error("index was less than 0");
+		qx_min = 0;
+		qx_max = 0;
+		qy_min = 0;
+		qy_max = 0;
+		qy = qy_min;
+		qx = qx_min;
+		index = qy * QUADS_X + qx;
+	}
+	if (index >= physics->quadrant.size()) {
+		//		tw_error("index was too large");
+		qx_min = 0;
+		qx_max = 0;
+		qy_min = 0;
+		qy_max = 0;
+		qy = qy_min;
+		qx = qx_min;
+		index = qy * QUADS_X + qx;
+	}
+	current = physics->quadrant[index];
 	if (!current) goto tail_recurse4;
 	return;
 }
@@ -215,7 +277,29 @@ void Query2::begin (SpaceLocation *qtarget, Uint64 attribute_filter, double qran
 	}
 	qy = qy_min;
 	qx = qx_min;
-	current = physics->quadrant[qy * QUADS_X + qx];
+
+	int index = qy * QUADS_X + qx;
+	if (index < 0) {
+		//tw_error("index was less than 0");
+		qx_min = 0;
+		qx_max = 0;
+		qy_min = 0;
+		qy_max = 0;
+		qy = qy_min;
+		qx = qx_min;
+		index = qy * QUADS_X + qx;
+	}
+	if (index >= physics->quadrant.size()) {
+		//tw_error("index was too large");
+		qx_min = 0;
+		qx_max = 0;
+		qy_min = 0;
+		qy_max = 0;
+		qy = qy_min;
+		qx = qx_min;
+		index = qy * QUADS_X + qx;
+	}
+	current = physics->quadrant[index];
 	if (!current) next_quadrant();
 	if (!current) return;
 	if (current_invalid()) next();
@@ -252,7 +336,29 @@ void Query2::begin (SpaceLocation *qtarget, Vector2 center, Uint64 attribute_fil
 	}
 	qy = qy_min;
 	qx = qx_min;
-	current = physics->quadrant[qy * QUADS_X + qx];
+
+	int index = qy * QUADS_X + qx;
+	if (index < 0) {
+		//tw_error("index was less than 0");
+		qx_min = 0;
+		qx_max = 0;
+		qy_min = 0;
+		qy_max = 0;
+		qy = qy_min;
+		qx = qx_min;
+		index = qy * QUADS_X + qx;
+	}
+	if (index >= physics->quadrant.size()) {
+		//tw_error("index was too large");
+		qx_min = 0;
+		qx_max = 0;
+		qy_min = 0;
+		qy_max = 0;
+		qy = qy_min;
+		qx = qx_min;
+		index = qy * QUADS_X + qx;
+	}
+	current = physics->quadrant[index];
 	if (!current) next_quadrant();
 	if (!current) return;
 	if (current_invalid()) next();
@@ -276,10 +382,29 @@ void Query2::next_quadrant ()
 		}
 		qx = qx_min;
 	}
-	int tmp = qy * QUADS_X + qx;
-	if (tmp < 0) {tw_error ("tmp was less than 0");}
-	if (tmp > QUADS_TOTAL) {tw_error ("tmp was too large");}
-	current = physics->quadrant[tmp];
+
+	int index = qy * QUADS_X + qx;
+	if (index < 0) {
+		//		tw_error("index was less than 0");
+		qx_min = 0;
+		qx_max = 0;
+		qy_min = 0;
+		qy_max = 0;
+		qy = qy_min;
+		qx = qx_min;
+		index = qy * QUADS_X + qx;
+	}
+	if (index >= physics->quadrant.size()) {
+		//		tw_error("index was too large");
+		qx_min = 0;
+		qx_max = 0;
+		qy_min = 0;
+		qy_max = 0;
+		qy = qy_min;
+		qx = qx_min;
+		index = qy * QUADS_X + qx;
+	}
+	current = physics->quadrant[index];
 	if (!current) goto tail_recurse4;
 	return;
 }

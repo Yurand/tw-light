@@ -437,8 +437,10 @@ struct Query2
 		void end();
 	private:
 		bool current_invalid() {
-			if (((current->attributes & attributes_mask) != attributes_desired) || (current == target) || !current->exists()) return true;
-			if (magnitude_sqr(min_delta(target_pos, current->normal_pos())) > range_sqr) return true;
+			if (((current->attributes & attributes_mask) != attributes_desired) || (current == target) || !current->exists()) 
+				return true;
+			if (magnitude_sqr(min_delta(target_pos, current->normal_pos())) > range_sqr)
+				return true;
 			return false;
 		}
 };
