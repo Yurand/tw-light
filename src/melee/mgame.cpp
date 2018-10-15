@@ -345,6 +345,10 @@ int Game::is_local (int channel)
 	return (log->get_direction (channel) & Log::direction_write);
 }
 
+bool Game::is_bot(int channel)
+{
+	return channel == channel_none;
+}
 
 void Game::log_file (const std::string& fname)
 {

@@ -89,6 +89,7 @@ class Game : public Physics
 		virtual void log_file (const std::string& fname);
 		void log_fleet(int channel, class Fleet *fleet);
 		int is_local ( int channel ) ;
+                bool is_bot( int channel );
 
 	protected:
 
