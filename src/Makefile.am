@@ -17,6 +17,8 @@ input.h \
 ais/c_input.cpp \
 ais/c_other.cpp \
 ais/c_wussie.cpp \
+datafiles/gen_victoryditty.c \
+datafiles/gen_victoryditty.h \
 twgui/twmenuexamples.h \
 twgui/twmenuexamples.cpp \
 twgui/twwindow.h \

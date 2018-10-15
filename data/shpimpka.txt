@@ -1,0 +1,26 @@
+Imperial Katana
+
+Primary Weapon:
+  The ship has a laser blade mounted on its front.
+  Pressing the primary weapon key heats it up, without it the blade cools down.
+  The higher the heat, the more damage it does (no damage without enough heat).
+  If the heat goes too high the ship blows up. (The heat is indicated in place
+  of the battery.)
+  If the heat is above a value (set in impka.ini as Weapon/RadHeat) radioactivity
+  starts to build up (speed set in impka.ini as Weapon/RadBuildup). The process
+  is irreversible. When fully built up (as seen on the captain panel) a halo
+  appears around the ship and it is now radioactive.
+  
+Special:
+  Releases radioactivity in form of a gas cloud. The cloud is highly explosive,
+  so the ship needs to be fully cooled down to safely use this ability.
+
+Notes:
+  If a ship is radioactive it loses crew over time (as set in impka.ini Special
+  section). Most ships can not get rid of radioactivity and will slowly die.
+  The halo around a radioactive ship infects any other ship on contact.
+  If a radioactive ship (either the Katana or another) is destroyed the
+  radioactivity is released once again.
+
+ * created by: cyhawk@sch.bme.hu and forevian@freemail.hu
+ * idea by Forevian & Lord000

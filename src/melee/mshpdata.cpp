@@ -29,7 +29,10 @@ GNU General Public License for more details.
 #include "melee.h"
 REGISTER_FILE
 #include "util/aastr.h"
+#include "util/port.h"
 #include "other/twconfig.h"
+#include "other/gameconf.h"
+#include "datafiles//gen_victoryditty.h"
 
 int auto_unload = false;
 
@@ -40,10 +43,15 @@ int auto_unload = false;
 int num_shipdatas = 0;
 
 typedef std::map<std::string, ShipData*> ShipDataMap;
+static TW_DATAFILE * victoryditty_datafile = NULL;
+
 ShipDataMap shipdatas;
 
 ShipData *shipdata ( const char *file )
 {
+	if (!victoryditty_datafile) {
+		victoryditty_datafile = tw_load_datafile(data_full_path("victoryditty.dat").c_str());
+	}
 	if (!file) return NULL;
 
 	ShipDataMap::iterator shp = shipdatas.find(file);
@@ -329,8 +337,12 @@ void ShipData::load()
 	num_more_sprites = i;
 
 	// initialize ship victory ditty
-	moduleVictory = (Music *)(data[index].dat);
-	index++;
+	const char* victoryDittyStr = get_config_string("Objects", "VictoryDitty", "VOIDDITTY_WAV");
+	int victoryIdx = datafile_victoryditty_index(victoryDittyStr);
+	if (victoryIdx < 0) {
+		tw_error("Unable to load victory ditty: %a", victoryDittyStr);
+	}
+	moduleVictory = (Music *)(victoryditty_datafile[victoryIdx].dat);
 
 	// load weapon samples
 	count = get_config_int("Objects", "WeaponSamples", 0);

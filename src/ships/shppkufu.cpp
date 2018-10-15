@@ -61,6 +61,9 @@ Ship(opos, shipAngle, shipData, code)
 int PkunkFury::handle_damage(SpaceLocation *source, double normal, double direct)
 {
 	STACKTRACE;
+	if (!exists())
+		return 0;
+
 	int r = iround(normal + direct);
 	crew -= r;
 	if (crew > 0) return r;

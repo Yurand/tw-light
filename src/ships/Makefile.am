@@ -2,7 +2,8 @@ noinst_LIBRARIES=libships.a
 
 INCLUDES = -I$(top_srcdir) $(allegro_CFLAGS)
 
-SRCS= gen_ships.cpp \
+SRCS= \
+gen_ships.cpp \
 shpaktgu.cpp \
 shpalabc.cpp \
 shpalckr.cpp \
@@ -14,13 +15,11 @@ shparisk.h \
 shparitr.cpp \
 shparkpi.cpp \
 shpartem.cpp \
-shpastba.cpp \
 shpayrbs.cpp \
 shpbahbu.cpp \
 shpbatde.cpp \
 shpbipka.cpp \
 shpbogce.cpp \
-shpbubbo.cpp \
 shpbubex.cpp \
 shpchebr.cpp \
 shpchebr.h \
@@ -28,69 +27,69 @@ shpchmav.cpp \
 shpchmav.h \
 shpchmba.cpp \
 shpchoex.cpp \
+shpclapi.cpp \
 shpclofl.cpp \
 shpconca.cpp \
 shpconho.cpp \
 shpcrapl.cpp \
-shpcresu.cpp \
 shpcrore.cpp \
 shpdajem.cpp \
+shpdakvi.cpp \
 shpdeees.cpp \
 shpdjila.cpp \
+shpdooco.cpp \
 shpdragr.cpp \
 shpdruma.cpp \
 shpdruma.h \
 shpducla.cpp \
-shpdyzha.cpp \
 shpearc2.cpp \
 shpearc3.cpp \
 shpearcr.cpp \
 shpearcr.h \
 shpestgu.cpp \
+shpexqen.cpp \
 shpfiear.cpp \
 shpfopsl.cpp \
 shpforsh.cpp \
-shpfrebo.cpp \
-shpfresc.cpp \
 shpfweav.cpp \
 shpgahmo.cpp \
 shpgarty.cpp \
 shpgerhe.cpp \
 shpgeror.cpp \
-shpgerra.cpp \
 shpglacr.cpp \
 shpglads.cpp \
 shpgluse.cpp \
-shphotsp.cpp \
+shpharra.cpp \
+shpherex.cpp \
 shphubde.cpp \
 shphydcr.cpp \
 shpiceco.cpp \
 shpilwav.cpp \
 shpilwsp.cpp \
 shpilwsp.h \
+shpimpka.cpp \
 shpjnkla.cpp \
 shpjurcu.cpp \
 shpjygst.cpp \
-shpkabwe.cpp \
 shpkahbo.cpp \
-shpkatpo.cpp \
 shpklidr.cpp \
 shpkoaja.cpp \
 shpkoapa.cpp \
 shpkohma.cpp \
 shpkohma.h \
 shpkolfl.cpp \
-shpkorsi.cpp \
+shpkorsn.cpp \
+shpktacr.cpp \
 shpktesa.cpp \
 shpkzedr.cpp \
 shpkzedr.h \
 shpleimu.cpp \
+shplk_sa.cpp \
 shplyrwa.cpp \
 shpmekpi.cpp \
 shpmeltr.cpp \
 shpmmrxf.cpp \
 shpmoisp.cpp \
-shpmontr.cpp \
 shpmycpo.cpp \
 shpmycpo.h \
 shpnarlu.cpp \
@@ -102,11 +101,12 @@ shporzne.cpp \
 shporzne.h \
 shpostdi.cpp \
 shpostor.cpp \
+shpowavo.cpp \
 shppanav.cpp \
 shpphepa.cpp \
 shppkufu.cpp \
 shpplala.cpp \
-shpplane.cpp \
+shpplopl.cpp \
 shpqlore.cpp \
 shpquasi.cpp \
 shpquawr.cpp \
@@ -114,7 +114,6 @@ shpraame.cpp \
 shpradfi.cpp \
 shprekas.cpp \
 shprogsq.cpp \
-shpsacda.cpp \
 shpsamat.cpp \
 shpsclfr.cpp \
 shpsefn2.cpp \
@@ -125,7 +124,6 @@ shpslypr.cpp \
 shpspael.cpp \
 shpspael.h \
 shpstaba.cpp \
-shpstrgu.cpp \
 shpstrsc.cpp \
 shpsupbl.cpp \
 shpsupbl.h \
@@ -146,7 +144,6 @@ shptaust.cpp \
 shptauto.cpp \
 shptautu.cpp \
 shptelno.cpp \
-shpterbi.cpp \
 shpthrto.cpp \
 shptougr.cpp \
 shptrige.cpp \
@@ -165,9 +162,8 @@ shpvioge.cpp \
 shpvirli.cpp \
 shpvuvji.cpp \
 shpvuxin.cpp \
-shpwassu.cpp \
-shpwistr.cpp \
-shpxaaar.cpp \
+shpvyrin.cpp \
+shpxchex.cpp \
 shpxilcr.cpp \
 shpxxxas.cpp \
 shpxxxma.cpp \
@@ -179,6 +175,25 @@ shpzeksh.cpp \
 shpzfpst.cpp \
 shpzfpst.h
 
+EXTRA_DIST = \
+_howto_1.cpp \
+_howto_2.cpp \
+unused/shpastba.cpp \
+unused/shpbubbo.cpp \
+unused/shpcresu.cpp \
+unused/shpdyzha.cpp \
+unused/shpfresc.cpp \
+unused/shpgerra.cpp \
+unused/shphotsp.cpp \
+unused/shpkabwe.cpp \
+unused/shpkatpo.cpp \
+unused/shpkorsi.cpp \
+unused/shpmontr.cpp \
+unused/shpplane.cpp \
+unused/shpterbi.cpp \
+unused/shpwassu.cpp \
+unused/shpwistr.cpp \
+unused/shpxaaar.cpp
 
 libships_a_SOURCES = $(SRCS)
 

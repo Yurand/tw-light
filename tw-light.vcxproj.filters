@@ -54,6 +54,9 @@
     <Filter Include="Source Files\libraries\allegro\src\misc">
       <UniqueIdentifier>{5dc0b3b0-74f9-4bf2-9816-fc26c8a74137}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\datafiles">
+      <UniqueIdentifier>{eaf180d8-042f-40c3-8f82-8f57caf0db11}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ais.h">
@@ -380,6 +383,9 @@
     <ClInclude Include="src\libraries\allegro\src\misc\modexsms.h">
       <Filter>Source Files\libraries\allegro\src\misc</Filter>
     </ClInclude>
+    <ClInclude Include="src\datafiles\gen_victoryditty.h">
+      <Filter>Source Files\datafiles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\doxygen.cpp">
@@ -577,9 +583,6 @@
     <ClCompile Include="src\ships\shpartem.cpp">
       <Filter>Source Files\ships</Filter>
     </ClCompile>
-    <ClCompile Include="src\ships\shpastba.cpp">
-      <Filter>Source Files\ships</Filter>
-    </ClCompile>
     <ClCompile Include="src\ships\shpayrbs.cpp">
       <Filter>Source Files\ships</Filter>
     </ClCompile>
@@ -593,9 +596,6 @@
       <Filter>Source Files\ships</Filter>
     </ClCompile>
     <ClCompile Include="src\ships\shpbogce.cpp">
-      <Filter>Source Files\ships</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ships\shpbubbo.cpp">
       <Filter>Source Files\ships</Filter>
     </ClCompile>
     <ClCompile Include="src\ships\shpbubex.cpp">
@@ -625,9 +625,6 @@
     <ClCompile Include="src\ships\shpcrapl.cpp">
       <Filter>Source Files\ships</Filter>
     </ClCompile>
-    <ClCompile Include="src\ships\shpcresu.cpp">
-      <Filter>Source Files\ships</Filter>
-    </ClCompile>
     <ClCompile Include="src\ships\shpcrore.cpp">
       <Filter>Source Files\ships</Filter>
     </ClCompile>
@@ -647,9 +644,6 @@
       <Filter>Source Files\ships</Filter>
     </ClCompile>
     <ClCompile Include="src\ships\shpducla.cpp">
-      <Filter>Source Files\ships</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ships\shpdyzha.cpp">
       <Filter>Source Files\ships</Filter>
     </ClCompile>
     <ClCompile Include="src\ships\shpearc2.cpp">
@@ -673,12 +667,6 @@
     <ClCompile Include="src\ships\shpforsh.cpp">
       <Filter>Source Files\ships</Filter>
     </ClCompile>
-    <ClCompile Include="src\ships\shpfrebo.cpp">
-      <Filter>Source Files\ships</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ships\shpfresc.cpp">
-      <Filter>Source Files\ships</Filter>
-    </ClCompile>
     <ClCompile Include="src\ships\shpfweav.cpp">
       <Filter>Source Files\ships</Filter>
     </ClCompile>
@@ -694,9 +682,6 @@
     <ClCompile Include="src\ships\shpgeror.cpp">
       <Filter>Source Files\ships</Filter>
     </ClCompile>
-    <ClCompile Include="src\ships\shpgerra.cpp">
-      <Filter>Source Files\ships</Filter>
-    </ClCompile>
     <ClCompile Include="src\ships\shpglacr.cpp">
       <Filter>Source Files\ships</Filter>
     </ClCompile>
@@ -704,9 +689,6 @@
       <Filter>Source Files\ships</Filter>
     </ClCompile>
     <ClCompile Include="src\ships\shpgluse.cpp">
-      <Filter>Source Files\ships</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ships\shphotsp.cpp">
       <Filter>Source Files\ships</Filter>
     </ClCompile>
     <ClCompile Include="src\ships\shphubde.cpp">
@@ -733,13 +715,7 @@
     <ClCompile Include="src\ships\shpjygst.cpp">
       <Filter>Source Files\ships</Filter>
     </ClCompile>
-    <ClCompile Include="src\ships\shpkabwe.cpp">
-      <Filter>Source Files\ships</Filter>
-    </ClCompile>
     <ClCompile Include="src\ships\shpkahbo.cpp">
-      <Filter>Source Files\ships</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ships\shpkatpo.cpp">
       <Filter>Source Files\ships</Filter>
     </ClCompile>
     <ClCompile Include="src\ships\shpklidr.cpp">
@@ -755,9 +731,6 @@
       <Filter>Source Files\ships</Filter>
     </ClCompile>
     <ClCompile Include="src\ships\shpkolfl.cpp">
-      <Filter>Source Files\ships</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ships\shpkorsi.cpp">
       <Filter>Source Files\ships</Filter>
     </ClCompile>
     <ClCompile Include="src\ships\shpktesa.cpp">
@@ -782,9 +755,6 @@
       <Filter>Source Files\ships</Filter>
     </ClCompile>
     <ClCompile Include="src\ships\shpmoisp.cpp">
-      <Filter>Source Files\ships</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ships\shpmontr.cpp">
       <Filter>Source Files\ships</Filter>
     </ClCompile>
     <ClCompile Include="src\ships\shpmycpo.cpp">
@@ -826,9 +796,6 @@
     <ClCompile Include="src\ships\shpplala.cpp">
       <Filter>Source Files\ships</Filter>
     </ClCompile>
-    <ClCompile Include="src\ships\shpplane.cpp">
-      <Filter>Source Files\ships</Filter>
-    </ClCompile>
     <ClCompile Include="src\ships\shpqlore.cpp">
       <Filter>Source Files\ships</Filter>
     </ClCompile>
@@ -848,9 +815,6 @@
       <Filter>Source Files\ships</Filter>
     </ClCompile>
     <ClCompile Include="src\ships\shprogsq.cpp">
-      <Filter>Source Files\ships</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ships\shpsacda.cpp">
       <Filter>Source Files\ships</Filter>
     </ClCompile>
     <ClCompile Include="src\ships\shpsamat.cpp">
@@ -875,9 +839,6 @@
       <Filter>Source Files\ships</Filter>
     </ClCompile>
     <ClCompile Include="src\ships\shpstaba.cpp">
-      <Filter>Source Files\ships</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ships\shpstrgu.cpp">
       <Filter>Source Files\ships</Filter>
     </ClCompile>
     <ClCompile Include="src\ships\shpstrsc.cpp">
@@ -934,9 +895,6 @@
     <ClCompile Include="src\ships\shptelno.cpp">
       <Filter>Source Files\ships</Filter>
     </ClCompile>
-    <ClCompile Include="src\ships\shpterbi.cpp">
-      <Filter>Source Files\ships</Filter>
-    </ClCompile>
     <ClCompile Include="src\ships\shpthrto.cpp">
       <Filter>Source Files\ships</Filter>
     </ClCompile>
@@ -986,15 +944,6 @@
       <Filter>Source Files\ships</Filter>
     </ClCompile>
     <ClCompile Include="src\ships\shpvuxin.cpp">
-      <Filter>Source Files\ships</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ships\shpwassu.cpp">
-      <Filter>Source Files\ships</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ships\shpwistr.cpp">
-      <Filter>Source Files\ships</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ships\shpxaaar.cpp">
       <Filter>Source Files\ships</Filter>
     </ClCompile>
     <ClCompile Include="src\ships\shpxilcr.cpp">
@@ -1515,6 +1464,51 @@
     </ClCompile>
     <ClCompile Include="src\games\gastroid.cpp">
       <Filter>Source Files\games</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpclapi.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpdakvi.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpdooco.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpexqen.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpharra.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpherex.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpimpka.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpkorsn.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpktacr.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shplk_sa.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpowavo.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpplopl.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpvyrin.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ships\shpxchex.cpp">
+      <Filter>Source Files\ships</Filter>
+    </ClCompile>
+    <ClCompile Include="src\datafiles\gen_victoryditty.c">
+      <Filter>Source Files\datafiles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

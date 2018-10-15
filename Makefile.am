@@ -3,13 +3,6 @@
 SUBDIRS = src
 
 GAMEDATA = \
-data/scpgui/logo.bmp \
-data/scpgui/menuaccept.wav \
-data/scpgui/menudisabled.wav \
-data/scpgui/menufocus.wav \
-data/scpgui/menuspecial.wav \
-data/scpgui/scptitle.bmp \
-data/scpgui/titlemusic.wav \
 data/client.ini \
 data/fleets.ini \
 data/fonts.dat \
@@ -84,6 +77,8 @@ data/shpchmba.txt \
 data/shpchoex.dat \
 data/shpchoex.ini \
 data/shpchoex.txt \
+data/shpclapi.dat \
+data/shpclapi.ini \
 data/shpclofl.dat \
 data/shpclofl.ini \
 data/shpclofl.txt \
@@ -105,12 +100,16 @@ data/shpcrore.txt \
 data/shpdajem.dat \
 data/shpdajem.ini \
 data/shpdajem.txt \
+data/shpdakvi.dat \
+data/shpdakvi.ini \
 data/shpdeees.dat \
 data/shpdeees.ini \
 data/shpdeees.txt \
 data/shpdjila.dat \
 data/shpdjila.ini \
 data/shpdjila.txt \
+data/shpdooco.dat \
+data/shpdooco.ini \
 data/shpdragr.dat \
 data/shpdragr.ini \
 data/shpdragr.txt \
@@ -135,6 +134,8 @@ data/shpearcr.txt \
 data/shpestgu.dat \
 data/shpestgu.ini \
 data/shpestgu.txt \
+data/shpexqen.dat \
+data/shpexqen.ini \
 data/shpfiear.dat \
 data/shpfiear.ini \
 data/shpfiear.txt \
@@ -144,9 +145,6 @@ data/shpfopsl.txt \
 data/shpforsh.dat \
 data/shpforsh.ini \
 data/shpforsh.txt \
-data/shpfrebo.dat \
-data/shpfrebo.ini \
-data/shpfrebo.txt \
 data/shpfresc.dat \
 data/shpfresc.ini \
 data/shpfresc.txt \
@@ -177,6 +175,10 @@ data/shpglads.txt \
 data/shpgluse.dat \
 data/shpgluse.ini \
 data/shpgluse.txt \
+data/shpharra.dat \
+data/shpharra.ini \
+data/shpherex.dat \
+data/shpherex.ini \
 data/shphotsp.dat \
 data/shphotsp.ini \
 data/shphotsp.txt \
@@ -195,6 +197,9 @@ data/shpilwav.txt \
 data/shpilwsp.dat \
 data/shpilwsp.ini \
 data/shpilwsp.txt \
+data/shpimpka.dat \
+data/shpimpka.ini \
+data/shpimpka.txt \
 data/shpjnkla.dat \
 data/shpjnkla.ini \
 data/shpjnkla.txt \
@@ -234,6 +239,8 @@ data/shpkorsi.txt \
 data/shpkorsn.dat \
 data/shpkorsn.ini \
 data/shpkorsn.txt \
+data/shpktacr.dat \
+data/shpktacr.ini \
 data/shpktesa.dat \
 data/shpktesa.ini \
 data/shpktesa.txt \
@@ -243,6 +250,8 @@ data/shpkzedr.txt \
 data/shpleimu.dat \
 data/shpleimu.ini \
 data/shpleimu.txt \
+data/shplk_sa.dat \
+data/shplk_sa.ini \
 data/shplyrwa.dat \
 data/shplyrwa.ini \
 data/shplyrwa.txt \
@@ -288,6 +297,8 @@ data/shpostdi.txt \
 data/shpostor.dat \
 data/shpostor.ini \
 data/shpostor.txt \
+data/shpowavo.dat \
+data/shpowavo.ini \
 data/shppanav.dat \
 data/shppanav.ini \
 data/shppanav.txt \
@@ -303,6 +314,8 @@ data/shpplala.txt \
 data/shpplane.dat \
 data/shpplane.ini \
 data/shpplane.txt \
+data/shpplopl.dat \
+data/shpplopl.ini \
 data/shpqlore.dat \
 data/shpqlore.ini \
 data/shpqlore.txt \
@@ -324,12 +337,10 @@ data/shprekas.txt \
 data/shprogsq.dat \
 data/shprogsq.ini \
 data/shprogsq.txt \
-data/shpsacda.dat \
-data/shpsacda.ini \
-data/shpsacda.txt \
 data/shpsamat.dat \
 data/shpsamat.ini \
 data/shpsamat.txt \
+data/shpscain.ini \
 data/shpsclfr.dat \
 data/shpsclfr.ini \
 data/shpsclfr.txt \
@@ -351,9 +362,6 @@ data/shpspael.txt \
 data/shpstaba.dat \
 data/shpstaba.ini \
 data/shpstaba.txt \
-data/shpstrgu.dat \
-data/shpstrgu.ini \
-data/shpstrgu.txt \
 data/shpstrsc.dat \
 data/shpstrsc.ini \
 data/shpstrsc.txt \
@@ -462,6 +470,8 @@ data/shpvuvji.txt \
 data/shpvuxin.dat \
 data/shpvuxin.ini \
 data/shpvuxin.txt \
+data/shpvyrin.dat \
+data/shpvyrin.ini \
 data/shpwassu.dat \
 data/shpwassu.ini \
 data/shpwassu.txt \
@@ -471,6 +481,8 @@ data/shpwistr.txt \
 data/shpxaaar.dat \
 data/shpxaaar.ini \
 data/shpxaaar.txt \
+data/shpxchex.dat \
+data/shpxchex.ini \
 data/shpxilcr.dat \
 data/shpxilcr.ini \
 data/shpxilcr.txt \
@@ -500,7 +512,15 @@ data/shpzfpst.ini \
 data/shpzfpst.txt \
 data/stars.dat \
 data/version.txt \
-data/vobject.ini
+data/victoryditty.dat \
+data/vobject.ini \
+data/scpgui/logo.bmp \
+data/scpgui/menuaccept.wav \
+data/scpgui/menudisabled.wav \
+data/scpgui/menufocus.wav \
+data/scpgui/menuspecial.wav \
+data/scpgui/scptitle.bmp \
+data/scpgui/titlemusic.wav
 
 gamedatadir=$(datadir)/tw-light
 gamedata_DATA = $(GAMEDATA)
@@ -530,6 +550,8 @@ EXTRA_DIST = \
 	scripts/stacktrace.pl \
 	scripts/gen_register_ships.py \
 	scripts/timewarp.nsi \
+        scripts/gen_datafiles_interface.py \
+        scripts/update_victory_ditty.py
 	$(GAMEDATA)
 
 
