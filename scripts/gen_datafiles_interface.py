@@ -48,7 +48,7 @@ def generate_datafile(datafile):
 Run: %s script to update it
 */
 
-#include <stdio.h>
+#include <string.h>
 
 """ % sys.argv[0]
     data = data + index_function_def + " {\r\n"

@@ -3,7 +3,7 @@
 Run: gen_datafiles_interface.py script to update it
 */
 
-#include <stdio.h>
+#include <string.h>
 
 int datafile_scpgui_index(const char* str) {
 	if (strcmp(str, "LOGO_BMP") == 0)

@@ -1,6 +1,6 @@
 /* Allegro datafile object indexes, produced by dat v4.4.2, MSVC.s */
 /* Datafile: ../data\scpgui.dat */
-/* Date: Tue Oct 16 14:20:26 2018 */
+/* Date: Tue Oct 16 16:21:39 2018 */
 /* Do not hand edit! */
 
 #ifndef SCPGUI_H

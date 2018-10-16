@@ -3,7 +3,7 @@
 Run: gen_datafiles_interface.py script to update it
 */
 
-#include <stdio.h>
+#include <string.h>
 
 int datafile_victoryditty_index(const char* str) {
 	if (strcmp(str, "ALADITTY_WAV") == 0)

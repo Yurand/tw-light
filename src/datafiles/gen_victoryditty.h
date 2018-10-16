@@ -1,6 +1,6 @@
 /* Allegro datafile object indexes, produced by dat v4.4.2, MSVC.s */
 /* Datafile: ../data\victoryditty.dat */
-/* Date: Mon Oct 15 00:45:42 2018 */
+/* Date: Tue Oct 16 16:21:39 2018 */
 /* Do not hand edit! */
 
 #ifndef VICTORYDITTY_H
