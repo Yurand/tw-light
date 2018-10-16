@@ -46,6 +46,7 @@
 
 #include "util/helper.h"
 #include "util/port.h"
+#include "datafiles/gen_scpgui.h"
 
 #ifdef ALLEGRO_MSVC
 #pragma warning (disable:4786)
@@ -185,30 +186,35 @@ static BITMAP * g_logoPic = NULL;
 static void prepareTitleScreenAssets()
 {
 	STACKTRACE;
+	static TW_DATAFILE * scp = NULL;
+	if (!scp)
+		scp = tw_load_datafile(data_full_path("scpgui.dat").c_str());
+	if (!scp)
+		throw("Couldnt load title music");
 
 	if (!g_titleMusic) {
-		g_titleMusic = load_sample(data_full_path("scpgui/titlemusic.wav").c_str());
+		g_titleMusic = (Music *)scp[TITLEMUSIC_WAV].dat;
 		if (!g_titleMusic)
 			tw_error("Couldnt load title music");
 	}
 
 	if (!menuAccept) {
-		menuAccept = load_sample(data_full_path("scpgui/menuaccept.wav").c_str());
+		menuAccept = (SAMPLE *)scp[MENUACCEPT_WAV].dat;
 		if (!menuAccept)
 			tw_error("Couldnt load menuAccept sound");
 	}
 	if (!menuFocus) {
-		menuFocus = load_sample(data_full_path("scpgui/menufocus.wav").c_str());
+		menuFocus = (SAMPLE *)scp[MENUFOCUS_WAV].dat;
 		if (!menuFocus)
 			tw_error("Couldnt load menuFocus sound");
 	}
 	if (!menuDisabled) {
-		menuDisabled = load_sample(data_full_path("scpgui/menudisabled.wav").c_str());
+		menuDisabled = (SAMPLE *)scp[MENUDISABLED_WAV].dat;
 		if (!menuDisabled)
 			tw_error("Couldnt load menuDisabled sound");
 	}
 	if (!menuSpecial) {
-		menuSpecial = load_sample(data_full_path("scpgui/menuspecial.wav").c_str());
+		menuSpecial = (SAMPLE *)scp[MENUSPECIAL_WAV].dat;
 		if (!menuSpecial)
 			tw_error("Couldnt load menuSpecial sound");
 	}
@@ -216,9 +222,10 @@ static void prepareTitleScreenAssets()
 	if (g_titlePic)
 		destroy_bitmap(g_titlePic);
 	g_titlePic = create_bitmap(videosystem.window.w, videosystem.window.h);
-	BITMAP * tmp = videosystem.load_bitmap(data_full_path("scpgui/scptitle.bmp"));
+
+	BITMAP * tmp = videosystem.create_bitmap((BITMAP*)scp[TITLE_BMP].dat);
 	if (!tmp) {
-		tw_error("Unable to load scpgui/scptitle.bmp");
+		tw_error("Unable to load TITLE_BMP");
 	}
 	stretch_blit(tmp, g_titlePic,
 		0, 0, tmp->w, tmp->h,
@@ -227,11 +234,10 @@ static void prepareTitleScreenAssets()
 
 	if (g_logoPic)
 		destroy_bitmap(g_logoPic);
-	g_logoPic = videosystem.load_bitmap(data_full_path("scpgui/logo.bmp"));
+	g_logoPic = videosystem.create_bitmap((BITMAP*)scp[LOGO_BMP].dat);
 	if (!g_logoPic)
-		tw_error("Unable to load scpgui/logo.bmp");
+		tw_error("Unable to load LOGO_BMP");
 }
-
 
 /** clears the screen, and displays a loading message to the user.
  */

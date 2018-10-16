@@ -58,3 +58,5 @@ Run: %s script to update it
     open(source_path, "wb").write(data.replace("\r", ""))
 
 generate_datafile("victoryditty.dat")
+generate_datafile("scpgui.dat")
+

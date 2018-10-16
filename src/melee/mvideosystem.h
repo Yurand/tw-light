@@ -54,6 +54,9 @@ class VideoSystem : public BaseClass
 		void redraw();
 
 		BITMAP *load_bitmap(const std::string& path);
+		// create bitmap with current bpp
+		BITMAP *create_bitmap(BITMAP *src);
+
 } extern videosystem;
 
 #endif

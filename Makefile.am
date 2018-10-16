@@ -12,6 +12,7 @@ data/melee.dat \
 data/palette \
 data/readme.html \
 data/scp.ini \
+data/scpgui.dat \
 data/server.ini \
 data/shpaktgu.dat \
 data/shpaktgu.ini \
@@ -551,7 +552,7 @@ EXTRA_DIST = \
 	scripts/gen_register_ships.py \
 	scripts/timewarp.nsi \
         scripts/gen_datafiles_interface.py \
-        scripts/update_victory_ditty.py
+        scripts/update_victory_ditty.py \
 	$(GAMEDATA)
 
 

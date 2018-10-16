@@ -96,6 +96,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\ais.h" />
+    <ClInclude Include="src\datafiles\gen_scpgui.h" />
     <ClInclude Include="src\datafiles\gen_victoryditty.h" />
     <ClInclude Include="src\frame.h" />
     <ClInclude Include="src\games\gflmelee.h" />
@@ -209,6 +210,7 @@
     <ClCompile Include="src\ais\c_input.cpp" />
     <ClCompile Include="src\ais\c_other.cpp" />
     <ClCompile Include="src\ais\c_wussie.cpp" />
+    <ClCompile Include="src\datafiles\gen_scpgui.c" />
     <ClCompile Include="src\datafiles\gen_victoryditty.c" />
     <ClCompile Include="src\doxygen.cpp" />
     <ClCompile Include="src\frame.cpp" />

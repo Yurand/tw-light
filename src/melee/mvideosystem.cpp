@@ -347,3 +347,10 @@ BITMAP* VideoSystem::load_bitmap(const std::string& path)
 	destroy_bitmap(tmp);
 	return tmp2;
 }
+
+BITMAP *VideoSystem::create_bitmap(BITMAP *src)
+{
+	BITMAP* ret = create_bitmap_ex(bpp, src->w, src->h);
+	blit(src, ret, 0, 0, 0, 0, src->w, src->h);
+	return ret;
+}

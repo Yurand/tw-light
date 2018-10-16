@@ -386,6 +386,9 @@
     <ClInclude Include="src\datafiles\gen_victoryditty.h">
       <Filter>Source Files\datafiles</Filter>
     </ClInclude>
+    <ClInclude Include="src\datafiles\gen_scpgui.h">
+      <Filter>Source Files\datafiles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\doxygen.cpp">
@@ -1508,6 +1511,9 @@
       <Filter>Source Files\ships</Filter>
     </ClCompile>
     <ClCompile Include="src\datafiles\gen_victoryditty.c">
+      <Filter>Source Files\datafiles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\datafiles\gen_scpgui.c">
       <Filter>Source Files\datafiles</Filter>
     </ClCompile>
   </ItemGroup>
