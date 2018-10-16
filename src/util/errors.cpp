@@ -11,6 +11,8 @@
 
 #include "other/dialogs.h"
 
+int tw_stacktrace_enabled = 0;
+
 static DIALOG *tw_alert_dialogs[5] =
 {
 	tw_alert_dialog1,
@@ -241,15 +243,21 @@ UserStackTraceHelper::UserStackTraceHelper( SOURCE_LINE* srcline)
 	#ifdef DEBUG
 	//  debug_log(GetStackNodeString(srcline).c_str());
 	#endif
-	call_stack.push(srcline);
+        if (tw_stacktrace_enabled) {
+		call_stack.push(srcline);
+		added = true;
+	} else {
+		added = false;
+	}
 }
 
 
 UserStackTraceHelper::~UserStackTraceHelper()
 {
-	call_stack.pop();
+	if (added) {
+		call_stack.pop();
+	}
 }
-
 
 std::string UserStackTraceHelper::GetStackNodeString(SOURCE_LINE* stNode)
 {

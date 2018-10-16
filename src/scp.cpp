@@ -535,8 +535,14 @@ int tw_main(int argc, char *argv[]);
 #ifndef UNITTEST
 int main(int argc, char *argv[])
 {
-	STACKTRACE;
 	int r;
+	tw_stacktrace_enabled = 1;
+	for (int i = 1; i < argc; i += 1) {
+		if (strcmp(argv[i], "-disable-stacktrace") == 0) {
+			tw_stacktrace_enabled = 0;
+			break;
+		}
+	}
 	r = tw_main(argc, argv);
 	return r;
 }

@@ -29,6 +29,8 @@ void tw_error_exit(const char* message) ;
 
 #include "get_time.h"
 
+extern int tw_stacktrace_enabled;
+
 struct SOURCE_LINE
 {
 	int line;					 // __LINE__
@@ -45,6 +47,7 @@ class UserStackTraceHelper
 {
 	static std::stack<SOURCE_LINE*> call_stack;
 	static std::string GetStackNodeString(SOURCE_LINE* stNode);
+	bool added;
 	public:
 		UserStackTraceHelper( SOURCE_LINE* srcline);
 		~UserStackTraceHelper();
