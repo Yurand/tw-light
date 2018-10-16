@@ -117,7 +117,7 @@ int SefyNautilus::activate_weapon()
 	double  angles[N] = { -0.1, 0.1 };
 
 	for ( int i = 0; i < N; ++i ) {
-		game->add(new Laser(this, get_angle()+angles[i], pallete_color[weaponColor],
+		game->add(new Laser(this, get_angle()+angles[i], palette_color[weaponColor],
 								 // synching=true
 			weaponRange, weaponDamage, weaponFrames, this, Laserpositions[i], true ));
 	}
@@ -298,7 +298,7 @@ void Hook::calculate()
 								 // *1E+3 because from now we do calculations in seconds instead of ms.
 			ropenode[Nnodes].vel = (ship->vel + ejvel * unit_vector(ship->angle)) * 1E+3;
 								 // changes color every 4 pieces ?
-			ropenode[Nnodes].col = pallete_color[11 + (Nnodes/4) % 3];
+			ropenode[Nnodes].col = palette_color[11 + (Nnodes/4) % 3];
 			dL = ropeseglen;
 								 // relaxed length of the segment between nodes i and i-1.
 			ropenode[Nnodes].dL = dL;

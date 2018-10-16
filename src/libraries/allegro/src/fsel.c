@@ -852,12 +852,12 @@ int file_select_ex(AL_CONST char *message, char *path, AL_CONST char *ext, int s
    if (!backup)
       return FALSE;
 
-   if (width == OLD_FILESEL_WIDTH)
+   if (width == -1)
       width = 305;
 
    #ifdef FSEL_HAVE_DIR_LIST
 
-      if (height == OLD_FILESEL_HEIGHT)
+      if (height == -1)
          height = 161;
 
    #else

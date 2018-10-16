@@ -181,8 +181,8 @@ void RaalrithMenacer::calculate()
 
 	if (int((double(phase)/100)*30) != int((double(phaseOld)/100)*30)) {
 		BITMAP *bmp = spritePanel->get_bitmap(0);
-		rectfill(bmp, 15, 14, 48, 15, pallete_color[0]);
-		rectfill(bmp, 15, 14, int(14 + (double(phase)/100)*30), 15, pallete_color[9]);
+		rectfill(bmp, 15, 14, 48, 15, palette_color[0]);
+		rectfill(bmp, 15, 14, int(14 + (double(phase)/100)*30), 15, palette_color[9]);
 		phaseOld = phase;
 		ship->update_panel = TRUE;
 	}

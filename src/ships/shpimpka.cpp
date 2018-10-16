@@ -123,12 +123,12 @@ int ImperialKatana::activate_weapon(){
 
   if( (int)(HOT_COLORS * (1.0 - rate)) == 0 ){
     /* if we are close to blowing up, let the laser be white */
-    game->add( new ImperialBlade(this, angle, pallete_color[15],
+    game->add( new ImperialBlade(this, angle, palette_color[15],
       weaponRange, damage, weapon_rate, this, 0.0, 25.0, true ));
   }else{
     /* otherwise let it be a shade of red or yellow, as defined in the hot_color array */
     game->add( new ImperialBlade(this, angle,
-      pallete_color[hot_color[(int)(HOT_COLORS*(1.0 - rate)) - 1]],
+		palette_color[hot_color[(int)(HOT_COLORS*(1.0 - rate)) - 1]],
       weaponRange, damage, weapon_rate, this, 0.0, 25.0, true ));
   }
   return TRUE;
@@ -263,11 +263,11 @@ void ImperialKatana::animate(Frame *space){
 
   if( (int)(HOT_COLORS*(1.0-(double)batt/(double)batt_max)) == 0 ){
     /* if we are close to blowing up, let the glow be white */
-    data->spriteWeapon->animate_character( pos, sprite_index, pallete_color[15], space );
+    data->spriteWeapon->animate_character( pos, sprite_index, palette_color[15], space );
   }else{
     /* otherwise let it be a shade of red or yellow, as defined in the hot_color array */
     data->spriteWeapon->animate_character( pos, sprite_index,
-    pallete_color[hot_color[(int)(HOT_COLORS*(1.0-(double)batt/(double)batt_max))-1]],
+		palette_color[hot_color[(int)(HOT_COLORS*(1.0-(double)batt/(double)batt_max))-1]],
     space );
   }
 

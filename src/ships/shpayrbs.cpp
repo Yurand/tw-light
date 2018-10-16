@@ -581,12 +581,12 @@ int AyronBS::activate_weapon()
 	// a big laser ?
 	if (ayronparts[0] && ayronparts[0]->hascrew())
 		add(new Laser(this, angle,
-			pallete_color[weaponColor], weaponRange, weaponDamage, weapon_rate,
+			palette_color[weaponColor], weaponRange, weaponDamage, weapon_rate,
 			this, Vector2(-dx, dy), true));
 
 	if (ayronparts[Nx-1] && ayronparts[Nx-1]->hascrew())
 		add(new Laser(this, angle,
-			pallete_color[weaponColor], weaponRange, weaponDamage, weapon_rate,
+			palette_color[weaponColor], weaponRange, weaponDamage, weapon_rate,
 			this, Vector2(dx, dy), true));
 
 	return true;

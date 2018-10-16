@@ -182,7 +182,7 @@ int AlcheroKronos::activate_weapon()
 {
 	STACKTRACE;
 	if ( !weaponObject ) {
-		weaponObject = new AlcheroLaser( this, angle, pallete_color[ALCHERO_TRACE_START_INDEX], weaponDamage,
+		weaponObject = new AlcheroLaser( this, angle, palette_color[ALCHERO_TRACE_START_INDEX], weaponDamage,
 			weaponRate, this, 0, 0.5*size.y, weaponDeccel, weaponMinSpeed, weaponVelocity, weaponGrowth,
 			weaponMinLength, weaponsparkNfactor );
 		game->add( weaponObject );
@@ -509,7 +509,7 @@ void AlcheroLaser::calculate()
 
 AlcheroLaserTrace::AlcheroLaserTrace( SpaceLocation *creator, double langle,
 int lcolor, double lrange, int orate ):
-Laser( creator, langle, pallete_color[lcolor], lrange, 0, 1000, creator, 0, true ),
+Laser( creator, langle, palette_color[lcolor], lrange, 0, 1000, creator, 0, true ),
 step( 0 ), rate( orate ), color_index( lcolor )
 {
 	STACKTRACE;
@@ -526,7 +526,7 @@ void AlcheroLaserTrace::calculate()
 		step += rate;
 		color_index++;
 		if ( color_index >= ALCHERO_TRACE_END_INDEX ) state = 0;
-		color = pallete_color[color_index];
+		color = palette_color[color_index];
 	}
 	step -= frame_time;
 

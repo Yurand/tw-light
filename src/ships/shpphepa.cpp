@@ -102,7 +102,7 @@ int PhedarPatrolShip::activate_weapon()
 {
 	STACKTRACE;
 
-	game->add(new Laser(this, get_angle(), pallete_color[weaponColor],
+	game->add(new Laser(this, get_angle(), palette_color[weaponColor],
 								 // synching=true
 		weaponRange, weaponDamage, weaponFrames, this, Vector2(0, 0.5*get_size().y), true ));
 	return TRUE;

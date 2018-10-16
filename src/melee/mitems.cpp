@@ -214,13 +214,13 @@ void WedgeIndicator::animate(Frame *space)
 	a2 = PI + atan(tmp-p2);
 	ix = int(tmp.x);
 	iy = int(tmp.y);
-	line(space->surface, ix, iy, int(ix+cos(a2)*length), int(iy+sin(a2)*length), pallete_color[color]);
+	line(space->surface, ix, iy, int(ix+cos(a2)*length), int(iy+sin(a2)*length), palette_color[color]);
 	space->add_line  ( ix, iy, int(ix+cos(a2)*length), int(iy+sin(a2)*length));
 	tmp = p + unit_vector(a-PI*.15) * length;
 	a2 = PI + atan(tmp-p2);
 	ix = int(tmp.x);
 	iy = int(tmp.y);
-	line(space->surface, ix, iy, int(ix+cos(a2)*length), int(iy+sin(a2)*length), pallete_color[color]);
+	line(space->surface, ix, iy, int(ix+cos(a2)*length), int(iy+sin(a2)*length), palette_color[color]);
 	space->add_line  ( ix, iy, int(ix+cos(a2)*length), int(iy+sin(a2)*length));
 	return;
 }

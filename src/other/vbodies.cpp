@@ -554,7 +554,7 @@ bool VGroundDefenseLaser::BattleAction()
 	if (o) r = this->location->trajectory_angle(o); else r = this->location->angle;
 	//RelLoc = unit_vector(r) * scale_range(2); //fudge for now.
 	RelLoc.x = 0; RelLoc.y = 0;
-	game->add(new Laser(this->location, r, pallete_color[weaponColor],
+	game->add(new Laser(this->location, r, palette_color[weaponColor],
 		weaponRange, weaponDamage, weaponFrames, this->location, RelLoc));
 	return(true);
 }

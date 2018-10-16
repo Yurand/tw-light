@@ -107,7 +107,7 @@ int EarthlingCruiser2::activate_special()
 	bit(LAYER_CBODIES), specialRange); q.current; q.next()) {
 		o = q.currento;
 		if (!o->isInvisible() && !o->sameTeam(this) && (o->collide_flag_anyone&bit(LAYER_LINES))) {
-			SpaceLocation *l = new PointLaser(this, pallete_color[specialColor], 1,
+			SpaceLocation *l = new PointLaser(this, palette_color[specialColor], 1,
 				specialFrames, this, o, Vector2(0.0,0.0));
 			add(l);
 			if (l->exists()) {

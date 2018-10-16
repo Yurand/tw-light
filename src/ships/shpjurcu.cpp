@@ -75,12 +75,12 @@ int JurgathaCutter::activate_weapon()
 	STACKTRACE;
 	int random_number = random()%10;
 
-	game->add(new Laser(this, angle, pallete_color[weaponColor], weaponRange,
+	game->add(new Laser(this, angle, palette_color[weaponColor], weaponRange,
 		weaponDamage, weapon_rate, this, Vector2(-(double)(random_number), 2.0), true));
 
 	random_number = random()%10;
 
-	game->add(new Laser(this, angle, pallete_color[weaponColor], weaponRange,
+	game->add(new Laser(this, angle, palette_color[weaponColor], weaponRange,
 		weaponDamage, weapon_rate, this, Vector2((double)(random_number), 2.0), true));
 
 	return(TRUE);

@@ -585,7 +585,7 @@ void ShipPanelBmp::animate_panel()
 			(int)(((double)(CAPTAIN_HEIGHT) - h) / 2.0),
 			(int)((double)(CAPTAIN_WIDTH) - (((double)(CAPTAIN_WIDTH) - w) / 2.0)),
 			(int)((double)(CAPTAIN_HEIGHT) - (((double)(CAPTAIN_HEIGHT) - h) / 2.0)),
-			pallete_color[128 - (7 * deathframe / PANEL_DEATH_FRAMES)]);
+			palette_color[128 - (7 * deathframe / PANEL_DEATH_FRAMES)]);
 		blit (captain, panel, 0, 0, CAPTAIN_X, CAPTAIN_Y, captain->w, captain->h);
 		return;
 	}

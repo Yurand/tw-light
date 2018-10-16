@@ -90,7 +90,7 @@ void ZRadar::animate(Frame *space)
 
 	//Copy the blank slate onto the temporary bitmap Painted
 	if (Blank) blit(Blank, Painted, 0,0,0,0,Blank->w, Blank->h);
-	else clear(Painted);
+	else clear_bitmap(Painted);
 
 	if (t!=NULL) {
 		SpaceLocation *l = t->get_focus();

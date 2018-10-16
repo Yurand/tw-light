@@ -421,10 +421,10 @@ void ArilouTrapper::animate(Frame *space)
 {
 	STACKTRACE;
 	if ((cloak_frame > 0) && (cloak_frame < 300))
-		sprite->animate_character( pos, sprite_index, pallete_color[cloak_color[(int)(cloak_frame / 100)]], space);
+		sprite->animate_character( pos, sprite_index, palette_color[cloak_color[(int)(cloak_frame / 100)]], space);
 	else
 	if ((cloak_frame >= 300))
-		sprite->animate_character( pos, sprite_index, pallete_color[0], space);
+		sprite->animate_character( pos, sprite_index, palette_color[0], space);
 	else
 		Ship::animate(space);
 }

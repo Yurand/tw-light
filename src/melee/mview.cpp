@@ -504,11 +504,12 @@ void message_type::animate(Frame *frame)
 
 	int x = 0, y = 0, tmp;
 	BITMAP *bmp;
+	int bg = 0;
 	if (frame) {
-		text_mode(-1);
+		bg = -1;
 		bmp = frame->surface;
 	} else {
-		text_mode(0);
+		bg = 0;
 		videosystem.window.lock();
 		bmp = videosystem.window.surface;
 	}
@@ -516,7 +517,7 @@ void message_type::animate(Frame *frame)
 	if (!frame)
 		rectfill(bmp, 0, 0, ox, oy, 0);
 	for (std::list<entry_type>::iterator i = messages.begin(); i != messages.end(); i++) {
-		textprintf(bmp, font, 0, y, (*i).color, "%s", (*i).msg.c_str());
+		textprintf_ex(bmp, font, 0, y, (*i).color, bg, "%s", (*i).msg.c_str());
 		tmp = text_length(font, (*i).msg.c_str());
 		if (x < tmp)
 			x = tmp;

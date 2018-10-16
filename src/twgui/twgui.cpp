@@ -104,9 +104,8 @@ void TextButton::subanimate()
 	xcentre = iround(size.x / 2);
 	ycentre = iround(size.y / 2 - text_height(usefont)/2);
 
-	text_mode(-1);
 	if (text)
-		textout_centre(drawarea, usefont, text, xcentre, ycentre, text_color);
+		textout_centre_ex(drawarea, usefont, text, xcentre, ycentre, text_color, -1);
 }
 
 
@@ -352,18 +351,19 @@ void TextList::subanimate()
 		iy = Htxt * (i - scroll.y);
 
 		int c;
+		int bg;
 
 		if ( i != scroll.yselect ) {
-			text_mode(-1);
+			bg = -1;
 			c = text_color;
 		} else {
-			text_mode( makecol(0,0,0) );
+			bg = makecol(0, 0, 0);
 			//c = makecol(255,255,255);
 			c = text_color;
 		}
 
 		if (optionlist[i])		 // && strlen(optionlist[i]) < 20)
-			textout(drawarea, usefont, optionlist[i], ix, iy, c);
+			textout_ex(drawarea, usefont, optionlist[i], ix, iy, c, bg);
 	}
 
 }
@@ -451,8 +451,6 @@ void TextInfoArea::subanimate()
 {
 	STACKTRACE;
 
-	text_mode(-1);
-
 	int i;
 	for ( i = 0; i < textinfo->Nshow; ++i ) {
 		int iline;
@@ -488,10 +486,8 @@ void TextInfoArea::subanimate()
 			if (txt[k] < 20 || (unsigned char)txt[k] > 128 )
 				txt[k] = ' ';
 		}
-
-		textout(drawarea, usefont, txt, 0, (iline - scroll.yselect)*textinfo->Htxt, text_color);
+		textout_ex(drawarea, usefont, txt, 0, (iline - scroll.yselect)*textinfo->Htxt, text_color, -1);
 	}
-
 }
 
 
@@ -776,9 +772,6 @@ void TextEditBox::subanimate()
 	STACKTRACE;
 
 	//	TextInfoArea::subanimate();
-
-	text_mode(-1);
-
 	int i;
 	for ( i = 0; i < textinfo->Nshow; ++i ) {
 		int iline;
@@ -815,7 +808,7 @@ void TextEditBox::subanimate()
 				txt[k] = ' ';
 		}
 
-		textout(drawarea, usefont, txt, 0, (iline - scroll.y)*textinfo->Htxt, text_color);
+		textout_ex(drawarea, usefont, txt, 0, (iline - scroll.y)*textinfo->Htxt, text_color, -1);
 	}
 
 	// draw a line at "charpos" ...

@@ -267,9 +267,9 @@ void showLoadingScreen()
 			w, h);
 	}
 	const char * loadString = "Loading...";
-	textout_right(window->surface, font, loadString,
+	textout_right_ex(window->surface, font, loadString,
 		window->surface->w - 1*text_length(font, loadString), window->surface->h - 4*text_height(font),
-		palette_color[15]);
+		palette_color[15], -1);
 	window->unlock();
 }
 
@@ -795,9 +795,9 @@ void showTitle(VideoWindow *window)
 		tw_error("Title picture and screen format don't match");
 	}
 	blit(g_titlePic, window->surface, 0, 0, window->x, window->y, g_titlePic->w, g_titlePic->h);
-	textout_right(screen, font, tw_version(),
+	textout_right_ex(screen, font, tw_version(),
 		screen->w, screen->h - text_height(font),
-		palette_color[15]);
+		palette_color[15], -1);
 	window->unlock();
 	return;
 }
@@ -1148,13 +1148,13 @@ void edit_fleet(int player)
 
 			case FLEET_DIALOG_SAVE_BUTTON:
 				sprintf(path, "fleets/");
-				if (file_select("Save Fleet", path, "scf")) fleet->save(path, "Fleet");
+				if (file_select_ex("Save Fleet", path, "scf", 1024, -1, -1)) fleet->save(path, "Fleet");
 				showTitle();
 				break;
 
 			case FLEET_DIALOG_LOAD_BUTTON:
 				sprintf(path, "fleets/");
-				if (file_select("Load Fleet", path, "scf")) fleet->load(path, "Fleet");
+				if (file_select_ex("Load Fleet", path, "scf", 1024, -1, -1)) fleet->load(path, "Fleet");
 				sprintf(title_str, fleet->getTitle());
 				sprintf(fleetTitleString, "%s\n%d points", fleet->getTitle(), fleet->getCost());
 				showTitle();
@@ -1324,7 +1324,7 @@ int scp_fleet_dialog_text_list_proc(int msg, DIALOG* d, int c) {
 
 		//TODO decide if these next 3 lines should be here
 		scare_mouse();
-		SEND_MESSAGE(&fleetDialog[FLEET_DIALOG_SHIP_PICTURE_BITMAP], MSG_DRAW, 0);
+		object_message(&fleetDialog[FLEET_DIALOG_SHIP_PICTURE_BITMAP], MSG_DRAW, 0);
 		unscare_mouse();
 	}
 	return ret;
@@ -1413,7 +1413,7 @@ void ship_view_dialog(int si, Fleet *fleet)
 					if (!f) {
 						sprintf(textFile, "Failed to load file \"%s\"", type->text);
 					} else {
-						unsigned long textFileSize = file_size(type->text);
+						unsigned long textFileSize = file_size_ex(type->text);
 						if (textFileSize > MAX_SHIP_TEXT_FILE_SIZE)
 							textFileSize = MAX_SHIP_TEXT_FILE_SIZE;
 						i = pack_fread(textFile, textFileSize, f);
@@ -1431,7 +1431,7 @@ void ship_view_dialog(int si, Fleet *fleet)
 						inifile = (char*) malloc(strlen("Failed to load file \"\"") + strlen(type->file) + 1);
 						sprintf(inifile, "Failed to load file \"%s\"", type->file);
 					} else {
-						unsigned long iniFileSize = file_size(type->file);
+						unsigned long iniFileSize = file_size_ex(type->file);
 						inifile = (char*) malloc(iniFileSize +1 );
 						i = pack_fread(inifile, iniFileSize, f);
 						pack_fclose(f);
@@ -1587,8 +1587,8 @@ void keyjamming_tester()
 	scare_mouse();
 	videosystem.window.lock();
 	clear_to_color(videosystem.window.surface, 0);
-	textprintf(screen, font, 40, 20, palette_color[15], "Press the keys combinations you wish to test");
-	textprintf(screen, font, 40, 40, palette_color[15], "When you're finished, press ESCAPE or F10");
+	textprintf_ex(screen, font, 40, 20, palette_color[15], -1, "Press the keys combinations you wish to test");
+	textprintf_ex(screen, font, 40, 40, palette_color[15], -1, "When you're finished, press ESCAPE or F10");
 	videosystem.window.unlock();
 	unscare_mouse();
 
@@ -1597,8 +1597,8 @@ void keyjamming_tester()
 			scare_mouse();
 			videosystem.window.lock();
 			clear_to_color(videosystem.window.surface, 0);
-			textprintf(screen, font, 40, 20, palette_color[15], "Press the keys combinations you wish to test");
-			textprintf(screen, font, 40, 40, palette_color[15], "When you're finished, press ESCAPE or F10");
+			textprintf_ex(screen, font, 40, 20, palette_color[15], -1, "Press the keys combinations you wish to test");
+			textprintf_ex(screen, font, 40, 40, palette_color[15], -1, "When you're finished, press ESCAPE or F10");
 			videosystem.window.unlock();
 			unscare_mouse();
 		}
@@ -1610,7 +1610,7 @@ void keyjamming_tester()
 				key_to_description(i, blah);
 				scare_mouse();
 				acquire_screen();
-				textprintf(screen, font, 50, 60+j*20, palette_color[15], "%s", blah);
+				textprintf_ex(screen, font, 50, 60+j*20, palette_color[15], -1, "%s", blah);
 				release_screen();
 				unscare_mouse();
 				j += 1;

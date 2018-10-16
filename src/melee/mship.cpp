@@ -350,12 +350,12 @@ control(NULL)
 	spritePanel  = new SpaceSprite(*(data->spritePanel));
 	if (captain_name[0]) {
 		spritePanel->lock();
-		text_mode(-1);
-		textprintf_centre(
+		textprintf_centre_ex(
 			spritePanel->get_bitmap(0),
 			videosystem.get_font(1),
 			30, 51,
-			pallete_color[0],
+			palette_color[0],
+			-1,
 			captain_name
 			);
 		spritePanel->unlock();
@@ -918,7 +918,7 @@ void Phaser::animate(Frame *space)
 {
 	STACKTRACE;
 	sprite->animate_character(pos,
-		sprite_index, pallete_color[colors[color_index]], space);
+		sprite_index, palette_color[colors[color_index]], space);
 	return;
 }
 

@@ -72,7 +72,7 @@ int NeoDrain::activate_special()
 	STACKTRACE;
 
 	add(new LaserDrain(this, angle,
-		pallete_color[specialColor], specialRange, specialDamage, special_rate,
+		palette_color[specialColor], specialRange, specialDamage, special_rate,
 		this, Vector2(-10,42), true));
 
 	return TRUE;

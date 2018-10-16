@@ -314,7 +314,7 @@ void OlidandeeHabitat::calculate()
 
 		angle = trajectory_angle(o);
 		add(new Laser(this, angle,
-			pallete_color[mother->laserColor], mother->laserRange, mother->laserDamage,
+			palette_color[mother->laserColor], mother->laserRange, mother->laserDamage,
 			iround(t_laser * 1E3), this, Vector2(0,15), false));
 		//		Laser::Laser(SpaceLocation *creator, double langle, int lcolor, double lrange, double ldamage,
 		//  int lfcount, SpaceLocation *opos, Vector2 rpos, bool osinc_angle)

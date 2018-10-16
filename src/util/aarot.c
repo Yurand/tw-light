@@ -75,8 +75,8 @@ fixed _scalex, fixed _scaley, int _mode)
 	/* Width and height of source and destination.  */
 	sw = _src->w;
 	sh = _src->h;
-	fdw = fmul (ABS (_scalex), itofix (sw));
-	fdh = fmul (ABS (_scaley), itofix (sh));
+	fdw = fixmul (ABS (_scalex), itofix (sw));
+	fdh = fixmul (ABS (_scaley), itofix (sh));
 	dw = fixtoi (fdw);
 	dh = fixtoi (fdh);
 	if ((dw <= 0) || (dh <= 0))
@@ -89,14 +89,14 @@ fixed _scalex, fixed _scaley, int _mode)
 	fx0 = itofix (_x);
 	fy0 = itofix (_y);
 
-	fsinangle = fsin (_angle);
-	fcosangle = fcos (_angle);
+	fsinangle = fixsin (_angle);
+	fcosangle = fixcos (_angle);
 
 	/* Map source (half) edges onto destination.  */
-	fux = fmul (fdw, fcosangle);
-	fuy = fmul (fdw, fsinangle);
-	fvx = -fmul (fdh, fsinangle);
-	fvy = fmul (fdh, fcosangle);
+	fux = fixmul (fdw, fcosangle);
+	fuy = fixmul (fdw, fsinangle);
+	fvx = -fixmul (fdh, fsinangle);
+	fvy = fixmul (fdh, fcosangle);
 
 	/* Coordinates of corners in destination.  */
 	point[0].dx = fixtoi (fx0 - fux - fvx);

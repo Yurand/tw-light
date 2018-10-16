@@ -43,7 +43,7 @@ int LkSanctorum::activate_weapon() {
 
 void LkSanctorum::animate(Frame *space) {
   if (special_recharge > 0) {
-		sprite->animate_character(pos, sprite_index, pallete_color[hot_color[((int)(special_recharge/10)) % HOT_COLORS]], space);
+		sprite->animate_character(pos, sprite_index, palette_color[hot_color[((int)(special_recharge/10)) % HOT_COLORS]], space);
 		}
   else sprite->animate( pos, sprite_index, space);
 	return;

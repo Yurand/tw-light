@@ -837,7 +837,7 @@ void Hook2::calculate()
 								 // *1E+3 because from now we do calculations in seconds instead of ms.
 			ropenode[Nnodes].vel = (ship->vel + ejvel * unit_vector(ship->angle)) * 1E+3;
 								 // changes color every 4 pieces ?
-			ropenode[Nnodes].col = pallete_color[11 + (Nnodes/4) % 3];
+			ropenode[Nnodes].col = palette_color[11 + (Nnodes/4) % 3];
 			dL = ropeseglen;
 								 // relaxed length of the segment between nodes i and i-1.
 			ropenode[Nnodes].dL = dL;

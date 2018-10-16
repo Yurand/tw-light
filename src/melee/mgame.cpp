@@ -272,7 +272,7 @@ void Game::redraw()
 	if (!window->surface) return;
 	scare_mouse();
 	window->lock();
-	rectfill(window->surface, window->x, window->y, window->x+window->w-1, window->y+window->h-1, pallete_color[8]);
+	rectfill(window->surface, window->x, window->y, window->x+window->w-1, window->y+window->h-1, palette_color[8]);
 	FULL_REDRAW += 1;
 	view->refresh();
 	view->animate(this);
@@ -1046,8 +1046,6 @@ void Game::init(Log *_log)
 
 	if (!is_paused()) pause();
 
-	text_mode(-1);
-
 	tw_set_config_file(client_ini.c_str());
 	msecs_per_fps = get_config_int("View", "FPS_Time", 200);
 	msecs_per_render = (int)(1000. / get_config_float("View", "MinimumFrameRate", 10) + 0.5);
@@ -1230,7 +1228,7 @@ void Game::save_screenshot()
 		}
 	}
 
-	if (file_select("Save screen shot", path, "BMP;PCX;TGA")) {
+	if (file_select_ex("Save screen shot", path, "BMP;PCX;TGA", 1024, -1, -1)) {
 		BITMAP *bmp;
 		PALETTE pal;
 		get_palette(pal);

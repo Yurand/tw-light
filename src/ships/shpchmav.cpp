@@ -115,7 +115,7 @@ void ChmmrAvatar::materialize()
 ChmmrLaser::ChmmrLaser(double langle, double lrange, int ldamage,
 int lfcount, SpaceLocation *opos, Vector2 rel_pos)
 :
-Laser(opos, langle, pallete_color[hot_color[random() % HOT_COLORS]], lrange,
+Laser(opos, langle, palette_color[hot_color[random() % HOT_COLORS]], lrange,
 ldamage, lfcount, opos, rel_pos, true)
 {
 	STACKTRACE;
@@ -193,7 +193,7 @@ void ChmmrBeam::animate(Frame *space)
 	for(i = 3; i >= 0 ; i--)
 		target->get_sprite()->animate_character(
 			target->normal_pos() + (i+1) * unit_vector(trajectory_angle(target) - PI) * length,
-			target->get_sprite_index(), pallete_color[beam_color[i]], space);
+			target->get_sprite_index(), palette_color[beam_color[i]], space);
 
 }
 
@@ -264,7 +264,7 @@ void ChmmrZapSat::calculate()
 	Query q;
 	for (q.begin(this, OBJECT_LAYERS &~ bit(LAYER_CBODIES), lRange); q.currento; q.next()) {
 		if (!q.currento->isInvisible() && !q.currento->sameTeam(this) && (q.currento->collide_flag_anyone&bit(LAYER_LINES))) {
-			add(new PointLaser(this, pallete_color[lColor], 1, lFrames,
+			add(new PointLaser(this, palette_color[lColor], 1, lFrames,
 				this, q.currento, Vector2(0.0, 0.0) ));
 			sound.play((SAMPLE *)(melee[MELEE_BOOM + 0].dat));
 			lRecharge += lRechargeRate;

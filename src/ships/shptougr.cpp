@@ -77,11 +77,11 @@ int ToUl::activate_special()
 	L = specialRange * (0.1 + 0.9 * sin(PI2 * lasertime / laserperiod));
 
 	add(new Laser(this, angle + PI/2,
-		pallete_color[specialColor], L, specialDamage, special_rate,
+		palette_color[specialColor], L, specialDamage, special_rate,
 		this, Vector2(30.0, 0.0), true));
 
 	add(new Laser(this, angle - PI/2,
-		pallete_color[specialColor], L, specialDamage, special_rate,
+		palette_color[specialColor], L, specialDamage, special_rate,
 		this, Vector2(-30.0, 0.0), true));
 
 	return TRUE;

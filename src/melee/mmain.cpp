@@ -500,7 +500,7 @@ void NormalGame::choose_new_ships()
 		// CHECK FILE SIZES !! to intercept desynch before they happen.
 		int myfsize, otherfsize;
 
-		myfsize = file_size(s->type->data->file);
+		myfsize = file_size_ex(s->type->data->file);
 		otherfsize = myfsize;
 		if (player_control[i]->channel != channel_none) {
 			log_int(player_control[i]->channel, otherfsize);

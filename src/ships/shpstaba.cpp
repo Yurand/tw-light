@@ -110,7 +110,7 @@ int StarBase::activate_special()
 	bit(LAYER_CBODIES), specialRange); a.current; a.next()) {
 		o = a.currento;
 		if ( (!o->isInvisible()) && !o->sameTeam(this) && (o->collide_flag_anyone & bit(LAYER_LINES))) {
-			SpaceLocation *l = new PointLaser(this, pallete_color[specialColor], 1,
+			SpaceLocation *l = new PointLaser(this, palette_color[specialColor], 1,
 				specialFrames, this, o, Vector2(0.0, 10.0));
 			game->add(l);
 			if (l->exists()) {
@@ -140,7 +140,7 @@ void StarBase::calculate()
 			if (batt<HealCost) continue;
 			if (o->crew==o->crew_max) continue;
 			batt-=HealCost;
-			SpaceLocation *l = new PointLaser(this, pallete_color[HealColor], -1,
+			SpaceLocation *l = new PointLaser(this, palette_color[HealColor], -1,
 				specialFrames, this, o, Vector2(0.0, 10.0));
 			game->add(l);
 			if (l->exists()) {

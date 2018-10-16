@@ -476,7 +476,6 @@ void _draw_listbox2(DIALOG *d)
 	int fg_color, fg, bg;
 	char *sel = (char*) d->dp2;
 	char s[1024];
-	int rtm;
 
 	(*(getfuncptr2)d->dp)(-1, &listsize, (char**) d->dp3);
 	height = (d->h-4) / text_height(font);
@@ -502,7 +501,6 @@ void _draw_listbox2(DIALOG *d)
 			ustrncat(s, (*(getfuncptr2)d->dp)(i+d->d2, NULL, (char**)d->dp3), sizeof(s)-ucwidth(0));
 			x = d->x + 2;
 			y = d->y + 2 + i*text_height(font);
-			rtm = text_mode(bg);
 			rectfill(screen, x, y, x+7, y+text_height(font)-1, bg);
 			x += 8;
 			len = ustrlen(s);
@@ -510,8 +508,7 @@ void _draw_listbox2(DIALOG *d)
 				len--;
 				usetat(s, len, 0);
 			}
-			textout(screen, font, s, x, y, fg);
-			text_mode(rtm);
+			textout_ex(screen, font, s, x, y, fg, bg);
 			x += text_length(font, s);
 			if (x <= d->x+w)
 				rectfill(screen, x, y, d->x+w, y+text_height(font)-1, bg);
@@ -576,7 +573,7 @@ int d_list_proc2(int msg, DIALOG *d, int c)
 					}
 					if (redraw) {
 						scare_mouse();
-						SEND_MESSAGE(d, MSG_DRAW, 0);
+						object_message(d, MSG_DRAW, 0);
 						unscare_mouse();
 					}
 				}
@@ -600,7 +597,7 @@ int d_list_proc2(int msg, DIALOG *d, int c)
 				if (d->flags & D_EXIT) {
 					if (listsize) {
 						i = d->d1;
-						SEND_MESSAGE(d, MSG_CLICK, 0);
+						object_message(d, MSG_CLICK, 0);
 						if (i == d->d1)
 							return D_CLOSE;
 					}
@@ -620,7 +617,7 @@ int d_list_proc2(int msg, DIALOG *d, int c)
 				if (i != d->d2) {
 					d->d2 = i;
 					scare_mouse();
-					SEND_MESSAGE(d, MSG_DRAW, 0);
+					object_message(d, MSG_DRAW, 0);
 					unscare_mouse();
 				}
 			}

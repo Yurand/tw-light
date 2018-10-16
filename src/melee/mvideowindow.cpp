@@ -53,7 +53,9 @@ void VideoWindow::lock ( )
 					lock_data[i].w = 0;
 					lock_data[i].h = 0;
 				}*/
-		set_clip(surface, x, y, x+w-1, y+h-1);
+//		set_clip(surface, x, y, x+w-1, y+h-1);
+		set_clip_rect(surface, x, y, x + w - 1, y + h - 1);
+		set_clip_state(surface, TRUE);
 		acquire_bitmap(surface);
 	}
 }
@@ -76,7 +78,9 @@ void VideoWindow::unlock ( )
 		}*/
 	if (lock_level == 0) {
 		release_bitmap(surface);
-		set_clip(surface, 0, 0, surface->w-1, surface->h-1);
+		set_clip_rect(surface, 0, 0, surface->w - 1, surface->h - 1);
+		set_clip_state(surface, TRUE);
+		//set_clip(surface, 0, 0, surface->w-1, surface->h-1);
 	}
 }
 

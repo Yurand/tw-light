@@ -160,7 +160,7 @@ void show_file(const char *file)
 		else
 			tw_error("Memory error");
 	} else {
-		i = file_size(file);
+		i = file_size_ex(file);
 		willy = (char*)malloc(i+1);
 		if (willy) {
 			i = pack_fread(willy, i, f);

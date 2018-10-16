@@ -160,11 +160,11 @@ void QuarKathWraith::animate(Frame *space)
 	STACKTRACE;
 	if ((cloak_frame > 0) && (cloak_frame < 300))
 		sprite->animate_character( pos,
-			sprite_index, pallete_color[cloak_color[(int)(cloak_frame / 100)]], space);
+			sprite_index, palette_color[cloak_color[(int)(cloak_frame / 100)]], space);
 	else
 	if ((cloak_frame >= 300))
 		sprite->animate_character( pos,
-				sprite_index, pallete_color[0], space);
+				sprite_index, palette_color[0], space);
 	else
 		Ship::animate(space);
 }
@@ -236,9 +236,9 @@ void QuarKathIllusion::animate(Frame *space)
 	STACKTRACE;
 	if (!cloak)
 		sprite->animate_character( pos,
-			sprite_index, pallete_color[cloak_color[(int)(cloak_frame / 100)]], space);
+			sprite_index, palette_color[cloak_color[(int)(cloak_frame / 100)]], space);
 	else    sprite->animate_character( pos,
-			sprite_index, pallete_color[0], space);
+			sprite_index, palette_color[0], space);
 }
 
 
@@ -279,7 +279,7 @@ int QuarKathIllusion::canCollide(SpaceLocation *other)
 QuarKathLightning::QuarKathLightning(Ship *lship, SpaceLocation *lroot,
 SpaceLocation *ltarget, int llevel, int b_length, int r_length,
 int r_angle, int oaiming, int odispersion) :
-Laser(lship, 0, pallete_color[15], 0.0, 1, 300, lroot, Vector2(0.0, 0.0)),
+Laser(lship, 0, palette_color[15], 0.0, 1, 300, lroot, Vector2(0.0, 0.0)),
 level(llevel), target(ltarget), ship(lship),
 aiming(oaiming), dispersion(odispersion)
 {
@@ -297,7 +297,7 @@ aiming(oaiming), dispersion(odispersion)
 		pos += ((QuarKathLightning *)(lpos))->edge();
 	}
 	angle += (random(r_angle*2+1)) - r_angle;
-	color = pallete_color[179 - level * 2 - (random(8))];
+	color = palette_color[179 - level * 2 - (random(8))];
 	if (level) add(new QuarKathLightning(ship, this, target, level-1, b_length,
 			r_length, r_angle, iround(aiming), iround(dispersion)));
 }

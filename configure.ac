@@ -20,6 +20,7 @@ if test "x$have_cxx" = "xno"; then
 fi
 
 PKG_CHECK_MODULES(allegro, [allegro >= 4.0])
+allegro_CFLAGS="$allegro_CFLAGS -DALLEGRO_NO_COMPATIBILITY"
 AC_SUBST(allegro_CFLAGS)
 AC_SUBST(allegro_LIBS)
 

@@ -33,8 +33,6 @@ FONT_COLOR_DATA* font_upgrade_to_color_data(FONT_MONO_DATA* mf)
 	cf->bitmaps = bits;
 	cf->next = 0;
 
-	text_mode(-1);
-
 	for(i = mf->begin; i < mf->end; i++) {
 		FONT_GLYPH* g = mf->glyphs[i - mf->begin];
 		BITMAP* b = create_bitmap_ex(8, g->w, g->h);

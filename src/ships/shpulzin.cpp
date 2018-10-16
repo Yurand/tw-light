@@ -320,19 +320,19 @@ void UlzrakInterceptor::DrawZoomLines(void)
 		angleMod = 0;
 	else
 		angleMod = PI;
-	L = new Laser(this, this->angle + angleMod, pallete_color[7], scale_range(2), 0, 5,
+	L = new Laser(this, this->angle + angleMod, palette_color[7], scale_range(2), 0, 5,
 		this, Vector2(0,0), true);
 	game->add(L);
-	L = new Laser(this, this->angle + angleMod, pallete_color[7], scale_range(1.5), 0, 5,
+	L = new Laser(this, this->angle + angleMod, palette_color[7], scale_range(1.5), 0, 5,
 		this, Vector2(size.x * 0.125, 0), true);
 	game->add(L);
-	L = new Laser(this, this->angle + angleMod, pallete_color[7], scale_range(1.5), 0, 5,
+	L = new Laser(this, this->angle + angleMod, palette_color[7], scale_range(1.5), 0, 5,
 		this, Vector2(-size.x * 0.125, 0), true);
 	game->add(L);
-	L = new Laser(this, this->angle + angleMod, pallete_color[7], scale_range(1), 0, 5,
+	L = new Laser(this, this->angle + angleMod, palette_color[7], scale_range(1), 0, 5,
 		this, Vector2(size.x * 0.275, 0), true);
 	game->add(L);
-	L = new Laser(this, this->angle + angleMod, pallete_color[7], scale_range(1), 0, 5,
+	L = new Laser(this, this->angle + angleMod, palette_color[7], scale_range(1), 0, 5,
 		this, Vector2(-size.x * 0.275, 0), true);
 	game->add(L);
 

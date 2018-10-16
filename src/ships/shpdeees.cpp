@@ -59,7 +59,7 @@ class DeepSpaceEssence : public Ship
 		virtual void calculate_hotspots();
 								 //grey
 		virtual int  crewPanelColor() {
-			return pallete_color[8];
+			return palette_color[8];
 		}
 };
 

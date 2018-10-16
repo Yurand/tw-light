@@ -145,7 +145,7 @@ LassoMissile::LassoMissile(Vector2 opos, double oangle,
 }
 
 LassoLaser::LassoLaser(LassoMissile *oLeft, LassoMissile* oRight,Ship *oship) :
-  Laser(oship, (oLeft->trajectory_angle(oRight)+0),pallete_color[4],
+  Laser(oship, (oLeft->trajectory_angle(oRight)+0), palette_color[4],
   (oLeft->distance(oRight)),0,500,oLeft,Vector2(4,15))
 {
   collide_flag_sameship = bit(LAYER_SHIPS) | bit(LAYER_SHOTS);

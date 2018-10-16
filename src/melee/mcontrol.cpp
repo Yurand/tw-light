@@ -196,7 +196,7 @@ int my_list_proc( int msg, DIALOG* d, int c )
 		if ( selectDialog[SELECT_DIALOG_PIC].dp ) destroy_bitmap( (BITMAP*)selectDialog[SELECT_DIALOG_PIC].dp );
 		selectDialog[SELECT_DIALOG_PIC].dp = panel;
 		scare_mouse();
-		SEND_MESSAGE( &selectDialog[SELECT_DIALOG_PIC], MSG_DRAW, 0 );
+		object_message( &selectDialog[SELECT_DIALOG_PIC], MSG_DRAW, 0 );
 		unscare_mouse();
 	}
 	return ret;
@@ -463,5 +463,5 @@ void Control::animate(Frame *space)
 
 	int i = target_sign_color;
 	int col = target_sign_color;
-	animate_target(space, target, (i%3)*2-2, ((i/3)%3)*2-2, 140 + i, pallete_color[col]);
+	animate_target(space, target, (i%3)*2-2, ((i/3)%3)*2-2, 140 + i, palette_color[col]);
 }

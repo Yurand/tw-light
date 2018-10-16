@@ -18,8 +18,6 @@ GNU General Public License for more details.
 #define __MELEE_H__
 
 #include <stdlib.h>
-#include <math.h>
-
 #include <list>
 
 #include <allegro.h>

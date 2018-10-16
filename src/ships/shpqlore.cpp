@@ -62,7 +62,7 @@ int QlonRedeemer::activate_weapon()
 	bit(LAYER_CBODIES), weaponRange); a.current; a.next()) {
 		o = a.currento;
 		if ( (!o->isInvisible()) && !o->sameTeam(this) && (o->collide_flag_anyone & bit(LAYER_LINES))) {
-			SpaceLocation *l = new PointLaser(this, pallete_color[weaponColor], 1,
+			SpaceLocation *l = new PointLaser(this, palette_color[weaponColor], 1,
 				weaponFrames, this, o, Vector2(0.0, 10.0));
 			add(l);
 			if (l->exists()) fire = TRUE;
