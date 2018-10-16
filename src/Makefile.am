@@ -6,6 +6,7 @@ SUBDIRS = libraries ships
 bin_PROGRAMS = tw-light
 
 SRCS = \
+games/gastroid.cpp \
 games/gdefender.cpp \
 games/gflmelee.cpp \
 games/gflmelee.h \
