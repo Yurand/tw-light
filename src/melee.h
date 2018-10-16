@@ -33,10 +33,6 @@ GNU General Public License for more details.
 #endif
 #define PI2 (PI*2)
 
-#ifndef MAXINT
-#define MAXINT 0x7FFFFFFF
-#endif
-
 #define PLATFORM_IS_ALLEGRO
 
 #ifdef PLATFORM_IS_ALLEGRO
