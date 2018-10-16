@@ -514,14 +514,7 @@ data/shpzfpst.txt \
 data/stars.dat \
 data/version.txt \
 data/victoryditty.dat \
-data/vobject.ini \
-data/scpgui/logo.bmp \
-data/scpgui/menuaccept.wav \
-data/scpgui/menudisabled.wav \
-data/scpgui/menufocus.wav \
-data/scpgui/menuspecial.wav \
-data/scpgui/scptitle.bmp \
-data/scpgui/titlemusic.wav
+data/vobject.ini
 
 gamedatadir=$(datadir)/tw-light
 gamedata_DATA = $(GAMEDATA)
