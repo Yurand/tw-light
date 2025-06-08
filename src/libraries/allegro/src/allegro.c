@@ -16,7 +16,6 @@
  */
 
 
-#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -747,18 +746,19 @@ static void sys_none_exit(void) { }
 static _DRIVER_INFO no_drivers[] = {{ 0, NULL, 0 }};
 static _DRIVER_INFO *sys_no_driver(void) { return no_drivers; }
 
+
 SYSTEM_DRIVER system_none =
 {
-	SYSTEM_NONE,
-	empty_string,
-	empty_string,
-	"Agnostic",
-	sys_none_init,
-	sys_none_exit,
-	NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-	NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-	NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-	sys_no_driver, sys_no_driver, sys_no_driver, sys_no_driver,
-	sys_no_driver, sys_no_driver, sys_no_driver
+   SYSTEM_NONE,
+   empty_string,
+   empty_string,
+   "Agnostic",
+   sys_none_init,
+   sys_none_exit,
+   NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+   NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+   NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+   sys_no_driver, sys_no_driver, sys_no_driver, sys_no_driver,
+   sys_no_driver, sys_no_driver, sys_no_driver
 };
 

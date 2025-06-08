@@ -3684,6 +3684,8 @@ static void close_callback(void)
    simulate_keypress(27 + (KEY_ESC << 8));
 }
 
+
+
 int main(int argc, char *argv[])
 { 
    extern DATEDIT_OBJECT_INFO datfile_info;
