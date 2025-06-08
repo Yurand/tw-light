@@ -104,11 +104,10 @@ class GobGame : public Game
 		virtual void play_sound (SAMPLE *sample, SpaceLocation *source, int vol = 256, int freq = 1000);
 		virtual double get_max_viewable_area ( const Presence *loc ) const;
 
-		int gobplayers;
-		GobPlayer **gobplayer;
+		std::list<GobPlayer*> gobplayers;
 		virtual void add_gobplayer(Control *control);
 		virtual GobPlayer *get_player(SpaceLocation *what);
-		int max_enemies;
+		unsigned int max_enemies;
 		std::list<GobEnemy *> gobenemies;
 		virtual GobEnemy* get_gob_enemy(SpaceLocation *what);
 

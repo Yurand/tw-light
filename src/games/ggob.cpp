@@ -76,8 +76,8 @@ void GobDelayedGameActionEndGame::action(void)
 
 	int i = 0;
 	bool all_player_died = true;
-	for (i = 0; i < gobgame->gobplayers; i += 1) {
-		if (gobgame->gobplayer[i]->ship && gobgame->gobplayer[i]->ship->exists()) {
+	for (std::list<GobPlayer*>::iterator it = gobgame->gobplayers.begin(); it != gobgame->gobplayers.end(); ++it) {
+		if ((*it)->ship && (*it)->ship->exists()) {
 			all_player_died = false;
 			break;
 		}
@@ -85,15 +85,16 @@ void GobDelayedGameActionEndGame::action(void)
 	if (all_player_died) {
 		gobgame->quit(NULL);
 	}
-	for (i = 0; i < gobgame->gobplayers; i += 1) {
-		if (!gobgame->is_local(gobgame->gobplayer[i]->channel))
+
+	for (std::list<GobPlayer*>::iterator it = gobgame->gobplayers.begin(); it != gobgame->gobplayers.end(); ++it) {
+		if (!gobgame->is_local((*it)->channel))
 			continue;
 		sprintf(buffer,
 			"                Game Over\n\nSurvived:          %5d seconds\nEnemy killed:      %5d ships\nStarbucks earned:  %5d\nBuckazoids earned: %5d",
 			game->game_time / 1000,
-			gobgame->gobplayer[i]->kills,
-			gobgame->gobplayer[i]->total_starbucks_earned,
-			gobgame->gobplayer[i]->total_buckazoids_earned);
+			(*it)->kills,
+			(*it)->total_starbucks_earned,
+			(*it)->total_buckazoids_earned);
 		tw_alert(buffer, "OK");
 	}
 }
@@ -139,8 +140,9 @@ void GobPlanet::calculate ()
 		o = a.currento;
 		if (o->mass > 0) {
 			bool roswell = false;
-			for (int i = 0; i < gobgame->gobplayers; i++) {
-				if (o->ship == gobgame->gobplayer[i]->ship && gobgame->gobplayer[i]->upgrade_list[UpgradeIndex::roswelldevice]->num)
+
+			for (std::list<GobPlayer*>::iterator it = gobgame->gobplayers.begin(); it != gobgame->gobplayers.end(); ++it) {
+				if ((*it)->ship == o->ship && (*it)->upgrade_list[UpgradeIndex::roswelldevice]->num)
 					roswell = true;
 			}
 			if (roswell) continue;
@@ -166,8 +168,8 @@ void GobPlanet::inflict_damage(SpaceObject *other)
 {
 	STACKTRACE;
 	bool roswell = false;
-	for (int i = 0; i < gobgame->gobplayers; i++) {
-		if (other->ship == gobgame->gobplayer[i]->ship && gobgame->gobplayer[i]->upgrade_list[UpgradeIndex::roswelldevice]->num)
+	for (std::list<GobPlayer*>::iterator it = gobgame->gobplayers.begin(); it != gobgame->gobplayers.end(); ++it) {
+		if ((*it)->ship == other->ship && (*it)->upgrade_list[UpgradeIndex::roswelldevice]->num)
 			roswell = true;
 	}
 	if (roswell) return;
@@ -179,8 +181,6 @@ void GobGame::preinit()
 {
 	Game::preinit();
 
-	gobplayers = 0;
-	gobplayer = NULL;
 	max_enemies = 0;
 	gobenemies.clear();
 
@@ -198,13 +198,10 @@ void GobGame::preinit()
 void GobGame::add_gobplayer(Control *control)
 {
 	STACKTRACE;
-	int i = gobplayers;
-	gobplayers += 1;
-	gobplayer = (GobPlayer**) realloc(gobplayer, sizeof(GobPlayer*) * gobplayers);
-	gobplayer[i] = new GobPlayer();
-	gobplayer[i]->init(control, new_team());
+	GobPlayer * gobplayer = new GobPlayer();
+	gobplayers.push_back(gobplayer);
+	gobplayer->init(control, new_team());
 	add_focus(control, control->channel);
-	return;
 }
 
 
@@ -336,10 +333,10 @@ void GobGame::init(Log *_log)
 		char buffy[256];
 		sprintf(buffy, "Config%d", i);
 		add_gobplayer(create_control(channel_server, "Human", buffy));
-		gobplayer[i]->new_ship(shiptype("supbl"));
-		gobplayer[i]->starbucks = starting_starbucks+0;
-		gobplayer[i]->buckazoids = starting_buckazoids+0;
-		Ship *s = gobplayer[i]->ship;
+		gobplayers.back()->new_ship(shiptype("supbl"));
+		gobplayers.back()->starbucks = starting_starbucks+0;
+		gobplayers.back()->buckazoids = starting_buckazoids+0;
+		Ship *s = gobplayers.back()->ship;
 		s->translate(size/2-s->normal_pos());
 		double angle = PI2 * i / (client_players + server_players);
 		s->translate(rotate(Vector2(260, 120), angle));
@@ -349,17 +346,19 @@ void GobGame::init(Log *_log)
 		char buffy[256];
 		sprintf(buffy, "Config%d", i - server_players);
 		add_gobplayer(create_control(channel_client, "Human", buffy));
-		gobplayer[i]->new_ship(shiptype("supbl"));
-		gobplayer[i]->starbucks = starting_starbucks;
-		gobplayer[i]->buckazoids = starting_buckazoids;
-		Ship *s = gobplayer[i]->ship;
+		gobplayers.back()->new_ship(shiptype("supbl"));
+		gobplayers.back()->starbucks = starting_starbucks;
+		gobplayers.back()->buckazoids = starting_buckazoids;
+		Ship *s = gobplayers.back()->ship;
 		s->translate(size/2-s->normal_pos());
 		double angle = PI2 * i / (client_players + server_players);
 		s->translate(rotate(Vector2(260, 120), angle));
 		s->accelerate(s, PI2/3 + angle, 0.17, MAX_SPEED);
 	}
 
-	for (i = 0; i < gobplayers+0; i += 1) add ( new RainbowRift() );
+	for (unsigned int i = 0; i < gobplayers.size(); i += 1) {
+		add(new RainbowRift());
+	}
 
 	next_add_new_enemy_time = 1000;
 	this->change_view("Hero");
@@ -387,11 +386,11 @@ GobGame::~GobGame()
 	delete stationSprite[1];
 	delete stationSprite[2];
 	delete defenderSprite;
-	int i;
-	for (i = 0; i < gobplayers; i += 1) {
-		delete gobplayer[i];
+
+	for (std::list<GobPlayer*>::iterator it = gobplayers.begin(); it != gobplayers.end(); ++it) {
+		delete *it;
 	}
-	free(gobplayer);
+	gobplayers.clear();
 
 	for (std::list<GobEnemy*>::iterator it = gobenemies.begin(); it != gobenemies.end(); ++it) {
 		delete *it;
@@ -435,31 +434,33 @@ void GobGame::fps()
 	message.print(msecs_per_fps, 15, "time: %d", game_time / 1000);
 
 	int i = 0;
-	for (i = 0; i < gobplayers; i += 1) {
-		if (!is_local(gobplayer[i]->channel)) continue;
+	for(std::list<GobPlayer*>::iterator it = gobplayers.begin(); it != gobplayers.end(); ++it) {
+		if (!is_local((*it)->channel))
+			continue;
 
-		if (gobplayer[i]->ship) {
+		if ((*it)->ship) {
 			message.print(msecs_per_fps, 15-i, "coordinates: %d x %d",
-				iround(gobplayer[i]->ship->normal_pos().x),
-				iround(gobplayer[i]->ship->normal_pos().y));
+				iround((*it)->ship->normal_pos().x),
+				iround((*it)->ship->normal_pos().y));
 		}
-		message.print(msecs_per_fps, 15-i, "starbucks: %d", gobplayer[i]->starbucks);
-		message.print(msecs_per_fps, 15-i, "buckazoids: %d", gobplayer[i]->buckazoids);
-		message.print(msecs_per_fps, 15-i, "kills: %d", gobplayer[i]->kills);
+		message.print(msecs_per_fps, 15-i, "starbucks: %d", (*it)->starbucks);
+		message.print(msecs_per_fps, 15-i, "buckazoids: %d", (*it)->buckazoids);
+		message.print(msecs_per_fps, 15-i, "kills: %d", (*it)->kills);
 		//		message.print(msecs_per_fps, 15-i, "debug: %d", debug_value);
+		i += 1;
 	}
-	return;
 }
 
 
 double GobGame::get_max_viewable_area ( const Presence *loc ) const
 {
 	STACKTRACE;
-	for (int i = 0; i < gobplayers; i++) {
-		if (gobplayer[i]->control == loc) {
-			int n = gobplayer[i]->upgrade_list[UpgradeIndex::sensor]->num;
-			if (!gobplayer[i]->ship) return 65536. * 65536.;
-			if (strcmp(gobplayer[i]->ship->type->id, "supbl")) n += 1;
+
+	for (std::list<GobPlayer*>::const_iterator it = gobplayers.begin(); it != gobplayers.end(); ++it) {
+		if ((*it)->control == loc) {
+			int n = (*it)->upgrade_list[UpgradeIndex::sensor]->num;
+			if (!(*it)->ship) return 65536. * 65536.;
+			if (strcmp((*it)->ship->type->id, "supbl")) n += 1;
 			double area = (2048. + 512 * n) * (1536. + 384 * n);
 			return area;
 		}
@@ -514,9 +515,11 @@ void GobGame::ship_died(Ship *who, SpaceLocation *source)
 GobPlayer *GobGame::get_player(SpaceLocation *what)
 {
 	STACKTRACE;
-	int i;
-	for (i = 0; i < gobplayers; i += 1) {
-		if (what->get_team() == gobplayer[i]->team) return gobplayer[i];
+
+	for (std::list<GobPlayer*>::iterator it = gobplayers.begin(); it != gobplayers.end(); ++it) {
+		if ((*it)->team == what->get_team()) {
+			return *it;
+		}
 	}
 	return NULL;
 }
