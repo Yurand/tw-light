@@ -14,16 +14,14 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
-#ifndef _MELEE_H
-#include "../melee.h"
-#endif
-#ifndef _MFRAME_H
-#include "../melee/mframe.h"
-#endif
-#ifndef _MGAME_H
-#include "../melee/mgame.h"
-#endif
+#ifndef __GGOB_H__
+#define __GGOB_H__
 
+#include <list>
+
+#include "../melee.h"
+#include "../melee/mframe.h"
+#include "../melee/mgame.h"
 #include "../melee/mitems.h"
 
 class Upgrade;
@@ -110,9 +108,9 @@ class GobGame : public Game
 		GobPlayer **gobplayer;
 		virtual void add_gobplayer(Control *control);
 		virtual GobPlayer *get_player(SpaceLocation *what);
-		int gobenemies, max_enemies;
-		GobEnemy **gobenemy;
-		virtual int get_enemy_index(SpaceLocation *what);
+		int max_enemies;
+		std::list<GobEnemy *> gobenemies;
+		virtual GobEnemy* get_gob_enemy(SpaceLocation *what);
 
 		//	protected:
 		virtual void fps ();
@@ -180,3 +178,5 @@ class RainbowRift : public SpaceLocation
 		virtual void calculate () ;
 		void squiggle();
 };
+
+#endif

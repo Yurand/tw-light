@@ -181,9 +181,8 @@ void GobGame::preinit()
 
 	gobplayers = 0;
 	gobplayer = NULL;
-	gobenemies = 0;
 	max_enemies = 0;
-	gobenemy = NULL;
+	gobenemies.clear();
 
 	int i;
 	for (i = 0; i < 3; i += 1)
@@ -268,7 +267,6 @@ void GobGame::init(Log *_log)
 	int starting_starbucks, starting_buckazoids;
 	starting_starbucks = get_config_int("Gob", "StartingStarbucks", 0);
 	starting_buckazoids = get_config_int("Gob", "StartingBuckazoids", 0);
-	gobenemy = (GobEnemy**) malloc(sizeof(GobEnemy*) * max_enemies);
 
 	size = Vector2(24000, 24000);
 
@@ -394,11 +392,11 @@ GobGame::~GobGame()
 		delete gobplayer[i];
 	}
 	free(gobplayer);
-	for (i = 0; i < gobenemies; i += 1) {
-		delete gobenemy[i];
+
+	for (std::list<GobEnemy*>::iterator it = gobenemies.begin(); it != gobenemies.end(); ++it) {
+		delete *it;
 	}
-	free(gobenemy);
-	return;
+	gobenemies.clear();
 }
 
 
@@ -433,7 +431,7 @@ void GobGame::fps()
 	STACKTRACE;
 	Game::fps();
 
-	message.print(msecs_per_fps, 15, "enemies: %d", gobenemies);
+	message.print(msecs_per_fps, 15, "enemies: %d", gobenemies.size());
 	message.print(msecs_per_fps, 15, "time: %d", game_time / 1000);
 
 	int i = 0;
@@ -477,28 +475,25 @@ void GobGame::calculate()
 	if (next_add_new_enemy_time <= game_time) {
 		next_add_new_enemy_time = game_time;
 		if ((random() & 255) < 35) add_new_enemy();
-		double e = gobenemies;
+		double e = gobenemies.size();
 		e -= pow(game_time / (320. * 1000), 0.75);
 		if (e < 0) e = 0;
 		e = pow(e, 1.25);
 		next_add_new_enemy_time += iround((random(1.0) + random(1.0) + 1.0) * 250 * (e + 2));
 	}
 	Game::calculate();
-	return;
 }
 
-
-int GobGame::get_enemy_index(SpaceLocation *what)
+GobEnemy* GobGame::get_gob_enemy(SpaceLocation *what)
 {
-	int i;
-	Ship *s = what->ship;
-	if (!s) return -1;
-	for (i = 0; i < gobenemies; i += 1) {
-		if (gobenemy[i]->ship == s) return i;
+	STACKTRACE;
+	for (std::list<GobEnemy*>::iterator it = gobenemies.begin(); it != gobenemies.end(); ++it) {
+		if ((*it)->ship == what->ship) {
+			return *it;
+		}
 	}
-	return -1;
+	return NULL;
 }
-
 
 void GobGame::ship_died(Ship *who, SpaceLocation *source)
 {
@@ -508,18 +503,11 @@ void GobGame::ship_died(Ship *who, SpaceLocation *source)
 	if (p && (p->ship == who)) { //Player died
 		p->died(source);
 	}
-	int i = get_enemy_index(who);
-	if ((i != -1) && (gobenemy[i]->ship == who)) {
-		GobEnemy *e = gobenemy[i];
-		e->died(source);
-		gobenemies -= 1;
-		GobEnemy *tmp = gobenemy[gobenemies];
-		gobenemy[i] = tmp;
-		p = get_player(source);
+	GobEnemy* ge = get_gob_enemy(who);
+	if (ge) {
+		ge->died(source);
 	}
-
 	Game::ship_died(who, source);
-	return;
 }
 
 
@@ -744,11 +732,11 @@ void GobGame::add_new_enemy()
 			"kzedr", "earcr", "chmav",
 			"yehte"
 			};*/
-	if (gobenemies == max_enemies) return;
+	if (gobenemies.size() >= max_enemies) {
+		return;
+	}
 	GobEnemy *ge = new GobEnemy();
-	gobenemy[gobenemies] = ge;
-	gobenemies += 1;
-	int e = pick_enemy_type(game_time/1000, gobenemies, num_enemy_types);
+	int e = pick_enemy_type(game_time/1000, gobenemies.size(), num_enemy_types);
 	bool buff = e >= num_enemy_types;
 	if (buff) e %= num_enemy_types;
 	Ship *ship = create_ship(channel_server, enemy_types[e].code, "WussieBot", random(size), random(PI2), enemy_team);
@@ -847,7 +835,7 @@ void GobGame::add_new_enemy()
 	}
 	ge->init(ship, enemy_types[e].starbucks * (buff ? 2 : 1), enemy_types[e].buckazoids * (buff ? 2 : 1));
 	add(ship->get_ship_phaser());
-	//add(ship);
+	gobenemies.push_back(ge);
 	return;
 }
 
@@ -873,7 +861,6 @@ void GobEnemy::died(SpaceLocation *what)
 		p->total_buckazoids_earned += buckazoids;
 		p->kills += 1;
 	}
-	return;
 }
 
 
@@ -903,7 +890,9 @@ void GobPlayer::init(Control *c, TeamCode team)
 	total = 0;
 	this->team = team;
 	int i, j;
-	for (i = 0; ::upgrade_list[i]; i += 1) ::upgrade_list[i]->index = i;
+	for (i = 0; ::upgrade_list[i]; i += 1) {
+		::upgrade_list[i]->index = i;
+	}
 	upgrade_list = new Upgrade*[i+1];
 	upgrade_list[i] = NULL;
 	for (j = 0; j < i; j += 1) {
