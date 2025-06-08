@@ -122,7 +122,6 @@ void VideoWindow::add_callback( BaseClass *callee )
 
 void VideoWindow::remove_callback( BaseClass *callee )
 {
-	STACKTRACE;
 	callback_list.remove(callee);
 	return;
 }
@@ -262,7 +261,6 @@ void VideoWindow::locate ( double x1, double x2, double y1, double y2, double w1
 
 void VideoWindow::deinit()
 {
-	STACKTRACE;
 	if (lock_level) {tw_error("VideoWindow - illegal while locked");}
 	if (parent) {
 		parent->remove_callback( this );
