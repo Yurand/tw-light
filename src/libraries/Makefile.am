@@ -356,6 +356,7 @@ allegro/src/linux/lvga.c \
 allegro/src/linux/lvgahelp.c \
 allegro/src/linux/svgalib.c \
 allegro/src/linux/svgalibs.s \
+allegro/src/linux/tslib.c \
 allegro/src/linux/vtswitch.c \
 allegro/src/mac/allegro.r \
 allegro/src/mac/madb.c \
