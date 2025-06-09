@@ -1,6 +1,6 @@
 /*
 This file is part of "TW-Light"
-					https://tw-light.appspot.com/
+					https://tw-light.xyz
 Copyright (C) 2001-2018 TimeWarp development team
 Copyright (C) 2008  Yury Siamashka <yurand2@gmail.com>
 
