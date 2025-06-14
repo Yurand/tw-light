@@ -213,8 +213,7 @@ int Control::choose_ship(VideoWindow *window, char * prompt, Fleet *fleet)
 
 	slot = -1;
 	while (!always_random) {
-		while (key[KEY_ENTER] || key[KEY_SPACE]) poll_keyboard();
-
+		while (keypressed()) readkey();
 		ret = tw_do_dialog(window, selectDialog, SELECT_DIALOG_LIST);
 		if (ret == SELECT_DIALOG_INFO) {
 			ship_view_dialog(
