@@ -41,23 +41,12 @@ REGISTER_FILE
 
 int total_presences;
 
-#define DEATH_FRAMES 4
+#define DEATH_FRAMES 8
 //setting this too low will cause crashes
 //setting it too high will waste CPU power and RAM
 //the recommended value is 4
 
-#define QUADS_X 8
-#define QUADS_Y 8
-//setting these too high waste CPU power & RAM in in small games
-//setting these too low can waste CPU power in large games
-
-#define QUADS_TOTAL (QUADS_X * QUADS_Y)
-#define QUAD_X (map_size.x / QUADS_X)
-#define QUAD_Y (map_size.y / QUADS_Y)
-#define QUADI_X (1.0 / QUAD_X)
-#define QUADI_Y (1.0 / QUAD_Y)
 //don't fuck with these
-
 Physics *physics = NULL;
 Game *&game = (Game *&) physics;
 NormalGame *&normalgame = (NormalGame *&) physics;
@@ -72,364 +61,72 @@ double MAX_SPEED = 0;
 
 void Query::begin (SpaceLocation *qtarget, int qlayers, double qrange)
 {
-	STACKTRACE
-		if (qrange < 0) {tw_error("Query::begin - negative range");}
-	layers = qlayers;
-	range_sqr = qrange * qrange;
-	target = qtarget;
-	current = NULL;
-	target_pos = target->normal_pos();
-	if ((qrange < map_size.x/2.5) && (qrange < map_size.y/2.5)) {
-		qx_min = (int)floor((target->normal_pos().x - qrange) * QUADI_X);
-		qx_max = (int)ceil ((target->normal_pos().x + qrange) * QUADI_X) + 1;
-		if (qx_min < 0) qx_min += QUADS_X;
-		if (qx_max >= QUADS_X) qx_max -= QUADS_X;
-		qy_min = (int)floor((target->normal_pos().y - qrange) * QUADI_Y);
-		qy_max = (int)ceil ((target->normal_pos().y + qrange) * QUADI_Y) + 1;
-		if (qy_min < 0) qy_min += QUADS_Y;
-		if (qy_max >= QUADS_Y) qy_max -= QUADS_Y;
-	} else {
-		qx_min = 0;
-		qx_max = 0;
-		qy_min = 0;
-		qy_max = 0;
-	}
-	qy = qy_min;
-	qx = qx_min;
-
-	int index = qy * QUADS_X + qx;
-	if (index < 0) {
-		//		tw_error("index was less than 0");
-		qx_min = 0;
-		qx_max = 0;
-		qy_min = 0;
-		qy_max = 0;
-		qy = qy_min;
-		qx = qx_min;
-		index = qy * QUADS_X + qx;
-	}
-	if (index >= physics->quadrant.size()) {
-		//		tw_error("index was too large");
-		qx_min = 0;
-		qx_max = 0;
-		qy_min = 0;
-		qy_max = 0;
-		qy = qy_min;
-		qx = qx_min;
-		index = qy * QUADS_X + qx;
-	}
-	current = physics->quadrant[index];
-	if (!current) next_quadrant();
-	if (!current) return;
-	if (current_invalid()) next();
-	return;
+	STACKTRACE;
+	begin(qtarget, qtarget->normal_pos(), qlayers, qrange);
 }
 
+bool  Query::validate(SpaceLocation* o)
+{
+	if (!o->exists()) {
+		return false;
+	}
+
+	if (!o->detectable()) {
+		return false;
+	}
+	if (!(bit(o->layer) & layers)) {
+		return false;
+	}
+
+	if (o == target) {
+		return false;
+	}
+
+	if ((magnitude_sqr(min_delta(target_pos, o->normal_pos())) > range_sqr)) {
+		return false;
+	}
+	return true;
+}
 
 void Query::begin (SpaceLocation *qtarget, Vector2 center, int qlayers, double qrange)
 {
 	STACKTRACE
-		layers = qlayers;
+	layers = qlayers;
 	range_sqr = qrange * qrange;
 	target = qtarget;
 	current = NULL;
 	target_pos = center;
-	if ((qrange < map_size.x/2.5) && (qrange < map_size.y/2.5)) {
-		qx_min = (int)floor((target_pos.x - qrange) * QUADI_X);
-		qx_max = (int)ceil ((target_pos.x + qrange) * QUADI_X) + 1;
-		if (qx_min < 0) qx_min += QUADS_X;
-		if (qx_max >= QUADS_X) qx_max -= QUADS_X;
-		qy_min = (int)floor((target_pos.y - qrange) * QUADI_Y);
-		qy_max = (int)ceil ((target_pos.y + qrange) * QUADI_Y) + 1;
-		if (qy_min < 0) qy_min += QUADS_Y;
-		if (qy_max >= QUADS_Y) qy_max -= QUADS_Y;
-	} else {
-		qx_min = 0;
-		qx_max = 0;
-		qy_min = 0;
-		qy_max = 0;
-	}
-	qy = qy_min;
-	qx = qx_min;
 
-	int index = qy * QUADS_X + qx;
-	if (index < 0) { 
-//		tw_error("index was less than 0");
-		qx_min = 0;
-		qx_max = 0;
-		qy_min = 0;
-		qy_max = 0;
-		qy = qy_min;
-		qx = qx_min;
-		index = qy * QUADS_X + qx;
-	}
-	if (index >= physics->quadrant.size()) {
-//		tw_error("index was too large");
-		qx_min = 0;
-		qx_max = 0;
-		qy_min = 0;
-		qy_max = 0;
-		qy = qy_min;
-		qx = qx_min;
-		index = qy * QUADS_X + qx;
-	}
-	current = physics->quadrant[index];
-	if (!current) next_quadrant();
-	if (!current) return;
-	if (current_invalid()) next();
-	return;
-}
-
-
-void Query::next_quadrant ()
-{
-	STACKTRACE
-
-		tail_recurse4:
-	qx += 1;
-	if (qx == QUADS_X) qx = 0;
-	if (qx == qx_max) {
-		qy += 1;
-		if (qy == QUADS_Y) qy = 0;
-		if (qy == qy_max) {
-			current = NULL;
-			qy -= 1;
-			qx -= 1;
-			return;
+	result.clear();
+	for (std::list<SpaceLocation*>::iterator it = physics->item.begin(); it != physics->item.end(); it++) {
+		if (validate(*it)) {
+			result.push_back(*it);
 		}
-		qx = qx_min;
 	}
-	int index = qy * QUADS_X + qx;
-	if (index < 0) {
-		//		tw_error("index was less than 0");
-		qx_min = 0;
-		qx_max = 0;
-		qy_min = 0;
-		qy_max = 0;
-		qy = qy_min;
-		qx = qx_min;
-		index = qy * QUADS_X + qx;
+	current_it = result.begin();
+	if (current_it == result.end()) {
+		current = NULL;
 	}
-	if (index >= physics->quadrant.size()) {
-		//		tw_error("index was too large");
-		qx_min = 0;
-		qx_max = 0;
-		qy_min = 0;
-		qy_max = 0;
-		qy = qy_min;
-		qx = qx_min;
-		index = qy * QUADS_X + qx;
+	else {
+		current = *current_it;
 	}
-	current = physics->quadrant[index];
-	if (!current) goto tail_recurse4;
-	return;
 }
-
 
 void Query::next ()
 {
-	STACKTRACE
-		tail_recurse3:
-	if (current == current->qnext) {tw_error ("Query::next - current = next");}
-	current = current->qnext;
-	if (!current) {
-		next_quadrant();
-		if (!current) return;
+	STACKTRACE;
+	current_it++;
+	if (current_it == result.end()) {
+		current = NULL;
+	} else {
+		current = *current_it;
 	}
-	if (current_invalid()) goto tail_recurse3;
-	return;
 }
-
 
 void Query::end()
 {
 	STACKTRACE
 }
-
-
-void Query2::begin (SpaceLocation *qtarget, Uint64 attribute_filter, double qrange)
-{
-	STACKTRACE;
-	if (qrange < 0) {tw_error("Query::begin - negative range");}
-	if (Uint32(attribute_filter) & ~Uint32(attribute_filter >> 32)) {
-		tw_error("incorrect Query attributes");
-	}
-	attributes_mask = attribute_filter >> 32;
-	attributes_desired = attribute_filter;
-	range_sqr = qrange * qrange;
-	target = qtarget;
-	current = NULL;
-	target_pos = target->normal_pos();
-	if ((qrange < map_size.x/2.5) && (qrange < map_size.y/2.5)) {
-		qx_min = (int)floor((target->normal_pos().x - qrange) * QUADI_X);
-		qx_max = (int)ceil ((target->normal_pos().x + qrange) * QUADI_X) + 1;
-		if (qx_min < 0) qx_min += QUADS_X;
-		if (qx_max >= QUADS_X) qx_max -= QUADS_X;
-		qy_min = (int)floor((target->normal_pos().y - qrange) * QUADI_Y);
-		qy_max = (int)ceil ((target->normal_pos().y + qrange) * QUADI_Y) + 1;
-		if (qy_min < 0) qy_min += QUADS_Y;
-		if (qy_max >= QUADS_Y) qy_max -= QUADS_Y;
-	} else {
-		qx_min = 0;
-		qx_max = 0;
-		qy_min = 0;
-		qy_max = 0;
-	}
-	qy = qy_min;
-	qx = qx_min;
-
-	int index = qy * QUADS_X + qx;
-	if (index < 0) {
-		//tw_error("index was less than 0");
-		qx_min = 0;
-		qx_max = 0;
-		qy_min = 0;
-		qy_max = 0;
-		qy = qy_min;
-		qx = qx_min;
-		index = qy * QUADS_X + qx;
-	}
-	if (index >= physics->quadrant.size()) {
-		//tw_error("index was too large");
-		qx_min = 0;
-		qx_max = 0;
-		qy_min = 0;
-		qy_max = 0;
-		qy = qy_min;
-		qx = qx_min;
-		index = qy * QUADS_X + qx;
-	}
-	current = physics->quadrant[index];
-	if (!current) next_quadrant();
-	if (!current) return;
-	if (current_invalid()) next();
-	return;
-}
-
-
-void Query2::begin (SpaceLocation *qtarget, Vector2 center, Uint64 attribute_filter, double qrange)
-{
-	STACKTRACE
-	if (Uint32(attribute_filter) & ~Uint32(attribute_filter >> 32)) {
-		tw_error("incorrect Query attributes");
-	}
-	attributes_mask = attribute_filter >> 32;
-	attributes_desired = attribute_filter;
-	range_sqr = qrange * qrange;
-	target = qtarget;
-	current = NULL;
-	target_pos = center;
-	if ((qrange < map_size.x/2.5) && (qrange < map_size.y/2.5)) {
-		qx_min = (int)floor((target_pos.x - qrange) * QUADI_X);
-		qx_max = (int)ceil ((target_pos.x + qrange) * QUADI_X) + 1;
-		if (qx_min < 0) qx_min += QUADS_X;
-		if (qx_max >= QUADS_X) qx_max -= QUADS_X;
-		qy_min = (int)floor((target_pos.y - qrange) * QUADI_Y);
-		qy_max = (int)ceil ((target_pos.y + qrange) * QUADI_Y) + 1;
-		if (qy_min < 0) qy_min += QUADS_Y;
-		if (qy_max >= QUADS_Y) qy_max -= QUADS_Y;
-	} else {
-		qx_min = 0;
-		qx_max = 0;
-		qy_min = 0;
-		qy_max = 0;
-	}
-	qy = qy_min;
-	qx = qx_min;
-
-	int index = qy * QUADS_X + qx;
-	if (index < 0) {
-		//tw_error("index was less than 0");
-		qx_min = 0;
-		qx_max = 0;
-		qy_min = 0;
-		qy_max = 0;
-		qy = qy_min;
-		qx = qx_min;
-		index = qy * QUADS_X + qx;
-	}
-	if (index >= physics->quadrant.size()) {
-		//tw_error("index was too large");
-		qx_min = 0;
-		qx_max = 0;
-		qy_min = 0;
-		qy_max = 0;
-		qy = qy_min;
-		qx = qx_min;
-		index = qy * QUADS_X + qx;
-	}
-	current = physics->quadrant[index];
-	if (!current) next_quadrant();
-	if (!current) return;
-	if (current_invalid()) next();
-	return;
-}
-
-
-void Query2::next_quadrant ()
-{
-	tail_recurse4:
-	qx += 1;
-	if (qx == QUADS_X) qx = 0;
-	if (qx == qx_max) {
-		qy += 1;
-		if (qy == QUADS_Y) qy = 0;
-		if (qy == qy_max) {
-			current = NULL;
-			qy -= 1;
-			qx -= 1;
-			return;
-		}
-		qx = qx_min;
-	}
-
-	int index = qy * QUADS_X + qx;
-	if (index < 0) {
-		//		tw_error("index was less than 0");
-		qx_min = 0;
-		qx_max = 0;
-		qy_min = 0;
-		qy_max = 0;
-		qy = qy_min;
-		qx = qx_min;
-		index = qy * QUADS_X + qx;
-	}
-	if (index >= physics->quadrant.size()) {
-		//		tw_error("index was too large");
-		qx_min = 0;
-		qx_max = 0;
-		qy_min = 0;
-		qy_max = 0;
-		qy = qy_min;
-		qx = qx_min;
-		index = qy * QUADS_X + qx;
-	}
-	current = physics->quadrant[index];
-	if (!current) goto tail_recurse4;
-	return;
-}
-
-
-void Query2::next ()
-{
-	STACKTRACE;
-	tail_recurse3:
-	if (current == current->qnext) {tw_error ("Query::next - current = next");}
-	current = current->qnext;
-	if (!current) {
-		next_quadrant();
-		if (!current) return;
-	}
-	if (current_invalid()) goto tail_recurse3;
-	return;
-}
-
-
-void Query2::end()
-{
-	STACKTRACE
-}
-
 
 Presence::Presence()
 {
@@ -870,6 +567,18 @@ void SpaceLocation::play_sound2 (SAMPLE *sample, int vol, int freq)
 	return;
 }
 
+int SpaceLocation::move_to(Vector2 abs_pos)
+{
+	STACKTRACE;
+	pos = normalize(abs_pos, map_size);
+	return true;
+}
+
+int SpaceLocation::move_to(double abs_x, double abs_y)
+{
+	STACKTRACE;
+	return move_to(Vector2(abs_x, abs_y));
+}
 
 int SpaceLocation::translate( Vector2 delta)
 {
@@ -878,6 +587,11 @@ int SpaceLocation::translate( Vector2 delta)
 	return true;
 }
 
+int SpaceLocation::translate(double rel_x, double rel_y)
+{
+	STACKTRACE;
+	return translate(Vector2(rel_x, rel_y));
+}
 
 int SpaceLocation::accelerate(SpaceLocation *source, double angle, double velocity, double max_speed)
 {
@@ -1260,7 +974,6 @@ Physics::~Physics()
 void Physics::preinit()
 {
 	STACKTRACE;
-	quadrant.clear();
 	item.clear();
 	presence.clear();
 	last_ship = 0;
@@ -1324,9 +1037,6 @@ void Physics::init()
 	frame_time = 25;
 	turbo = 1.0;
 	max_speed = 1.0;
-	for(i = 0; i < QUADS_TOTAL; i += 1) {
-		quadrant.push_back(NULL);
-	}
 	return;
 }
 
@@ -1341,17 +1051,6 @@ void Physics::add(SpaceLocation *o)
 	o->attributes |= ATTRIB_INGAME;
 
 	item.push_back(o);
-
-	if (o->detectable()) {
-		Vector2 n = o->normal_pos();
-		int q = int(n.x * QUADI_X) +
-			int(n.y * QUADI_Y) * QUADS_X;
-		if ((q < 0) || (q > QUADS_TOTAL)) {tw_error("bad quadrant");}
-		o->qnext = quadrant[q];
-		quadrant[q] = o;
-	}
-
-	return;
 }
 
 
@@ -1467,26 +1166,6 @@ void Physics::calculate()
 		}
 	}
 
-	//prepare quadrants stuff
-	{
-		_STACKTRACE("Physics::calculate() - quadrants stuff")
-		for(i = 0; i < QUADS_TOTAL; i += 1) {
-			quadrant[i] = NULL;
-		}
-		for(std::list<SpaceLocation*>::iterator i=item.begin();i!=item.end();i++) {
-			if ((*i)->exists() && (*i)->detectable()) {
-				Vector2 n = (*i)->normal_pos();
-				int q = iround_down(n.x * QUADI_X) +
-					iround_down(n.y * QUADI_Y) * QUADS_X;
-				if ((q < 0) || (q > QUADS_TOTAL)) {
-					tw_error("bad quadrant");
-				}
-				(*i)->qnext = quadrant[q];
-				quadrant[q] = *i;
-			}
-			else (*i)->qnext = NULL;
-		}
-	}
 
 	checksync();
 	//check for collisions
