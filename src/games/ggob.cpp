@@ -357,7 +357,8 @@ void GobGame::init(Log *_log)
 	}
 
 	for (unsigned int i = 0; i < gobplayers.size(); i += 1) {
-		add(new RainbowRift());
+		SpaceLocation* rift = new RainbowRift();
+		add(rift);
 	}
 
 	next_add_new_enemy_time = 1000;
@@ -666,10 +667,9 @@ void GobGame::add_new_enemy()
 		{						 //9
 			"mmrxf", 2, 0
 		},
-		/*		{						 //10
-					"lk_sa", 2, 0
-				},
-		*/
+		{						 //10
+			"andgu", 2, 0
+		},
 		{						 //11
 			"druma", 2, 1
 		},
@@ -682,10 +682,9 @@ void GobGame::add_new_enemy()
 		{						 //14
 			"yehte", 3, 2
 		},
-		/*		{						 //15
-					"herex", 3, 2
-				},
-		*/
+		{						 //15
+			"meltr", 3, 2
+		},
 		{						 //16
 			"narlu", 4, 2
 		},
@@ -698,10 +697,9 @@ void GobGame::add_new_enemy()
 		{						 //19
 			"chmav", 4, 2
 		},
-		/*		{						 //20
-					"plopl", 4, 2
-				},
-		*/
+		{						 //20
+			"earc3", 4, 2
+		},
 		{						 //21
 			"alabc", 4, 3
 		},
@@ -1493,10 +1491,26 @@ void RainbowRift::calculate()
 				STACKTRACE;
 				int i = 0;
 				gobgame->pause();
-				i = p->control->choose_ship(game->window, "You found the Rainbow Rift!\n(select your current ship type to hunt for resources instead of a new ship)", reference_fleet);
+
+				Fleet fleet = Fleet();
+				fleet.addShipType(shiptype("supbl"));
+				fleet.addShipType(shiptype("orzne"));
+				fleet.addShipType(shiptype("kohma"));
+				fleet.addShipType(shiptype("utwju"));
+				fleet.addShipType(shiptype("andgu"));
+				fleet.addShipType(shiptype("arisk"));
+				fleet.addShipType(shiptype("chebr"));
+				fleet.addShipType(shiptype("earcr"));
+				fleet.addShipType(shiptype("mycpo"));
+				fleet.addShipType(shiptype("kzedr"));
+				fleet.addShipType(shiptype("spael"));
+				fleet.addShipType(shiptype("syrpe"));
+				fleet.Sort();
+
+				i = p->control->choose_ship(game->window, "You found the Rainbow Rift!\n(select your current ship type to hunt for resources instead of a new ship)", &fleet);
 				game->log_int(p->channel, i);
-				if (i == -1) i = random(reference_fleet->getSize());
-				if (reference_fleet->getShipType(i) == p->ship->type) {
+				if (i == -1) i = random(fleet.getSize());
+				if (fleet.getShipType(i) == p->ship->type) {
 					times_found += 1;
 					p->starbucks += random((times_found+2) * 9);
 					p->buckazoids += random((times_found+2) * 6);
@@ -1506,7 +1520,7 @@ void RainbowRift::calculate()
 				else {
 					p->starbucks += random() % (1+p->value_starbucks);
 					p->buckazoids += random() % (1+p->value_buckazoids);
-					p->new_ship(reference_fleet->getShipType(i));
+					p->new_ship(fleet.getShipType(i));
 					pos = random(map_size);
 					gobgame->station[0]->station_screen(p);
 				}
