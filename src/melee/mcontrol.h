@@ -93,7 +93,7 @@ class Control : public Presence
 		virtual void _event ( Event *e );
 };
 
-extern char selectTitleString[100];
+extern char selectTitleString[512];
 
 int my_list_proc( int msg, DIALOG* d, int c );
 int my_bitmap_proc( int msg, DIALOG* d, int c );

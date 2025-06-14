@@ -143,9 +143,8 @@ SpaceLocation *Control::get_focus()
 
 
 char selectPlayer[18] = "";
-char selectTitleString[100] = "";
-
-char selectShipPrompt[100] = "";
+char selectTitleString[512] = "";
+char selectShipPrompt[512] = "";
 
 int my_bitmap_proc( int msg, DIALOG* d, int c )
 {
