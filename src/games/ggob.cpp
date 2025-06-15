@@ -447,6 +447,18 @@ void GobGame::fps()
 		message.print(msecs_per_fps, 15-i, "starbucks: %d", (*it)->starbucks);
 		message.print(msecs_per_fps, 15-i, "buckazoids: %d", (*it)->buckazoids);
 		message.print(msecs_per_fps, 15-i, "kills: %d", (*it)->kills);
+
+/*
+		for (std::list<GobEnemy*>::iterator e = gobenemies.begin(); e != gobenemies.end(); ++e) {
+			if (!(*e)->ship->exists()) {
+				continue;
+			}
+			message.print(msecs_per_fps, 15 - i, "enemy %s coordinates: %d x %d",
+				(*e)->ship->get_shiptype()->id,
+				iround((*e)->ship->normal_pos().x),
+				iround((*e)->ship->normal_pos().y));
+		}
+*/
 		//		message.print(msecs_per_fps, 15-i, "debug: %d", debug_value);
 		i += 1;
 	}
@@ -862,6 +874,7 @@ void GobEnemy::died(SpaceLocation *what)
 		p->total_buckazoids_earned += buckazoids;
 		p->kills += 1;
 	}
+	gobgame->gobenemies.remove(this);
 }
 
 
