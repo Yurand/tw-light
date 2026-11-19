@@ -421,12 +421,12 @@ void aa_add_dummy(BITMAP *_src, int _sx1, int _sx2, int _sy1, int _sy2)
 void
 _aa_add_rgba32 (BITMAP *_src, int _sx1, int _sx2, int _sy1, int _sy2)
 {
-	unsigned long *sline;
+	Uint32 *sline;
 	int sx, sx1i, sx1f, sx2i, sx2f;
 	int sy, sy1i, sy1f, sy2i, sy2f;
 	unsigned long r1, g1, b1, a1, t1, ta;
 	unsigned long r2, g2, b2, a2, t2;
-	long scolor;
+	Uint32 scolor;
 
 	sy1i = _sy1 >> aa_BITS;
 	sy = sy1i;
@@ -434,7 +434,7 @@ _aa_add_rgba32 (BITMAP *_src, int _sx1, int _sx2, int _sy1, int _sy2)
 	// First line.
 	sx1i = _sx1 >> aa_BITS;
 	sx = sx1i;
-	sline = (unsigned long*) (_src->line[sy]) + sx;
+	sline = (Uint32*) (_src->line[sy]) + sx;
 
 	sx1f = aa_SIZE - (_sx1 & aa_MASK);
 	scolor = *sline;
@@ -489,7 +489,7 @@ _aa_add_rgba32 (BITMAP *_src, int _sx1, int _sx2, int _sy1, int _sy2)
 		r2 = g2 = b2 = t2 = a2 = 0;
 		do {
 			sx = sx1i;
-			sline = (unsigned long*) (_src->line[sy]) + sx;
+			sline = (Uint32*) (_src->line[sy]) + sx;
 
 			scolor = *sline;
 			if (scolor != _aa.mask_color) {
@@ -538,7 +538,7 @@ _aa_add_rgba32 (BITMAP *_src, int _sx1, int _sx2, int _sy1, int _sy2)
 	sy2f = _sy2 & aa_MASK;
 	if (sy2f != 0) {
 		sx = sx1i;
-		sline = (unsigned long*) (_src->line[sy]) + sx;
+		sline = (Uint32*) (_src->line[sy]) + sx;
 
 		scolor = *sline;
 		if (scolor != _aa.mask_color) {
@@ -598,7 +598,7 @@ _aa_add_rgba32 (BITMAP *_src, int _sx1, int _sx2, int _sy1, int _sy2)
 void
 _aa_add_rgba8888 (BITMAP *_src, int _sx1, int _sx2, int _sy1, int _sy2)
 {
-	unsigned long *sline;
+	Uint32 *sline;
 	int sx, sx1i, sx1f, sx2i, sx2f;
 	int sy, sy1i, sy1f, sy2i, sy2f;
 	unsigned long r1, g1, b1, a1, t1;
@@ -615,7 +615,7 @@ _aa_add_rgba8888 (BITMAP *_src, int _sx1, int _sx2, int _sy1, int _sy2)
 	// First line.
 	sx1i = _sx1 >> aa_BITS;
 	sx = sx1i;
-	sline = (unsigned long*) (_src->line[sy]) + sx;
+	sline = (Uint32*) (_src->line[sy]) + sx;
 
 	sx1f = aa_SIZE - (_sx1 & aa_MASK);
 	color.i = *sline;
@@ -667,7 +667,7 @@ _aa_add_rgba8888 (BITMAP *_src, int _sx1, int _sx2, int _sy1, int _sy2)
 		r2 = g2 = b2 = t2 = a2 = 0;
 		do {
 			sx = sx1i;
-			sline = (unsigned long*) (_src->line[sy]) + sx;
+			sline = (Uint32*) (_src->line[sy]) + sx;
 
 			color.i = *sline;
 			if (color.i != _aa.mask_color) {
@@ -713,7 +713,7 @@ _aa_add_rgba8888 (BITMAP *_src, int _sx1, int _sx2, int _sy1, int _sy2)
 	sy2f = _sy2 & aa_MASK;
 	if (sy2f != 0) {
 		sx = sx1i;
-		sline = (unsigned long*) (_src->line[sy]) + sx;
+		sline = (Uint32*) (_src->line[sy]) + sx;
 
 		color.i = *sline;
 		if (color.i != _aa.mask_color) {
