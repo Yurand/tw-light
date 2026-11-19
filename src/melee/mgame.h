@@ -178,6 +178,7 @@ class Game : public Physics
 		virtual void play_music();
 
 		Music *music;
+		bool music_load_failed;
 		//Music *planet_victory;
 		/*
 		SpaceSprite *planetSprite;
