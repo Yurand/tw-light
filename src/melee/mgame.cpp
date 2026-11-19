@@ -942,6 +942,7 @@ void Game::preinit()
 	view = NULL;
 	window = NULL;
 	music = NULL;
+	music_load_failed = false;
 	time_paused = -1;
 }
 
@@ -1168,7 +1169,7 @@ Game::~Game()
 	delete tic_history; tic_history = NULL;
 	delete render_history; render_history = NULL;
 
-	if (music && (music != (Music*)-1)) {
+	if (music && !music_load_failed) {
 		sound.stop_music();
 		//sound.unload_music(music);
 	}
@@ -1404,13 +1405,15 @@ double Game::get_turbo()
 void Game::play_music()
 {
 	STACKTRACE;
-	if (-1 == (long)music)
+	if (music_load_failed)
 		return;
 	if (!music) {
 		music = meleedata.melee_music;
 		//		music = sound.load_music(data_full_path("melee.dat#MELEEMUS_MOD").c_str());
-		if (!music)
-			music = (Music*) -1;
+		if (!music) {
+			music_load_failed = true;
+			return;
+		}
 	}
 	if (music) {
 		sound.play_music(music, TRUE);
